@@ -21,6 +21,7 @@ import {
 } from '@brand-os/brand-core'
 import { compileTokens } from '@brand-os/design-tokens'
 import { prepareDocs } from '../scripts/prepare-docs.js'
+import { copyTemplateTokens } from './helpers/template-tokens.js'
 process.env.BRAND_OS_DATA_KEY ??= crypto.randomBytes(32).toString('base64')
 
 const repo = path.resolve(import.meta.dirname, '..')
@@ -29,7 +30,7 @@ function fresh(): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'brand-os-audit-'))
   writeStarterWorkspace(dir)
   fs.cpSync(path.join(repo, 'schemas'), path.join(dir, 'schemas'), { recursive: true })
-  fs.cpSync(path.join(repo, 'brand/tokens'), path.join(dir, 'brand/tokens'), { recursive: true })
+  copyTemplateTokens(repo, dir)
   return dir
 }
 

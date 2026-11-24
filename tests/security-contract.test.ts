@@ -8,6 +8,7 @@ import { applyInit, authorize, agentContext, backupBrand, ensureApprovalSecret, 
 import { inspectAssetForPublication } from '@brand-os/asset-catalog'
 import { prepareDocs } from '../scripts/prepare-docs.js'
 import { scanPublicTree } from '../scripts/scan-public.js'
+import { copyTemplateTokens } from './helpers/template-tokens.js'
 process.env.BRAND_OS_DATA_KEY ??= crypto.randomBytes(32).toString('base64')
 
 function fresh(): string {
@@ -108,7 +109,7 @@ test('backup refuses overwrite and restore returns the previous bytes', () => {
 
 test('an approved token hash does not survive a changed value', () => {
   const root = fresh()
-  fs.cpSync(path.join(path.resolve(import.meta.dirname, '..'), 'brand/tokens'), path.join(root, 'brand/tokens'), { recursive: true })
+  copyTemplateTokens(path.resolve(import.meta.dirname, '..'), root)
   const engine = new InterviewEngine(root)
   const current = getBrandTokens(engine)
   assert.equal((current.data as { tokens: unknown[] }).tokens.length, 0)

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "repository": "omidlog/brand-os-template",
-  "commit": "992c7f695ee6245656e3df09ab1c4b8b1bb6ecae",
+  "commit": "835fa0fb66cfe801d4c1bff1aa6ccd51d486c54e",
   "version": "0.2.0",
-  "recorded_at": "2026-11-24T17:41:01.372Z",
+  "recorded_at": "2026-11-24T19:03:27.469Z",
   "source": "template:update"
 }
