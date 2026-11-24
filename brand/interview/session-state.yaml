@@ -116,10 +116,13 @@ history:
   - brand.logo.masters
   - brand.type.license
   - personal.experience.highlights
+  - brand.type.scale
+  - brand.type.scale
+  - brand.type.intent
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T11:07:22.486Z
-last_answer_id: ans-0114
+updated_at: 2026-11-24T11:30:32.006Z
+last_answer_id: ans-0117

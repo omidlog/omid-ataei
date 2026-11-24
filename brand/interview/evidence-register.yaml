@@ -190,11 +190,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T11:04:55.530Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T11:10:24.765Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0013
@@ -207,10 +207,10 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T11:04:55.940Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T11:10:25.197Z
+    verified_by: owner
     review_due: null
     status_reason: null

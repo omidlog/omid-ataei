@@ -78,7 +78,7 @@ assets:
       - missing
   - id: asset.logo.wordmark-dark
     name: Omid Ataei wordmark (dark, for light backgrounds)
-    status: draft
+    status: approved
     owner: design
     version: 1.0.0
     visibility: public
@@ -102,9 +102,12 @@ assets:
       name: brand-os-svg-normalizer
       version: 1.0.0
       svgo: 4.1.0
+    approved_by: owner
+    approved_at: 2026-11-24T11:30:48.686Z
+    approved_sha256: c5142385aad860772df44ec70202a9c594e44f35e61b9bb2832d95afbf5cc58d
   - id: asset.logo.wordmark-light
     name: Omid Ataei wordmark (light, for dark backgrounds)
-    status: draft
+    status: approved
     owner: design
     version: 1.0.0
     visibility: public
@@ -128,6 +131,9 @@ assets:
       name: brand-os-svg-normalizer
       version: 1.0.0
       svgo: 4.1.0
+    approved_by: owner
+    approved_at: 2026-11-24T11:30:48.700Z
+    approved_sha256: 3e56d36e1972732e127e313de24b5e17b8717c93328e8ca3f6fe4796c54fa349
   - id: asset.icon.key
     name: Omid Ataei key icon
     status: draft
