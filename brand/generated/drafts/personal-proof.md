@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:17.672Z
-- Answer id: ans-0029
+- Updated: 2026-11-24T09:52:38.850Z
+- Answer id: ans-0031
 
 Value:
 
-مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
+مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir
 <!-- field:personal.experience.highlights end -->
 
 <!-- field:personal.credibility.credentials start -->
@@ -38,12 +38,12 @@ Value:
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:16.638Z
-- Answer id: ans-0027
+- Updated: 2026-11-24T09:52:39.368Z
+- Answer id: ans-0032
 
 Value:
 
-مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
+مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
 <!-- field:personal.credibility.credentials end -->
 
 <!-- field:personal.credibility.awards start -->

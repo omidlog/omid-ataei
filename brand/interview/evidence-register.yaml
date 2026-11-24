@@ -27,11 +27,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:30:17.616Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:52:43.092Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0003
@@ -43,11 +43,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:30:18.081Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:52:43.500Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0004
@@ -59,11 +59,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:30:18.538Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:52:43.915Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0005
@@ -75,8 +75,75 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:48:31.335Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:52:44.326Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0006
+    claim_id: personal.experience.highlights
+    kind: verification
+    source_type: third_party
+    reference: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T09:52:31.533Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
+  - id: ev-0007
+    claim_id: personal.credibility.credentials
+    kind: verification
+    source_type: link
+    reference: https://www.linkedin.com/in/omid-ataei/ (two certificates listed in the LinkedIn
+      certifications section)
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T09:52:31.927Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
+  - id: ev-0008
+    claim_id: personal.credibility.credentials
+    kind: verification
+    source_type: owner_testimony
+    reference: University degrees in graphic design and business administration; owner's statement,
+      documents not attached
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T09:52:32.326Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
+  - id: ev-0009
+    claim_id: personal.credibility.awards
+    kind: verification
+    source_type: owner_testimony
+    reference: Türkiye Tech Visa received; accepted into AWS Activate, Google for Startups, NVIDIA
+      Inception, Claude for Startups; owner's statement, no public document
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T09:52:32.722Z
     recorded_by: owner
     verified_at: null
     verified_by: null

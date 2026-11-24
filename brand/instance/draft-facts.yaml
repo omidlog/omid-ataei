@@ -286,7 +286,7 @@ facts:
     updated: 2026-11-24T09:48:16.143Z
   personal.credibility.credentials:
     value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
-      و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
+      و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -294,8 +294,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0027
-    updated: 2026-11-24T09:48:16.638Z
+    answer_id: ans-0032
+    updated: 2026-11-24T09:52:39.368Z
   personal.credibility.awards:
     value: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate،
       Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید
@@ -310,7 +310,9 @@ facts:
     answer_id: ans-0028
     updated: 2026-11-24T09:48:17.146Z
   personal.experience.highlights:
-    value: مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
+    value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -318,8 +320,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0029
-    updated: 2026-11-24T09:48:17.672Z
+    answer_id: ans-0031
+    updated: 2026-11-24T09:52:38.850Z
   personal.content.channels:
     value: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
       https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:

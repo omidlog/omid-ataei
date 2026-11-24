@@ -581,7 +581,7 @@ records:
     session_id: ses-0001
     normalized: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
       Harvard و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
-    superseded_by: null
+    superseded_by: ans-0032
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0028
@@ -623,7 +623,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
-    superseded_by: null
+    superseded_by: ans-0031
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0030
@@ -650,6 +650,53 @@ records:
       https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
       https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز
       مشخص نشده."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0031
+    question_id: personal.experience.highlights
+    value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    raw_answer: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:52:38.850Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0032
+    question_id: personal.credibility.credentials
+    value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
+      و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
+    raw_answer: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications
+      لینکدین.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:52:39.368Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications
+      لینکدین.
     superseded_by: null
     disposition_reason: null
     private_ref: null

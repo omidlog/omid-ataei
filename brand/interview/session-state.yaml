@@ -32,10 +32,12 @@ history:
   - personal.credibility.awards
   - personal.experience.highlights
   - personal.content.channels
+  - personal.experience.highlights
+  - personal.credibility.credentials
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T09:48:26.744Z
-last_answer_id: ans-0030
+updated_at: 2026-11-24T09:52:39.380Z
+last_answer_id: ans-0032
