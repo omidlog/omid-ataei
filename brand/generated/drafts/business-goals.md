@@ -117,3 +117,39 @@ Value:
 
 TBD
 <!-- field:business.goals.plan_vs_actual end -->
+
+<!-- field:business.goals.objectives start -->
+### Objectives (OKR)
+
+- Question: `business.goals.objectives`
+- Field: `business.goals.objectives`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.goals.objectives end -->
+
+<!-- field:business.goals.key_results start -->
+### Key results (OKR)
+
+- Question: `business.goals.key_results`
+- Field: `business.goals.key_results`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.goals.key_results end -->

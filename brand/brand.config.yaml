@@ -1,10 +1,10 @@
 schema_version: 1
 brand:
-  name: EXAMPLE Brand
-  name_status: placeholder
-  working_name: null
-  working_name_status: null
-  slug: example-brand
+  name: omid ataei
+  name_status: working
+  working_name: omid ataei
+  working_name_status: draft
+  slug: omid-ataei
   legal_name: TBD
   tagline: TBD
   industry: TBD
@@ -12,16 +12,16 @@ brand:
   stage: unknown
   new_or_existing: unknown
   website: null
-  default_locale: en
+  default_locale: fa
   supported_locales:
-    - en
     - fa
+    - en
     - tr
-  profile: universal
-  publish_docs: public
+  profile: personal-brand
+  publish_docs: private
   status: draft
   version: 0.1.0
-  initialized: false
+  initialized: true
 capabilities:
   consumer_app: false
   b2b_saas: false
@@ -35,15 +35,17 @@ capabilities:
   subscription: false
 modules:
   mascot:
-    enabled: true
+    enabled: false
     note: EXAMPLE configuration so the template can demonstrate the mascot catalog. Set enabled to false
       for a brand without a character.
   gamification:
-    enabled: true
+    enabled: false
     note: EXAMPLE configuration. Disable when the product has no game-like progression.
   personal:
-    enabled: false
-    facets: []
+    enabled: true
+    facets:
+      - founder-executive
+      - consultant-expert
     note: Personal Brand OS. Turn on for a person-centered brand (brand:init --profile personal-brand).
       Facets add short question groups.
 design:
@@ -64,3 +66,12 @@ links:
 llm:
   provider: none
   model: null
+onboarding:
+  identity:
+    schema_version: 1
+    source: studio_owner_wizard
+    authority: unapproved_owner_intake
+    logo_presence: present
+    identity_intent: undecided
+    change_depth: null
+    recorded_at: 2026-11-24T08:38:46.083Z

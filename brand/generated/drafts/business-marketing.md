@@ -172,6 +172,42 @@ Value:
 TBD
 <!-- field:business.marketing.utm end -->
 
+<!-- field:business.marketing.paid_media start -->
+### Paid media
+
+- Question: `business.marketing.paid_media`
+- Field: `business.marketing.paid_media`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.marketing.paid_media end -->
+
+<!-- field:business.marketing.journey_stages start -->
+### Customer journey stages
+
+- Question: `business.marketing.journey_stages`
+- Field: `business.marketing.journey_stages`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.marketing.journey_stages end -->
+
 <!-- field:business.product.public_status start -->
 ### Public status
 

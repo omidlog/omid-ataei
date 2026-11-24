@@ -262,6 +262,276 @@ Value:
 TBD
 <!-- field:business.plan.risks end -->
 
+<!-- field:business.model.segments start -->
+### Customer segments
+
+- Question: `business.model.segments`
+- Field: `business.model.segments`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.model.segments end -->
+
+<!-- field:business.model.key_activities start -->
+### Key activities
+
+- Question: `business.model.key_activities`
+- Field: `business.model.key_activities`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.model.key_activities end -->
+
+<!-- field:business.model.key_resources start -->
+### Key resources
+
+- Question: `business.model.key_resources`
+- Field: `business.model.key_resources`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.model.key_resources end -->
+
+<!-- field:business.model.cost_items start -->
+### Cost items
+
+- Question: `business.model.cost_items`
+- Field: `business.model.cost_items`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.model.cost_items end -->
+
+<!-- field:business.swot.strengths start -->
+### Strengths
+
+- Question: `business.swot.strengths`
+- Field: `business.swot.strengths`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.swot.strengths end -->
+
+<!-- field:business.swot.weaknesses start -->
+### Weaknesses
+
+- Question: `business.swot.weaknesses`
+- Field: `business.swot.weaknesses`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.swot.weaknesses end -->
+
+<!-- field:business.swot.opportunities start -->
+### Opportunities
+
+- Question: `business.swot.opportunities`
+- Field: `business.swot.opportunities`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.swot.opportunities end -->
+
+<!-- field:business.swot.threats start -->
+### Threats
+
+- Question: `business.swot.threats`
+- Field: `business.swot.threats`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.swot.threats end -->
+
+<!-- field:business.swot.tows start -->
+### TOWS strategies
+
+- Question: `business.swot.tows`
+- Field: `business.swot.tows`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.swot.tows end -->
+
+<!-- field:business.fit.jobs start -->
+### Customer jobs
+
+- Question: `business.fit.jobs`
+- Field: `business.fit.jobs`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.jobs end -->
+
+<!-- field:business.fit.pains start -->
+### Customer pains
+
+- Question: `business.fit.pains`
+- Field: `business.fit.pains`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.pains end -->
+
+<!-- field:business.fit.gains start -->
+### Customer gains
+
+- Question: `business.fit.gains`
+- Field: `business.fit.gains`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.gains end -->
+
+<!-- field:business.fit.products start -->
+### Products and services
+
+- Question: `business.fit.products`
+- Field: `business.fit.products`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.products end -->
+
+<!-- field:business.fit.relievers start -->
+### Pain relievers
+
+- Question: `business.fit.relievers`
+- Field: `business.fit.relievers`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.relievers end -->
+
+<!-- field:business.fit.creators start -->
+### Gain creators
+
+- Question: `business.fit.creators`
+- Field: `business.fit.creators`
+- Status: unanswered
+- Visibility: internal
+- Authority: unverified
+- Source: none
+- Uncertainty: none
+- Updated: n/a
+- Answer id: n/a
+
+Value:
+
+TBD
+<!-- field:business.fit.creators end -->
+
 <!-- field:business.partners.risk_process start -->
 ### Risk review
 

@@ -1,10 +1,11 @@
 session_id: null
 status: idle
-locale: en
+locale: fa
 history: []
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
+pending_proposals: []
 started_at: null
 updated_at: null
 last_answer_id: null
