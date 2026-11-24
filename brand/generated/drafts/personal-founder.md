@@ -55,17 +55,19 @@ Approved by: owner
 
 - Question: `personal.founder.sectors`
 - Field: `personal.founder.sectors`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:55.972Z
+- Answer id: ans-0151
 
 Value:
 
-TBD
+هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+
+Approved by: owner
 <!-- field:personal.founder.sectors end -->
 
 <!-- field:personal.founder.leadership_topics start -->
@@ -73,17 +75,19 @@ TBD
 
 - Question: `personal.founder.leadership_topics`
 - Field: `personal.founder.leadership_topics`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:56.159Z
+- Answer id: ans-0152
 
 Value:
 
-TBD
+راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+
+Approved by: owner
 <!-- field:personal.founder.leadership_topics end -->
 
 <!-- field:personal.founder.investor_relations start -->
@@ -91,15 +95,17 @@ TBD
 
 - Question: `personal.founder.investor_relations`
 - Field: `personal.founder.investor_relations`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:56.348Z
+- Answer id: ans-0153
 
 Value:
 
-TBD
+دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+
+Approved by: owner
 <!-- field:personal.founder.investor_relations end -->

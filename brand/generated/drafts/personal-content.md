@@ -40,12 +40,12 @@ Approved by: owner
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:52:53.981Z
-- Answer id: ans-0075
+- Updated: 2026-11-24T12:24:57.084Z
+- Answer id: ans-0157
 
 Value:
 
-ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت صحنهٔ ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
 
 Approved by: owner
 <!-- field:personal.content.pillars end -->
@@ -75,17 +75,19 @@ Approved by: owner
 
 - Question: `personal.content.channel_tone`
 - Field: `personal.content.channel_tone`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:54.862Z
+- Answer id: ans-0145
 
 Value:
 
-TBD
+نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+
+Approved by: owner
 <!-- field:personal.content.channel_tone end -->
 
 <!-- field:personal.goals.outcomes start -->
@@ -113,15 +115,17 @@ Approved by: owner
 
 - Question: `personal.goals.kpis`
 - Field: `personal.goals.kpis`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:55.046Z
+- Answer id: ans-0146
 
 Value:
 
-TBD
+منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶). پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده.
+
+Approved by: owner
 <!-- field:personal.goals.kpis end -->

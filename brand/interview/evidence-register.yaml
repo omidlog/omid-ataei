@@ -214,3 +214,37 @@ items:
     verified_by: owner
     review_due: null
     status_reason: null
+  - id: ev-0014
+    claim_id: personal.story.timeline
+    kind: verification
+    source_type: owner_testimony
+    reference: "Owner statement: Dadvin company registered in Iran (November 2026) and admitted to the
+      Ferdowsi University of Mashhad growth centre; documents held by the owner"
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T12:23:43.605Z
+    recorded_by: owner
+    verified_at: 2026-11-24T12:25:02.772Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0015
+    claim_id: personal.goals.kpis
+    kind: verification
+    source_type: owner_testimony
+    reference: "Owner statement on 2026-11-24: 73k Instagram followers (@ataei.ca); 0 mentoring hours
+      per month"
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T12:24:06.578Z
+    recorded_by: owner
+    verified_at: 2026-11-24T12:25:03.230Z
+    verified_by: owner
+    review_due: null
+    status_reason: null

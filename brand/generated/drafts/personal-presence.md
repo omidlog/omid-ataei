@@ -75,17 +75,19 @@ Approved by: owner
 
 - Question: `personal.media.presentation`
 - Field: `personal.media.presentation`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:55.226Z
+- Answer id: ans-0147
 
 Value:
 
-TBD
+فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+
+Approved by: owner
 <!-- field:personal.media.presentation end -->
 
 <!-- field:personal.media.visual_templates start -->
@@ -93,15 +95,17 @@ TBD
 
 - Question: `personal.media.visual_templates`
 - Field: `personal.media.visual_templates`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:55.410Z
+- Answer id: ans-0148
 
 Value:
 
-TBD
+همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+
+Approved by: owner
 <!-- field:personal.media.visual_templates end -->

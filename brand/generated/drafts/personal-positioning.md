@@ -135,15 +135,17 @@ Approved by: owner
 
 - Question: `personal.positioning.boundaries`
 - Field: `personal.positioning.boundaries`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:24:53.993Z
+- Answer id: ans-0140
 
 Value:
 
-TBD
+حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+
+Approved by: owner
 <!-- field:personal.positioning.boundaries end -->

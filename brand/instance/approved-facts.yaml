@@ -606,6 +606,7 @@ facts:
     module: personal-proof
     value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
       مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
+      پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه
       پروژهٔ مشتری."
     value_type: long_text
     status: approved
@@ -614,18 +615,18 @@ facts:
     source:
       kind: interview
       answer_ids:
-        - ans-0073
+        - ans-0156
       reference_ids: []
       citation_paths:
         - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T10:52:53.220Z
+      observed_at: 2026-11-24T12:24:56.893Z
     confidence: null
     assumptions: []
     owner: null
     reviewer_id: owner
-    approved_at: 2026-11-24T10:52:53.220Z
-    version: 1
-    revision_hash: personal.portfolio.projects:1
+    approved_at: 2026-11-24T12:24:56.893Z
+    version: 2
+    revision_hash: personal.portfolio.projects:2
     review_due: null
     related_ids: []
     private_ref: null
@@ -662,7 +663,8 @@ facts:
     id: personal.content.pillars
     brand_id: omid-ataei
     module: personal-content
-    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت صحنهٔ
+      ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
     value_type: long_text
     status: approved
     classification: internal
@@ -670,18 +672,18 @@ facts:
     source:
       kind: interview
       answer_ids:
-        - ans-0075
+        - ans-0157
       reference_ids: []
       citation_paths:
         - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T10:52:53.981Z
+      observed_at: 2026-11-24T12:24:57.084Z
     confidence: null
     assumptions: []
     owner: null
     reviewer_id: owner
-    approved_at: 2026-11-24T10:52:53.981Z
-    version: 1
-    revision_hash: personal.content.pillars:1
+    approved_at: 2026-11-24T12:24:57.084Z
+    version: 2
+    revision_hash: personal.content.pillars:2
     review_due: null
     related_ids: []
     private_ref: null
@@ -1480,6 +1482,479 @@ facts:
     approved_at: 2026-11-24T11:30:31.830Z
     version: 1
     revision_hash: brand.type.scale:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.identity.localized_headline:
+    id: personal.identity.localized_headline
+    brand_id: omid-ataei
+    module: personal-identity
+    value: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ
+      و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme
+      Danışmanı."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0139
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:53.811Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:53.811Z
+    version: 1
+    revision_hash: personal.identity.localized_headline:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.boundaries:
+    id: personal.positioning.boundaries
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0140
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:53.993Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:53.993Z
+    version: 1
+    revision_hash: personal.positioning.boundaries:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.story.timeline:
+    id: personal.story.timeline
+    brand_id: omid-ataei
+    module: personal-story
+    value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
+      ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
+      بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران. Dadvin در مرکز
+      رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0141
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:54.165Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:54.165Z
+    version: 1
+    revision_hash: personal.story.timeline:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.story.next_chapter:
+    id: personal.story.next_chapter
+    brand_id: omid-ataei
+    module: personal-story
+    value: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا
+      آن را بخرند.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0142
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:54.337Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:54.337Z
+    version: 1
+    revision_hash: personal.story.next_chapter:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.reputation.testimonials:
+    id: personal.reputation.testimonials
+    brand_id: omid-ataei
+    module: personal-proof
+    value: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0143
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:54.513Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:54.513Z
+    version: 1
+    revision_hash: personal.reputation.testimonials:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.reputation.conflicts:
+    id: personal.reputation.conflicts
+    brand_id: omid-ataei
+    module: personal-proof
+    value: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف
+      می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0144
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:54.693Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:54.693Z
+    version: 1
+    revision_hash: personal.reputation.conflicts:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.content.channel_tone:
+    id: personal.content.channel_tone
+    brand_id: omid-ataei
+    module: personal-content
+    value: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0145
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:54.862Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:54.862Z
+    version: 1
+    revision_hash: personal.content.channel_tone:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.goals.kpis:
+    id: personal.goals.kpis
+    brand_id: omid-ataei
+    module: personal-content
+    value: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0146
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.046Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.046Z
+    version: 1
+    revision_hash: personal.goals.kpis:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.media.presentation:
+    id: personal.media.presentation
+    brand_id: omid-ataei
+    module: personal-presence
+    value: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0147
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.226Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.226Z
+    version: 1
+    revision_hash: personal.media.presentation:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.media.visual_templates:
+    id: personal.media.visual_templates
+    brand_id: omid-ataei
+    module: personal-presence
+    value: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0148
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.410Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.410Z
+    version: 1
+    revision_hash: personal.media.visual_templates:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.governance.reviewer:
+    id: personal.governance.reviewer
+    brand_id: omid-ataei
+    module: personal-boundaries
+    value: فقط خودم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0149
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.593Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.593Z
+    version: 1
+    revision_hash: personal.governance.reviewer:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.privacy.availability:
+    id: personal.privacy.availability
+    brand_id: omid-ataei
+    module: personal-boundaries
+    value: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0150
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.790Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.790Z
+    version: 1
+    revision_hash: personal.privacy.availability:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.founder.sectors:
+    id: personal.founder.sectors
+    brand_id: omid-ataei
+    module: personal-founder
+    value: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0151
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:55.972Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:55.972Z
+    version: 1
+    revision_hash: personal.founder.sectors:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.founder.leadership_topics:
+    id: personal.founder.leadership_topics
+    brand_id: omid-ataei
+    module: personal-founder
+    value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
+      در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
+      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0152
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:56.159Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:56.159Z
+    version: 1
+    revision_hash: personal.founder.leadership_topics:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.founder.investor_relations:
+    id: personal.founder.investor_relations
+    brand_id: omid-ataei
+    module: personal-founder
+    value: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0153
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:56.348Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:56.348Z
+    version: 1
+    revision_hash: personal.founder.investor_relations:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.cta:
+    id: personal.consulting.cta
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم
+      تماس (https://omidataei.com/contact#inquiry).
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0154
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:56.527Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:56.527Z
+    version: 1
+    revision_hash: personal.consulting.cta:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.photo.direction:
+    id: brand.photo.direction
+    brand_id: omid-ataei
+    module: photo-video
+    value: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0155
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T12:24:56.712Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T12:24:56.712Z
+    version: 1
+    revision_hash: brand.photo.direction:1
     review_due: null
     related_ids: []
     private_ref: null
