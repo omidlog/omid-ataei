@@ -1,11 +1,46 @@
-session_id: null
-status: idle
+session_id: ses-0001
+status: active
 locale: fa
-history: []
+history:
+  - personal.identity.public_name
+  - personal.identity.headline
+  - personal.positioning.known_for
+  - personal.identity.public_name
+  - personal.identity.name_forms
+  - brand.personality.traits
+  - personal.positioning.primary_audience
+  - personal.experience.relationships
+  - personal.experience.roles
+  - personal.experience.roles
+  - personal.credibility.evidence
+  - personal.identity.name_forms
+  - personal.founder.ventures
+  - personal.positioning.expertise
+  - personal.positioning.outcome
+  - personal.positioning.perspective
+  - personal.services.offers
+  - personal.consulting.engagements
+  - personal.consulting.methodology
+  - personal.consulting.pricing_policy
+  - personal.identity.service_scope
+  - personal.story.origin
+  - personal.story.motivation
+  - personal.content.pillars
+  - personal.contact.public_channels
+  - brand.verbal.voice
+  - personal.credibility.credentials
+  - personal.credibility.awards
+  - personal.experience.highlights
+  - personal.content.channels
+  - personal.experience.highlights
+  - personal.credibility.credentials
+  - personal.governance.public_claim_policy
+  - personal.privacy.boundaries
+  - personal.privacy.never_publish
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
-started_at: null
-updated_at: null
-last_answer_id: null
+started_at: 2026-11-24T09:05:17.282Z
+updated_at: 2026-11-24T09:54:20.802Z
+last_answer_id: ans-0035

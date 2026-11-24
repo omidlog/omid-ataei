@@ -1,0 +1,151 @@
+schema_version: 1
+note: References only. Contents are not fetched or stored. Status changes to verified or rejected
+  need the owner approval proof.
+items:
+  - id: ev-0001
+    claim_id: personal.experience.relationships
+    kind: verification
+    source_type: public_record
+    reference: https://find-and-update.company-information.service.gov.uk/company/16502068
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:30:17.152Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:47:35.647Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0002
+    claim_id: personal.experience.relationships
+    kind: verification
+    source_type: link
+    reference: https://fiko.io
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:30:17.616Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:04.503Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0003
+    claim_id: personal.experience.relationships
+    kind: verification
+    source_type: link
+    reference: https://dadvin.ir
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:30:18.081Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:04.966Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0004
+    claim_id: personal.positioning.known_for
+    kind: verification
+    source_type: link
+    reference: https://omidataei.com
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:30:18.538Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:05.405Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0005
+    claim_id: personal.founder.ventures
+    kind: verification
+    source_type: public_record
+    reference: https://find-and-update.company-information.service.gov.uk/company/16502068
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:48:31.335Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:05.832Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0006
+    claim_id: personal.experience.highlights
+    kind: verification
+    source_type: third_party
+    reference: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:52:31.533Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:06.242Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0007
+    claim_id: personal.credibility.credentials
+    kind: verification
+    source_type: link
+    reference: https://www.linkedin.com/in/omid-ataei/ (two certificates listed in the LinkedIn
+      certifications section)
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:52:31.927Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:06.673Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0008
+    claim_id: personal.credibility.credentials
+    kind: verification
+    source_type: owner_testimony
+    reference: University degrees in graphic design and business administration; owner's statement,
+      documents not attached
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:52:32.326Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:07.076Z
+    verified_by: owner
+    review_due: null
+    status_reason: null
+  - id: ev-0009
+    claim_id: personal.credibility.awards
+    kind: verification
+    source_type: owner_testimony
+    reference: Türkiye Tech Visa received; accepted into AWS Activate, Google for Startups, NVIDIA
+      Inception, Claude for Startups; owner's statement, no public document
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: verified
+    recorded_at: 2026-11-24T09:52:32.722Z
+    recorded_by: owner
+    verified_at: 2026-11-24T09:53:07.489Z
+    verified_by: owner
+    review_due: null
+    status_reason: null

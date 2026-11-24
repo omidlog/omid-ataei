@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.story.origin`
 - Field: `personal.story.origin`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:13.627Z
+- Answer id: ans-0022
 
 Value:
 
-TBD
+از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ کسب‌وکار به کار می‌برم.
 <!-- field:personal.story.origin end -->
 
 <!-- field:personal.story.turning_points start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `personal.story.motivation`
 - Field: `personal.story.motivation`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:14.126Z
+- Answer id: ans-0023
 
 Value:
 
-TBD
+I have worked on both sides of the table: building my own businesses and helping other teams launch and grow.
 <!-- field:personal.story.motivation end -->
 
 <!-- field:personal.story.timeline start -->

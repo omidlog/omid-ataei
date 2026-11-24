@@ -1,2 +1,765 @@
 schema_version: 1
-records: []
+records:
+  - answer_id: ans-0001
+    question_id: personal.identity.public_name
+    value: Omid Ataei (English) / امید عطایی (فارسی)
+    raw_answer: Omid Ataei (English) / امید عطایی (فارسی)
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:05:17.296Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Omid Ataei (English) / امید عطایی (فارسی)
+    superseded_by: ans-0004
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0002
+    question_id: personal.identity.headline
+    value: Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
+    raw_answer: Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:05:17.800Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0003
+    question_id: personal.positioning.known_for
+    value: می‌خواهم به عنوان بنیان‌گذار چند استارتاپ، مشاور و استراتژیست برندینگ و مارکتینگ، و منتور
+      استارتاپ و کسب‌وکار شناخته شوم.
+    raw_answer: می‌خواهم به عنوان بنیان‌گذار چند استارتاپ، مشاور و استراتژیست برندینگ و مارکتینگ، و
+      منتور استارتاپ و کسب‌وکار شناخته شوم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:05:21.455Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: می‌خواهم به عنوان بنیان‌گذار چند استارتاپ، مشاور و استراتژیست برندینگ و مارکتینگ، و
+      منتور استارتاپ و کسب‌وکار شناخته شوم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0004
+    question_id: personal.identity.public_name
+    value: Omid Ataei
+    raw_answer: Omid Ataei
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:11:54.264Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Omid Ataei
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0005
+    question_id: personal.identity.name_forms
+    value: "فارسی: امید عطایی"
+    raw_answer: "فارسی: امید عطایی"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:11:54.773Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "فارسی: امید عطایی"
+    superseded_by: ans-0012
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0006
+    question_id: brand.personality.traits
+    value: مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا.
+      ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی
+      می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
+    raw_answer: مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا.
+      ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی
+      می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:11:58.834Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا.
+      ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی
+      می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0007
+    question_id: personal.positioning.primary_audience
+    value: ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان کسب‌وکارهایی که
+      دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳) مدیران
+      بازاریابی شرکت‌ها.
+    raw_answer: ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان
+      کسب‌وکارهایی که دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳)
+      مدیران بازاریابی شرکت‌ها.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:16:53.220Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان
+      کسب‌وکارهایی که دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳)
+      مدیران بازاریابی شرکت‌ها.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0008
+    question_id: personal.experience.relationships
+    value: "founded | Fiko | 2024 | present | ownership: unstated; founded | dadvin | 2025 | present |
+      ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated; employed |
+      سهمیران | 2022 | 2024 | ownership: unstated; co-founded | طراحان آزاد | 2012 | 2018 |
+      ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated"
+    raw_answer: founded | Fiko | 2024 | present; founded | dadvin | 2025 | present; employed | فراکوچ |
+      2018-04 | 2022-01; employed | سهمیران | 2022 | 2024; co-founded | طراحان آزاد | 2012 | 2018;
+      founded | artsglob | 2024 | 2025
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:23:22.903Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "founded | Fiko | 2024 | present | ownership: unstated; founded | dadvin | 2025 |
+      present | ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated;
+      employed | سهمیران | 2022 | 2024 | ownership: unstated; co-founded | طراحان آزاد | 2012 | 2018
+      | ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0009
+    question_id: personal.experience.roles
+    value: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ.
+      artsglob: Founder & CEO."
+    raw_answer: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ.
+      artsglob: Founder & CEO."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:23:23.425Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ.
+      artsglob: Founder & CEO."
+    superseded_by: ans-0010
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0010
+    question_id: personal.experience.roles
+    value: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ. طراحان
+      آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO."
+    raw_answer: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ.
+      طراحان آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:27:30.280Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ.
+      طراحان آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0011
+    question_id: personal.credibility.evidence
+    value: "Companies House
+      (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO
+      AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین.
+      omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/):
+      پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست."
+    raw_answer: "Companies House
+      (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO
+      AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین.
+      omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/):
+      پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:30:13.380Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Companies House
+      (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO
+      AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین.
+      omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/):
+      پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0012
+    question_id: personal.identity.name_forms
+    value: "فارسی (شکل رسمی): امید عطائی. شکل رایج دیگر که در بعضی جاها استفاده می‌شود: امید عطایی."
+    raw_answer: "فارسی (شکل رسمی): امید عطائی. شکل رایج دیگر که در بعضی جاها استفاده می‌شود: امید عطایی."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:08.729Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "فارسی (شکل رسمی): امید عطائی. شکل رایج دیگر که در بعضی جاها استفاده می‌شود: امید عطایی."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0013
+    question_id: personal.founder.ventures
+    value: "Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد
+      و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. dadvin (دادوین):
+      Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد:
+      هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸."
+    raw_answer: "Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵
+      ثبت شد و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. dadvin
+      (دادوین): Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد:
+      هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:09.186Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵
+      ثبت شد و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. dadvin
+      (دادوین): Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد:
+      هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0014
+    question_id: personal.positioning.expertise
+    value: استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به بازار
+      (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و
+      اتوماسیون. تجربهٔ ویژه به‌عنوان مدیر مارکتینگ و استراتژیست برندینگ و مارکتینگ در حوزهٔ
+      بازارهای مالی.
+    raw_answer: استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به
+      بازار (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و
+      اتوماسیون. تجربهٔ ویژه به‌عنوان مدیر مارکتینگ و استراتژیست برندینگ و مارکتینگ در حوزهٔ
+      بازارهای مالی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:09.678Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به
+      بازار (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و
+      اتوماسیون. تجربهٔ ویژه به‌عنوان مدیر مارکتینگ و استراتژیست برندینگ و مارکتینگ در حوزهٔ
+      بازارهای مالی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0015
+    question_id: personal.positioning.outcome
+    value: I help founders and businesses make smarter decisions, build stronger brands and create
+      practical strategies for sustainable growth.
+    raw_answer: I help founders and businesses make smarter decisions, build stronger brands and create
+      practical strategies for sustainable growth.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:10.202Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: I help founders and businesses make smarter decisions, build stronger brands and create
+      practical strategies for sustainable growth.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0016
+    question_id: personal.positioning.perspective
+    value: A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛
+      مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ
+      رشد تضمینی نمی‌دهم.
+    raw_answer: A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه
+      نمی‌کنم؛ مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم
+      می‌بینم. وعدهٔ رشد تضمینی نمی‌دهم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:10.688Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه
+      نمی‌کنم؛ مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم
+      می‌بینم. وعدهٔ رشد تضمینی نمی‌دهم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0017
+    question_id: personal.services.offers
+    value: Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛ AI
+      Agents & Automation.
+    raw_answer: Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛
+      AI Agents & Automation.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:11.190Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛
+      AI Agents & Automation.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0018
+    question_id: personal.consulting.engagements
+    value: "1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش داده
+      می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ، با
+      دامنهٔ کتبی و قیمت جداگانه. Ongoing Advisory: همراهی مستمر به‌عنوان شریک استراتژیک، با قیمت
+      جداگانه."
+    raw_answer: "1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش
+      داده می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ،
+      با دامنهٔ کتبی و قیمت جداگانه. Ongoing Advisory: همراهی مستمر به‌عنوان شریک استراتژیک، با قیمت
+      جداگانه."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:11.676Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش
+      داده می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ،
+      با دامنهٔ کتبی و قیمت جداگانه. Ongoing Advisory: همراهی مستمر به‌عنوان شریک استراتژیک، با قیمت
+      جداگانه."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0019
+    question_id: personal.consulting.methodology
+    value: "مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act."
+    raw_answer: "مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:12.168Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0020
+    question_id: personal.consulting.pricing_policy
+    value: on_request
+    raw_answer: on_request
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:12.645Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: on_request
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0021
+    question_id: personal.identity.service_scope
+    value: ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
+    raw_answer: ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:13.156Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0022
+    question_id: personal.story.origin
+    value: از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و
+      استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ
+      کسب‌وکار به کار می‌برم.
+    raw_answer: از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و
+      استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ
+      کسب‌وکار به کار می‌برم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:13.627Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و
+      استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ
+      کسب‌وکار به کار می‌برم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0023
+    question_id: personal.story.motivation
+    value: "I have worked on both sides of the table: building my own businesses and helping other teams
+      launch and grow."
+    raw_answer: "I have worked on both sides of the table: building my own businesses and helping other
+      teams launch and grow."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:14.126Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "I have worked on both sides of the table: building my own businesses and helping other
+      teams launch and grow."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0024
+    question_id: personal.content.pillars
+    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    raw_answer: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:14.669Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0025
+    question_id: personal.contact.public_channels
+    value: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
+      https://omidataei.com/contact#book"
+    raw_answer: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
+      https://omidataei.com/contact#book"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:15.224Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
+      https://omidataei.com/contact#book"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0026
+    question_id: brand.verbal.voice
+    value: "اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best fit,
+      I'll tell you.»"
+    raw_answer: "اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best
+      fit, I'll tell you.»"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:16.143Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best
+      fit, I'll tell you.»"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0027
+    question_id: personal.credibility.credentials
+    value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
+      و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
+    raw_answer: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:16.638Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
+    superseded_by: ans-0032
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0028
+    question_id: personal.credibility.awards
+    value: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate،
+      Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید
+      (endorsement) و نه سرمایه‌گذاری."
+    raw_answer: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS
+      Activate، Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه
+      تأیید (endorsement) و نه سرمایه‌گذاری."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:17.146Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS
+      Activate، Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه
+      تأیید (endorsement) و نه سرمایه‌گذاری."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0029
+    question_id: personal.experience.highlights
+    value: مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
+    raw_answer: مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:17.672Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
+    superseded_by: ans-0031
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0030
+    question_id: personal.content.channels
+    value: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
+      https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
+      https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز
+      مشخص نشده."
+    raw_answer: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
+      https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
+      https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز
+      مشخص نشده."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:48:26.730Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
+      https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
+      https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز
+      مشخص نشده."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0031
+    question_id: personal.experience.highlights
+    value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    raw_answer: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:52:38.850Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0032
+    question_id: personal.credibility.credentials
+    value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
+      و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
+    raw_answer: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications
+      لینکدین.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:52:39.368Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با
+      Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications
+      لینکدین.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0033
+    question_id: personal.governance.public_claim_policy
+    value: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک
+      تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته
+      نشوند.
+    raw_answer: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه،
+      مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع
+      گفته نشوند.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:16.436Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه،
+      مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع
+      گفته نشوند.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0034
+    question_id: personal.privacy.boundaries
+    value: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    raw_answer: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:16.936Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0035
+    question_id: personal.privacy.never_publish
+    value: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    raw_answer: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:20.785Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
