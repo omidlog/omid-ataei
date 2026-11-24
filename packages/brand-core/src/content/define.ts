@@ -8,6 +8,7 @@ import type {
   SourceType,
   Visibility,
 } from '../types.js'
+import { QUESTION_HELP_I18N } from './question-help-i18n.js'
 
 export interface FqInput {
   id: string
@@ -50,6 +51,7 @@ function entitySummary(id: string): NonNullable<FieldQuestion['entity']> {
 const SOURCE_TYPES: SourceType[] = ['owner', 'approved_import', 'external_cited', 'agent_suggestion']
 
 export function fq(input: FqInput): FieldQuestion {
+  const help = QUESTION_HELP_I18N[input.id]
   const type = input.type ?? 'long_text'
   const completion =
     input.completion ??
@@ -71,8 +73,10 @@ export function fq(input: FqInput): FieldQuestion {
     label: input.label,
     prompt: { en: input.en, fa: input.fa, tr: input.tr },
     why_it_matters: input.why,
+    ...(help ? { why_it_matters_i18n: { fa: help.fa.why, tr: help.tr.why } } : {}),
     question_type: type,
     examples: [`EXAMPLE ONLY: ${input.example}`],
+    ...(help ? { examples_i18n: { fa: [`EXAMPLE ONLY: ${help.fa.example}`], tr: [`EXAMPLE ONLY: ${help.tr.example}`] } } : {}),
     options: input.options,
     suggestions: input.suggestions,
     required_when: input.require ?? 'always',

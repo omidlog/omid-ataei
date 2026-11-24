@@ -31,7 +31,8 @@
       "@brand-os/brand-core/visual-dna": ["packages/brand-core/src/visual-dna/index.ts"],
       "@brand-os/design-tokens": ["packages/design-tokens/src/index.ts"],
       "@brand-os/asset-catalog": ["packages/asset-catalog/src/index.ts"],
-      "@brand-os/asset-catalog/normalize": ["packages/asset-catalog/src/normalize.ts"]
+      "@brand-os/asset-catalog/normalize": ["packages/asset-catalog/src/normalize.ts"],
+      "@brand-os/asset-catalog/manage": ["packages/asset-catalog/src/manage.ts"]
     }
   },
   "include": ["packages/**/*.ts", "scripts/**/*.ts", "tests/**/*.ts", "apps/studio/**/*.ts"],

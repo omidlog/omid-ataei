@@ -1,8 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import readline from 'node:readline/promises'
 import { parseArgs } from 'node:util'
-import { stdin as input, stdout as output } from 'node:process'
+import { readOwnerProof } from './proof.js'
+import { stdin as input } from 'node:process'
 import {
   AGENT_TOKEN_ENV,
   appendNote,
@@ -189,33 +189,13 @@ async function requireOwnerForRestricted(): Promise<void> {
   if (process.env[AGENT_TOKEN_ENV]) {
     throw new KnowledgeError('refused', `Restricted notes are owner-only. Refusing while ${AGENT_TOKEN_ENV} is set.`)
   }
-  let proof = process.env.BRAND_OS_APPROVAL_PROOF?.trim()
-  if (!proof && input.isTTY) proof = await hiddenPrompt('Approval proof for restricted notes (input hidden): ')
+  // Shared resolver without the piped-stdin step: stdin carries note text here (--file -).
+  const proof = await readOwnerProof({ prompt: 'Approval proof for restricted notes (input hidden): ', stdin: false })
   if (!approvalProofMatches(root, proof)) {
     throw new KnowledgeError('refused', 'Restricted notes need the owner approval proof (BRAND_OS_APPROVAL_PROOF or the hidden prompt). Nothing was read or written.')
   }
 }
 
-async function hiddenPrompt(question: string): Promise<string | undefined> {
-  const { Writable } = await import('node:stream')
-  let muted = false
-  const sink = new Writable({
-    write(chunk, encoding, callback) {
-      if (!muted) output.write(chunk, encoding)
-      callback()
-    },
-  })
-  const rl = readline.createInterface({ input, output: sink, terminal: true })
-  try {
-    const pending = rl.question(question)
-    muted = true
-    const answer = await pending
-    output.write('\n')
-    return answer.trim() || undefined
-  } finally {
-    rl.close()
-  }
-}
 
 function print(values: Values, data: unknown, text: () => string): void {
   console.log(values.json ? JSON.stringify(data, null, 2) : text())

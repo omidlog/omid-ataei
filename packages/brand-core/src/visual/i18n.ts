@@ -52,6 +52,12 @@ export interface VisualCatalog {
     gapBody: string
     withheldValue: string
     notApplicableZone: string
+    /** BOS-15: the brand's interview profile does not ask this question (not an owner answer). */
+    notApplicableProfile: string
+    /** BOS-15: a personal answer standing in for a framework question; {id} is the personal question id. */
+    standsFor: string
+    /** BOS-15: a whole framework with nothing that applies to the brand's profile. */
+    profileNotApplicableBody: string
     relationshipsTitle: string
     relationshipsBody: string
     sourcesTitle: string
@@ -159,6 +165,9 @@ const en: VisualCatalog = {
     gapBody: 'Nothing is shown here until the owner answers and approves it. Nothing was guessed.',
     withheldValue: 'Restricted value withheld',
     notApplicableZone: 'The owner marked this not applicable.',
+    notApplicableProfile: 'Not applicable to this profile.',
+    standsFor: 'From your personal answer {id}.',
+    profileNotApplicableBody: 'Nothing in this framework applies to this brand’s interview profile and no personal answer stands in for it. For a full plan of a venture, set brand.profile to universal with the personal module on, or give the venture its own repository.',
     relationshipsTitle: 'Links between zones',
     relationshipsBody: 'Segments, offers, channels and revenue streams are single prose answers today, so no link between them is drawn. Linked entities are a planned interview change.',
     sourcesTitle: 'Sources and states',
@@ -266,6 +275,9 @@ const fa: VisualCatalog = {
     gapBody: 'تا وقتی مالک پاسخ ندهد و تأیید نکند، اینجا چیزی نمایش داده نمی‌شود. هیچ چیزی حدس زده نشده است.',
     withheldValue: 'مقدار محرمانه نمایش داده نمی‌شود',
     notApplicableZone: 'مالک این مورد را نامرتبط اعلام کرده است.',
+    notApplicableProfile: 'در این نمایه موضوعیت ندارد.',
+    standsFor: 'از پاسخ شخصی شما {id}.',
+    profileNotApplicableBody: 'هیچ بخشی از این چارچوب در نمایهٔ مصاحبهٔ این برند موضوعیت ندارد و پاسخ شخصی‌ای جای آن را نمی‌گیرد. برای برنامهٔ کامل یک کسب‌وکار، brand.profile را universal بگذارید و ماژول شخصی را روشن نگه دارید، یا برای آن کسب‌وکار مخزن جداگانه بسازید.',
     relationshipsTitle: 'پیوند میان بخش‌ها',
     relationshipsBody: 'بخش‌های مشتری، پیشنهادها، کانال‌ها و جریان‌های درآمد اکنون هر کدام یک پاسخ متنی‌اند؛ بنابراین هیچ پیوندی میانشان رسم نمی‌شود. موجودیت‌های پیوندی تغییر برنامه‌ریزی‌شدهٔ مصاحبه است.',
     sourcesTitle: 'منابع و وضعیت‌ها',
@@ -373,6 +385,9 @@ const tr: VisualCatalog = {
     gapBody: 'Sahip yanıtlayıp onaylayana kadar burada hiçbir şey gösterilmez. Hiçbir şey tahmin edilmedi.',
     withheldValue: 'Kısıtlı değer gizlendi',
     notApplicableZone: 'Sahip bunu uygulanmaz olarak işaretledi.',
+    notApplicableProfile: 'Bu profil için geçerli değil.',
+    standsFor: 'Kişisel yanıtınızdan: {id}.',
+    profileNotApplicableBody: 'Bu çerçevenin hiçbir parçası bu markanın görüşme profili için geçerli değil ve yerine geçen bir kişisel yanıt yok. Bir girişimin tam planı için brand.profile değerini universal yapıp kişisel modülü açık tutun ya da girişime ayrı bir depo açın.',
     relationshipsTitle: 'Alanlar arası bağlantılar',
     relationshipsBody: 'Segmentler, teklifler, kanallar ve gelir akışları bugün tek metin yanıtlarıdır; bu yüzden aralarında bağlantı çizilmez. Bağlantılı varlıklar planlanan bir görüşme değişikliğidir.',
     sourcesTitle: 'Kaynaklar ve durumlar',

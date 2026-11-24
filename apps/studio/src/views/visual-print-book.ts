@@ -3,7 +3,7 @@ import { bodyHeightMm, bookText, fillVisual, printProfile, visualCatalog } from 
 import { html, join, type SafeHtml } from './html.js'
 import { dateOnly, legend, two } from './visual-primitives.js'
 import { renderBlock, type BlockContext } from './visual-registry.js'
-import { comboList, contrastTable, footParts, frameworkNote, gridKey, plateHead, sourceRows, sourcesHead, swatchList, typeRoleItem, type IdentityContext } from './visual-identity.js'
+import { comboList, contrastTable, footParts, frameworkNote, gridKey, logoSystemView, plateHead, sourceRows, sourcesHead, swatchList, typeRoleItem, type IdentityContext } from './visual-identity.js'
 
 /**
  * Print engine, profile `book_a4_portrait` (Visual Blueprint V1.2).
@@ -266,7 +266,10 @@ export function typeFlows(block: TypographySpecimenBlock, builder: FlowBuilder):
 export function logoFlows(block: LogoConstructionBlock, builder: FlowBuilder): BookFlow[] {
   const ready = block.spec !== null && block.master !== null
   const content = renderBlock(block, builder.ctx)
-  return [blockFlow(ready ? 'logo:plate' : 'logo:await', content, ready ? 205 : 165, { notes: take(builder) })]
+  const flows = [blockFlow(ready ? 'logo:plate' : 'logo:await', content, ready ? 205 : 165, { notes: take(builder) })]
+  // BOS-16: the logo system (light and dark plates, icon sizes) is its own block so it can move to the next page.
+  if (block.system) flows.push(blockFlow('logo:system', logoSystemView(block, builder.ctx), 110))
+  return flows
 }
 
 export function appendixFlows(doc: Pick<VisualDocument, 'audience' | 'framework_refs'>, citations: Pick<CitationListBlock, 'items'> | undefined, builder: FlowBuilder, intro?: string): BookFlow[] {

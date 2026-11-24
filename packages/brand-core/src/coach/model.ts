@@ -23,7 +23,7 @@ import type { InterviewProfile } from '../profiles.js'
 
 export const COACH_ENGINE_VERSION = 'coach/1'
 /** Bumped whenever a rule changes its verdict for the same input, so cached advice can be invalidated. */
-export const COACH_RULE_VERSION = 'coach-rules/5'
+export const COACH_RULE_VERSION = 'coach-rules/6'
 export const COACH_SCHEMA_VERSION = 1
 
 export const COACH_MODES = ['follow_up', 'quality_review', 'consistency_review'] as const

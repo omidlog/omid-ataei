@@ -1,6 +1,6 @@
 import { redirect } from '../http.js'
 import { brandIsReady } from '../sync.js'
-import type { BrandView } from '../views/layout.js'
+import { syncFlash, type BrandView } from '../views/layout.js'
 import { PLAN_PATHS, planPage, planPrintPage, type PlanKind } from '../views/visual-plan-page.js'
 import type { Handler, StudioCore } from './context.js'
 
@@ -22,9 +22,9 @@ export function planRoutes(core: StudioCore): { plan: Handler } {
     if (cached.status.state === 'never') return redirect(ctx.res, `/brands/${record.slug}`, 302)
     const kind = (Object.entries(PLAN_PATHS).find(([, path]) => path === match[2])?.[0] ?? null) as PlanKind | null
     if (!kind) return notFound(ctx)
-    const brand: BrandView = { record, cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug) }
+    const brand: BrandView = { record, cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug), refreshStartedAt: sync.refreshStartedAt(record.slug) }
     const flash = ctx.url.searchParams.get('sync')
-    const flashValue = flash === 'synced' || flash === 'failed' || flash === 'too-soon' ? flash : null
+    const flashValue = syncFlash(flash, brand)
     if (match[3] !== 'print') return render(ctx, 200, planPage(view(ctx), brand, kind, flashValue))
     const printed = planPrintPage(view(ctx), brand, kind, ctx.url.searchParams.get('edition') === 'public' ? 'public' : 'internal')
     if (!printed) return notFound(ctx)

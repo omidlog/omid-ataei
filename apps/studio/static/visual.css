@@ -11,6 +11,10 @@
 @font-face { font-family: "Studio Rajdhani"; src: url("/static/fonts/rajdhani-bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: "Studio Vazirmatn"; src: url("/static/fonts/vazirmatn-var.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200F, U+FB50-FDFF, U+FE70-FEFF; }
 
+/* BOS-21 (also in studio.css, for the standalone print views): mixed Persian/Latin values keep their logical order. */
+.bidi-run, [data-bidi] { unicode-bidi: isolate; }
+[data-bidi="mixed"][dir="rtl"] { text-align: start; }
+
 :root {
   --vz-lime: #d5fe00;
   --vz-ink: #121212;
@@ -343,6 +347,23 @@
 .vz-min-stage { display: flex; align-items: center; justify-content: center; min-block-size: 96px; background: var(--vz-paper); border: 1px solid var(--vz-rule); }
 .vz-min-img { display: block; inline-size: auto; max-inline-size: 100%; }
 
+/* Logo system (BOS-16): fixed neutral paper and ink plates (the same in light and dark mode), never brand colours. */
+.vz-logo-system { margin-block-start: 40px; display: flex; flex-direction: column; gap: 14px; }
+.vz-logo-plates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.vz-logo-plate { margin: 0; display: flex; flex-direction: column; gap: 10px; min-inline-size: 0; }
+.vz-logo-plate-stage { display: flex; align-items: center; justify-content: center; min-block-size: 180px; padding: 32px; border: 1px solid var(--vz-rule); }
+.vz-logo-plate--light .vz-logo-plate-stage { background: #ffffff; }
+.vz-logo-plate--dark .vz-logo-plate-stage { background: #121212; border-color: #121212; }
+.vz-logo-plate.is-empty .vz-logo-plate-stage { background: repeating-linear-gradient(135deg, transparent 0 8px, var(--vz-subtle) 8px 16px); border-style: dashed; }
+.vz-logo-plate-img { display: block; inline-size: auto; max-inline-size: 100%; max-block-size: 96px; }
+.vz-logo-plate-label { font: 600 10.5px/1.3 var(--vz-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--vz-text-3); }
+.vz-logo-role-note { display: block; margin-block-start: 4px; color: var(--vz-text-3); }
+.vz-logo-icon { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.vz-logo-icon-sizes { list-style: none; margin: 0; padding: 16px; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px; background: var(--vz-subtle); border: 1px solid var(--vz-rule); }
+.vz-logo-icon-size { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.vz-logo-icon-img { display: block; }
+.vz-logo-icon-size--avatar .vz-logo-icon-img { border-radius: 50%; }
+
 /* Awaiting approved asset: designed, not blank. Ghost geometry beside what it waits for and the next step. */
 .vz-await { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: stretch; }
 .vz-await-art { display: flex; }
@@ -371,7 +392,7 @@
   .vz-toc { margin-block-start: 40px; }
 }
 @media (max-width: 900px) {
-  .vz-plate-split, .vz-logo-layout, .vz-await { grid-template-columns: 1fr; gap: 32px; }
+  .vz-plate-split, .vz-logo-layout, .vz-await, .vz-logo-plates { grid-template-columns: 1fr; gap: 32px; }
   .vz-type-role { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 520px) {
@@ -680,6 +701,8 @@
 .vz-legacy { margin: 0 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 11px; color: var(--vz-text-3); }
 .vz-legacy svg { width: 13px; height: 13px; }
 .vz-legacy-hint { flex-basis: 100%; }
+/* BOS-15: a personal answer standing in for a framework question names its source. */
+.vz-entry-from { margin: 0 0 6px; font-size: 11px; color: var(--vz-text-3); overflow-wrap: anywhere; }
 .vz-links-table .vz-link--unresolved td { color: var(--vz-text-3); }
 /* Print (A3 canvas page): lists stay compact so the nine zones keep to one page. */
 .vz-page .vz-items { gap: 1.2mm; margin-block-end: 1.2mm; }

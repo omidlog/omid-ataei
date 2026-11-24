@@ -44,6 +44,15 @@ function approveAnswer(engine: InterviewEngine, proof: string, id: string, value
   assert.equal(result.approved, 1, JSON.stringify(result.results))
 }
 
+/**
+ * Approved colour roles plus the owner's semantic map (BOS-17). Template ids such as color.brand.primary come only
+ * from the approved map; here the owner maps each slot-named role to itself.
+ */
+function approveRoles(engine: InterviewEngine, proof: string, roles: string, map = 'primary = primary'): void {
+  approveAnswer(engine, proof, 'brand.color.roles', roles)
+  approveAnswer(engine, proof, 'brand.color.semantic_map', map)
+}
+
 function tokenIds(engine: InterviewEngine, ctx: Parameters<typeof brandRetrieve>[1]): string[] {
   return ((brandRetrieve(engine, ctx, { kind: 'tokens' }).data as { items: RetrievedItem[] }).items ?? []).map((item) => item.id)
 }
@@ -63,14 +72,18 @@ test('a draft color answer produces no token', () => {
 
 test('an approved color yields a draft token that is retrievable only after hash approval and publication', () => {
   const { root, engine, proof } = brand()
-  approveAnswer(engine, proof, 'brand.color.roles', 'primary #0B2A55; highlight #FFD166')
+  approveRoles(engine, proof, 'primary #0B2A55; highlight #FFD166')
   const report = generateTokens(root, SLUG)
   assert.equal(report.ok, true, report.note)
-  assert.deepEqual(report.tokens.map((token) => [token.id, token.outcome]), [['color.brand.primary', 'created'], ['color.brand.highlight', 'created']])
+  assert.deepEqual(report.tokens.map((token) => [token.id, token.outcome]), [
+    ['color.brand-role.primary', 'created'],
+    ['color.brand-role.highlight', 'created'],
+    ['color.brand.primary', 'created'],
+  ])
   const doc = generatedFile(root, 'color.tokens.json') as { color: { brand: { primary: { $value: { hex: string }; $extensions: { 'brand.os': { status: string; source_fact: string } } } } } }
   assert.equal(doc.color.brand.primary.$value.hex, '#0B2A55')
   assert.equal(doc.color.brand.primary.$extensions['brand.os'].status, 'draft')
-  assert.equal(doc.color.brand.primary.$extensions['brand.os'].source_fact, 'brand.color.roles')
+  assert.equal(doc.color.brand.primary.$extensions['brand.os'].source_fact, 'brand.color.semantic_map')
   // The generated value overrides the EXAMPLE base value in the compiled set.
   const compiled = compileTokens(root)
   assert.deepEqual(compiled.errors, [])
@@ -90,9 +103,9 @@ test('an approved color yields a draft token that is retrievable only after hash
   assert.equal(approved.ok, true, JSON.stringify(approved))
   assert.ok(tokenIds(engine, agent).includes('color.brand.primary'), 'approved token is internal')
   assert.ok(!tokenIds(engine, guest).includes('color.brand.primary'), 'approval is not publication')
-  assert.ok(!tokenIds(engine, agent).includes('color.brand.highlight'), 'unapproved sibling stays a draft')
+  assert.ok(!tokenIds(engine, agent).includes('color.brand-role.highlight'), 'unapproved sibling stays a draft')
 
-  assert.equal(publishTokens(root, ['color.brand.highlight'], proof).results[0]?.outcome, 'refused', 'unapproved tokens cannot be published')
+  assert.equal(publishTokens(root, ['color.brand-role.highlight'], proof).results[0]?.outcome, 'refused', 'unapproved tokens cannot be published')
   const published = publishTokens(root, ['color.brand.primary'], proof)
   assert.equal(published.ok, true)
   assert.ok(tokenIds(engine, guest).includes('color.brand.primary'))
@@ -117,7 +130,7 @@ test('font and logo answers become typography and logo draft tokens', () => {
 
 test('an existing approved token is not overwritten by a new answer', () => {
   const { root, engine, proof } = brand()
-  approveAnswer(engine, proof, 'brand.color.roles', 'primary #0B2A55')
+  approveRoles(engine, proof, 'primary #0B2A55')
   generateTokens(root, SLUG)
   assert.equal(approveTokens(root, ['color.brand.primary'], proof).ok, true)
   const approvalsBefore = fs.readFileSync(path.join(root, 'brand/tokens/approvals.yaml'), 'utf8')
@@ -131,7 +144,7 @@ test('an existing approved token is not overwritten by a new answer', () => {
   const report = generateTokens(root, SLUG)
   const primary = report.tokens.find((token) => token.id === 'color.brand.primary')
   assert.equal(primary?.outcome, 'refused_approved')
-  assert.equal(report.tokens.find((token) => token.id === 'color.brand.surface')?.outcome, 'created')
+  assert.equal(report.tokens.find((token) => token.id === 'color.brand-role.surface')?.outcome, 'created')
   assert.equal(compileTokens(root).flat['color.brand.primary']?.hex, '#0B2A55', 'approved value kept')
   assert.equal(fs.readFileSync(path.join(root, 'brand/tokens/approvals.yaml'), 'utf8'), approvalsBefore)
 
@@ -139,9 +152,9 @@ test('an existing approved token is not overwritten by a new answer', () => {
   const fresh = brand()
   const digest = tokenDigest({ hex: '#123A73', value: null })
   fs.writeFileSync(path.join(fresh.root, 'brand/tokens/approvals.yaml'), `approved:\n  color.brand.primary:\n    approved_by: human\n    value_sha256: ${digest}\n`)
-  approveAnswer(fresh.engine, fresh.proof, 'brand.color.roles', 'primary #0B2A55')
+  approveRoles(fresh.engine, fresh.proof, 'primary #0B2A55')
   const refused = generateTokens(fresh.root, SLUG)
-  assert.equal(refused.tokens[0]?.outcome, 'refused_approved')
+  assert.equal(refused.tokens.find((token) => token.id === 'color.brand.primary')?.outcome, 'refused_approved')
   assert.equal(compileTokens(fresh.root).flat['color.brand.primary']?.hex, '#123A73')
 })
 
@@ -155,7 +168,7 @@ test('EXAMPLE base tokens cannot be approved with the token command', () => {
 
 test('a generated palette that fails contrast is reported and cannot be approved', () => {
   const { root, engine, proof } = brand()
-  approveAnswer(engine, proof, 'brand.color.roles', 'primary #DDDDDD')
+  approveRoles(engine, proof, 'primary #DDDDDD')
   const report = generateTokens(root, SLUG)
   assert.equal(report.ok, false)
   assert.match(report.note, /Contrast pair/)
@@ -166,7 +179,7 @@ test('a generated palette that fails contrast is reported and cannot be approved
 
 test('the token CLI refuses argv proofs and agent tokens, and reads the proof from the environment', () => {
   const { root, engine, proof } = brand()
-  approveAnswer(engine, proof, 'brand.color.roles', 'primary #0B2A55')
+  approveRoles(engine, proof, 'primary #0B2A55')
   const base: Record<string, string> = {}
   for (const [key, value] of Object.entries(process.env)) {
     if (typeof value === 'string' && key !== 'BRAND_OS_AGENT_TOKEN' && key !== 'BRAND_OS_APPROVAL_PROOF') base[key] = value
@@ -176,7 +189,7 @@ test('the token CLI refuses argv proofs and agent tokens, and reads the proof fr
 
   const generated = cli(['tokens:generate', '--json'])
   assert.equal(generated.status, 0, generated.stderr)
-  assert.equal((JSON.parse(generated.stdout) as { tokens: Array<{ id: string }> }).tokens[0]?.id, 'color.brand.primary')
+  assert.ok((JSON.parse(generated.stdout) as { tokens: Array<{ id: string }> }).tokens.some((token) => token.id === 'color.brand.primary'))
 
   const argv = cli(['tokens:approve', '--ids', 'color.brand.primary', '--proof', proof])
   assert.equal(argv.status, 2)

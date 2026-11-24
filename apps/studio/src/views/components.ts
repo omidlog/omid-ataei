@@ -25,9 +25,16 @@ export function tagBadge(i: I18n, tag: ItemTag): SafeHtml {
 
 export function verificationBadge(i: I18n, value: DocumentItem['verification']): SafeHtml {
   if (!value) return html``
-  const tone: Tone = value === 'verified' ? 'success' : value === 'owner_stated' ? 'accent' : value === 'unverified' ? 'warning' : 'neutral'
-  const name: IconName = value === 'verified' ? 'shield' : value === 'unverified' ? 'alert' : 'user'
+  // Only `verified` gets the success tone. A partly verified claim is a warning: part of it is the owner's word.
+  const tone: Tone = value === 'verified' ? 'success' : value === 'owner_stated' || value === 'owner_published' ? 'accent' : value === 'unverified' || value === 'partly_verified' ? 'warning' : 'neutral'
+  const name: IconName = value === 'verified' ? 'shield' : value === 'unverified' || value === 'partly_verified' ? 'alert' : 'user'
   return badge(i.t(`doc.verification.${value}` as MessageKey), tone, name)
+}
+
+/** BOS-06: an agent proposed the value and the owner confirmed it. Never shown as owner-authored. */
+export function provenanceBadge(i: I18n, value: DocumentItem['provenance']): SafeHtml {
+  if (value !== 'agent_suggested_owner_confirmed') return html``
+  return badge(i.t('doc.provenance.agentConfirmed'), 'accent', 'sparkle', i.t('doc.provenanceHint.agentConfirmed'))
 }
 
 export function pageHeader(input: { title: string; subtitle?: string; eyebrow?: SafeHtml | string; actions?: SafeHtml; meta?: SafeHtml }): SafeHtml {
@@ -190,17 +197,35 @@ export function itemValue(i: I18n, item: DocumentItem): SafeHtml {
 
 function sectionBadge(i: I18n, status: DocumentSection['status']): SafeHtml {
   const tone: Tone = status === 'complete' ? 'success' : status === 'partial' ? 'warning' : 'neutral'
-  return badge(i.t(`doc.section.${status}` as MessageKey), tone, status === 'complete' ? 'checkCircle' : status === 'partial' ? 'clock' : 'circle')
+  return badge(i.t(`doc.section.${status}` as MessageKey), tone, status === 'complete' ? 'checkCircle' : status === 'partial' ? 'clock' : status === 'not_applicable' ? 'skip' : 'circle')
+}
+
+/** BOS-15: a personal answer standing in for a framework question says so, with both ids. */
+export function standsForNote(i: I18n, item: { id: string; stands_for?: string }): SafeHtml {
+  if (!item.stands_for) return html``
+  return html`<p class="doc-item-note muted small" dir="auto">${icon('user')} ${i.t('doc.standsFor', { id: item.id, target: item.stands_for })}</p>`
+}
+
+/** BOS-15: the questions of a section the brand's profile does not ask; labels only, never "missing". */
+export function notApplicableList(i: I18n, section: Pick<DocumentSection, 'not_applicable'>): SafeHtml {
+  const rows = section.not_applicable ?? []
+  if (!rows.length) return html``
+  return html`<details class="doc-na">
+    <summary>${icon('skip')} <span>${i.t('doc.notApplicableTitle')}</span> <span class="muted">(${i.number(rows.length)})</span></summary>
+    <p class="muted small">${i.t('doc.notApplicableHint')}</p>
+    <ul>${rows.map((row) => html`<li><span dir="auto">${row.label}</span> ${code(row.id, 'source-id')}</li>`)}</ul>
+  </details>`
 }
 
 export function documentItem(i: I18n, item: DocumentItem): SafeHtml {
   return html`<article class="doc-item doc-item-${item.tag}">
     <header class="doc-item-head">
       <h3 class="doc-item-label" dir="auto">${item.label}</h3>
-      <div class="doc-item-badges">${tagBadge(i, item.tag)}${verificationBadge(i, item.verification)}</div>
+      <div class="doc-item-badges">${tagBadge(i, item.tag)}${verificationBadge(i, item.verification)}${provenanceBadge(i, item.provenance)}</div>
     </header>
     ${itemValue(i, item)}
     ${item.note && item.value !== null && !item.withheld ? html`<p class="doc-item-note muted" dir="auto">${item.note}</p>` : ''}
+    ${standsForNote(i, item)}
     <footer class="doc-item-foot">
       ${item.source_ids.length ? html`<span class="muted">${i.t('common.sources')}:</span> ${join(item.source_ids.slice(0, 4).map((id) => code(id, 'source-id')), ' ')}` : ''}
       ${item.version !== null ? html`<span class="muted">${i.t('common.version', { version: item.version })}</span>` : ''}
@@ -230,6 +255,7 @@ export function documentView(i: I18n, model: DocumentModel, idPrefix: string): S
           ${section.purpose ? html`<p class="doc-section-purpose" dir="auto">${section.purpose}</p>` : ''}
           ${section.length ? html`<p class="doc-length muted">${i.t('doc.length', { min: section.length.guideline[0], max: section.length.guideline[1], words: section.length.approved_words })}</p>` : ''}
           <div class="doc-items">${section.items.map((item) => documentItem(i, item))}</div>
+          ${notApplicableList(i, section)}
         </section>`,
       )}
     </div>

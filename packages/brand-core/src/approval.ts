@@ -12,6 +12,7 @@ import { privateDataRefusal } from './personal-privacy.js'
 import { readPublicationPolicy } from './publication.js'
 import { isStructuredType, normalizeStructured } from './structured.js'
 import { entitySpec, normalizeEntityAnswer } from './entities.js'
+import { answerProvenance, type AnswerProvenance } from './provenance.js'
 import type { AnswerRecord, Authority, FieldQuestion, ProposalState, SourceType, Status } from './types.js'
 
 /**
@@ -36,6 +37,8 @@ export interface AnswerMeta {
   reviewedBy?: string | null
   privateRef?: string | null
   proposalState?: ProposalState | null
+  /** `agent` when an agent proposed the value and the owner confirmed it. Kept through approval. */
+  suggestedBy?: 'agent' | null
 }
 
 /** What the interview engine lends the approval service. Built by the engine; never by a client. */
@@ -70,6 +73,8 @@ export interface ChangeProposal {
   proposed_value: string | null
   private_ref: string | null
   created_at?: string
+  /** Why the owner proposed the change (`brand:interview --change … --reason …`). Shown in review, never a value. */
+  reason?: string | null
 }
 
 /** Pick a whole module or an explicit list. Ids may name questions or change proposals (`chg-…`). */
@@ -97,9 +102,11 @@ export interface ReviewItem {
     uncertainty: string | null
     /** proposed | tentative when the draft came from an interview proposal. Tentative drafts are not decisions. */
     proposal_state: ProposalState | null
+    /** Where the value came from, so an agent-suggested, owner-confirmed draft never reads as owner-authored. */
+    provenance: AnswerProvenance
   } | null
   approved: { value: unknown; version: number; publication: CanonicalFact['publication'] } | null
-  changes: Array<{ id: string; proposed_value: string | null; expected_version: number; stale: boolean }>
+  changes: Array<{ id: string; proposed_value: string | null; expected_version: number; stale: boolean; reason?: string | null }>
   impact: { documents: string[]; questions: string[]; published: boolean }
 }
 
@@ -126,6 +133,20 @@ export interface BatchResult {
   proof: 'accepted' | 'rejected'
   approved: number
   results: BatchItemResult[]
+}
+
+/** What kind of thing an approval plan entry is. Facts and changes live here; evidence and assets in approve-all.ts. */
+export type PendingKind = 'fact' | 'change' | 'evidence' | 'asset'
+
+/** A dry-run decision. `stale` and `refuse` would also leave the item unchanged. */
+export type PlanDecision = 'approve' | 'skip' | 'stale' | 'refuse'
+
+export interface PlanEntry {
+  kind: PendingKind
+  id: string
+  question_id: string | null
+  decision: PlanDecision
+  reason: string
 }
 
 export type PublishOutcome = 'published' | 'unpublished' | 'unchanged' | 'refused' | 'unknown'
@@ -157,7 +178,7 @@ export class ApprovalService {
   // ---- change proposals -------------------------------------------------------------------
 
   /** Record a pending replacement for an approved fact. The approved revision is not touched. */
-  requestChange(questionId: string, rawValue: string): { id: string; expected_version: number } {
+  requestChange(questionId: string, rawValue: string, options: { reason?: string | null } = {}): { id: string; expected_version: number } {
     const question = this.host.question(questionId)
     if (!question) throw new Error(`Unknown question ${questionId}`)
     const approved = readApprovedMap(this.root)[questionId]
@@ -173,6 +194,7 @@ export class ApprovalService {
       proposed_value: restricted ? null : rawValue,
       private_ref: restricted ? new PrivateStore(this.root).put(questionId, { value: rawValue, raw: rawValue }) : null,
       created_at: this.now(),
+      ...(options.reason?.trim() ? { reason: options.reason.trim().slice(0, 500) } : {}),
     })
     writeProposals(this.root, proposals)
     return { id, expected_version: version }
@@ -298,6 +320,7 @@ export class ApprovalService {
       raw: latest.raw_answer,
       reviewedBy: actor,
       privateRef: latest.private_ref ?? null,
+      suggestedBy: latest.suggested_by ?? null,
     })
     // Monotonic: a field that held an approved revision before gets the next version, never 1 again.
     const version = typeof previousVersion === 'number' ? previousVersion + 1 : 1
@@ -400,6 +423,7 @@ export class ApprovalService {
       proposed_value: withheld ? null : change.proposed_value,
       expected_version: change.expected_version,
       stale: approvedVersion === null || change.expected_version !== approvedVersion,
+      ...(change.reason ? { reason: change.reason } : {}),
     }))
     let state: ReviewItem['state']
     let action: ReviewItem['action'] = 'none'
@@ -448,12 +472,96 @@ export class ApprovalService {
             source_type: latest.source_type,
             uncertainty: latest.uncertainty,
             proposal_state: latest.proposal_state ?? null,
+            provenance: answerProvenance(latest),
           }
         : null,
       approved: fact?.status === 'approved' ? { value: withheld ? null : fact.value, version: fact.version, publication: fact.publication } : null,
       changes: changeRows,
       impact: { documents: [...question.related_outputs], questions: [...impactedQuestions], published: fact?.publication === 'published' },
     }
+  }
+
+  // ---- approval plan (dry run) --------------------------------------------------------------
+
+  /**
+   * What `approveBatch` would decide for this selection, without a proof and without writing anything
+   * (`brand:approve --dry-run`, BOS-07). It follows the same rules as `approveQuestionInBatch` and
+   * `approveChangeInBatch`. An empty selection plans every pending fact and change (`--all-pending`).
+   * Named ids are always listed; for a module or everything, unanswered questions, open dispositions and
+   * settled facts are left out because nothing would happen to them. With `skipTentative`, a tentative
+   * draft is skipped: a bulk approval never turns "maybe" into a decision.
+   */
+  approvalPlan(selection: Selection = {}, options: { actor?: string; skipTentative?: boolean } = {}): PlanEntry[] {
+    const resolved = this.resolveSelection(selection)
+    if (resolved.error) throw new Error(resolved.error)
+    const actor = options.actor ?? 'owner'
+    const named = new Set(selection.ids ?? [])
+    const answers = this.host.latestAnswers()
+    const facts = readFacts(this.root, 'approved', this.host.brandId())
+    const pending = this.pendingChanges()
+    const entries: PlanEntry[] = []
+    const planned = new Set<string>()
+    for (const question of resolved.questions) {
+      const id = question.id
+      const latest = answers.get(id)
+      const explicit = named.has(id)
+      if (latest?.status === 'approved') {
+        const fact = facts[id]
+        const version = fact?.status === 'approved' ? fact.version : undefined
+        const changes = pending.filter((change) => change.question_id === id)
+        const live = changes.filter((change) => change.expected_version === version)
+        for (const change of changes) {
+          planned.add(change.id)
+          if (change.expected_version !== version) {
+            entries.push({ kind: 'change', id: change.id, question_id: id, decision: 'stale', reason: `Stale: proposed against version ${change.expected_version}, the approved version is ${String(version ?? 'none')}.` })
+          } else if (live.length > 1) {
+            entries.push({ kind: 'change', id: change.id, question_id: id, decision: 'skip', reason: `${live.length} competing change proposals for ${id}. Approve one by its chg- id.` })
+          } else {
+            const refusal = this.reviewerRefusal(question, actor)
+            entries.push(refusal ? { kind: 'change', id: change.id, question_id: id, decision: 'refuse', reason: refusal } : { kind: 'change', id: change.id, question_id: id, decision: 'approve', reason: `Replaces approved version ${String(version)}. The approved revision stays canonical until this is approved.` })
+          }
+        }
+        if (changes.length === 0 && explicit) entries.push({ kind: 'fact', id, question_id: id, decision: 'skip', reason: 'Already approved and no change is pending.' })
+        continue
+      }
+      if (!latest) {
+        if (explicit) entries.push({ kind: 'fact', id, question_id: id, decision: 'skip', reason: 'No answer recorded.' })
+        continue
+      }
+      if (NOT_APPROVABLE.includes(latest.status) || (latest.value === null && !latest.private_ref)) {
+        if (explicit) entries.push({ kind: 'fact', id, question_id: id, decision: 'skip', reason: `Status ${latest.status}. Unknown, skipped, and empty answers cannot become facts.` })
+        continue
+      }
+      if (options.skipTentative && latest.proposal_state === 'tentative') {
+        entries.push({ kind: 'fact', id, question_id: id, decision: 'skip', reason: 'Tentative: the owner described this as possible, not decided. Approve it by id once it is a decision.' })
+        continue
+      }
+      const refusal = this.reviewerRefusal(question, actor)
+      if (refusal) {
+        entries.push({ kind: 'fact', id, question_id: id, decision: 'refuse', reason: refusal })
+        continue
+      }
+      const origin = answerProvenance(latest) === 'agent_suggested_owner_confirmed' ? ' Agent-suggested, owner-confirmed.' : ''
+      entries.push({ kind: 'fact', id, question_id: id, decision: 'approve', reason: `${facts[id] ? `Draft differs from approved version ${facts[id]!.version}.` : 'Draft, never approved.'}${origin}` })
+    }
+    for (const changeId of resolved.changeIds) {
+      if (planned.has(changeId)) continue
+      const proposal = pending.find((item) => item.id === changeId)
+      if (!proposal) {
+        entries.push({ kind: 'change', id: changeId, question_id: null, decision: 'skip', reason: 'Proposal is no longer pending.' })
+        continue
+      }
+      const current = facts[proposal.question_id]
+      const question = this.host.question(proposal.question_id)
+      if (!current || current.version !== proposal.expected_version) {
+        entries.push({ kind: 'change', id: changeId, question_id: proposal.question_id, decision: 'stale', reason: 'Stale revision. A newer version was approved after this proposal.' })
+        continue
+      }
+      const refusal = question ? this.reviewerRefusal(question, actor) : 'Proposal question is missing.'
+      entries.push(refusal ? { kind: 'change', id: changeId, question_id: proposal.question_id, decision: 'refuse', reason: refusal } : { kind: 'change', id: changeId, question_id: proposal.question_id, decision: 'approve', reason: `Replaces approved version ${current.version}.` })
+    }
+    for (const id of resolved.unknown) entries.push({ kind: 'fact', id, question_id: null, decision: 'skip', reason: 'No question or pending change has this id.' })
+    return entries
   }
 
   // ---- batch approval -----------------------------------------------------------------------
@@ -649,11 +757,21 @@ export class ApprovalService {
    * Owner review of an evidence or permission record. Verified and rejected both need the proof.
    * A rejection can make a published claim fail its gate; such claims are unpublished at once.
    */
-  reviewEvidence(id: string, decision: 'verified' | 'rejected', proof: string | undefined, reason: string | null = null, actor = 'owner'): { ok: boolean; message: string; unpublished: string[] } {
+  reviewEvidence(id: string, decision: 'verified' | 'rejected', proof: string | undefined, reason: string | null = null, actor = 'owner'): { ok: boolean; message: string; unpublished: string[]; unchanged?: boolean } {
     if (!this.proofMatches(proof)) return { ok: false, message: 'Evidence review requires the human proof. Nothing was changed.', unpublished: [] }
     const item = reviewEvidenceRecord(this.root, id, decision, actor, new Date(this.now()), reason)
+    // Already in this state: nothing was written, so verified_at keeps its date and Git stays clean.
+    if (item.unchanged) return { ok: true, message: `${id} already ${decision} for ${item.claim_id}. Nothing was changed.`, unpublished: [], unchanged: true }
     const unpublished = unpublishBlocked(this.root, this.host.brandId(), new Date(this.now()))
-    const kind = item.source_type === 'owner_testimony' && item.kind === 'verification' ? ' Owner testimony stays owner-stated; it never counts as independent verification.' : ''
+    const owned = item.owned === true || readEvidence(this.root).find((entry) => entry.id === id)?.owned === true
+    const kind =
+      item.kind !== 'verification'
+        ? ''
+        : item.source_type === 'owner_testimony'
+          ? ' Owner testimony stays owner-stated; it never counts as independent verification.'
+          : owned
+            ? ' The owner controls this source, so it stays owner-published; it never counts as independent verification.'
+            : ''
     return { ok: true, message: `${id} ${decision} for ${item.claim_id}.${kind}`, unpublished }
   }
 

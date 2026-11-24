@@ -250,6 +250,9 @@ test('verification: an evidence-gated claim stays unverified until an independen
   assert.deepEqual(codes(run(brand, 'consistency_review')), ['consistency_verification'], 'a pending source is not a verified one')
   assertUnchanged(before, brand.root, 'the coach never verifies a source')
   brand.engine.approvals().reviewEvidence(link.id, 'verified', brand.proof)
+  // BOS-18: with the owner testimony still recorded the claim is only partly verified, so it still needs verification.
+  assert.deepEqual(codes(run(brand, 'consistency_review')), ['consistency_verification'], 'a partly verified claim is not settled')
+  brand.engine.approvals().withdrawEvidence(testimony.id, 'Covered by the independent source')
   result = run(brand, 'consistency_review')
   assert.deepEqual(codes(result), ['consistency_none'], 'an owner-verified independent source settles it')
 })

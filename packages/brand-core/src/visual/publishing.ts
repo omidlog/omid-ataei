@@ -1,4 +1,5 @@
-import { buildNamedDocument, type DocumentKind, type DocumentModel } from '../documents/index.js'
+import { moduleEnabled } from '../conditions.js'
+import { buildNamedDocument, type DocumentKind, type DocumentModel, type PersonalDocumentKind } from '../documents/index.js'
 import type { InterviewEngine } from '../engine.js'
 import { readFacts } from '../facts.js'
 import type { Visibility } from '../types.js'
@@ -6,6 +7,7 @@ import type { BookChapter, BookDocument } from './full-book.js'
 import {
   DATA_STATES,
   type DataState,
+  type LogoVariant,
   type MascotAtlasBlock,
   type MascotEvolutionBlock,
   type PrintProfile,
@@ -68,13 +70,55 @@ export const EXPORT_PROFILE_SPECS: Record<ExportProfile, ExportProfileSpec> = {
 
 /** Document types the gallery lists, with standard names in the renderer catalogs. */
 export const PUBLISHING_DOCUMENT_TYPES = ['brand_book', 'visual_identity', 'business_model_canvas', 'mascot_atlas', 'competitor_comparison', 'business_plan', 'marketing_plan'] as const
-export type PublishingDocumentType = (typeof PUBLISHING_DOCUMENT_TYPES)[number]
 
-/** Which profiles may receive which document type. Anything not listed is refused by the redactor. */
+/**
+ * BOS-19: the Personal Brand OS documents. The gallery lists them only for a brand with `modules.personal.enabled`, and
+ * only those that apply (the Speaker Kit needs the speaker-author facet).
+ */
+export const PERSONAL_PUBLISHING_TYPES = [
+  'personal_brand_book',
+  'professional_bio',
+  'linkedin_pack',
+  'website_pack',
+  'media_kit',
+  'speaker_kit',
+  'content_strategy',
+  'portfolio_pack',
+  'services_pack',
+  'evidence_register',
+] as const
+export type PersonalPublishingType = (typeof PERSONAL_PUBLISHING_TYPES)[number]
+export type PublishingDocumentType = (typeof PUBLISHING_DOCUMENT_TYPES)[number] | PersonalPublishingType
+
+/** Gallery type → personal document kind (the `brand:document --type` value). */
+export const PERSONAL_PUBLISHING_KIND: Record<PersonalPublishingType, PersonalDocumentKind> = {
+  personal_brand_book: 'personal-brand-book',
+  professional_bio: 'professional-bio',
+  linkedin_pack: 'linkedin-pack',
+  website_pack: 'website-pack',
+  media_kit: 'media-kit',
+  speaker_kit: 'speaker-kit',
+  content_strategy: 'content-strategy',
+  portfolio_pack: 'portfolio-pack',
+  services_pack: 'services-pack',
+  evidence_register: 'evidence-register',
+}
+
+export function isPersonalPublishingType(type: string): type is PersonalPublishingType {
+  return (PERSONAL_PUBLISHING_TYPES as readonly string[]).includes(type)
+}
+
+/**
+ * Which profiles may receive which document type. Anything not listed is refused by the redactor.
+ *
+ * Personal documents: the outward-facing packs have a public edition (published facts only, built by the public
+ * builder). The content strategy and the evidence register (sources and permissions) are internal only, and no
+ * personal document has an investor edition: a person's career history and evidence are not investor material.
+ */
 export const PROFILE_DOCUMENTS: Record<ExportProfile, readonly PublishingDocumentType[]> = {
-  public: ['brand_book', 'visual_identity', 'business_model_canvas', 'mascot_atlas'],
+  public: ['brand_book', 'visual_identity', 'business_model_canvas', 'mascot_atlas', 'personal_brand_book', 'professional_bio', 'linkedin_pack', 'website_pack', 'media_kit', 'speaker_kit', 'portfolio_pack', 'services_pack'],
   investor: ['brand_book', 'visual_identity', 'business_model_canvas', 'mascot_atlas', 'business_plan', 'marketing_plan'],
-  internal: PUBLISHING_DOCUMENT_TYPES,
+  internal: [...PUBLISHING_DOCUMENT_TYPES, ...PERSONAL_PUBLISHING_TYPES],
 }
 
 export function profilePermits(profile: ExportProfile, type: PublishingDocumentType): boolean {
@@ -176,6 +220,16 @@ function clearDerived(block: Mutable<VisualDocument['blocks'][number]>, spec: Ex
         block.master_state = 'missing'
       } else block.master = { ...block.master, badges: [] }
     }
+    if (!spec.draft_marks) {
+      // The logo system (BOS-16) follows the same rule per file; without a master there is no system. Candidate ids
+      // are an owner hint and never leave the internal profile.
+      const keep = (variant: LogoVariant | null): LogoVariant | null => (!variant || (variant.badges.includes('draft_tag') && variant.badges.includes('internal_only')) ? null : { ...variant, badges: [] })
+      if (block.system !== undefined) {
+        const system = block.master && block.system ? { on_light: keep(block.system.on_light), on_dark: keep(block.system.on_dark), icon: keep(block.system.icon) } : null
+        block.system = system && (system.on_light || system.on_dark || system.icon) ? system : null
+      }
+      if (block.candidates !== undefined) block.candidates = []
+    }
   }
   if (block.type === 'mascot_atlas' && !spec.draft_marks) redactAtlas(block)
   if (block.type === 'mascot_evolution' && !spec.draft_marks) redactEvolution(block)
@@ -259,7 +313,12 @@ export function redactVisualDocument(doc: VisualDocument, profile: ExportProfile
   return { profile, document, redacted: tally.redacted }
 }
 
-const DOCUMENT_TYPE: Partial<Record<DocumentKind, PublishingDocumentType>> = { 'brand-book': 'brand_book', 'business-plan': 'business_plan', 'marketing-plan': 'marketing_plan' }
+const DOCUMENT_TYPE: Partial<Record<DocumentKind, PublishingDocumentType>> = {
+  'brand-book': 'brand_book',
+  'business-plan': 'business_plan',
+  'marketing-plan': 'marketing_plan',
+  ...Object.fromEntries(Object.entries(PERSONAL_PUBLISHING_KIND).map(([type, kind]) => [kind, type as PersonalPublishingType])),
+}
 
 export interface RedactedDocument {
   profile: ExportProfile
@@ -286,7 +345,10 @@ export function redactDocumentModel(model: DocumentModel, profile: ExportProfile
       return { ...item, value: null, structured: null, source_ids: sources, version: null, withheld: true, tag: item.tag === 'approved' ? item.tag : ('missing' as const), note: REDACTION_NOTE[reason] }
     }),
   }))
-  return { profile, document: { ...model, sections }, redacted }
+  // A composed draft (personal documents, BOS-19) is built from the values above. When any value was removed, every
+  // draft goes too (fail closed): a draft may also use a translation companion from another section.
+  const cleaned = redacted > 0 ? sections.map(({ drafts: _drafts, ...section }) => section) : sections
+  return { profile, document: { ...model, sections: cleaned }, redacted }
 }
 
 export interface RedactedBook {
@@ -399,6 +461,17 @@ const EXPORT_COMMANDS: Partial<Record<PublishingDocumentType, Partial<Record<Exp
     public: 'npm run brand:export-visual -- --doc brand-book --edition public',
     internal: 'npm run brand:export-visual -- --doc brand-book --edition internal',
   },
+  // Personal documents export as Markdown through the existing local command; Studio shows it as text only.
+  ...Object.fromEntries(
+    PERSONAL_PUBLISHING_TYPES.map((type) => [
+      type,
+      Object.fromEntries(
+        (['public', 'internal'] as const)
+          .filter((profile) => PROFILE_DOCUMENTS[profile].includes(type))
+          .map((profile) => [profile, `npm run brand:document -- --type ${PERSONAL_PUBLISHING_KIND[type]} --audience ${profile}`]),
+      ),
+    ]),
+  ),
 }
 
 /** The local command that exports this document for this profile, or null when none exists. Text only. */
@@ -411,6 +484,27 @@ function exportOf(type: PublishingDocumentType, profile: ExportProfile): Publish
   if (!profilePermits(profile, type)) return 'none'
   if (PRINT_VIEWS[type]?.includes(profile)) return 'print'
   return publishingExportCommand(type, profile) ? 'command' : 'planned'
+}
+
+/**
+ * BOS-15: true when every entry of a visual document is a question the brand's interview profile does not ask and no
+ * personal answer stands in for (`na_reason: 'profile'`). The framework is then "not applicable to this profile".
+ */
+export function visualNotApplicable(doc: VisualDocument): boolean {
+  let entries = 0
+  let notApplicable = 0
+  const visit = (value: unknown): void => {
+    if (Array.isArray(value)) return value.forEach(visit)
+    if (!value || typeof value !== 'object') return
+    if (isEntry(value)) {
+      entries += 1
+      if (value.na_reason === 'profile') notApplicable += 1
+      return
+    }
+    for (const child of Object.values(value)) visit(child)
+  }
+  for (const block of doc.blocks) visit(block)
+  return entries > 0 && entries === notApplicable
 }
 
 function countVisual(doc: VisualDocument): { shown: number; gaps: number } {
@@ -499,7 +593,12 @@ export function buildPublishingGallery(engine: InterviewEngine, input: Publishin
     if (!proseCache.has(key)) proseCache.set(key, buildNamedDocument(engine, kind, edition))
     return proseCache.get(key)!
   }
-  for (const type of PUBLISHING_DOCUMENT_TYPES) {
+  // BOS-19: personal documents, for a personal brand, when they apply (a facet document needs its facet).
+  for (const type of PERSONAL_PUBLISHING_TYPES) prose[type] = PERSONAL_PUBLISHING_KIND[type]
+  const personal = moduleEnabled({ optional: 'personal' }, engine.config())
+  const personalTypes = personal ? PERSONAL_PUBLISHING_TYPES.filter((type) => proseDoc(PERSONAL_PUBLISHING_KIND[type], 'internal').sections.length > 0) : []
+  const documentTypes: PublishingDocumentType[] = [...PUBLISHING_DOCUMENT_TYPES, ...personalTypes]
+  for (const type of documentTypes) {
     for (const profile of EXPORT_PROFILES) {
       const spec = EXPORT_PROFILE_SPECS[profile]
       const base = { document_type: type, profile, export: exportOf(type, profile), redacted: 0 }
@@ -511,7 +610,10 @@ export function buildPublishingGallery(engine: InterviewEngine, input: Publishin
       if (kind) {
         const redacted = redactDocumentModel(proseDoc(kind, spec.edition), profile, classify)
         const counts = redacted ? countDocument(redacted.document) : { shown: 0, gaps: 0 }
-        cells.push({ ...base, ...counts, redacted: redacted?.redacted ?? 0, readiness: readiness(counts), paper: 'book_a4_portrait' })
+        // BOS-15: a document whose every section is not applicable to the brand's profile is not applicable, not empty.
+        const sections = redacted?.document.sections ?? []
+        const notApplicable = sections.length > 0 && sections.every((section) => section.status === 'not_applicable')
+        cells.push({ ...base, ...counts, redacted: redacted?.redacted ?? 0, readiness: notApplicable ? 'not_applicable' : readiness(counts), paper: 'book_a4_portrait' })
         continue
       }
       const pair = editions(type)
@@ -530,7 +632,7 @@ export function buildPublishingGallery(engine: InterviewEngine, input: Publishin
       cells.push({ ...base, ...counts, redacted: result.redacted, readiness: notApplicable ? 'not_applicable' : readiness(counts), paper: result.document.print_profile })
     }
   }
-  return { schema: 'brand-os.publishing-gallery/1', profiles: [...EXPORT_PROFILES], document_types: [...PUBLISHING_DOCUMENT_TYPES], cells, review_due: reviewDue(engine, input.now ?? new Date()) }
+  return { schema: 'brand-os.publishing-gallery/1', profiles: [...EXPORT_PROFILES], document_types: documentTypes, cells, review_due: reviewDue(engine, input.now ?? new Date()) }
 }
 
 function reviewDue(engine: InterviewEngine, now: Date): number {

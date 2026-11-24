@@ -134,8 +134,12 @@ test('the whole owner journey: sign in, create a private brand, copy handoff, ed
     const csrf = await client.csrf('/brands/acme-learning')
     const refreshed = await client.request('POST', '/brands/acme-learning/refresh', { form: { _csrf: csrf, return: '/brands/acme-learning/brand/book' } })
     assert.equal(refreshed.status, 303)
-    assert.equal(refreshed.headers.get('location'), '/brands/acme-learning/brand/book?sync=synced')
-    const book = await client.page('/brands/acme-learning/brand/book?sync=synced')
+    // A quick sync reports its result; a slower one answers at once with "syncing" (BOS-14).
+    const location = refreshed.headers.get('location') ?? ''
+    assert.match(location, /^\/brands\/acme-learning\/brand\/book\?sync=(synced|syncing)$/)
+    await s.studio.sync.settled()
+    const book = await client.page(location)
+    assert.doesNotMatch(book.text, /http-equiv="refresh"/, 'the page stops reloading once the sync is done')
     assert.ok(book.text.includes(sha.slice(0, 7)))
     assert.ok(book.text.includes('Learning &lt;b&gt;should&lt;/b&gt; feel possible.'), 'repository content is escaped')
     assert.equal(book.text.includes('<b>should</b>'), false)
@@ -266,6 +270,35 @@ test('the wizard validates, refuses duplicates and destinations outside the allo
     const dup = await createBrand(s, client)
     assert.equal(dup.status, 409)
     assert.match(await dup.text(), /already exists in Studio/)
+  })
+})
+
+test('BOS-14: a slow refresh answers at once, shows "Syncing…", reloads itself, and /healthz keeps answering', async () => {
+  await withStudio(async (s) => {
+    const client = new Client(s.url)
+    await client.login()
+    await createBrand(s, client)
+    const sha = editOutsideStudio(s, 'acme-learning', (engine, root) => approve(engine, root, { 'brand.strategy.purpose': 'Slow sync purpose' }))
+    s.github.tarballDelayMs = 2_500
+    const csrf = await client.csrf('/brands/acme-learning')
+    const started = performance.now()
+    const res = await client.request('POST', '/brands/acme-learning/refresh', { form: { _csrf: csrf, return: '/brands/acme-learning' } })
+    assert.ok(performance.now() - started < 2_000, 'the refresh request does not wait for the sync')
+    assert.equal(res.headers.get('location'), '/brands/acme-learning?sync=syncing')
+
+    const health = performance.now()
+    assert.equal((await fetch(`${s.url}/healthz`)).status, 200)
+    assert.ok(performance.now() - health < 500, '/healthz answers during a sync')
+
+    const during = await client.page('/brands/acme-learning?sync=syncing')
+    assert.match(during.text, /Syncing with GitHub \(started /)
+    assert.match(during.text, /<meta http-equiv="refresh" content="5">/)
+
+    await s.studio.sync.settled()
+    const after = await client.page('/brands/acme-learning?sync=syncing')
+    assert.match(after.text, /Refreshed\. Studio now shows commit/)
+    assert.ok(after.text.includes(sha.slice(0, 7)))
+    assert.doesNotMatch(after.text, /http-equiv="refresh"/)
   })
 })
 
@@ -403,6 +436,8 @@ test('the owner previews a draft asset badged as a draft in en, fa (RTL) and tr;
     })
     const csrf = await client.csrf('/brands/acme-learning')
     assert.equal((await client.request('POST', '/brands/acme-learning/refresh', { form: { _csrf: csrf, return: '/brands/acme-learning/brand/assets' } })).status, 303)
+    // Refresh answers before a slow sync finishes (BOS-14); wait for it before reading the page.
+    await s.studio.sync.settled()
 
     const expected = {
       en: { dir: 'ltr', flag: 'Draft, not approved', alt: 'Mascot stage 1 (draft, not approved)' },

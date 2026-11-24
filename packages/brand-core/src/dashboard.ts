@@ -17,6 +17,8 @@ export interface DashboardModule {
   title: string
   group: string
   required: number
+  /** BOS-15: questions of this module that apply to the brand. 0: the module is not applicable (never "100 %"). */
+  applicable: number
   required_unanswered: number
   required_draft: number
   required_approved: number
@@ -89,6 +91,7 @@ export function buildDashboard(engine: InterviewEngine, audience: Audience): Das
         title: module.title,
         group: module.group,
         required: score?.required ?? 0,
+        applicable: score?.applicable ?? 0,
         required_unanswered: score?.requiredUnanswered ?? 0,
         required_draft: score?.requiredDraft ?? 0,
         required_approved: score?.requiredApproved ?? 0,

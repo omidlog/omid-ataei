@@ -5,6 +5,7 @@ import { buildDocument, type DocumentAudience, type DocumentModel, type Document
 export const MARKETING_PLAN: DocumentSpec = {
   kind: 'marketing-plan',
   title: 'Marketing plan',
+  framework: true,
   sections: [
     {
       id: 'objectives',

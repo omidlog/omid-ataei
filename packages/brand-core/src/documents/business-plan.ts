@@ -8,6 +8,7 @@ import { buildDocument, type DocumentAudience, type DocumentModel, type Document
 export const BUSINESS_PLAN: DocumentSpec = {
   kind: 'business-plan',
   title: 'Business plan summary',
+  framework: true,
   sections: [
     {
       id: 'executive-summary',

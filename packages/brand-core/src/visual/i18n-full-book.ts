@@ -21,6 +21,8 @@ export interface FullBookText {
   draftNotPrinted: string
   withheldNotPrinted: string
   notApplicable: string
+  /** BOS-15: a question the brand's interview profile does not ask (not an owner answer). */
+  notApplicableProfile: string
   approvedOn: string
   rulesTitle: string
   sourcesIntro: string
@@ -73,6 +75,7 @@ const en: FullBookText = {
     planned: 'This chapter is planned and not built yet. When it is, it will be drawn from approved facts only.',
     separate_print: 'This chapter needs its own page layout, so it prints as a separate document for now: {where}.',
     module_off: 'This module is turned off for the brand, so the chapter has nothing to show.',
+    not_applicable: 'This chapter does not apply to this brand’s interview profile, so it has nothing to show.',
   },
   separateWhere: {
     mascot: 'Studio, Assets, Mascot atlas, Print',
@@ -84,6 +87,7 @@ const en: FullBookText = {
   draftNotPrinted: 'Draft awaiting approval. Not printed.',
   withheldNotPrinted: 'Restricted. Never printed.',
   notApplicable: 'Marked not applicable',
+  notApplicableProfile: 'Not applicable to this profile',
   approvedOn: 'approved {date}',
   rulesTitle: 'Rules',
   sourcesIntro: 'Every entry this book cites, the fact or asset it is drawn from, its state and its approved version.',
@@ -134,6 +138,7 @@ const fa: FullBookText = {
     planned: 'این فصل برنامه‌ریزی شده ولی هنوز ساخته نشده است. وقتی ساخته شود، فقط از اطلاعات تأییدشده خواهد بود.',
     separate_print: 'این فصل صفحه‌آرایی خودش را لازم دارد، پس فعلاً جداگانه چاپ می‌شود: {where}.',
     module_off: 'این ماژول برای برند خاموش است، پس این فصل چیزی برای نشان دادن ندارد.',
+    not_applicable: 'این فصل در نمایهٔ مصاحبهٔ این برند موضوعیت ندارد، پس چیزی برای نشان دادن ندارد.',
   },
   separateWhere: {
     mascot: 'Studio، دارایی‌ها، اطلس ماسکات، چاپ',
@@ -145,6 +150,7 @@ const fa: FullBookText = {
   draftNotPrinted: 'پیش‌نویس در انتظار تأیید. چاپ نمی‌شود.',
   withheldNotPrinted: 'محرمانه. هرگز چاپ نمی‌شود.',
   notApplicable: 'نامربوط علامت خورده',
+  notApplicableProfile: 'در این نمایه موضوعیت ندارد',
   approvedOn: 'تأیید {date}',
   rulesTitle: 'قواعد',
   sourcesIntro: 'همهٔ مدخل‌هایی که این کتاب به آن‌ها ارجاع می‌دهد، اطلاعات یا فایلی که از آن آمده‌اند، وضعیت و نسخهٔ تأییدشدهٔ آن‌ها.',
@@ -268,6 +274,7 @@ const tr: FullBookText = {
     planned: 'Bu bölüm planlandı ama henüz yapılmadı. Yapıldığında yalnızca onaylı bilgilerden çizilecek.',
     separate_print: 'Bu bölümün kendi sayfa düzenine ihtiyacı var, bu yüzden şimdilik ayrı bir belge olarak basılıyor: {where}.',
     module_off: 'Bu modül marka için kapalı, bu yüzden bölümde gösterilecek bir şey yok.',
+    not_applicable: 'Bu bölüm bu markanın görüşme profili için geçerli değil, bu yüzden gösterilecek bir şey yok.',
   },
   separateWhere: {
     mascot: 'Studio, Varlıklar, Maskot atlası, Yazdır',
@@ -279,6 +286,7 @@ const tr: FullBookText = {
   draftNotPrinted: 'Onay bekleyen taslak. Basılmaz.',
   withheldNotPrinted: 'Kısıtlı. Asla basılmaz.',
   notApplicable: 'Uygulanamaz olarak işaretlendi',
+  notApplicableProfile: 'Bu profil için geçerli değil',
   approvedOn: '{date} onaylandı',
   rulesTitle: 'Kurallar',
   sourcesIntro: 'Bu kitabın andığı her girdi, dayandığı bilgi ya da dosya, durumu ve onaylı sürümü.',

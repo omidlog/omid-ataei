@@ -298,32 +298,82 @@ const TR: Table = {
 
 export const COACH_TEXT: Record<Locale, Table> = { en: EN, fa: FA, tr: TR }
 
-/** The one clarifying question the coach asks when no canonical question covers the gap. */
+/**
+ * The one clarifying question the coach asks when no canonical question covers the gap: the general wording per
+ * criterion. A question family can override it (`CLARIFY_FAMILY_QUESTIONS`), so a boundaries question never gets
+ * an audience-style follow-up. Read it through `clarifyQuestion`, never by indexing this table directly.
+ */
 export const CLARIFY_QUESTIONS: Record<Locale, Record<CoachCriterion, string>> = {
   en: {
     relevance: 'Setting the placeholder aside: in one sentence, what is your actual answer here?',
-    specificity: 'Which single group or situation do you mean, and what is their main problem?',
+    specificity: 'Can you name one concrete example (a situation, a piece of work or a result) that shows what you mean?',
     completeness_for_output: 'What would you add so this can be used without anyone guessing the rest?',
     measurability: 'What figure do you actually have for this, and over what period?',
-    evidence_support: 'Which source could someone outside your company check for this claim?',
+    evidence_support: 'Which public source, such as a registry, a publication or a client\'s own page, could someone else check for this claim?',
     clarity_coherence: 'Of the two statements that disagree, which one should stand, and why?',
   },
   fa: {
     relevance: 'جانگهدار را کنار بگذاریم: در یک جمله، پاسخ واقعی شما اینجا چیست؟',
-    specificity: 'کدام یک گروه یا موقعیت را در نظر دارید و مسئلهٔ اصلی‌شان چیست؟',
+    specificity: 'می‌توانید یک نمونهٔ مشخص بیاورید، مثلاً یک موقعیت، یک کار یا یک نتیجه، که منظورتان را نشان دهد؟',
     completeness_for_output: 'چه چیزی اضافه می‌کنید تا بتوان این را بدون حدس‌زدن بقیه‌اش به کار برد؟',
     measurability: 'واقعاً چه رقمی برای این دارید و در چه دوره‌ای؟',
-    evidence_support: 'کسی بیرون از شرکت شما این ادعا را از کدام منبع می‌تواند بررسی کند؟',
+    evidence_support: 'کس دیگری این ادعا را از کدام منبع عمومی می‌تواند بررسی کند؟ مثلاً یک ثبت رسمی، یک نشریه یا صفحهٔ خود مشتری.',
     clarity_coherence: 'از آن دو گزاره که با هم نمی‌خوانند، کدام باید بماند و چرا؟',
   },
   tr: {
     relevance: 'Yer tutucuyu bir yana bırakalım: tek cümleyle, buradaki gerçek yanıtınız nedir?',
-    specificity: 'Hangi tek grubu ya da durumu kastediyorsunuz ve ana sorunları nedir?',
+    specificity: 'Ne demek istediğinizi gösteren somut bir örnek verebilir misiniz: bir durum, bir iş ya da bir sonuç?',
     completeness_for_output: 'Geri kalanı kimse tahmin etmeden kullanılabilsin diye ne eklerdiniz?',
     measurability: 'Bunun için gerçekte hangi sayıya sahipsiniz ve hangi dönem için?',
-    evidence_support: 'Bu iddiayı şirketinizin dışından biri hangi kaynaktan kontrol edebilir?',
+    evidence_support: 'Bu iddiayı başka biri hangi kamuya açık kaynaktan kontrol edebilir? Örneğin bir sicil kaydı, bir yayın ya da müşterinin kendi sayfası.',
     clarity_coherence: 'Birbiriyle çelişen iki ifadeden hangisi kalmalı ve neden?',
   },
+}
+
+/**
+ * Question families whose clarifying question differs from the general one. Derived from the question id only,
+ * so a moment rendered later (in another locale) picks the same family.
+ *
+ * - `audience`: who the brand serves (segments, buyers, target clients, their pains);
+ * - `boundaries`: what is off-limits (boundaries, things to avoid or never publish, misuse, guardrails);
+ * - `general`: everything else.
+ *
+ * Audit (coach-rules/6): only `specificity` is family-specific. `relevance`, `completeness_for_output`,
+ * `measurability` and `clarity_coherence` are worded for any question; `evidence_support` names no company, so it
+ * fits a person as well as a business.
+ */
+export const COACH_QUESTION_FAMILIES = ['audience', 'boundaries', 'general'] as const
+export type CoachQuestionFamily = (typeof COACH_QUESTION_FAMILIES)[number]
+
+const AUDIENCE_ID = /(?:^|[._])(?:audience|segment|segments|customer|buyer|target_clients|persona|personas|icp|pains)(?:$|[._])/
+const BOUNDARIES_ID = /(?:^|[._])(?:boundaries|never_publish|avoid|forbidden|misuse|unacceptable|guardrail|confidentiality|public_claim_policy)(?:$|[._])/
+
+export function questionFamily(questionId: string): CoachQuestionFamily {
+  if (BOUNDARIES_ID.test(questionId)) return 'boundaries'
+  if (AUDIENCE_ID.test(questionId)) return 'audience'
+  return 'general'
+}
+
+export const CLARIFY_FAMILY_QUESTIONS: Record<Locale, Record<Exclude<CoachQuestionFamily, 'general'>, Partial<Record<CoachCriterion, string>>>> = {
+  en: {
+    audience: { specificity: 'Which single group or situation do you mean, and what is their main problem?' },
+    boundaries: { specificity: 'Which specific topics, requests or uses are off-limits, and what should happen when someone asks for one?' },
+  },
+  fa: {
+    audience: { specificity: 'کدام یک گروه یا موقعیت را در نظر دارید و مسئلهٔ اصلی‌شان چیست؟' },
+    boundaries: { specificity: 'دقیقاً کدام موضوع‌ها، درخواست‌ها یا کاربردها خارج از محدوده‌اند و وقتی کسی یکی از آن‌ها را بخواهد چه باید کرد؟' },
+  },
+  tr: {
+    audience: { specificity: 'Hangi tek grubu ya da durumu kastediyorsunuz ve ana sorunları nedir?' },
+    boundaries: { specificity: 'Tam olarak hangi konular, talepler ya da kullanımlar kapsam dışında ve biri bunlardan birini istediğinde ne yapılmalı?' },
+  },
+}
+
+/** The clarifying question for this criterion and this question's family, in the locale. */
+export function clarifyQuestion(locale: Locale, criterion: CoachCriterion, questionId: string): string {
+  const family = questionFamily(questionId)
+  const override = family === 'general' ? undefined : CLARIFY_FAMILY_QUESTIONS[locale][family][criterion]
+  return override ?? CLARIFY_QUESTIONS[locale][criterion]
 }
 
 export const CRITERION_NAMES: Record<Locale, Record<CoachCriterion, string>> = {
@@ -566,6 +616,11 @@ export function coachI18nErrors(): string[] {
     }
     for (const criterion of COACH_CRITERIA) {
       if (!CLARIFY_QUESTIONS[locale][criterion]?.trim()) errors.push(`coach clarify question ${locale}.${criterion} is missing`)
+      for (const family of ['audience', 'boundaries'] as const) {
+        const hasEn = CLARIFY_FAMILY_QUESTIONS.en[family][criterion] !== undefined
+        const text = CLARIFY_FAMILY_QUESTIONS[locale][family][criterion]
+        if (hasEn !== (text !== undefined) || (text !== undefined && !text.trim())) errors.push(`coach clarify question ${locale}.${family}.${criterion} disagrees with en`)
+      }
       if (!CRITERION_NAMES[locale][criterion]?.trim()) errors.push(`coach criterion name ${locale}.${criterion} is missing`)
     }
     for (const status of COACH_STATUSES) {

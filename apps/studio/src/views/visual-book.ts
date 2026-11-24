@@ -3,7 +3,7 @@ import type { VisualBlock, VisualDocument, VisualLang } from '@brand-os/brand-co
 import { visualCatalog } from '@brand-os/brand-core/visual'
 import type { MessageKey } from '../i18n/index.js'
 import { studioAssets } from '../static-assets.js'
-import { banner, code, emptyState, itemValue, shortSha, tagBadge } from './components.js'
+import { banner, code, emptyState, itemValue, notApplicableList, shortSha, tagBadge } from './components.js'
 import { html, join, type SafeHtml } from './html.js'
 import { icon } from './icons.js'
 import { brandPath, type BrandView, type ViewContext } from './layout.js'
@@ -114,6 +114,7 @@ function entry(ctx: ViewContext, item: DocumentItem): SafeHtml {
     </header>
     <div class="vz-bk-entry-value">${value}</div>
     ${note}
+    ${item.stands_for ? html`<p class="vz-bk-mark">${icon('user')}<span>${i.t('reader.fromPersonal')}</span></p>` : ''}
     ${item.note && item.value !== null && !item.withheld && item.tag === 'approved' ? html`<p class="vz-bk-entry-note" dir="auto">${item.note}</p>` : ''}
   </article>`
 }
@@ -127,7 +128,7 @@ function chapterIds(ctx: ViewContext, section: DocumentSection, idPrefix: string
     <div class="vz-details-body">
       <p class="vz-details-lead">${ctx.i.t('reader.idsLead')}</p>
       <dl class="vz-bk-id-list" id="${idPrefix}-ids">${rows.map(
-        (item) => html`<div><dt dir="auto">${item.label}</dt><dd>${join([item.id, ...item.source_ids.filter((id) => id !== item.id)].map((id) => code(id, 'source-id')), ' ')}</dd></div>`,
+        (item) => html`<div><dt dir="auto">${item.label}</dt><dd>${join([item.id, ...(item.stands_for ? [item.stands_for] : []), ...item.source_ids.filter((id) => id !== item.id)].map((id) => code(id, 'source-id')), ' ')}</dd></div>`,
       )}</dl>
     </div>
   </details>`
@@ -166,6 +167,7 @@ function chapter(ctx: ViewContext, view: BrandView, section: DocumentSection, n:
     </header>
     ${block && blockCtx ? html`<figure class="vz-bk-specimen" aria-label="${i.t('reader.specimen')}: ${title}">${renderBlock(block, blockCtx)}</figure>` : ''}
     ${items.length ? html`<div class="vz-bk-entries">${items.map((item) => entry(ctx, item))}</div>` : ''}
+    ${notApplicableList(i, section)}
     ${chapterFooter(ctx, view, n, title, section)}
     ${chapterIds(ctx, section, id)}
   </section>`

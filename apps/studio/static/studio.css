@@ -201,6 +201,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 [hidden] { display: none !important; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .mono { font-family: var(--studio-font-mono); font-size: 0.92em; unicode-bidi: isolate; }
+/* BOS-21: owner-written text that mixes Persian and Latin carries the direction of most of its words (data-bidi);
+   file names, URLs and product names inside it are isolated runs, so words and parentheses keep their order. */
+.bidi-run, [data-bidi] { unicode-bidi: isolate; }
+[data-bidi="mixed"][dir="rtl"] { text-align: start; }
 code.mono { background: var(--studio-color-bg-subtle); border: 1px solid var(--studio-color-border-subtle); border-radius: 4px; padding: 1px 5px; color: var(--studio-color-text-secondary); white-space: nowrap; }
 .muted { color: var(--studio-color-text-secondary); }
 .small { font: var(--studio-type-caption); }
@@ -597,6 +601,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .doc-section-head h2 { font: 600 24px/1.2 var(--studio-font-display); }
 .doc-section-purpose { color: var(--studio-color-text-secondary); max-width: 720px; }
 .doc-items { display: grid; gap: var(--studio-space-3); }
+/* BOS-15: questions the brand's profile does not ask, listed apart from the items (never as missing). */
+.doc-na { margin-top: var(--studio-space-3); font: var(--studio-type-caption); }
+.doc-na ul { margin: var(--studio-space-2) 0 0; padding-inline-start: var(--studio-space-4); }
 .doc-item { background: var(--studio-color-bg-surface); border: 1px solid var(--studio-color-border-subtle); border-inline-start-width: 3px; border-radius: var(--studio-radius-md); padding: var(--studio-space-4); display: grid; gap: var(--studio-space-2); }
 .doc-item-approved { border-inline-start-color: var(--studio-color-status-approved); }
 .doc-item-assumption { border-inline-start-color: var(--studio-color-status-draft); }
@@ -838,3 +845,9 @@ a.cc-tile:hover { background: var(--studio-color-bg-hover); }
 @media print { .cc-strip { break-inside: avoid; } }
 /* V4.1: the coach card's command line wraps on narrow screens instead of widening the page. */
 .coach-card code { overflow-wrap: anywhere; white-space: normal; }
+/* BOS-19: the composed draft of a personal document section (one language edition), above its Sources. */
+.personal-draft { display: grid; gap: var(--studio-space-2); padding: var(--studio-space-4); border: 1px dashed var(--studio-color-border-subtle); border-radius: var(--studio-radius-lg); }
+.personal-draft-head { display: flex; align-items: center; gap: var(--studio-space-2); flex-wrap: wrap; }
+.personal-draft-text { font-size: 16px; line-height: 1.8; max-width: 72ch; unicode-bidi: plaintext; }
+.personal-draft-notes, .personal-draft-untranslated ul { display: grid; gap: var(--studio-space-1); padding-inline-start: var(--studio-space-4); }
+.personal-sources-title { font: 600 16px/1.3 var(--studio-font-display); color: var(--studio-color-text-secondary); }
