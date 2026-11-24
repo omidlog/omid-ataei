@@ -249,7 +249,8 @@ facts:
     answer_id: ans-0066
     updated: 2026-11-24T10:52:51.390Z
   personal.content.pillars:
-    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت صحنهٔ
+      ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: approved
@@ -257,8 +258,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0075
-    updated: 2026-11-24T10:52:53.981Z
+    answer_id: ans-0157
+    updated: 2026-11-24T12:24:57.084Z
   personal.contact.public_channels:
     value: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
       https://omidataei.com/contact#book"
@@ -399,6 +400,7 @@ facts:
   personal.portfolio.projects:
     value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
       مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
+      پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه
       پروژهٔ مشتری."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
@@ -407,8 +409,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0073
-    updated: 2026-11-24T10:52:53.220Z
+    answer_id: ans-0156
+    updated: 2026-11-24T12:24:56.893Z
   personal.goals.outcomes:
     value: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و
       دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
@@ -652,37 +654,37 @@ facts:
     value: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0118
-    updated: 2026-11-24T12:18:29.397Z
+    answer_id: ans-0155
+    updated: 2026-11-24T12:24:56.712Z
   personal.identity.localized_headline:
     value: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ
       و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme
       Danışmanı."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0119
-    updated: 2026-11-24T12:18:29.994Z
+    answer_id: ans-0139
+    updated: 2026-11-24T12:24:53.811Z
   personal.founder.sectors:
     value: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0120
-    updated: 2026-11-24T12:18:30.568Z
+    answer_id: ans-0151
+    updated: 2026-11-24T12:24:55.972Z
   personal.story.timeline:
     value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
       ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
@@ -690,37 +692,37 @@ facts:
       رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0135
-    updated: 2026-11-24T12:23:43.027Z
+    answer_id: ans-0141
+    updated: 2026-11-24T12:24:54.165Z
   personal.consulting.cta:
     value: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم
       تماس (https://omidataei.com/contact#inquiry).
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0122
-    updated: 2026-11-24T12:18:31.853Z
+    answer_id: ans-0154
+    updated: 2026-11-24T12:24:56.527Z
   personal.reputation.conflicts:
     value: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف
       می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0123
-    updated: 2026-11-24T12:18:32.435Z
+    answer_id: ans-0144
+    updated: 2026-11-24T12:24:54.693Z
   personal.identity.pronouns:
     value: null
     stored_in: brand/instance/draft-facts.yaml
@@ -736,116 +738,116 @@ facts:
     value: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0125
-    updated: 2026-11-24T12:18:33.623Z
+    answer_id: ans-0140
+    updated: 2026-11-24T12:24:53.993Z
   personal.founder.leadership_topics:
     value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
       در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
       ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0136
-    updated: 2026-11-24T12:23:56.278Z
+    answer_id: ans-0152
+    updated: 2026-11-24T12:24:56.159Z
   personal.founder.investor_relations:
     value: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0127
-    updated: 2026-11-24T12:18:35.037Z
+    answer_id: ans-0153
+    updated: 2026-11-24T12:24:56.348Z
   personal.story.next_chapter:
     value: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا
       آن را بخرند.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0128
-    updated: 2026-11-24T12:18:35.649Z
+    answer_id: ans-0142
+    updated: 2026-11-24T12:24:54.337Z
   personal.reputation.testimonials:
     value: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
       نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0137
-    updated: 2026-11-24T12:24:05.347Z
+    answer_id: ans-0143
+    updated: 2026-11-24T12:24:54.513Z
   personal.content.channel_tone:
     value: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0130
-    updated: 2026-11-24T12:18:36.988Z
+    answer_id: ans-0145
+    updated: 2026-11-24T12:24:54.862Z
   personal.media.presentation:
     value: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0131
-    updated: 2026-11-24T12:18:37.586Z
+    answer_id: ans-0147
+    updated: 2026-11-24T12:24:55.226Z
   personal.media.visual_templates:
     value: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0132
-    updated: 2026-11-24T12:18:38.214Z
+    answer_id: ans-0148
+    updated: 2026-11-24T12:24:55.410Z
   personal.privacy.availability:
     value: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0133
-    updated: 2026-11-24T12:18:38.800Z
+    answer_id: ans-0150
+    updated: 2026-11-24T12:24:55.790Z
   personal.governance.reviewer:
     value: فقط خودم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0134
-    updated: 2026-11-24T12:18:39.406Z
+    answer_id: ans-0149
+    updated: 2026-11-24T12:24:55.593Z
   personal.goals.kpis:
     value: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
       پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
@@ -853,10 +855,10 @@ facts:
       از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0138
-    updated: 2026-11-24T12:24:05.972Z
+    answer_id: ans-0146
+    updated: 2026-11-24T12:24:55.046Z

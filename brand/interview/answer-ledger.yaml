@@ -1622,7 +1622,7 @@ records:
     normalized: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه
       پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم،
       نه پروژهٔ مشتری."
-    superseded_by: null
+    superseded_by: ans-0156
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0074
@@ -1664,7 +1664,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
-    superseded_by: null
+    superseded_by: ans-0157
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0076
@@ -2644,7 +2644,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
-    superseded_by: null
+    superseded_by: ans-0155
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0119
@@ -2668,7 +2668,7 @@ records:
     normalized: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور
       مارکتینگ و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve
       Büyüme Danışmanı."
-    superseded_by: null
+    superseded_by: ans-0139
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0120
@@ -2686,7 +2686,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
-    superseded_by: null
+    superseded_by: ans-0151
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0121
@@ -2734,7 +2734,7 @@ records:
     session_id: ses-0001
     normalized: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها،
       فرم تماس (https://omidataei.com/contact#inquiry).
-    superseded_by: null
+    superseded_by: ans-0154
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0123
@@ -2755,7 +2755,7 @@ records:
     session_id: ses-0001
     normalized: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش
       حرف می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
-    superseded_by: null
+    superseded_by: ans-0144
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0124
@@ -2791,7 +2791,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
-    superseded_by: null
+    superseded_by: ans-0140
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0126
@@ -2833,7 +2833,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
-    superseded_by: null
+    superseded_by: ans-0153
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0128
@@ -2854,7 +2854,7 @@ records:
     session_id: ses-0001
     normalized: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری
       کنند یا آن را بخرند.
-    superseded_by: null
+    superseded_by: ans-0142
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0129
@@ -2893,7 +2893,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
-    superseded_by: null
+    superseded_by: ans-0145
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0131
@@ -2911,7 +2911,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
-    superseded_by: null
+    superseded_by: ans-0147
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0132
@@ -2929,7 +2929,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
-    superseded_by: null
+    superseded_by: ans-0148
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0133
@@ -2947,7 +2947,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
-    superseded_by: null
+    superseded_by: ans-0150
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0134
@@ -2965,7 +2965,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: فقط خودم.
-    superseded_by: null
+    superseded_by: ans-0149
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0135
@@ -2992,7 +2992,7 @@ records:
       سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
       LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران.
       Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
-    superseded_by: null
+    superseded_by: ans-0141
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0136
@@ -3016,7 +3016,7 @@ records:
     normalized: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
       کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
       و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
-    superseded_by: null
+    superseded_by: ans-0152
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0137
@@ -3037,7 +3037,7 @@ records:
     session_id: ses-0001
     normalized: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
       نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
-    superseded_by: null
+    superseded_by: ans-0143
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0138
@@ -3064,6 +3064,402 @@ records:
       پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
       فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
       از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    superseded_by: ans-0146
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0139
+    question_id: personal.identity.localized_headline
+    value: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ
+      و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme
+      Danışmanı."
+    raw_answer: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور
+      مارکتینگ و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve
+      Büyüme Danışmanı."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:53.811Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور
+      مارکتینگ و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve
+      Büyüme Danışmanı."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0140
+    question_id: personal.positioning.boundaries
+    value: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+    raw_answer: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:53.993Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0141
+    question_id: personal.story.timeline
+    value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
+      ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
+      بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران. Dadvin در مرکز
+      رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    raw_answer: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ
+      سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
+      LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران.
+      Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:54.165Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ
+      سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
+      LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران.
+      Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0142
+    question_id: personal.story.next_chapter
+    value: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا
+      آن را بخرند.
+    raw_answer: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری
+      کنند یا آن را بخرند.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:54.337Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری
+      کنند یا آن را بخرند.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0143
+    question_id: personal.reputation.testimonials
+    value: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    raw_answer: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:54.513Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0144
+    question_id: personal.reputation.conflicts
+    value: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف
+      می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+    raw_answer: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش
+      حرف می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:54.693Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش
+      حرف می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0145
+    question_id: personal.content.channel_tone
+    value: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+    raw_answer: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:54.862Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0146
+    question_id: personal.goals.kpis
+    value: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    raw_answer: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.046Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0147
+    question_id: personal.media.presentation
+    value: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+    raw_answer: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.226Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0148
+    question_id: personal.media.visual_templates
+    value: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+    raw_answer: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.410Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0149
+    question_id: personal.governance.reviewer
+    value: فقط خودم.
+    raw_answer: فقط خودم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.593Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: فقط خودم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0150
+    question_id: personal.privacy.availability
+    value: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
+    raw_answer: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.790Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0151
+    question_id: personal.founder.sectors
+    value: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+    raw_answer: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:55.972Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0152
+    question_id: personal.founder.leadership_topics
+    value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
+      در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
+      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    raw_answer: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
+      کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
+      و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:56.159Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
+      کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
+      و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0153
+    question_id: personal.founder.investor_relations
+    value: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+    raw_answer: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:56.348Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0154
+    question_id: personal.consulting.cta
+    value: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم
+      تماس (https://omidataei.com/contact#inquiry).
+    raw_answer: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها،
+      فرم تماس (https://omidataei.com/contact#inquiry).
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:56.527Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها،
+      فرم تماس (https://omidataei.com/contact#inquiry).
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0155
+    question_id: brand.photo.direction
+    value: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+    raw_answer: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:56.712Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0156
+    question_id: personal.portfolio.projects
+    value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
+      مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
+      پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه
+      پروژهٔ مشتری."
+    raw_answer: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه
+      پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم،
+      نه پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه
+      پروژهٔ مشتری."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:56.893Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه
+      پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم،
+      نه پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه
+      پروژهٔ مشتری."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0157
+    question_id: personal.content.pillars
+    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت صحنهٔ
+      ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
+    raw_answer: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت
+      صحنهٔ ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T12:24:57.084Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی؛ پشت
+      صحنهٔ ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی.
     superseded_by: null
     disposition_reason: null
     private_ref: null

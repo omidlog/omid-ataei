@@ -115,15 +115,17 @@ Approved by: owner
 
 - Question: `personal.consulting.cta`
 - Field: `personal.consulting.cta`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:31.853Z
-- Answer id: ans-0122
+- Updated: 2026-11-24T12:24:56.527Z
+- Answer id: ans-0154
 
 Value:
 
 رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم تماس (https://omidataei.com/contact#inquiry).
+
+Approved by: owner
 <!-- field:personal.consulting.cta end -->

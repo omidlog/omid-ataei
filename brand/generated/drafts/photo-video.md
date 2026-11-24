@@ -15,17 +15,19 @@ generated: true
 
 - Question: `brand.photo.direction`
 - Field: `brand.photo.direction`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:29.397Z
-- Answer id: ans-0118
+- Updated: 2026-11-24T12:24:56.712Z
+- Answer id: ans-0155
 
 Value:
 
 عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+
+Approved by: owner
 <!-- field:brand.photo.direction end -->
 
 <!-- field:brand.photo.lighting start -->

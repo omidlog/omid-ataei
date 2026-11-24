@@ -136,7 +136,7 @@ assets:
     approved_sha256: 3e56d36e1972732e127e313de24b5e17b8717c93328e8ca3f6fe4796c54fa349
   - id: asset.icon.key
     name: Omid Ataei key icon
-    status: draft
+    status: approved
     owner: design
     version: 1.0.0
     visibility: public
@@ -152,3 +152,6 @@ assets:
     tags:
       - icon
       - draft
+    approved_by: owner
+    approved_at: 2026-11-24T12:24:59.448Z
+    approved_sha256: 3c56901e4c1645ccabd7f4da9ca947e32f61b4ff2a9670cfa80e179574805a72

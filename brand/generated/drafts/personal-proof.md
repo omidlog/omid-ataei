@@ -100,12 +100,12 @@ Approved by: owner
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:52:53.220Z
-- Answer id: ans-0073
+- Updated: 2026-11-24T12:24:56.893Z
+- Answer id: ans-0156
 
 Value:
 
-Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری.
+Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری. Brand OS: سیستم برند شخصی و استودیوی شخصی که برای خودم ساختم؛ ابزار داخلی، نه پروژهٔ مشتری.
 
 Approved by: owner
 <!-- field:personal.portfolio.projects end -->
@@ -115,17 +115,19 @@ Approved by: owner
 
 - Question: `personal.reputation.testimonials`
 - Field: `personal.reputation.testimonials`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:24:05.347Z
-- Answer id: ans-0137
+- Updated: 2026-11-24T12:24:54.513Z
+- Answer id: ans-0143
 
 Value:
 
 یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک، نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+
+Approved by: owner
 <!-- field:personal.reputation.testimonials end -->
 
 <!-- field:personal.reputation.conflicts start -->
@@ -133,17 +135,19 @@ Value:
 
 - Question: `personal.reputation.conflicts`
 - Field: `personal.reputation.conflicts`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:32.435Z
-- Answer id: ans-0123
+- Updated: 2026-11-24T12:24:54.693Z
+- Answer id: ans-0144
 
 Value:
 
 وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+
+Approved by: owner
 <!-- field:personal.reputation.conflicts end -->
 
 <!-- field:personal.governance.public_claim_policy start -->

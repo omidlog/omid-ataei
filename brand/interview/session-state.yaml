@@ -140,10 +140,29 @@ history:
   - personal.founder.leadership_topics
   - personal.reputation.testimonials
   - personal.goals.kpis
+  - personal.identity.localized_headline
+  - personal.positioning.boundaries
+  - personal.story.timeline
+  - personal.story.next_chapter
+  - personal.reputation.testimonials
+  - personal.reputation.conflicts
+  - personal.content.channel_tone
+  - personal.goals.kpis
+  - personal.media.presentation
+  - personal.media.visual_templates
+  - personal.governance.reviewer
+  - personal.privacy.availability
+  - personal.founder.sectors
+  - personal.founder.leadership_topics
+  - personal.founder.investor_relations
+  - personal.consulting.cta
+  - brand.photo.direction
+  - personal.portfolio.projects
+  - personal.content.pillars
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T12:24:05.996Z
-last_answer_id: ans-0138
+updated_at: 2026-11-24T12:24:57.103Z
+last_answer_id: ans-0157

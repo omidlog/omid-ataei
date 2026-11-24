@@ -95,17 +95,19 @@ Approved by: owner
 
 - Question: `personal.governance.reviewer`
 - Field: `personal.governance.reviewer`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:39.406Z
-- Answer id: ans-0134
+- Updated: 2026-11-24T12:24:55.593Z
+- Answer id: ans-0149
 
 Value:
 
 فقط خودم.
+
+Approved by: owner
 <!-- field:personal.governance.reviewer end -->
 
 <!-- field:personal.privacy.availability start -->
@@ -113,15 +115,17 @@ Value:
 
 - Question: `personal.privacy.availability`
 - Field: `personal.privacy.availability`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:38.800Z
-- Answer id: ans-0133
+- Updated: 2026-11-24T12:24:55.790Z
+- Answer id: ans-0150
 
 Value:
 
 پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم.
+
+Approved by: owner
 <!-- field:personal.privacy.availability end -->

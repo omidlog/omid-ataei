@@ -95,17 +95,19 @@ Approved by: owner
 
 - Question: `personal.identity.localized_headline`
 - Field: `personal.identity.localized_headline`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:29.994Z
-- Answer id: ans-0119
+- Updated: 2026-11-24T12:24:53.811Z
+- Answer id: ans-0139
 
 Value:
 
 فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme Danışmanı.
+
+Approved by: owner
 <!-- field:personal.identity.localized_headline end -->
 
 <!-- field:personal.identity.service_scope start -->

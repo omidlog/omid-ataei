@@ -135,15 +135,17 @@ Approved by: owner
 
 - Question: `personal.positioning.boundaries`
 - Field: `personal.positioning.boundaries`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:33.623Z
-- Answer id: ans-0125
+- Updated: 2026-11-24T12:24:53.993Z
+- Answer id: ans-0140
 
 Value:
 
 حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+
+Approved by: owner
 <!-- field:personal.positioning.boundaries end -->
