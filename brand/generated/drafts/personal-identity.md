@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.identity.public_name`
 - Field: `personal.identity.public_name`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:11:54.264Z
+- Answer id: ans-0004
 
 Value:
 
-TBD
+Omid Ataei
 <!-- field:personal.identity.public_name end -->
 
 <!-- field:personal.identity.headline start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `personal.identity.headline`
 - Field: `personal.identity.headline`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:05:17.800Z
+- Answer id: ans-0002
 
 Value:
 
-TBD
+Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
 <!-- field:personal.identity.headline end -->
 
 <!-- field:personal.identity.roles start -->
@@ -69,17 +69,17 @@ TBD
 
 - Question: `personal.identity.name_forms`
 - Field: `personal.identity.name_forms`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:08.729Z
+- Answer id: ans-0012
 
 Value:
 
-TBD
+فارسی (شکل رسمی): امید عطائی. شکل رایج دیگر که در بعضی جاها استفاده می‌شود: امید عطایی.
 <!-- field:personal.identity.name_forms end -->
 
 <!-- field:personal.identity.localized_headline start -->
@@ -105,17 +105,17 @@ TBD
 
 - Question: `personal.identity.service_scope`
 - Field: `personal.identity.service_scope`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:13.156Z
+- Answer id: ans-0021
 
 Value:
 
-TBD
+ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
 <!-- field:personal.identity.service_scope end -->
 
 <!-- field:personal.identity.pronouns start -->

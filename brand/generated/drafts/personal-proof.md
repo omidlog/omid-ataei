@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.experience.highlights`
 - Field: `personal.experience.highlights`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:17.672Z
+- Answer id: ans-0029
 
 Value:
 
-TBD
+مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال. (لینک منبع هنوز ثبت نشده.)
 <!-- field:personal.experience.highlights end -->
 
 <!-- field:personal.credibility.credentials start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `personal.credibility.credentials`
 - Field: `personal.credibility.credentials`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:16.638Z
+- Answer id: ans-0027
 
 Value:
 
-TBD
+مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard و University of Pennsylvania. (به گفتهٔ مالک؛ مدرکی هنوز ثبت نشده.)
 <!-- field:personal.credibility.credentials end -->
 
 <!-- field:personal.credibility.awards start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `personal.credibility.awards`
 - Field: `personal.credibility.awards`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:17.146Z
+- Answer id: ans-0028
 
 Value:
 
-TBD
+Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate، Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید (endorsement) و نه سرمایه‌گذاری.
 <!-- field:personal.credibility.awards end -->
 
 <!-- field:personal.credibility.evidence start -->
@@ -69,17 +69,17 @@ TBD
 
 - Question: `personal.credibility.evidence`
 - Field: `personal.credibility.evidence`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:30:13.380Z
+- Answer id: ans-0011
 
 Value:
 
-TBD
+Companies House (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین. omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/): پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست.
 <!-- field:personal.credibility.evidence end -->
 
 <!-- field:personal.portfolio.projects start -->

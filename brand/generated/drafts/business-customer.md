@@ -33,17 +33,17 @@ TBD
 
 - Question: `brand.verbal.voice`
 - Field: `brand.verbal.voice`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:16.143Z
+- Answer id: ans-0026
 
 Value:
 
-TBD
+اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best fit, I'll tell you.»
 <!-- field:brand.verbal.voice end -->
 
 <!-- field:business.cx.onboarding start -->

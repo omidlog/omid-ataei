@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.positioning.perspective`
 - Field: `personal.positioning.perspective`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:10.688Z
+- Answer id: ans-0016
 
 Value:
 
-TBD
+A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛ مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ رشد تضمینی نمی‌دهم.
 <!-- field:personal.positioning.perspective end -->
 
 <!-- field:personal.content.pillars start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `personal.content.pillars`
 - Field: `personal.content.pillars`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:14.669Z
+- Answer id: ans-0024
 
 Value:
 
-TBD
+ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
 <!-- field:personal.content.pillars end -->
 
 <!-- field:personal.content.channels start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `personal.content.channels`
 - Field: `personal.content.channels`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:26.730Z
+- Answer id: ans-0030
 
 Value:
 
-TBD
+Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube: https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram: https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز مشخص نشده.
 <!-- field:personal.content.channels end -->
 
 <!-- field:personal.content.channel_tone start -->

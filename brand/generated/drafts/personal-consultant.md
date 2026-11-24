@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.consulting.methodology`
 - Field: `personal.consulting.methodology`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:12.168Z
+- Answer id: ans-0019
 
 Value:
 
-TBD
+مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act.
 <!-- field:personal.consulting.methodology end -->
 
 <!-- field:personal.consulting.engagements start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `personal.consulting.engagements`
 - Field: `personal.consulting.engagements`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:11.676Z
+- Answer id: ans-0018
 
 Value:
 
-TBD
+1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش داده می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ، با دامنهٔ کتبی و قیمت جداگانه. Ongoing Advisory: همراهی مستمر به‌عنوان شریک استراتژیک، با قیمت جداگانه.
 <!-- field:personal.consulting.engagements end -->
 
 <!-- field:personal.consulting.target_clients start -->
@@ -69,17 +69,17 @@ TBD
 
 - Question: `personal.consulting.pricing_policy`
 - Field: `personal.consulting.pricing_policy`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:12.645Z
+- Answer id: ans-0020
 
 Value:
 
-TBD
+on_request
 <!-- field:personal.consulting.pricing_policy end -->
 
 <!-- field:personal.consulting.confidentiality start -->

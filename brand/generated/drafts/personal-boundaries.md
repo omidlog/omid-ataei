@@ -69,17 +69,17 @@ TBD
 
 - Question: `personal.contact.public_channels`
 - Field: `personal.contact.public_channels`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:48:15.224Z
+- Answer id: ans-0025
 
 Value:
 
-TBD
+ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه: https://omidataei.com/contact#book
 <!-- field:personal.contact.public_channels end -->
 
 <!-- field:personal.governance.reviewer start -->
