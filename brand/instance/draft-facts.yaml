@@ -1988,25 +1988,25 @@ facts:
       راه‌اندازی و رشد کمک کرده است.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: agent_suggestion
     uncertainty: null
-    answer_id: ans-0158
-    updated: 2026-11-24T18:19:08.472Z
+    answer_id: ans-0163
+    updated: 2026-11-24T18:24:30.466Z
   brand.strategy.vision:
     value: "آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در آن
       سرمایه‌گذاری کنند یا آن را بخرند."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: agent_suggestion
     uncertainty: null
-    answer_id: ans-0159
-    updated: 2026-11-24T18:19:09.138Z
+    answer_id: ans-0164
+    updated: 2026-11-24T18:24:30.648Z
   brand.strategy.values:
     value: "۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲)
       ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار،
@@ -2014,35 +2014,35 @@ facts:
       آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: agent_suggestion
     uncertainty: null
-    answer_id: ans-0160
-    updated: 2026-11-24T18:19:09.785Z
+    answer_id: ans-0165
+    updated: 2026-11-24T18:24:30.815Z
   brand.strategy.promise:
     value: کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ تجربهٔ
       واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: agent_suggestion
     uncertainty: null
-    answer_id: ans-0161
-    updated: 2026-11-24T18:19:10.422Z
+    answer_id: ans-0166
+    updated: 2026-11-24T18:24:30.984Z
   brand.color.semantic_map:
     value: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent =
       orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
       dark-950; dark-text = surface-bg-1
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: agent_suggestion
     uncertainty: null
-    answer_id: ans-0162
-    updated: 2026-11-24T18:19:11.059Z
+    answer_id: ans-0167
+    updated: 2026-11-24T18:24:31.156Z

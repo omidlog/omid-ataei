@@ -322,6 +322,172 @@
           }
         }
       }
+    },
+    "brand": {
+      "primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#D5FE00"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: primary is the owner role lime.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "onPrimary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#121212"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: onPrimary is the owner role dark-950.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#646AED"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: secondary is the owner role violet.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "onSecondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#121212"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: onSecondary is the owner role dark-950.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "accent": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#FC4B08"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: accent is the owner role orange.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      }
+    },
+    "light": {
+      "canvas": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F9FAFB"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: canvas is the owner role surface-bg-1.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#191C20"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: text is the owner role text-title.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "muted": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#4E5964"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: muted is the owner role text-subtitle.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      }
+    },
+    "dark": {
+      "canvas": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#121212"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: dark-canvas is the owner role dark-950.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F9FAFB"
+        },
+        "$description": "Draft from approved brand.color.semantic_map: dark-text is the owner role surface-bg-1.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.semantic_map",
+            "source_version": 1
+          }
+        }
+      }
     }
   }
 }

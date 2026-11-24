@@ -164,10 +164,15 @@ history:
   - brand.strategy.values
   - brand.strategy.promise
   - brand.color.semantic_map
+  - brand.strategy.purpose
+  - brand.strategy.vision
+  - brand.strategy.values
+  - brand.strategy.promise
+  - brand.color.semantic_map
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T18:19:11.086Z
-last_answer_id: ans-0162
+updated_at: 2026-11-24T18:24:31.173Z
+last_answer_id: ans-0167

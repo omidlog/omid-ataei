@@ -1958,3 +1958,147 @@ facts:
     review_due: null
     related_ids: []
     private_ref: null
+  brand.strategy.purpose:
+    id: brand.strategy.purpose
+    brand_id: omid-ataei
+    module: brand-strategy
+    value: کمک به بنیان‌گذاران و کسب‌وکارها برای تصمیم‌های هوشمندانه‌تر، برندهای قوی‌تر و استراتژی‌های
+      عملی برای رشد پایدار؛ با تجربهٔ کسی که هم کسب‌وکار خودش را ساخته و هم به تیم‌های دیگر در
+      راه‌اندازی و رشد کمک کرده است.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0163
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T18:24:30.466Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T18:24:30.466Z
+    version: 1
+    revision_hash: brand.strategy.purpose:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.strategy.vision:
+    id: brand.strategy.vision
+    brand_id: omid-ataei
+    module: brand-strategy
+    value: "آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در آن
+      سرمایه‌گذاری کنند یا آن را بخرند."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0164
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T18:24:30.648Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T18:24:30.648Z
+    version: 1
+    revision_hash: brand.strategy.vision:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.strategy.values:
+    id: brand.strategy.values
+    brand_id: omid-ataei
+    module: brand-strategy
+    value: "۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲)
+      ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار،
+      برند، مشتری و تصمیم‌ها را با هم می‌بینم، نه فقط یک کمپین. ۴) آموزش بدون نصیحت: صبور و
+      آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0165
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T18:24:30.815Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T18:24:30.815Z
+    version: 1
+    revision_hash: brand.strategy.values:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.strategy.promise:
+    id: brand.strategy.promise
+    brand_id: omid-ataei
+    module: brand-strategy
+    value: کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ تجربهٔ
+      واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0166
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T18:24:30.984Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T18:24:30.984Z
+    version: 1
+    revision_hash: brand.strategy.promise:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.color.semantic_map:
+    id: brand.color.semantic_map
+    brand_id: omid-ataei
+    module: color-system
+    value: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent =
+      orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0167
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T18:24:31.156Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T18:24:31.156Z
+    version: 1
+    revision_hash: brand.color.semantic_map:1
+    review_due: null
+    related_ids: []
+    private_ref: null
