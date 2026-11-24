@@ -336,3 +336,39 @@ facts:
     uncertainty: null
     answer_id: ans-0030
     updated: 2026-11-24T09:48:26.730Z
+  personal.governance.public_claim_policy:
+    value: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک
+      تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته
+      نشوند.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0033
+    updated: 2026-11-24T09:54:16.436Z
+  personal.privacy.boundaries:
+    value: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0034
+    updated: 2026-11-24T09:54:16.936Z
+  personal.privacy.never_publish:
+    value: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0035
+    updated: 2026-11-24T09:54:20.785Z

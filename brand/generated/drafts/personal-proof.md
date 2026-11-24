@@ -141,15 +141,15 @@ TBD
 
 - Question: `personal.governance.public_claim_policy`
 - Field: `personal.governance.public_claim_policy`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:54:16.436Z
+- Answer id: ans-0033
 
 Value:
 
-TBD
+تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته نشوند.
 <!-- field:personal.governance.public_claim_policy end -->

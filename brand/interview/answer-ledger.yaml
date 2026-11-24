@@ -700,3 +700,66 @@ records:
     superseded_by: null
     disposition_reason: null
     private_ref: null
+  - answer_id: ans-0033
+    question_id: personal.governance.public_claim_policy
+    value: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک
+      تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته
+      نشوند.
+    raw_answer: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه،
+      مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع
+      گفته نشوند.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:16.436Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه،
+      مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع
+      گفته نشوند.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0034
+    question_id: personal.privacy.boundaries
+    value: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    raw_answer: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:16.936Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0035
+    question_id: personal.privacy.never_publish
+    value: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    raw_answer: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:54:20.785Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null

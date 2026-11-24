@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.governance.public_claim_policy`
 - Field: `personal.governance.public_claim_policy`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:54:16.436Z
+- Answer id: ans-0033
 
 Value:
 
-TBD
+تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته نشوند.
 <!-- field:personal.governance.public_claim_policy end -->
 
 <!-- field:personal.privacy.boundaries start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `personal.privacy.boundaries`
 - Field: `personal.privacy.boundaries`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:54:16.936Z
+- Answer id: ans-0034
 
 Value:
 
-TBD
+خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
 <!-- field:personal.privacy.boundaries end -->
 
 <!-- field:personal.privacy.never_publish start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `personal.privacy.never_publish`
 - Field: `personal.privacy.never_publish`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:54:20.785Z
+- Answer id: ans-0035
 
 Value:
 
-TBD
+اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در سایت‌های ثبت رسمی شرکت‌ها آمده است.
 <!-- field:personal.privacy.never_publish end -->
 
 <!-- field:personal.contact.public_channels start -->
