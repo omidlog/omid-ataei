@@ -115,15 +115,15 @@ Approved by: owner
 
 - Question: `personal.consulting.cta`
 - Field: `personal.consulting.cta`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:31.853Z
+- Answer id: ans-0122
 
 Value:
 
-TBD
+رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم تماس (https://omidataei.com/contact#inquiry).
 <!-- field:personal.consulting.cta end -->

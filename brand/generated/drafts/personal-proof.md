@@ -115,17 +115,17 @@ Approved by: owner
 
 - Question: `personal.reputation.testimonials`
 - Field: `personal.reputation.testimonials`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:36.361Z
+- Answer id: ans-0129
 
 Value:
 
-TBD
+هنوز توصیه‌نامه‌ای با اجازهٔ استفادهٔ عمومی ندارم. یک توصیه در لینکدین هست، ولی اجازهٔ نقل آن هنوز گرفته نشده.
 <!-- field:personal.reputation.testimonials end -->
 
 <!-- field:personal.reputation.conflicts start -->
@@ -133,17 +133,17 @@ TBD
 
 - Question: `personal.reputation.conflicts`
 - Field: `personal.reputation.conflicts`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:32.435Z
+- Answer id: ans-0123
 
 Value:
 
-TBD
+وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
 <!-- field:personal.reputation.conflicts end -->
 
 <!-- field:personal.governance.public_claim_policy start -->

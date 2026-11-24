@@ -119,10 +119,27 @@ history:
   - brand.type.scale
   - brand.type.scale
   - brand.type.intent
+  - brand.photo.direction
+  - personal.identity.localized_headline
+  - personal.founder.sectors
+  - personal.story.timeline
+  - personal.consulting.cta
+  - personal.reputation.conflicts
+  - personal.identity.pronouns
+  - personal.positioning.boundaries
+  - personal.founder.leadership_topics
+  - personal.founder.investor_relations
+  - personal.story.next_chapter
+  - personal.reputation.testimonials
+  - personal.content.channel_tone
+  - personal.media.presentation
+  - personal.media.visual_templates
+  - personal.privacy.availability
+  - personal.governance.reviewer
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T11:30:32.006Z
-last_answer_id: ans-0117
+updated_at: 2026-11-24T12:18:39.430Z
+last_answer_id: ans-0134

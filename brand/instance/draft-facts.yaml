@@ -648,3 +648,201 @@ facts:
     uncertainty: null
     answer_id: ans-0116
     updated: 2026-11-24T11:30:31.830Z
+  brand.photo.direction:
+    value: عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0118
+    updated: 2026-11-24T12:18:29.397Z
+  personal.identity.localized_headline:
+    value: "فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ
+      و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme
+      Danışmanı."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: public
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0119
+    updated: 2026-11-24T12:18:29.994Z
+  personal.founder.sectors:
+    value: هوش مصنوعی و SaaS، پیام‌رسانی با مشتری، و فناوری حقوقی.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0120
+    updated: 2026-11-24T12:18:30.568Z
+  personal.story.timeline:
+    value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
+      ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
+      بریتانیا. ۲۰۲۶: ثبت شرکت در ترکیه؛ نوامبر ۲۰۲۶: ثبت شرکت در ایران. Dadvin در مرکز رشد دانشگاه
+      فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0121
+    updated: 2026-11-24T12:18:31.183Z
+  personal.consulting.cta:
+    value: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم
+      تماس (https://omidataei.com/contact#inquiry).
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: public
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0122
+    updated: 2026-11-24T12:18:31.853Z
+  personal.reputation.conflicts:
+    value: وقتی ابزار پیام‌رسانی با مشتری یا دستیار حقوقی هوش مصنوعی را معرفی می‌کنم یا درباره‌اش حرف
+      می‌زنم، اعلام می‌کنم که بنیان‌گذار Fiko و Dadvin هستم.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0123
+    updated: 2026-11-24T12:18:32.435Z
+  personal.identity.pronouns:
+    value: null
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: not_applicable
+    visibility: public
+    authority: unverified
+    source_type: owner
+    uncertainty: Owner marked this question not applicable.
+    answer_id: ans-0124
+    updated: 2026-11-24T12:18:33.046Z
+  personal.positioning.boundaries:
+    value: حقوقی، مالیاتی، و مشاورهٔ سرمایه‌گذاری.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0125
+    updated: 2026-11-24T12:18:33.623Z
+  personal.founder.leadership_topics:
+    value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
+      در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
+      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0126
+    updated: 2026-11-24T12:18:34.285Z
+  personal.founder.investor_relations:
+    value: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0127
+    updated: 2026-11-24T12:18:35.037Z
+  personal.story.next_chapter:
+    value: ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا
+      آن را بخرند.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0128
+    updated: 2026-11-24T12:18:35.649Z
+  personal.reputation.testimonials:
+    value: هنوز توصیه‌نامه‌ای با اجازهٔ استفادهٔ عمومی ندارم. یک توصیه در لینکدین هست، ولی اجازهٔ نقل آن
+      هنوز گرفته نشده.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: public
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0129
+    updated: 2026-11-24T12:18:36.361Z
+  personal.content.channel_tone:
+    value: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0130
+    updated: 2026-11-24T12:18:36.988Z
+  personal.media.presentation:
+    value: فضای اداری و آفیس استارتاپی؛ تی‌شرت یا یقه‌اسکی ساده.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0131
+    updated: 2026-11-24T12:18:37.586Z
+  personal.media.visual_templates:
+    value: همهٔ قالب‌ها باید ظاهر برند را داشته باشند.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0132
+    updated: 2026-11-24T12:18:38.214Z
+  personal.privacy.availability:
+    value: "پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: public
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0133
+    updated: 2026-11-24T12:18:38.800Z
+  personal.governance.reviewer:
+    value: فقط خودم.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0134
+    updated: 2026-11-24T12:18:39.406Z

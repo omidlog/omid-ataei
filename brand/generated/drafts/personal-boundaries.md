@@ -95,17 +95,17 @@ Approved by: owner
 
 - Question: `personal.governance.reviewer`
 - Field: `personal.governance.reviewer`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:39.406Z
+- Answer id: ans-0134
 
 Value:
 
-TBD
+فقط خودم.
 <!-- field:personal.governance.reviewer end -->
 
 <!-- field:personal.privacy.availability start -->
@@ -113,15 +113,15 @@ TBD
 
 - Question: `personal.privacy.availability`
 - Field: `personal.privacy.availability`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:38.800Z
+- Answer id: ans-0133
 
 Value:
 
-TBD
+پذیرش مشتری: بله. سخنرانی: در دسترس، ولی علاقهٔ زیادی به سخنرانی ندارم.
 <!-- field:personal.privacy.availability end -->

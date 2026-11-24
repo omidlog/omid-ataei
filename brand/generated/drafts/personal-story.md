@@ -75,17 +75,17 @@ Approved by: owner
 
 - Question: `personal.story.timeline`
 - Field: `personal.story.timeline`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:31.183Z
+- Answer id: ans-0121
 
 Value:
 
-TBD
+۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت در ترکیه؛ نوامبر ۲۰۲۶: ثبت شرکت در ایران. Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است.
 <!-- field:personal.story.timeline end -->
 
 <!-- field:personal.story.next_chapter start -->
@@ -93,15 +93,15 @@ TBD
 
 - Question: `personal.story.next_chapter`
 - Field: `personal.story.next_chapter`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:35.649Z
+- Answer id: ans-0128
 
 Value:
 
-TBD
+ساختن یک استارتاپ یونیکورن یا استارتاپ بزرگی که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا آن را بخرند.
 <!-- field:personal.story.next_chapter end -->

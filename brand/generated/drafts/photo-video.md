@@ -15,17 +15,17 @@ generated: true
 
 - Question: `brand.photo.direction`
 - Field: `brand.photo.direction`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:29.397Z
+- Answer id: ans-0118
 
 Value:
 
-TBD
+عکس سیاه‌وسفید یا دوتون لیمویی، با بافت گرین. استارتاپی و کژوال، با حس زندگی.
 <!-- field:brand.photo.direction end -->
 
 <!-- field:brand.photo.lighting start -->

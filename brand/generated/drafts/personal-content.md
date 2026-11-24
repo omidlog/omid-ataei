@@ -75,17 +75,17 @@ Approved by: owner
 
 - Question: `personal.content.channel_tone`
 - Field: `personal.content.channel_tone`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:36.988Z
+- Answer id: ans-0130
 
 Value:
 
-TBD
+نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
 <!-- field:personal.content.channel_tone end -->
 
 <!-- field:personal.goals.outcomes start -->

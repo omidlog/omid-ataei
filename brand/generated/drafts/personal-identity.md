@@ -95,17 +95,17 @@ Approved by: owner
 
 - Question: `personal.identity.localized_headline`
 - Field: `personal.identity.localized_headline`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T12:18:29.994Z
+- Answer id: ans-0119
 
 Value:
 
-TBD
+فارسی: بنیان‌گذار و مدیرعامل | استراتژیست کسب‌وکار و برند | منتور استارتاپ | مشاور مارکتینگ و رشد. ترکی: Kurucu & CEO | İş ve Marka Stratejisti | Girişim Mentoru | Pazarlama ve Büyüme Danışmanı.
 <!-- field:personal.identity.localized_headline end -->
 
 <!-- field:personal.identity.service_scope start -->
@@ -133,13 +133,13 @@ Approved by: owner
 
 - Question: `personal.identity.pronouns`
 - Field: `personal.identity.pronouns`
-- Status: unanswered
+- Status: not_applicable
 - Visibility: public
 - Authority: unverified
-- Source: none
-- Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Source: owner
+- Uncertainty: Owner marked this question not applicable.
+- Updated: 2026-11-24T12:18:33.046Z
+- Answer id: ans-0124
 
 Value:
 
