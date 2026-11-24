@@ -868,3 +868,84 @@ records:
     superseded_by: null
     disposition_reason: null
     private_ref: null
+  - answer_id: ans-0041
+    question_id: personal.media.avoid
+    value: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
+      اغراق‌آمیز «موفقیت».
+    raw_answer: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
+      اغراق‌آمیز «موفقیت».
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T10:04:33.670Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
+      اغراق‌آمیز «موفقیت».
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0042
+    question_id: personal.media.portraits
+    value: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم
+      گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+    raw_answer: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که
+      خودم گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T10:04:34.213Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که
+      خودم گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0043
+    question_id: brand.verbal.forbidden
+    value: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه به
+      رقبا؛ شعارهای انگیزشی توخالی.
+    raw_answer: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه
+      به رقبا؛ شعارهای انگیزشی توخالی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T10:04:34.710Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه
+      به رقبا؛ شعارهای انگیزشی توخالی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0044
+    question_id: brand.verbal.localization
+    value: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
+    raw_answer: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T10:04:35.244Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null

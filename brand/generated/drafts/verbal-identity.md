@@ -105,17 +105,17 @@ Value:
 
 - Question: `brand.verbal.forbidden`
 - Field: `brand.verbal.forbidden`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:04:34.710Z
+- Answer id: ans-0043
 
 Value:
 
-TBD
+«یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه به رقبا؛ شعارهای انگیزشی توخالی.
 <!-- field:brand.verbal.forbidden end -->
 
 <!-- field:brand.verbal.localization start -->
@@ -123,17 +123,17 @@ TBD
 
 - Question: `brand.verbal.localization`
 - Field: `brand.verbal.localization`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:04:35.244Z
+- Answer id: ans-0044
 
 Value:
 
-TBD
+فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
 <!-- field:brand.verbal.localization end -->
 
 <!-- field:brand.verbal.microcopy start -->

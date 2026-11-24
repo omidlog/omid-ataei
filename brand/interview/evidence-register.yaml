@@ -158,11 +158,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T10:00:04.609Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T10:02:05.123Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0011
@@ -174,10 +174,10 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T10:00:05.002Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T10:02:05.560Z
+    verified_by: owner
     review_due: null
     status_reason: null

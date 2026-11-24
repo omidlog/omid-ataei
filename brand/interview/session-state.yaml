@@ -42,10 +42,14 @@ history:
   - personal.portfolio.projects
   - personal.goals.outcomes
   - personal.media.photo_guidelines
+  - personal.media.avoid
+  - personal.media.portraits
+  - brand.verbal.forbidden
+  - brand.verbal.localization
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T09:59:58.136Z
-last_answer_id: ans-0040
+updated_at: 2026-11-24T10:04:35.267Z
+last_answer_id: ans-0044

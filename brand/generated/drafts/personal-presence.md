@@ -33,17 +33,17 @@ Value:
 
 - Question: `personal.media.avoid`
 - Field: `personal.media.avoid`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:04:33.670Z
+- Answer id: ans-0041
 
 Value:
 
-TBD
+عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های اغراق‌آمیز «موفقیت».
 <!-- field:personal.media.avoid end -->
 
 <!-- field:personal.media.portraits start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `personal.media.portraits`
 - Field: `personal.media.portraits`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:04:34.213Z
+- Answer id: ans-0042
 
 Value:
 
-TBD
+پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
 <!-- field:personal.media.portraits end -->
 
 <!-- field:personal.media.presentation start -->

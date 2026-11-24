@@ -432,3 +432,50 @@ facts:
     uncertainty: null
     answer_id: ans-0040
     updated: 2026-11-24T09:59:58.118Z
+  personal.media.avoid:
+    value: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
+      اغراق‌آمیز «موفقیت».
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0041
+    updated: 2026-11-24T10:04:33.670Z
+  personal.media.portraits:
+    value: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم
+      گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0042
+    updated: 2026-11-24T10:04:34.213Z
+  brand.verbal.forbidden:
+    value: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه به
+      رقبا؛ شعارهای انگیزشی توخالی.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0043
+    updated: 2026-11-24T10:04:34.710Z
+  brand.verbal.localization:
+    value: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0044
+    updated: 2026-11-24T10:04:35.244Z
