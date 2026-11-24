@@ -4,72 +4,72 @@ facts:
     value: Omid Ataei
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0004
-    updated: 2026-11-24T09:11:54.264Z
+    answer_id: ans-0052
+    updated: 2026-11-24T10:52:48.328Z
   personal.identity.headline:
     value: Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0002
-    updated: 2026-11-24T09:05:17.800Z
+    answer_id: ans-0053
+    updated: 2026-11-24T10:52:48.444Z
   personal.positioning.known_for:
     value: بنیان‌گذار چند استارتاپ، استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0050
-    updated: 2026-11-24T10:46:16.640Z
+    answer_id: ans-0058
+    updated: 2026-11-24T10:52:50.002Z
   personal.identity.name_forms:
     value: امید عطائی (فارسی، شکل رسمی)؛ امید عطایی (شکل رایج)
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0051
-    updated: 2026-11-24T10:46:17.171Z
+    answer_id: ans-0055
+    updated: 2026-11-24T10:52:48.639Z
   brand.personality.traits:
     value: مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا.
       ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی
       می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0006
-    updated: 2026-11-24T09:11:58.834Z
+    answer_id: ans-0057
+    updated: 2026-11-24T10:52:49.327Z
   personal.positioning.primary_audience:
     value: ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان کسب‌وکارهایی که
       دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳) مدیران
       بازاریابی شرکت‌ها.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0007
-    updated: 2026-11-24T09:16:53.220Z
+    answer_id: ans-0059
+    updated: 2026-11-24T10:52:50.110Z
   personal.experience.relationships:
     value: "founded | Fiko | 2024 | present | ownership: unstated; founded | Dadvin | 2025 | present |
       ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated; employed |
@@ -77,25 +77,25 @@ facts:
       ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0046
-    updated: 2026-11-24T10:46:09.761Z
+    answer_id: ans-0067
+    updated: 2026-11-24T10:52:52.015Z
   personal.experience.roles:
     value: "Fiko: CEO (فعال). Dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ. طراحان
       آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0047
-    updated: 2026-11-24T10:46:10.283Z
+    answer_id: ans-0068
+    updated: 2026-11-24T10:52:52.132Z
   personal.credibility.evidence:
     value: "Companies House
       (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO
@@ -104,13 +104,13 @@ facts:
       پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0011
-    updated: 2026-11-24T09:30:13.380Z
+    answer_id: ans-0072
+    updated: 2026-11-24T10:52:53.106Z
   personal.founder.ventures:
     value: "Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد
       و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. Dadvin (دادوین):
@@ -118,13 +118,13 @@ facts:
       هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0048
-    updated: 2026-11-24T10:46:10.808Z
+    answer_id: ans-0088
+    updated: 2026-11-24T10:52:58.042Z
   personal.positioning.expertise:
     value: استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به بازار
       (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و
@@ -132,50 +132,50 @@ facts:
       بازارهای مالی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0014
-    updated: 2026-11-24T09:48:09.678Z
+    answer_id: ans-0060
+    updated: 2026-11-24T10:52:50.217Z
   personal.positioning.outcome:
     value: I help founders and businesses make smarter decisions, build stronger brands and create
       practical strategies for sustainable growth.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0015
-    updated: 2026-11-24T09:48:10.202Z
+    answer_id: ans-0061
+    updated: 2026-11-24T10:52:50.340Z
   personal.positioning.perspective:
     value: A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛
       مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ
       رشد تضمینی نمی‌دهم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0016
-    updated: 2026-11-24T09:48:10.688Z
+    answer_id: ans-0062
+    updated: 2026-11-24T10:52:50.458Z
   personal.services.offers:
     value: Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛ AI
       Agents & Automation.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0017
-    updated: 2026-11-24T09:48:11.190Z
+    answer_id: ans-0063
+    updated: 2026-11-24T10:52:50.572Z
   personal.consulting.engagements:
     value: "1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش داده
       می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ، با
@@ -183,144 +183,144 @@ facts:
       جداگانه."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0018
-    updated: 2026-11-24T09:48:11.676Z
+    answer_id: ans-0090
+    updated: 2026-11-24T10:52:58.878Z
   personal.consulting.methodology:
     value: "مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0019
-    updated: 2026-11-24T09:48:12.168Z
+    answer_id: ans-0089
+    updated: 2026-11-24T10:52:58.736Z
   personal.consulting.pricing_policy:
     value: on_request
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0020
-    updated: 2026-11-24T09:48:12.645Z
+    answer_id: ans-0091
+    updated: 2026-11-24T10:52:59.046Z
   personal.identity.service_scope:
     value: ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0021
-    updated: 2026-11-24T09:48:13.156Z
+    answer_id: ans-0056
+    updated: 2026-11-24T10:52:48.751Z
   personal.story.origin:
     value: از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و
       استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ
       کسب‌وکار به کار می‌برم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0022
-    updated: 2026-11-24T09:48:13.627Z
+    answer_id: ans-0064
+    updated: 2026-11-24T10:52:51.173Z
   personal.story.motivation:
     value: "I have worked on both sides of the table: building my own businesses and helping other teams
       launch and grow."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0023
-    updated: 2026-11-24T09:48:14.126Z
+    answer_id: ans-0066
+    updated: 2026-11-24T10:52:51.390Z
   personal.content.pillars:
     value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0024
-    updated: 2026-11-24T09:48:14.669Z
+    answer_id: ans-0075
+    updated: 2026-11-24T10:52:53.981Z
   personal.contact.public_channels:
     value: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
       https://omidataei.com/contact#book"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0025
-    updated: 2026-11-24T09:48:15.224Z
+    answer_id: ans-0087
+    updated: 2026-11-24T10:52:57.186Z
   brand.verbal.voice:
     value: "اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best fit,
       I'll tell you.»"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0026
-    updated: 2026-11-24T09:48:16.143Z
+    answer_id: ans-0081
+    updated: 2026-11-24T10:52:55.750Z
   personal.credibility.credentials:
     value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
       و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0032
-    updated: 2026-11-24T09:52:39.368Z
+    answer_id: ans-0070
+    updated: 2026-11-24T10:52:52.367Z
   personal.credibility.awards:
     value: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate،
       Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید
       (endorsement) و نه سرمایه‌گذاری."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0028
-    updated: 2026-11-24T09:48:17.146Z
+    answer_id: ans-0071
+    updated: 2026-11-24T10:52:52.490Z
   personal.experience.highlights:
     value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
       https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
       sadakatidir"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0031
-    updated: 2026-11-24T09:52:38.850Z
+    answer_id: ans-0069
+    updated: 2026-11-24T10:52:52.244Z
   personal.content.channels:
     value: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
       https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
@@ -328,156 +328,156 @@ facts:
       مشخص نشده."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0030
-    updated: 2026-11-24T09:48:26.730Z
+    answer_id: ans-0076
+    updated: 2026-11-24T10:52:54.102Z
   personal.governance.public_claim_policy:
     value: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک
       تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته
       نشوند.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0033
-    updated: 2026-11-24T09:54:16.436Z
+    answer_id: ans-0074
+    updated: 2026-11-24T10:52:53.354Z
   personal.privacy.boundaries:
     value: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0034
-    updated: 2026-11-24T09:54:16.936Z
+    answer_id: ans-0085
+    updated: 2026-11-24T10:52:56.892Z
   personal.privacy.never_publish:
     value: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
       سایت‌های ثبت رسمی شرکت‌ها آمده است.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0035
-    updated: 2026-11-24T09:54:20.785Z
+    answer_id: ans-0086
+    updated: 2026-11-24T10:52:57.038Z
   personal.identity.roles:
     value: "نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و رشد.
       صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0036
-    updated: 2026-11-24T09:59:55.922Z
+    answer_id: ans-0054
+    updated: 2026-11-24T10:52:48.543Z
   personal.story.turning_points:
     value: "۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در بازارهای
       مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0037
-    updated: 2026-11-24T09:59:56.413Z
+    answer_id: ans-0065
+    updated: 2026-11-24T10:52:51.283Z
   personal.portfolio.projects:
     value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
       مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
       پروژهٔ مشتری."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: public
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0049
-    updated: 2026-11-24T10:46:11.385Z
+    answer_id: ans-0073
+    updated: 2026-11-24T10:52:53.220Z
   personal.goals.outcomes:
     value: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و
       دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0039
-    updated: 2026-11-24T09:59:57.464Z
+    answer_id: ans-0077
+    updated: 2026-11-24T10:52:54.235Z
   personal.media.photo_guidelines:
     value: رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0040
-    updated: 2026-11-24T09:59:58.118Z
+    answer_id: ans-0078
+    updated: 2026-11-24T10:52:54.869Z
   personal.media.avoid:
     value: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
       اغراق‌آمیز «موفقیت».
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0041
-    updated: 2026-11-24T10:04:33.670Z
+    answer_id: ans-0079
+    updated: 2026-11-24T10:52:54.995Z
   personal.media.portraits:
     value: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم
       گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0042
-    updated: 2026-11-24T10:04:34.213Z
+    answer_id: ans-0080
+    updated: 2026-11-24T10:52:55.118Z
   brand.verbal.forbidden:
     value: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه به
       رقبا؛ شعارهای انگیزشی توخالی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0043
-    updated: 2026-11-24T10:04:34.710Z
+    answer_id: ans-0082
+    updated: 2026-11-24T10:52:55.901Z
   brand.verbal.localization:
     value: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0044
-    updated: 2026-11-24T10:04:35.244Z
+    answer_id: ans-0083
+    updated: 2026-11-24T10:52:56.035Z
   brand.verbal.voice_pairs:
     value: "do: من پیشنهاد می‌کنم که… | don't: قول بهت می‌دم درآمدت حداقل دو برابر بشه; do: می‌خوام یک
       جمله رو صادقانه بگم… | don't: به نظرم همه باید الان با AI کار کنن; do: بریم ببینیم مشکل چیه |
@@ -490,10 +490,75 @@ facts:
       بود که… | don't: من هیچ وقت اشتباه نکردم"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0084
+    updated: 2026-11-24T10:52:56.183Z
+  personal.founder.narrative:
+    value: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را برای
+      بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
+      دادنم است.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
     status: draft
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0045
-    updated: 2026-11-24T10:46:00.658Z
+    answer_id: ans-0092
+    updated: 2026-11-24T10:53:26.335Z
+  personal.consulting.target_clients:
+    value: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با کسانی که
+      فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی کلاهبرداری
+      می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0093
+    updated: 2026-11-24T10:53:26.906Z
+  personal.consulting.confidentiality:
+    value: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
+      کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0094
+    updated: 2026-11-24T10:53:27.464Z
+  brand.color.roles:
+    value: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414; dark-800
+      #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878; dark-30
+      #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8; surface
+      #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle #4E5964"
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0095
+    updated: 2026-11-24T10:53:34.613Z
+  brand.type.intent:
+    value: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
+      glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
+      https://omidataei.com/design-system)"
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0096
+    updated: 2026-11-24T10:53:35.199Z

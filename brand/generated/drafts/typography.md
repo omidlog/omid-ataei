@@ -15,17 +15,17 @@ generated: true
 
 - Question: `brand.type.intent`
 - Field: `brand.type.intent`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:53:35.199Z
+- Answer id: ans-0096
 
 Value:
 
-TBD
+Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع: https://omidataei.com/design-system)
 <!-- field:brand.type.intent end -->
 
 <!-- field:brand.type.license start -->

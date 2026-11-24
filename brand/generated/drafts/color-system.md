@@ -15,17 +15,17 @@ generated: true
 
 - Question: `brand.color.roles`
 - Field: `brand.color.roles`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:53:34.613Z
+- Answer id: ans-0095
 
 Value:
 
-TBD
+lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414; dark-800 #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878; dark-30 #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8; surface #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle #4E5964
 <!-- field:brand.color.roles end -->
 
 <!-- field:brand.color.themes start -->

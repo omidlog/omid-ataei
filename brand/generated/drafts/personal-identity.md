@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.identity.public_name`
 - Field: `personal.identity.public_name`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:11:54.264Z
-- Answer id: ans-0004
+- Updated: 2026-11-24T10:52:48.328Z
+- Answer id: ans-0052
 
 Value:
 
 Omid Ataei
+
+Approved by: owner
 <!-- field:personal.identity.public_name end -->
 
 <!-- field:personal.identity.headline start -->
@@ -33,17 +35,19 @@ Omid Ataei
 
 - Question: `personal.identity.headline`
 - Field: `personal.identity.headline`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:05:17.800Z
-- Answer id: ans-0002
+- Updated: 2026-11-24T10:52:48.444Z
+- Answer id: ans-0053
 
 Value:
 
 Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
+
+Approved by: owner
 <!-- field:personal.identity.headline end -->
 
 <!-- field:personal.identity.roles start -->
@@ -51,17 +55,19 @@ Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growt
 
 - Question: `personal.identity.roles`
 - Field: `personal.identity.roles`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:59:55.922Z
-- Answer id: ans-0036
+- Updated: 2026-11-24T10:52:48.543Z
+- Answer id: ans-0054
 
 Value:
 
 نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و رشد. صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی.
+
+Approved by: owner
 <!-- field:personal.identity.roles end -->
 
 <!-- field:personal.identity.name_forms start -->
@@ -69,17 +75,19 @@ Value:
 
 - Question: `personal.identity.name_forms`
 - Field: `personal.identity.name_forms`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:46:17.171Z
-- Answer id: ans-0051
+- Updated: 2026-11-24T10:52:48.639Z
+- Answer id: ans-0055
 
 Value:
 
 امید عطائی (فارسی، شکل رسمی)؛ امید عطایی (شکل رایج)
+
+Approved by: owner
 <!-- field:personal.identity.name_forms end -->
 
 <!-- field:personal.identity.localized_headline start -->
@@ -105,17 +113,19 @@ TBD
 
 - Question: `personal.identity.service_scope`
 - Field: `personal.identity.service_scope`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:13.156Z
-- Answer id: ans-0021
+- Updated: 2026-11-24T10:52:48.751Z
+- Answer id: ans-0056
 
 Value:
 
 ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
+
+Approved by: owner
 <!-- field:personal.identity.service_scope end -->
 
 <!-- field:personal.identity.pronouns start -->

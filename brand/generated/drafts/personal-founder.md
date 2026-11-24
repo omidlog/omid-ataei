@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.founder.ventures`
 - Field: `personal.founder.ventures`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:46:10.808Z
-- Answer id: ans-0048
+- Updated: 2026-11-24T10:52:58.042Z
+- Answer id: ans-0088
 
 Value:
 
 Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد: هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸.
+
+Approved by: owner
 <!-- field:personal.founder.ventures end -->
 
 <!-- field:personal.founder.narrative start -->
@@ -33,17 +35,17 @@ Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیای�
 
 - Question: `personal.founder.narrative`
 - Field: `personal.founder.narrative`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:53:26.335Z
+- Answer id: ans-0092
 
 Value:
 
-TBD
+هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را برای بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه دادنم است.
 <!-- field:personal.founder.narrative end -->
 
 <!-- field:personal.founder.sectors start -->

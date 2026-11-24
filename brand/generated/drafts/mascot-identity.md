@@ -33,17 +33,19 @@ TBD
 
 - Question: `brand.personality.traits`
 - Field: `brand.personality.traits`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:11:58.834Z
-- Answer id: ans-0006
+- Updated: 2026-11-24T10:52:49.327Z
+- Answer id: ans-0057
 
 Value:
 
 مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا. ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
+
+Approved by: owner
 <!-- field:brand.personality.traits end -->
 
 <!-- field:brand.mascot.role start -->

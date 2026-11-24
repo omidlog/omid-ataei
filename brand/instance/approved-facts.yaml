@@ -1,2 +1,1142 @@
-schema_version: 1
-facts: {}
+schema_version: 2
+facts:
+  personal.identity.public_name:
+    id: personal.identity.public_name
+    brand_id: omid-ataei
+    module: personal-identity
+    value: Omid Ataei
+    value_type: short_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0052
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:48.328Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:48.328Z
+    version: 1
+    revision_hash: personal.identity.public_name:1
+    review_due: null
+    related_ids:
+      - business.identity.trade_name
+    private_ref: null
+  personal.identity.headline:
+    id: personal.identity.headline
+    brand_id: omid-ataei
+    module: personal-identity
+    value: Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growth Advisor
+    value_type: short_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0053
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:48.444Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:48.444Z
+    version: 1
+    revision_hash: personal.identity.headline:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.identity.roles:
+    id: personal.identity.roles
+    brand_id: omid-ataei
+    module: personal-identity
+    value: "نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و رشد.
+      صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0054
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:48.543Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:48.543Z
+    version: 1
+    revision_hash: personal.identity.roles:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.identity.name_forms:
+    id: personal.identity.name_forms
+    brand_id: omid-ataei
+    module: personal-identity
+    value: امید عطائی (فارسی، شکل رسمی)؛ امید عطایی (شکل رایج)
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0055
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:48.639Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:48.639Z
+    version: 1
+    revision_hash: personal.identity.name_forms:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.identity.service_scope:
+    id: personal.identity.service_scope
+    brand_id: omid-ataei
+    module: personal-identity
+    value: ساکن استانبول؛ کار آنلاین با تمرکز بر کارآفرینان فارسی‌زبان در ایران، ترکیه و امارات.
+    value_type: short_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0056
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:48.751Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:48.751Z
+    version: 1
+    revision_hash: personal.identity.service_scope:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.personality.traits:
+    id: brand.personality.traits
+    brand_id: omid-ataei
+    module: brand-strategy
+    value: مطمئن، ولی نه مغرور. صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. جسور و نوآور، ولی نه بی‌پروا.
+      ریسک‌پذیر، ولی نه وعده‌دهندهٔ نتایج تضمینی. با اطلاع و با دانش زیاد، ولی نه بدون پشتوانه؛ سعی
+      می‌کنم حرف‌هایم فکت و پشتوانه داشته باشد.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0057
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:49.327Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:49.327Z
+    version: 1
+    revision_hash: brand.personality.traits:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.known_for:
+    id: personal.positioning.known_for
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: بنیان‌گذار چند استارتاپ، استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار.
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0058
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.002Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.002Z
+    version: 1
+    revision_hash: personal.positioning.known_for:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.primary_audience:
+    id: personal.positioning.primary_audience
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان کسب‌وکارهایی که
+      دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳) مدیران
+      بازاریابی شرکت‌ها.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0059
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.110Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.110Z
+    version: 1
+    revision_hash: personal.positioning.primary_audience:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.expertise:
+    id: personal.positioning.expertise
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به بازار
+      (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و
+      اتوماسیون. تجربهٔ ویژه به‌عنوان مدیر مارکتینگ و استراتژیست برندینگ و مارکتینگ در حوزهٔ
+      بازارهای مالی.
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0060
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.217Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.217Z
+    version: 1
+    revision_hash: personal.positioning.expertise:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.outcome:
+    id: personal.positioning.outcome
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: I help founders and businesses make smarter decisions, build stronger brands and create
+      practical strategies for sustainable growth.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0061
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.340Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.340Z
+    version: 1
+    revision_hash: personal.positioning.outcome:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.positioning.perspective:
+    id: personal.positioning.perspective
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛
+      مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ
+      رشد تضمینی نمی‌دهم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0062
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.458Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.458Z
+    version: 1
+    revision_hash: personal.positioning.perspective:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.services.offers:
+    id: personal.services.offers
+    brand_id: omid-ataei
+    module: personal-positioning
+    value: Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛ AI
+      Agents & Automation.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0063
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:50.572Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:50.572Z
+    version: 1
+    revision_hash: personal.services.offers:1
+    review_due: null
+    related_ids:
+      - business.offer.summary
+    private_ref: null
+  personal.story.origin:
+    id: personal.story.origin
+    brand_id: omid-ataei
+    module: personal-story
+    value: از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و
+      استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ
+      کسب‌وکار به کار می‌برم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0064
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:51.173Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:51.173Z
+    version: 1
+    revision_hash: personal.story.origin:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.story.turning_points:
+    id: personal.story.turning_points
+    brand_id: omid-ataei
+    module: personal-story
+    value: "۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در بازارهای
+      مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0065
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:51.283Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:51.283Z
+    version: 1
+    revision_hash: personal.story.turning_points:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.story.motivation:
+    id: personal.story.motivation
+    brand_id: omid-ataei
+    module: personal-story
+    value: "I have worked on both sides of the table: building my own businesses and helping other teams
+      launch and grow."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0066
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:51.390Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:51.390Z
+    version: 1
+    revision_hash: personal.story.motivation:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.experience.relationships:
+    id: personal.experience.relationships
+    brand_id: omid-ataei
+    module: personal-career
+    value: "founded | Fiko | 2024 | present | ownership: unstated; founded | Dadvin | 2025 | present |
+      ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated; employed |
+      سهمیران | 2022 | 2024 | ownership: unstated; co-founded | طراحان آزاد | 2012 | 2018 |
+      ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated"
+    value_type: relationships
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0067
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:52.015Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:52.015Z
+    version: 1
+    revision_hash: personal.experience.relationships:1
+    review_due: null
+    related_ids:
+      - business.identity.trade_name
+    private_ref: null
+  personal.experience.roles:
+    id: personal.experience.roles
+    brand_id: omid-ataei
+    module: personal-career
+    value: "Fiko: CEO (فعال). Dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ. طراحان
+      آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0068
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:52.132Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:52.132Z
+    version: 1
+    revision_hash: personal.experience.roles:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.experience.highlights:
+    id: personal.experience.highlights
+    brand_id: omid-ataei
+    module: personal-career
+    value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir"
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0069
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:52.244Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:52.244Z
+    version: 1
+    revision_hash: personal.experience.highlights:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.credibility.credentials:
+    id: personal.credibility.credentials
+    brand_id: omid-ataei
+    module: personal-career
+    value: مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard
+      و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0070
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:52.367Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:52.367Z
+    version: 1
+    revision_hash: personal.credibility.credentials:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.credibility.awards:
+    id: personal.credibility.awards
+    brand_id: omid-ataei
+    module: personal-career
+    value: "Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate،
+      Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید
+      (endorsement) و نه سرمایه‌گذاری."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0071
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:52.490Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:52.490Z
+    version: 1
+    revision_hash: personal.credibility.awards:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.credibility.evidence:
+    id: personal.credibility.evidence
+    brand_id: omid-ataei
+    module: personal-proof
+    value: "Companies House
+      (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO
+      AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین.
+      omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/):
+      پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0072
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:53.106Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:53.106Z
+    version: 1
+    revision_hash: personal.credibility.evidence:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.portfolio.projects:
+    id: personal.portfolio.projects
+    brand_id: omid-ataei
+    module: personal-proof
+    value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
+      مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
+      پروژهٔ مشتری."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0073
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:53.220Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:53.220Z
+    version: 1
+    revision_hash: personal.portfolio.projects:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.governance.public_claim_policy:
+    id: personal.governance.public_claim_policy
+    brand_id: omid-ataei
+    module: personal-proof
+    value: تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک
+      تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته
+      نشوند.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0074
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:53.354Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:53.354Z
+    version: 1
+    revision_hash: personal.governance.public_claim_policy:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.content.pillars:
+    id: personal.content.pillars
+    brand_id: omid-ataei
+    module: personal-content
+    value: ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0075
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:53.981Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:53.981Z
+    version: 1
+    revision_hash: personal.content.pillars:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.content.channels:
+    id: personal.content.channels
+    brand_id: omid-ataei
+    module: personal-content
+    value: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
+      https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
+      https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز
+      مشخص نشده."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0076
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:54.102Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:54.102Z
+    version: 1
+    revision_hash: personal.content.channels:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.goals.outcomes:
+    id: personal.goals.outcomes
+    brand_id: omid-ataei
+    module: personal-content
+    value: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و
+      دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0077
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:54.235Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:54.235Z
+    version: 1
+    revision_hash: personal.goals.outcomes:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.media.photo_guidelines:
+    id: personal.media.photo_guidelines
+    brand_id: omid-ataei
+    module: personal-presence
+    value: رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0078
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:54.869Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:54.869Z
+    version: 1
+    revision_hash: personal.media.photo_guidelines:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.media.avoid:
+    id: personal.media.avoid
+    brand_id: omid-ataei
+    module: personal-presence
+    value: عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های
+      اغراق‌آمیز «موفقیت».
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0079
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:54.995Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:54.995Z
+    version: 1
+    revision_hash: personal.media.avoid:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.media.portraits:
+    id: personal.media.portraits
+    brand_id: omid-ataei
+    module: personal-presence
+    value: پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم
+      گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0080
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:55.118Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:55.118Z
+    version: 1
+    revision_hash: personal.media.portraits:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.verbal.voice:
+    id: brand.verbal.voice
+    brand_id: omid-ataei
+    module: verbal-identity
+    value: "اول‌شخص؛ جمله‌های کوتاه و قاطع؛ رک و بدون اغراق و هایپ. مثال: «If AI is not the best fit,
+      I'll tell you.»"
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0081
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:55.750Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:55.750Z
+    version: 1
+    revision_hash: brand.verbal.voice:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.verbal.forbidden:
+    id: brand.verbal.forbidden
+    brand_id: omid-ataei
+    module: verbal-identity
+    value: «یک‌شبه پولدار شو»؛ تضمین رشد یا درآمد؛ «بهترین»، «اولین» یا «شمارهٔ ۱» بدون منبع؛ طعنه به
+      رقبا؛ شعارهای انگیزشی توخالی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0082
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:55.901Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:55.901Z
+    version: 1
+    revision_hash: brand.verbal.forbidden:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.verbal.localization:
+    id: brand.verbal.localization
+    brand_id: omid-ataei
+    module: verbal-identity
+    value: فارسی، انگلیسی و ترکی. جمله‌های رسمی برند در هر سه زبان را خودم تأیید می‌کنم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0083
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:56.035Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:56.035Z
+    version: 1
+    revision_hash: brand.verbal.localization:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.verbal.voice_pairs:
+    id: brand.verbal.voice_pairs
+    brand_id: omid-ataei
+    module: verbal-identity
+    value: "do: من پیشنهاد می‌کنم که… | don't: قول بهت می‌دم درآمدت حداقل دو برابر بشه; do: می‌خوام یک
+      جمله رو صادقانه بگم… | don't: به نظرم همه باید الان با AI کار کنن; do: بریم ببینیم مشکل چیه |
+      don't: به نظرم این کار بهتره; do: این تجربهٔ منه که از Fiko درس گرفتم | don't: من هر چیزی
+      دربارهٔ استارتاپ می‌دونم; do: یک سؤال دارم ازت: مشتری تو واقعاً کیه؟ | don't: برای شروع این ۱۰
+      تا کار رو بکن; do: ریسک این زیاده ولی ارزشش رو داره که امتحانش کنی | don't: اگه ریسک نکنی به
+      هیچ جایی نمی‌رسی، پس با تمام وجود بیا وسط; do: بر اساس بررسی‌ای که توی سایت ادوایزر شده… |
+      don't: معمولاً ۹۰ درصد استارتاپ‌ها موفق نمی‌شن; do: برندسازی یعنی یک قول به خودت بدی و هر روز
+      سر اون قولت باشی | don't: برندت رو توی ۷ روز بساز; do: یکی از اشتباهات من توی طراحان آزاد این
+      بود که… | don't: من هیچ وقت اشتباه نکردم"
+    value_type: voice_pairs
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0084
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:56.183Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:56.183Z
+    version: 1
+    revision_hash: brand.verbal.voice_pairs:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.privacy.boundaries:
+    id: personal.privacy.boundaries
+    brand_id: omid-ataei
+    module: personal-boundaries
+    value: خانواده، سلامت، محل زندگی دقیق، مسائل مالی شخصی، و دیدگاه‌های سیاسی و مذهبی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0085
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:56.892Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:56.892Z
+    version: 1
+    revision_hash: personal.privacy.boundaries:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.privacy.never_publish:
+    id: personal.privacy.never_publish
+    brand_id: omid-ataei
+    module: personal-boundaries
+    value: اسم کارگزاری‌ها و مشتری‌های حوزهٔ مالی، جزئیات قراردادها، و هر اطلاعات هویتی شخصی که در
+      سایت‌های ثبت رسمی شرکت‌ها آمده است.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0086
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:57.038Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:57.038Z
+    version: 1
+    revision_hash: personal.privacy.never_publish:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.contact.public_channels:
+    id: personal.contact.public_channels
+    brand_id: omid-ataei
+    module: personal-boundaries
+    value: "ایمیل: hello@omidataei.com؛ فرم تماس: https://omidataei.com/contact#inquiry؛ رزرو جلسه:
+      https://omidataei.com/contact#book"
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0087
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:57.186Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:57.186Z
+    version: 1
+    revision_hash: personal.contact.public_channels:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.founder.ventures:
+    id: personal.founder.ventures
+    brand_id: omid-ataei
+    module: personal-founder
+    value: "Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد
+      و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. Dadvin (دادوین):
+      Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد:
+      هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸."
+    value_type: long_text
+    status: approved
+    classification: public
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0088
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:58.042Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:58.042Z
+    version: 1
+    revision_hash: personal.founder.ventures:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.methodology:
+    id: personal.consulting.methodology
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: "مراحل منتورینگ: Understand، Challenge assumptions، Prioritize، Act."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0089
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:58.736Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:58.736Z
+    version: 1
+    revision_hash: personal.consulting.methodology:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.engagements:
+    id: personal.consulting.engagements
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: "1:1 Strategy Session: جلسهٔ آنلاین یک‌به‌یک برای یک چالش مشخص (قیمت هنگام رزرو نمایش داده
+      می‌شود). Strategic Review: پروژهٔ مشخص مثل نوشتن استراتژی کسب‌وکار، برندینگ یا مارکتینگ، با
+      دامنهٔ کتبی و قیمت جداگانه. Ongoing Advisory: همراهی مستمر به‌عنوان شریک استراتژیک، با قیمت
+      جداگانه."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0090
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:58.878Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:58.878Z
+    version: 1
+    revision_hash: personal.consulting.engagements:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.pricing_policy:
+    id: personal.consulting.pricing_policy
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: on_request
+    value_type: single_choice
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0091
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T10:52:59.046Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T10:52:59.046Z
+    version: 1
+    revision_hash: personal.consulting.pricing_policy:1
+    review_due: null
+    related_ids: []
+    private_ref: null
