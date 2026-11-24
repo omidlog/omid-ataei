@@ -2506,7 +2506,7 @@ records:
     session_id: ses-0001
     normalized: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
       فایل منبع Illustrator نزد مالک است.
-    superseded_by: null
+    superseded_by: ans-0168
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0113
@@ -3703,7 +3703,55 @@ records:
     normalized: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent
       = orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
       dark-950; dark-text = surface-bg-1
-    superseded_by: null
+    superseded_by: ans-0169
     disposition_reason: null
     private_ref: null
     suggested_by: agent
+  - answer_id: ans-0168
+    question_id: brand.logo.masters
+    value: "asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light (روی
+      پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع Illustrator
+      نزد مالک است."
+    raw_answer: "asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light
+      (روی پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع
+      Illustrator نزد مالک است."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T18:25:28.563Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light
+      (روی پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع
+      Illustrator نزد مالک است."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0169
+    question_id: brand.color.semantic_map
+    value: primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent =
+      violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    raw_answer: primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent
+      = violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T18:25:28.794Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent
+      = violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null

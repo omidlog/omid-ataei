@@ -1399,33 +1399,18 @@ facts:
     related_ids: []
     private_ref: null
   brand.logo.masters:
-    id: brand.logo.masters
-    brand_id: omid-ataei
-    module: brand
-    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
-      منبع Illustrator نزد مالک است.
-    value_type: text
-    status: approved
-    classification: internal
-    publication: unpublished
-    source:
-      kind: interview
-      answer_ids:
-        - ans-0112
-      reference_ids: []
-      citation_paths:
-        - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T11:07:22.181Z
-    confidence: null
-    assumptions: []
-    owner: null
-    reviewer_id: null
-    approved_at: 2026-11-24T11:07:22.181Z
-    version: 1
-    revision_hash: 0861eff9d29a8eb7c51a9c9980adfa0300fbde97d44f6efd9b6867664a49f148
-    review_due: null
-    related_ids: []
+    value: "asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light (روی
+      پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع Illustrator
+      نزد مالک است."
+    stored_in: brand/instance/draft-facts.yaml
     private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0168
+    updated: 2026-11-24T18:25:28.563Z
   brand.type.license:
     id: brand.type.license
     brand_id: omid-ataei
@@ -2034,15 +2019,15 @@ facts:
     answer_id: ans-0166
     updated: 2026-11-24T18:24:30.984Z
   brand.color.semantic_map:
-    value: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent =
-      orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+    value: primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent =
+      violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
       dark-950; dark-text = surface-bg-1
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: approved
     visibility: internal
     authority: confirmed_by_owner
-    source_type: agent_suggestion
+    source_type: owner
     uncertainty: null
-    answer_id: ans-0167
-    updated: 2026-11-24T18:24:31.156Z
+    answer_id: ans-0169
+    updated: 2026-11-24T18:25:28.794Z

@@ -98,14 +98,14 @@ Approved by: owner
 - Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
-- Source: owner
+- Source: owner (Owner)
 - Uncertainty: none
-- Updated: 2026-11-24T11:07:22.181Z
-- Answer id: ans-0112
+- Updated: 2026-11-24T18:25:28.563Z
+- Answer id: ans-0168
 
 Value:
 
-brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل منبع Illustrator نزد مالک است.
+asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light (روی پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع Illustrator نزد مالک است.
 
 Approved by: owner
 <!-- field:brand.logo.masters end -->

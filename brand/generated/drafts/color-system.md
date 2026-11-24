@@ -128,16 +128,14 @@ TBD
 - Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
-- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Source: owner (Owner)
 - Uncertainty: none
-- Updated: 2026-11-24T18:24:31.156Z
-- Answer id: ans-0167
+- Updated: 2026-11-24T18:25:28.794Z
+- Answer id: ans-0169
 
 Value:
 
-primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent = orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas = dark-950; dark-text = surface-bg-1
+primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent = violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas = dark-950; dark-text = surface-bg-1
 
 Approved by: owner
-
-Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:brand.color.semantic_map end -->

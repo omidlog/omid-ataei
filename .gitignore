@@ -19,3 +19,6 @@ brand/generated/artifacts/
 .vscode/
 *.tsbuildinfo
 .studio-data/
+
+# Owner notes and screenshots stay local (the repository is public).
+brand-os-feedback/

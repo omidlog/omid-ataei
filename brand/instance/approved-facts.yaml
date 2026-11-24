@@ -1405,8 +1405,9 @@ facts:
     id: brand.logo.masters
     brand_id: omid-ataei
     module: logo-system
-    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
-      منبع Illustrator نزد مالک است.
+    value: "asset.logo.wordmark-dark (فایل اصلی، روی پس‌زمینهٔ روشن)؛ asset.logo.wordmark-light (روی
+      پس‌زمینهٔ تیره)؛ asset.icon.key (آیکن: آواتار، فاویکن، امضای پایانی). فایل منبع Illustrator
+      نزد مالک است."
     value_type: long_text
     status: approved
     classification: internal
@@ -1414,18 +1415,18 @@ facts:
     source:
       kind: interview
       answer_ids:
-        - ans-0112
+        - ans-0168
       reference_ids: []
       citation_paths:
         - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T11:07:22.181Z
+      observed_at: 2026-11-24T18:25:28.563Z
     confidence: null
     assumptions: []
     owner: null
     reviewer_id: owner
-    approved_at: 2026-11-24T11:07:22.181Z
-    version: 1
-    revision_hash: brand.logo.masters:1
+    approved_at: 2026-11-24T18:25:28.563Z
+    version: 2
+    revision_hash: brand.logo.masters:2
     review_due: null
     related_ids: []
     private_ref: null
@@ -2077,8 +2078,8 @@ facts:
     id: brand.color.semantic_map
     brand_id: omid-ataei
     module: color-system
-    value: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent =
-      orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+    value: primary = lime; onPrimary = dark-950; secondary = orange; onSecondary = dark-950; accent =
+      violet; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
       dark-950; dark-text = surface-bg-1
     value_type: long_text
     status: approved
@@ -2087,18 +2088,18 @@ facts:
     source:
       kind: interview
       answer_ids:
-        - ans-0167
+        - ans-0169
       reference_ids: []
       citation_paths:
         - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T18:24:31.156Z
+      observed_at: 2026-11-24T18:25:28.794Z
     confidence: null
     assumptions: []
     owner: null
     reviewer_id: owner
-    approved_at: 2026-11-24T18:24:31.156Z
-    version: 1
-    revision_hash: brand.color.semantic_map:1
+    approved_at: 2026-11-24T18:25:28.794Z
+    version: 2
+    revision_hash: brand.color.semantic_map:2
     review_due: null
     related_ids: []
     private_ref: null

@@ -336,7 +336,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -352,7 +352,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -360,15 +360,15 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "hex": "#646AED"
+          "hex": "#FC4B08"
         },
-        "$description": "Draft from approved brand.color.semantic_map: secondary is the owner role violet.",
+        "$description": "Draft from approved brand.color.semantic_map: secondary is the owner role orange.",
         "$extensions": {
           "brand.os": {
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -384,7 +384,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -392,15 +392,15 @@
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
-          "hex": "#FC4B08"
+          "hex": "#646AED"
         },
-        "$description": "Draft from approved brand.color.semantic_map: accent is the owner role orange.",
+        "$description": "Draft from approved brand.color.semantic_map: accent is the owner role violet.",
         "$extensions": {
           "brand.os": {
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       }
@@ -418,7 +418,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -434,7 +434,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -450,7 +450,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       }
@@ -468,7 +468,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       },
@@ -484,7 +484,7 @@
             "status": "draft",
             "generated": true,
             "source_fact": "brand.color.semantic_map",
-            "source_version": 1
+            "source_version": 2
           }
         }
       }
