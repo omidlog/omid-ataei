@@ -87,17 +87,17 @@ TBD
 
 - Question: `personal.goals.outcomes`
 - Field: `personal.goals.outcomes`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:59:57.464Z
+- Answer id: ans-0039
 
 Value:
 
-TBD
+۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
 <!-- field:personal.goals.outcomes end -->
 
 <!-- field:personal.goals.kpis start -->

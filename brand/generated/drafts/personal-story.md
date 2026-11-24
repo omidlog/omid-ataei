@@ -33,17 +33,17 @@ Value:
 
 - Question: `personal.story.turning_points`
 - Field: `personal.story.turning_points`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:59:56.413Z
+- Answer id: ans-0037
 
 Value:
 
-TBD
+۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در بازارهای مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین.
 <!-- field:personal.story.turning_points end -->
 
 <!-- field:personal.story.motivation start -->

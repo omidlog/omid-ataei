@@ -763,3 +763,108 @@ records:
     superseded_by: null
     disposition_reason: null
     private_ref: null
+  - answer_id: ans-0036
+    question_id: personal.identity.roles
+    value: "نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و رشد.
+      صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی."
+    raw_answer: "نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و
+      رشد. صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:59:55.922Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و
+      رشد. صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0037
+    question_id: personal.story.turning_points
+    value: "۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در بازارهای
+      مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین."
+    raw_answer: "۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در
+      بازارهای مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:59:56.413Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در
+      بازارهای مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0038
+    question_id: personal.portfolio.projects
+    value: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ
+      مشتری. dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه
+      پروژهٔ مشتری."
+    raw_answer: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه
+      پروژهٔ مشتری. dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم،
+      نه پروژهٔ مشتری."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:59:56.920Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه
+      پروژهٔ مشتری. dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم،
+      نه پروژهٔ مشتری."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0039
+    question_id: personal.goals.outcomes
+    value: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و
+      دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
+    raw_answer: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به
+      Fiko و دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:59:57.464Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: ۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به
+      Fiko و دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0040
+    question_id: personal.media.photo_guidelines
+    value: رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
+    raw_answer: رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T09:59:58.118Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null

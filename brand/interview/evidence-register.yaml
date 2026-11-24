@@ -149,3 +149,35 @@ items:
     verified_by: owner
     review_due: null
     status_reason: null
+  - id: ev-0010
+    claim_id: personal.portfolio.projects
+    kind: verification
+    source_type: link
+    reference: https://omidataei.com/case-studies/fiko
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T10:00:04.609Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
+  - id: ev-0011
+    claim_id: personal.portfolio.projects
+    kind: verification
+    source_type: link
+    reference: https://omidataei.com/case-studies/dadvin
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T10:00:05.002Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null

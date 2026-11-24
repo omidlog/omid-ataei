@@ -87,17 +87,17 @@ Companies House (https://find-and-update.company-information.service.gov.uk/comp
 
 - Question: `personal.portfolio.projects`
 - Field: `personal.portfolio.projects`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:59:56.920Z
+- Answer id: ans-0038
 
 Value:
 
-TBD
+Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری.
 <!-- field:personal.portfolio.projects end -->
 
 <!-- field:personal.reputation.testimonials start -->

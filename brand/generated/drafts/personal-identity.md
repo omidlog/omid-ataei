@@ -51,17 +51,17 @@ Founder & CEO | Business & Brand Strategist | Startup Mentor | Marketing & Growt
 
 - Question: `personal.identity.roles`
 - Field: `personal.identity.roles`
-- Status: unanswered
+- Status: draft
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:59:55.922Z
+- Answer id: ans-0036
 
 Value:
 
-TBD
+نقش‌ها: Founder & CEO، استراتژیست کسب‌وکار و برند، منتور استارتاپ، مشاور مارکتینگ و رشد. صنایع: نرم‌افزار و هوش مصنوعی (SaaS)، فناوری حقوقی، بازارهای مالی، تبلیغات و طراحی.
 <!-- field:personal.identity.roles end -->
 
 <!-- field:personal.identity.name_forms start -->

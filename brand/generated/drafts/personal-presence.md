@@ -15,17 +15,17 @@ generated: true
 
 - Question: `personal.media.photo_guidelines`
 - Field: `personal.media.photo_guidelines`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T09:59:58.118Z
+- Answer id: ans-0040
 
 Value:
 
-TBD
+رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
 <!-- field:personal.media.photo_guidelines end -->
 
 <!-- field:personal.media.avoid start -->
