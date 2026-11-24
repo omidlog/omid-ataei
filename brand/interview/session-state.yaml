@@ -37,10 +37,89 @@ history:
   - personal.governance.public_claim_policy
   - personal.privacy.boundaries
   - personal.privacy.never_publish
+  - personal.identity.roles
+  - personal.story.turning_points
+  - personal.portfolio.projects
+  - personal.goals.outcomes
+  - personal.media.photo_guidelines
+  - personal.media.avoid
+  - personal.media.portraits
+  - brand.verbal.forbidden
+  - brand.verbal.localization
+  - brand.verbal.voice_pairs
+  - personal.experience.relationships
+  - personal.experience.roles
+  - personal.founder.ventures
+  - personal.portfolio.projects
+  - personal.positioning.known_for
+  - personal.identity.name_forms
+  - personal.identity.public_name
+  - personal.identity.headline
+  - personal.identity.roles
+  - personal.identity.name_forms
+  - personal.identity.service_scope
+  - brand.personality.traits
+  - personal.positioning.known_for
+  - personal.positioning.primary_audience
+  - personal.positioning.expertise
+  - personal.positioning.outcome
+  - personal.positioning.perspective
+  - personal.services.offers
+  - personal.story.origin
+  - personal.story.turning_points
+  - personal.story.motivation
+  - personal.experience.relationships
+  - personal.experience.roles
+  - personal.experience.highlights
+  - personal.credibility.credentials
+  - personal.credibility.awards
+  - personal.credibility.evidence
+  - personal.portfolio.projects
+  - personal.governance.public_claim_policy
+  - personal.content.pillars
+  - personal.content.channels
+  - personal.goals.outcomes
+  - personal.media.photo_guidelines
+  - personal.media.avoid
+  - personal.media.portraits
+  - brand.verbal.voice
+  - brand.verbal.forbidden
+  - brand.verbal.localization
+  - brand.verbal.voice_pairs
+  - personal.privacy.boundaries
+  - personal.privacy.never_publish
+  - personal.contact.public_channels
+  - personal.founder.ventures
+  - personal.consulting.methodology
+  - personal.consulting.engagements
+  - personal.consulting.pricing_policy
+  - personal.founder.narrative
+  - personal.consulting.target_clients
+  - personal.consulting.confidentiality
+  - brand.color.roles
+  - brand.type.intent
+  - brand.color.roles
+  - brand.type.intent
+  - personal.founder.narrative
+  - personal.consulting.target_clients
+  - personal.consulting.confidentiality
+  - brand.logo.variants
+  - brand.logo.clear_space
+  - brand.logo.min_size
+  - brand.logo.misuse
+  - brand.logo.masters
+  - brand.type.license
+  - brand.logo.variants
+  - brand.logo.clear_space
+  - brand.logo.min_size
+  - brand.logo.misuse
+  - brand.logo.masters
+  - brand.type.license
+  - personal.experience.highlights
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T09:54:20.802Z
-last_answer_id: ans-0035
+updated_at: 2026-11-24T11:07:22.486Z
+last_answer_id: ans-0114

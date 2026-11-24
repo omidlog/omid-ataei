@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.media.photo_guidelines`
 - Field: `personal.media.photo_guidelines`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:54.869Z
+- Answer id: ans-0078
 
 Value:
 
-TBD
+رسمی نه؛ استارتاپی و کژوال، با حس زندگی.
+
+Approved by: owner
 <!-- field:personal.media.photo_guidelines end -->
 
 <!-- field:personal.media.avoid start -->
@@ -33,17 +35,19 @@ TBD
 
 - Question: `personal.media.avoid`
 - Field: `personal.media.avoid`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:54.995Z
+- Answer id: ans-0079
 
 Value:
 
-TBD
+عکس رسمی و خشک با کت‌وشلوار، عکس استوک، نمایش ثروت و لوکس (مثل ماشین یا پول)، و ژست‌های اغراق‌آمیز «موفقیت».
+
+Approved by: owner
 <!-- field:personal.media.avoid end -->
 
 <!-- field:personal.media.portraits start -->
@@ -51,17 +55,19 @@ TBD
 
 - Question: `personal.media.portraits`
 - Field: `personal.media.portraits`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:55.118Z
+- Answer id: ans-0080
 
 Value:
 
-TBD
+پرتره‌های سایت (پرترهٔ عمودی و آواتار مربعی) با هوش مصنوعی از روی عکسی ساخته شده‌اند که خودم گرفته‌ام. عکس اصلی را خودم گرفته‌ام.
+
+Approved by: owner
 <!-- field:personal.media.portraits end -->
 
 <!-- field:personal.media.presentation start -->

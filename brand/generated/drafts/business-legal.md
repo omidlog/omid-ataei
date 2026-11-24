@@ -33,17 +33,19 @@ TBD
 
 - Question: `brand.type.license`
 - Field: `brand.type.license`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:07:22.322Z
+- Answer id: ans-0113
 
 Value:
 
-TBD
+Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F).
+
+Approved by: owner
 <!-- field:brand.type.license end -->
 
 <!-- field:business.legal.entity start -->

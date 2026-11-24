@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.positioning.perspective`
 - Field: `personal.positioning.perspective`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:10.688Z
-- Answer id: ans-0016
+- Updated: 2026-11-24T10:52:50.458Z
+- Answer id: ans-0062
 
 Value:
 
 A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛ مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ رشد تضمینی نمی‌دهم.
+
+Approved by: owner
 <!-- field:personal.positioning.perspective end -->
 
 <!-- field:personal.content.pillars start -->
@@ -33,17 +35,19 @@ A builder's mindset. A strategist's perspective. فقط به یک کمپین ی�
 
 - Question: `personal.content.pillars`
 - Field: `personal.content.pillars`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:14.669Z
-- Answer id: ans-0024
+- Updated: 2026-11-24T10:52:53.981Z
+- Answer id: ans-0075
 
 Value:
 
 ساختن Fiko؛ ساختن دادوین؛ منتورینگ بنیان‌گذاران؛ هوش مصنوعی در کسب‌وکارهای واقعی.
+
+Approved by: owner
 <!-- field:personal.content.pillars end -->
 
 <!-- field:personal.content.channels start -->
@@ -51,17 +55,19 @@ Value:
 
 - Question: `personal.content.channels`
 - Field: `personal.content.channels`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:26.730Z
-- Answer id: ans-0030
+- Updated: 2026-11-24T10:52:54.102Z
+- Answer id: ans-0076
 
 Value:
 
 Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube: https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram: https://t.me/ataei_ca؛ LinkedIn: https://www.linkedin.com/in/omid-ataei/. هدف هر کانال هنوز مشخص نشده.
+
+Approved by: owner
 <!-- field:personal.content.channels end -->
 
 <!-- field:personal.content.channel_tone start -->
@@ -87,17 +93,19 @@ TBD
 
 - Question: `personal.goals.outcomes`
 - Field: `personal.goals.outcomes`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:54.235Z
+- Answer id: ans-0077
 
 Value:
 
-TBD
+۱) گرفتن مشتری منتورینگ. ۲) گرفتن سفارش استراتژی برند یا مارکتینگ. ۳) اعتبار دادن به Fiko و دادوین. ۴) شناخته‌شدن به‌عنوان اینفلوئنسر کسب‌وکار و استارتاپ در اینستاگرام.
+
+Approved by: owner
 <!-- field:personal.goals.outcomes end -->
 
 <!-- field:personal.goals.kpis start -->

@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.positioning.known_for`
 - Field: `personal.positioning.known_for`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:05:21.455Z
-- Answer id: ans-0003
+- Updated: 2026-11-24T10:52:50.002Z
+- Answer id: ans-0058
 
 Value:
 
-می‌خواهم به عنوان بنیان‌گذار چند استارتاپ، مشاور و استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار شناخته شوم.
+بنیان‌گذار چند استارتاپ، استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار.
+
+Approved by: owner
 <!-- field:personal.positioning.known_for end -->
 
 <!-- field:personal.positioning.primary_audience start -->
@@ -33,17 +35,19 @@ Value:
 
 - Question: `personal.positioning.primary_audience`
 - Field: `personal.positioning.primary_audience`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:16:53.220Z
-- Answer id: ans-0007
+- Updated: 2026-11-24T10:52:50.110Z
+- Answer id: ans-0059
 
 Value:
 
 ۱) بنیان‌گذاران استارتاپ‌های مرحلهٔ اول (ایده یا تازه راه‌افتاده). ۲) صاحبان کسب‌وکارهایی که دنبال برندسازی یا رشد هستند یا برای مارکتینگ یا برندینگ استراتژی می‌خواهند. ۳) مدیران بازاریابی شرکت‌ها.
+
+Approved by: owner
 <!-- field:personal.positioning.primary_audience end -->
 
 <!-- field:personal.positioning.expertise start -->
@@ -51,17 +55,19 @@ Value:
 
 - Question: `personal.positioning.expertise`
 - Field: `personal.positioning.expertise`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:09.678Z
-- Answer id: ans-0014
+- Updated: 2026-11-24T10:52:50.217Z
+- Answer id: ans-0060
 
 Value:
 
 استراتژی استارتاپ، استراتژی کسب‌وکار، جایگاه‌یابی برند (brand positioning)، ورود به بازار (go-to-market)، استراتژی مارکتینگ، مشاورهٔ رشد، اجرای دیجیتال، ایجنت‌های هوش مصنوعی و اتوماسیون. تجربهٔ ویژه به‌عنوان مدیر مارکتینگ و استراتژیست برندینگ و مارکتینگ در حوزهٔ بازارهای مالی.
+
+Approved by: owner
 <!-- field:personal.positioning.expertise end -->
 
 <!-- field:personal.positioning.outcome start -->
@@ -69,17 +75,19 @@ Value:
 
 - Question: `personal.positioning.outcome`
 - Field: `personal.positioning.outcome`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:10.202Z
-- Answer id: ans-0015
+- Updated: 2026-11-24T10:52:50.340Z
+- Answer id: ans-0061
 
 Value:
 
 I help founders and businesses make smarter decisions, build stronger brands and create practical strategies for sustainable growth.
+
+Approved by: owner
 <!-- field:personal.positioning.outcome end -->
 
 <!-- field:personal.positioning.perspective start -->
@@ -87,17 +95,19 @@ I help founders and businesses make smarter decisions, build stronger brands and
 
 - Question: `personal.positioning.perspective`
 - Field: `personal.positioning.perspective`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:10.688Z
-- Answer id: ans-0016
+- Updated: 2026-11-24T10:52:50.458Z
+- Answer id: ans-0062
 
 Value:
 
 A builder's mindset. A strategist's perspective. فقط به یک کمپین یا یک خروجی نگاه نمی‌کنم؛ مدل کسب‌وکار، برند، مشتری و تصمیم‌هایی را که عملکرد بلندمدت را می‌سازند با هم می‌بینم. وعدهٔ رشد تضمینی نمی‌دهم.
+
+Approved by: owner
 <!-- field:personal.positioning.perspective end -->
 
 <!-- field:personal.services.offers start -->
@@ -105,17 +115,19 @@ A builder's mindset. A strategist's perspective. فقط به یک کمپین ی�
 
 - Question: `personal.services.offers`
 - Field: `personal.services.offers`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:11.190Z
-- Answer id: ans-0017
+- Updated: 2026-11-24T10:52:50.572Z
+- Answer id: ans-0063
 
 Value:
 
 Startup & Business Mentoring؛ Brand & Marketing Strategy؛ Digital Products & Execution؛ AI Agents & Automation.
+
+Approved by: owner
 <!-- field:personal.services.offers end -->
 
 <!-- field:personal.positioning.boundaries start -->

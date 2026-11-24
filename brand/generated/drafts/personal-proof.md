@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.experience.highlights`
 - Field: `personal.experience.highlights`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:52:38.850Z
-- Answer id: ans-0031
+- Updated: 2026-11-24T11:07:22.473Z
+- Answer id: ans-0114
 
 Value:
 
-مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir
+مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است).
+
+Approved by: owner
 <!-- field:personal.experience.highlights end -->
 
 <!-- field:personal.credibility.credentials start -->
@@ -33,17 +35,19 @@ Value:
 
 - Question: `personal.credibility.credentials`
 - Field: `personal.credibility.credentials`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:52:39.368Z
-- Answer id: ans-0032
+- Updated: 2026-11-24T10:52:52.367Z
+- Answer id: ans-0070
 
 Value:
 
 مدرک دانشگاهی طراحی گرافیک؛ مدرک دانشگاهی مدیریت کسب‌وکار؛ دوره‌های مارکتینگ مرتبط با Harvard و University of Pennsylvania؛ دو گواهی (certificate) در بخش Licenses & certifications لینکدین.
+
+Approved by: owner
 <!-- field:personal.credibility.credentials end -->
 
 <!-- field:personal.credibility.awards start -->
@@ -51,17 +55,19 @@ Value:
 
 - Question: `personal.credibility.awards`
 - Field: `personal.credibility.awards`
-- Status: draft
+- Status: approved
 - Visibility: public
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:17.146Z
-- Answer id: ans-0028
+- Updated: 2026-11-24T10:52:52.490Z
+- Answer id: ans-0071
 
 Value:
 
 Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنامه‌های حمایت از استارتاپ: AWS Activate، Google for Startups، NVIDIA Inception، Claude for Startups. فقط شرکت در برنامه؛ نه تأیید (endorsement) و نه سرمایه‌گذاری.
+
+Approved by: owner
 <!-- field:personal.credibility.awards end -->
 
 <!-- field:personal.credibility.evidence start -->
@@ -69,17 +75,19 @@ Türkiye Tech Visa (دریافت‌شده). پذیرش و شرکت در برنا
 
 - Question: `personal.credibility.evidence`
 - Field: `personal.credibility.evidence`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:30:13.380Z
-- Answer id: ans-0011
+- Updated: 2026-11-24T10:52:53.106Z
+- Answer id: ans-0072
 
 Value:
 
 Companies House (https://find-and-update.company-information.service.gov.uk/company/16502068): ثبت شرکت FIKO AI LABS LTD در بریتانیا و سمت Director. fiko.io: محصول Fiko. dadvin.ir: محصول دادوین. omidataei.com: سایت شخصی، خدمات و سوابق. LinkedIn (https://www.linkedin.com/in/omid-ataei/): پروفایل حرفه‌ای؛ به گفتهٔ مالک تاریخ‌ها دقیق و کامل نیستند و منبع تاریخ‌ها نیست.
+
+Approved by: owner
 <!-- field:personal.credibility.evidence end -->
 
 <!-- field:personal.portfolio.projects start -->
@@ -87,17 +95,19 @@ Companies House (https://find-and-update.company-information.service.gov.uk/comp
 
 - Question: `personal.portfolio.projects`
 - Field: `personal.portfolio.projects`
-- Status: unanswered
+- Status: approved
 - Visibility: public
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:53.220Z
+- Answer id: ans-0073
 
 Value:
 
-TBD
+Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری.
+
+Approved by: owner
 <!-- field:personal.portfolio.projects end -->
 
 <!-- field:personal.reputation.testimonials start -->
@@ -141,15 +151,17 @@ TBD
 
 - Question: `personal.governance.public_claim_policy`
 - Field: `personal.governance.public_claim_policy`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:54:16.436Z
-- Answer id: ans-0033
+- Updated: 2026-11-24T10:52:53.354Z
+- Answer id: ans-0074
 
 Value:
 
 تعداد کاربر یا مشتری، درآمد و اعداد رشد، اسم مشتری‌ها، نتایج پروژه‌ها، جایزه و رتبه، مدارک تحصیلی، و همکاری یا تأیید از طرف شرکت‌های بزرگ (مثل Google، AWS و NVIDIA) هرگز بدون منبع گفته نشوند.
+
+Approved by: owner
 <!-- field:personal.governance.public_claim_policy end -->

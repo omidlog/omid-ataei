@@ -15,17 +15,19 @@ generated: true
 
 - Question: `personal.story.origin`
 - Field: `personal.story.origin`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:13.627Z
-- Answer id: ans-0022
+- Updated: 2026-11-24T10:52:51.173Z
+- Answer id: ans-0064
 
 Value:
 
 از طراحی گرافیک شروع کردم و شش سال طراحان آزاد را اداره کردم. بعد به مدیریت مارکتینگ و استراتژی برند رسیدم و امروز این تجربه را در ونچرهای تکنولوژی، منتورینگ استارتاپ و مشاورهٔ کسب‌وکار به کار می‌برم.
+
+Approved by: owner
 <!-- field:personal.story.origin end -->
 
 <!-- field:personal.story.turning_points start -->
@@ -33,17 +35,19 @@ Value:
 
 - Question: `personal.story.turning_points`
 - Field: `personal.story.turning_points`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:52:51.283Z
+- Answer id: ans-0065
 
 Value:
 
-TBD
+۱) ساختن و اداره‌کردن طراحان آزاد؛ گذر از طراحی به کسب‌وکار. ۲) مدیریت مارکتینگ در بازارهای مالی. ۳) ساختن محصول‌های خودم: Fiko و دادوین.
+
+Approved by: owner
 <!-- field:personal.story.turning_points end -->
 
 <!-- field:personal.story.motivation start -->
@@ -51,17 +55,19 @@ TBD
 
 - Question: `personal.story.motivation`
 - Field: `personal.story.motivation`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:14.126Z
-- Answer id: ans-0023
+- Updated: 2026-11-24T10:52:51.390Z
+- Answer id: ans-0066
 
 Value:
 
 I have worked on both sides of the table: building my own businesses and helping other teams launch and grow.
+
+Approved by: owner
 <!-- field:personal.story.motivation end -->
 
 <!-- field:personal.story.timeline start -->
