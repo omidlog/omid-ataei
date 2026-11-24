@@ -40,8 +40,9 @@ jobs:
           fi
           npx tsx scripts/ci-scope.ts "$BASE" HEAD
       # A private brand (brand.publish_docs: private, the default for brands Studio creates) never
-      # gets a public docs build: prepare-docs refuses one. The public steps below run only for
-      # public brands; prepare:docs itself picks the internal audience for a private brand.
+      # gets a public docs build: prepare-docs refuses an explicit `--audience public` (or
+      # DOCS_AUDIENCE=public). The public steps below run only for public brands. `npm run
+      # prepare:docs` passes no audience, so it picks from publish_docs: internal for a private brand.
       - name: docs audience
         id: docs
         run: npx tsx scripts/docs-audience.ts

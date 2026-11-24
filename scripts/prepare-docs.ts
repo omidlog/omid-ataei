@@ -34,7 +34,7 @@ interface PrepareContext {
   config: BrandConfig
 }
 
-export function prepareDocs(root: string, options: PrepareOptions = {}): { copied: number; excluded: string[] } {
+export function prepareDocs(root: string, options: PrepareOptions = {}): { copied: number; excluded: string[]; audience: 'public' | 'internal' } {
   const engine = new InterviewEngine(root)
   const config = engine.config()
   const requested = options.audience ?? (config.brand.publish_docs === 'public' ? 'public' : 'internal')
@@ -114,7 +114,7 @@ export function prepareDocs(root: string, options: PrepareOptions = {}): { copie
     fs.mkdirSync(path.join(ctx.root, 'apps', 'docs', 'static'), { recursive: true })
     fs.writeFileSync(path.join(ctx.root, 'apps', 'docs', 'static', 'release-manifest.json'), `${JSON.stringify(release, null, 2)}\n`)
   }
-  return { copied: included.length, excluded: [...excluded] }
+  return { copied: included.length, excluded: [...excluded], audience: requested }
 }
 
 function collect(ctx: PrepareContext, dir: string, into: DocFile[]): void {
@@ -400,21 +400,37 @@ function copyAssets(ctx: PrepareContext): void {
   }
 }
 
+/**
+ * The audience the CLI asks for. `--audience` wins; otherwise `DOCS_AUDIENCE` when it is exactly
+ * `public` or `internal`. With neither, it is undefined and prepareDocs picks from
+ * brand.publish_docs (internal for a private brand). An explicit public request on a private brand
+ * is still refused by prepareDocs: nothing here can force a public build.
+ */
+export function cliAudience(flag: string | undefined, env: string | undefined): 'public' | 'internal' | undefined {
+  if (flag !== undefined) return flag === 'internal' ? 'internal' : 'public'
+  if (env === 'internal' || env === 'public') return env
+  return undefined
+}
+
 const isEntry = process.argv[1]?.includes('prepare-docs')
 if (isEntry) {
   const { values } = parseArgs({
     options: {
-      audience: { type: 'string', default: process.env.DOCS_AUDIENCE === 'internal' ? 'internal' : 'public' },
+      audience: { type: 'string' },
       mascot: { type: 'string' },
       gamification: { type: 'string' },
       'root-index': { type: 'boolean', default: true },
     },
   })
+  const audience = cliAudience(values.audience, process.env.DOCS_AUDIENCE)
   const result = prepareDocs(process.cwd(), {
-    audience: values.audience === 'internal' ? 'internal' : 'public',
+    audience,
     mascot: values.mascot === undefined ? undefined : values.mascot === 'true',
     gamification: values.gamification === undefined ? undefined : values.gamification === 'true',
     rootIndex: values.mascot === 'false' || values.gamification === 'false' ? false : values['root-index'],
   })
-  console.log(`Prepared docs. Copied ${result.copied}. Excluded ${result.excluded.length}.`)
+  if (audience === undefined && result.audience === 'internal') {
+    console.log('[docs] brand.publish_docs is private: skipping the public docs build; preparing the internal audience instead (never deploy them).')
+  }
+  console.log(`Prepared docs (${result.audience}). Copied ${result.copied}. Excluded ${result.excluded.length}.`)
 }
