@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:23:22.903Z
-- Answer id: ans-0008
+- Updated: 2026-11-24T10:46:09.761Z
+- Answer id: ans-0046
 
 Value:
 
-founded | Fiko | 2024 | present | ownership: unstated; founded | dadvin | 2025 | present | ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated; employed | سهمیران | 2022 | 2024 | ownership: unstated; co-founded | طراحان آزاد | 2012 | 2018 | ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated
+founded | Fiko | 2024 | present | ownership: unstated; founded | Dadvin | 2025 | present | ownership: unstated; employed | فراکوچ | 2018-04 | 2022-01 | ownership: unstated; employed | سهمیران | 2022 | 2024 | ownership: unstated; co-founded | طراحان آزاد | 2012 | 2018 | ownership: unstated; founded | artsglob | 2024 | 2025 | ownership: unstated
 <!-- field:personal.experience.relationships end -->
 
 <!-- field:personal.experience.roles start -->
@@ -38,12 +38,12 @@ founded | Fiko | 2024 | present | ownership: unstated; founded | dadvin | 2025 |
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:27:30.280Z
-- Answer id: ans-0010
+- Updated: 2026-11-24T10:46:10.283Z
+- Answer id: ans-0047
 
 Value:
 
-Fiko: CEO (فعال). dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ. طراحان آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO.
+Fiko: CEO (فعال). Dadvin: CEO (فعال). فراکوچ: مدیر مارکتینگ. سهمیران: مدیر مارکتینگ. طراحان آزاد: مدیر آتلیه طراحی. artsglob: Founder & CEO.
 <!-- field:personal.experience.roles end -->
 
 <!-- field:personal.experience.highlights start -->

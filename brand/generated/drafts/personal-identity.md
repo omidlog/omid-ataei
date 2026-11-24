@@ -74,12 +74,12 @@ Value:
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:08.729Z
-- Answer id: ans-0012
+- Updated: 2026-11-24T10:46:17.171Z
+- Answer id: ans-0051
 
 Value:
 
-فارسی (شکل رسمی): امید عطائی. شکل رایج دیگر که در بعضی جاها استفاده می‌شود: امید عطایی.
+امید عطائی (فارسی، شکل رسمی)؛ امید عطایی (شکل رایج)
 <!-- field:personal.identity.name_forms end -->
 
 <!-- field:personal.identity.localized_headline start -->

@@ -92,12 +92,12 @@ Companies House (https://find-and-update.company-information.service.gov.uk/comp
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:59:56.920Z
-- Answer id: ans-0038
+- Updated: 2026-11-24T10:46:11.385Z
+- Answer id: ans-0049
 
 Value:
 
-Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری.
+Fiko: Founder & CEO، از ۲۰۲۴ تاکنون؛ محصول AI SaaS در حال توسعه و عرضه؛ ونچر خودم، نه پروژهٔ مشتری. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵ تاکنون؛ دستیار هوشمند حقوقی؛ ونچر خودم، نه پروژهٔ مشتری.
 <!-- field:personal.portfolio.projects end -->
 
 <!-- field:personal.reputation.testimonials start -->

@@ -69,17 +69,17 @@ TBD
 
 - Question: `brand.verbal.voice_pairs`
 - Field: `brand.verbal.voice_pairs`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T10:46:00.658Z
+- Answer id: ans-0045
 
 Value:
 
-TBD
+do: من پیشنهاد می‌کنم که… | don't: قول بهت می‌دم درآمدت حداقل دو برابر بشه; do: می‌خوام یک جمله رو صادقانه بگم… | don't: به نظرم همه باید الان با AI کار کنن; do: بریم ببینیم مشکل چیه | don't: به نظرم این کار بهتره; do: این تجربهٔ منه که از Fiko درس گرفتم | don't: من هر چیزی دربارهٔ استارتاپ می‌دونم; do: یک سؤال دارم ازت: مشتری تو واقعاً کیه؟ | don't: برای شروع این ۱۰ تا کار رو بکن; do: ریسک این زیاده ولی ارزشش رو داره که امتحانش کنی | don't: اگه ریسک نکنی به هیچ جایی نمی‌رسی، پس با تمام وجود بیا وسط; do: بر اساس بررسی‌ای که توی سایت ادوایزر شده… | don't: معمولاً ۹۰ درصد استارتاپ‌ها موفق نمی‌شن; do: برندسازی یعنی یک قول به خودت بدی و هر روز سر اون قولت باشی | don't: برندت رو توی ۷ روز بساز; do: یکی از اشتباهات من توی طراحان آزاد این بود که… | don't: من هیچ وقت اشتباه نکردم
 <!-- field:brand.verbal.voice_pairs end -->
 
 <!-- field:brand.color.roles start -->

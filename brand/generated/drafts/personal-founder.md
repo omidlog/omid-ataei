@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:48:09.186Z
-- Answer id: ans-0013
+- Updated: 2026-11-24T10:46:10.808Z
+- Answer id: ans-0048
 
 Value:
 
-Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. dadvin (دادوین): Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد: هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸.
+Fiko: Founder & CEO، شروع ۲۰۲۴، فعال. شرکت بریتانیایی FIKO AI LABS LTD در ۶ ژوئن ۲۰۲۵ ثبت شد و پس از آن شرکت ترکیه‌ای FİKO AI LABS TEKNOLOJİ LİMİTED ŞİRKETİ ثبت شد. Dadvin (دادوین): Founder & CEO، از ۲۰۲۵، فعال. artsglob: Founder & CEO، ۲۰۲۴ تا ۲۰۲۵. طراحان آزاد: هم‌بنیان‌گذار و مدیر آتلیه طراحی، ۲۰۱۲ تا ۲۰۱۸.
 <!-- field:personal.founder.ventures end -->
 
 <!-- field:personal.founder.narrative start -->

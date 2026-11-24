@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T09:05:21.455Z
-- Answer id: ans-0003
+- Updated: 2026-11-24T10:46:16.640Z
+- Answer id: ans-0050
 
 Value:
 
-می‌خواهم به عنوان بنیان‌گذار چند استارتاپ، مشاور و استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار شناخته شوم.
+بنیان‌گذار چند استارتاپ، استراتژیست برندینگ و مارکتینگ، و منتور استارتاپ و کسب‌وکار.
 <!-- field:personal.positioning.known_for end -->
 
 <!-- field:personal.positioning.primary_audience start -->

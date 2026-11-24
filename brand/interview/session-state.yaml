@@ -46,10 +46,17 @@ history:
   - personal.media.portraits
   - brand.verbal.forbidden
   - brand.verbal.localization
+  - brand.verbal.voice_pairs
+  - personal.experience.relationships
+  - personal.experience.roles
+  - personal.founder.ventures
+  - personal.portfolio.projects
+  - personal.positioning.known_for
+  - personal.identity.name_forms
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T10:04:35.267Z
-last_answer_id: ans-0044
+updated_at: 2026-11-24T10:46:17.186Z
+last_answer_id: ans-0051
