@@ -47,7 +47,7 @@ import { latestAnswers } from '../completeness.js'
 import { personalConfig } from '../conditions.js'
 import { findContradictions } from '../contradictions.js'
 import { InterviewEngine } from '../engine.js'
-import { readEvidence, type EvidenceItem } from '../evidence.js'
+import { isIndependentSource, readEvidence, type EvidenceItem } from '../evidence.js'
 import { readFacts, type CanonicalFact } from '../facts.js'
 import { scanAll } from '../knowledge/store.js'
 import { openWorkspace, type KnowledgeWorkspace } from '../knowledge/workspace.js'
@@ -643,7 +643,7 @@ export function listEvidenceLinks(root: string, options: { asOf: Date; method_id
         revisions: w.links.get(note.id)?.length ?? 0,
         candidates: [...w.register.values()]
           .filter((entry) => entry.kind === 'verification' && note.question_ids.includes(entry.claim_id))
-          .map((entry) => ({ evidence_id: entry.id, claim_id: entry.claim_id, status: entry.status, independent_source: entry.source_type !== 'owner_testimony' }))
+          .map((entry) => ({ evidence_id: entry.id, claim_id: entry.claim_id, status: entry.status, independent_source: isIndependentSource(entry) }))
           .sort((a, b) => (a.evidence_id < b.evidence_id ? -1 : 1)),
       }
     })
@@ -679,6 +679,7 @@ export function linkEvidence(root: string, input: LinkEvidenceInput, opts: { now
   if (!entry) throw new AssuranceLinkError('not_linkable', `No evidence-register entry ${String(input.evidence_id)}. Record one with brand:evidence add.`)
   if (entry.kind !== 'verification') throw new AssuranceLinkError('not_linkable', `${entry.id} is a permission, not evidence for a claim.`)
   if (entry.source_type === 'owner_testimony') throw new AssuranceLinkError('not_linkable', `${entry.id} is owner testimony. It never counts as independent evidence.`)
+  if (entry.owned === true) throw new AssuranceLinkError('not_linkable', `${entry.id} is a source the owner controls (owner-published). It never counts as independent evidence.`)
   if (!note.question_ids.includes(entry.claim_id)) throw new AssuranceLinkError('not_linkable', `${entry.id} supports ${entry.claim_id}, which this note is not about.`)
   if (entry.status === 'withdrawn' || entry.status === 'rejected') throw new AssuranceLinkError('not_linkable', `${entry.id} was ${entry.status}. Record a new entry instead.`)
   const revision = appendLink(w.ws, {

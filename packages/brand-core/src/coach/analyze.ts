@@ -4,7 +4,7 @@ import { answerDigest, coachQuestion, contextDigest, openCoachContext, type Coac
 import { answeredIds, consistencyFindings } from './consistency.js'
 import { chooseFollowUp } from './follow-up.js'
 import { applyFacetRubrics } from './facet-rubrics.js'
-import { CLARIFY_QUESTIONS, coachText, coachUi, COACH_TENSION_RULES, CRITERION_NAMES, NO_FOLLOW_UP_TEXT, TENSION_QUESTIONS, type CoachTensionRule } from './i18n.js'
+import { clarifyQuestion, coachText, coachUi, COACH_TENSION_RULES, CRITERION_NAMES, NO_FOLLOW_UP_TEXT, TENSION_QUESTIONS, type CoachTensionRule } from './i18n.js'
 import {
   COACH_ENGINE_VERSION,
   COACH_RULE_VERSION,
@@ -179,7 +179,7 @@ export function followUpReview(ctx: CoachContext, questionId: string, opts: Coac
       question_id: question.id,
       related_question_ids: [],
       canonical_question_id: null,
-      suggested_question: CLARIFY_QUESTIONS[locale][choice.criterion],
+      suggested_question: clarifyQuestion(locale, choice.criterion, question.id),
       missing_dimension: choice.criterion,
       improves_outputs: outputs,
       reason: text.reason,

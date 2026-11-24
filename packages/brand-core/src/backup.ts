@@ -5,6 +5,7 @@ import { migrateFactFiles } from './facts.js'
 import { migrateMascotCatalog, type MascotMigration } from './mascot-lifecycle.js'
 import { writeAtomic } from './fsutil.js'
 import { migratePersonal } from './personal.js'
+import { addMissingQuestions, refreshQuestionText } from './question-text.js'
 import { parse, stringify } from 'yaml'
 import { dataKey } from './private-store.js'
 
@@ -107,7 +108,7 @@ export function restoreBrand(root: string, backupDir: string): { restored: strin
  * Upgrades engine metadata, fact files and the mascot catalog lifecycle. Fact values and module prose are never
  * rewritten (`content_rewritten: false`). The mascot migration only changes legacy `status` values.
  */
-export function migrateBrand(root: string): { from: string; to: string; content_rewritten: false; mascot: MascotMigration } {
+export function migrateBrand(root: string): { from: string; to: string; content_rewritten: false; mascot: MascotMigration; question_text: string[] } {
   const lockFile = path.join(root, 'brand', 'engine.lock')
   const current = fs.existsSync(lockFile) ? (JSON.parse(fs.readFileSync(lockFile, 'utf8')) as { version?: string }) : {}
   const from = current.version ?? '0.0.0'
@@ -124,6 +125,12 @@ export function migrateBrand(root: string): { from: string; to: string; content_
   if (mascot.files.length > 0) log.applied.push({ id: `mascot-lifecycle@${ENGINE_VERSION}`, touched: mascot.files })
   const personal = migratePersonal(root)
   if (personal.length > 0) log.applied.push({ id: `personal-brand@${ENGINE_VERSION}`, touched: personal })
+  // Question wording is template-owned even though the bank lives under brand/: refresh it so validate shows no drift.
+  // Questions a newer template added go into the bank first, then every stored question gets the template wording.
+  const addedQuestions = addMissingQuestions(root)
+  if (addedQuestions.length > 0) log.applied.push({ id: `question-bank-additions@${ENGINE_VERSION}`, touched: addedQuestions })
+  const questionText = refreshQuestionText(root)
+  if (questionText.length > 0) log.applied.push({ id: `question-text@${ENGINE_VERSION}`, touched: questionText })
   writeAtomic(logFile, stringify(log, { lineWidth: 100 }))
   writeAtomic(
     lockFile,
@@ -137,7 +144,7 @@ export function migrateBrand(root: string): { from: string; to: string; content_
   const text = fs.existsSync(gitignore) ? fs.readFileSync(gitignore, 'utf8') : ''
   const missing = required.filter((line) => !text.includes(line))
   if (missing.length > 0) fs.appendFileSync(gitignore, `${text.endsWith('\n') || text.length === 0 ? '' : '\n'}${missing.join('\n')}\n`)
-  return { from, to: ENGINE_VERSION, content_rewritten: false, mascot }
+  return { from, to: ENGINE_VERSION, content_rewritten: false, mascot, question_text: questionText }
 }
 
 export function resetInterviewState(root: string, confirmation: string): { backup: string } {

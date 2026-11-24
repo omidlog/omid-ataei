@@ -5,7 +5,19 @@ import { compileTokens, GENERATED_TOKEN_DIR, tokenDigest, type TokenNode } from 
 import { readFacts, type CanonicalFact } from './facts.js'
 import { writeAtomic, writeYaml } from './fsutil.js'
 import { approvalProofMatches } from './private-store.js'
-import { parseStructured, type StructuredType } from './structured.js'
+import { parseStructured, type ColorEntry, type StructuredType } from './structured.js'
+import {
+  brandRoleTokenId,
+  parseSemanticMap,
+  SEMANTIC_COLOR_SLOTS,
+  SEMANTIC_MAP_QUESTION,
+  SEMANTIC_SLOTS,
+  semanticAnswerText,
+  suggestSemanticMap,
+  type SemanticAssignment,
+  type SemanticSlot,
+  type SemanticSuggestion,
+} from './token-semantic.js'
 
 /**
  * Approved structured answers → draft DTCG tokens in brand/tokens/generated/.
@@ -13,6 +25,9 @@ import { parseStructured, type StructuredType } from './structured.js'
  * - Only approved, non-restricted facts are read. Drafts never become tokens.
  * - Every generated token is a draft. It is retrievable only after its value hash is approved in
  *   brand/tokens/approvals.yaml and its id is published in publication-policy.yaml.
+ * - Each owner colour role becomes `color.brand-role.<role>`, whatever its name. A template id such as
+ *   `color.brand.primary` is generated only from the approved `brand.color.semantic_map` answer; until then the
+ *   report suggests a mapping and applies none of it (token-semantic.ts).
  * - A token id that already has an approval is never overwritten. Its previous generated value is
  *   kept (or the base value stays) and the run reports the refusal. Changing it is a reviewed edit.
  */
@@ -22,6 +37,16 @@ export const TOKEN_SOURCES: Array<{ question_id: string; type: StructuredType; f
   { question_id: 'brand.type.scale', type: 'font', file: 'typography.tokens.json' },
   { question_id: 'brand.logo.min_size', type: 'logo_spec', file: 'logo.tokens.json' },
 ]
+
+/** Every approved answer `brand:tokens:generate` reads. Approving one of them means the draft tokens are out of date. */
+export const TOKEN_SOURCE_QUESTIONS: readonly string[] = [...TOKEN_SOURCES.map((source) => source.question_id), SEMANTIC_MAP_QUESTION]
+
+/** The next step `brand:approve` prints when the batch approved a token source (BOS-17). Null otherwise. */
+export function tokenNextStep(approvedQuestionIds: Iterable<string | null | undefined>): string | null {
+  const touched = [...new Set([...approvedQuestionIds].filter((id): id is string => typeof id === 'string' && TOKEN_SOURCE_QUESTIONS.includes(id)))]
+  if (touched.length === 0) return null
+  return `Next step: ${touched.join(', ')} ${touched.length === 1 ? 'is' : 'are'} approved. Run \`npm run brand:tokens:generate\` to turn these into draft tokens. Generated tokens stay drafts until the owner approves them with brand:tokens:approve.`
+}
 
 const APPROVALS_PATH = path.join('brand', 'tokens', 'approvals.yaml')
 
@@ -34,12 +59,34 @@ export interface GeneratedTokenResult {
   reason: string
 }
 
+export type TokenSourceState = 'used' | 'missing' | 'not_approved' | 'restricted' | 'invalid'
+
+/**
+ * The semantic mapping (owner roles → template ids). `applied` comes only from the approved answer. `suggestions`
+ * are printed for the owner and never applied; `suggested_answer` is that suggestion as an answer to review.
+ */
+export interface SemanticMapReport {
+  question_id: string
+  state: TokenSourceState | 'no_roles'
+  applied: SemanticAssignment[]
+  /** Slots the owner kept on the template on purpose (`slot = none`). */
+  kept_template: SemanticSlot[]
+  problems: string[]
+  suggestions: SemanticSuggestion[]
+  suggested_answer: string | null
+  /** Template color ids that are still template examples after this run. */
+  template_examples: string[]
+  /** The command that records the suggestion as a draft answer for the owner to edit and approve. */
+  answer_command: string | null
+}
+
 export interface TokenGenerateReport {
   ok: boolean
   dry_run: boolean
   files: string[]
   tokens: GeneratedTokenResult[]
-  sources: Array<{ question_id: string; state: 'used' | 'missing' | 'not_approved' | 'restricted' | 'invalid'; version: number | null }>
+  sources: Array<{ question_id: string; state: TokenSourceState; version: number | null }>
+  semantic: SemanticMapReport
   note: string
 }
 
@@ -71,12 +118,14 @@ function draftsFrom(question_id: string, type: StructuredType, file: string, fac
   if (!parsed) return null
   const base = { file, fact }
   if (parsed.type === 'color') {
+    // Every owner role gets its own namespace, whatever it is called (BOS-17). Template ids come only from the
+    // approved semantic map.
     return parsed.colors.map((color) => ({
       ...base,
-      id: `color.brand.${color.role}`,
+      id: brandRoleTokenId(color.role),
       type: 'color',
       value: { colorSpace: 'srgb', hex: color.hex },
-      description: `Draft from approved ${question_id} (${color.role}).`,
+      description: `Draft from approved ${question_id} (owner role ${color.role}).`,
     }))
   }
   if (parsed.type === 'font') {
@@ -137,45 +186,124 @@ function readGenerated(root: string, file: string): TokenNode | undefined {
   return fs.existsSync(full) ? (JSON.parse(fs.readFileSync(full, 'utf8')) as TokenNode) : undefined
 }
 
+function sourceState(fact: CanonicalFact | undefined): TokenSourceState {
+  if (!fact || fact.value === null || fact.value === undefined) return 'missing'
+  if (fact.status !== 'approved') return 'not_approved'
+  if (fact.classification === 'restricted') return 'restricted'
+  return 'used'
+}
+
+/**
+ * The semantic map: applied only from the approved answer, suggested (never applied) for every slot it leaves open.
+ * Returns the drafts for the mapped template ids, written to the color file next to the owner roles.
+ */
+function semanticDrafts(facts: Record<string, CanonicalFact>, roles: ColorEntry[] | null): { drafts: Draft[]; report: SemanticMapReport } {
+  const fact = facts[SEMANTIC_MAP_QUESTION]
+  let state: SemanticMapReport['state'] = sourceState(fact)
+  const report: SemanticMapReport = {
+    question_id: SEMANTIC_MAP_QUESTION,
+    state,
+    applied: [],
+    kept_template: [],
+    problems: [],
+    suggestions: [],
+    suggested_answer: null,
+    template_examples: [],
+    answer_command: null,
+  }
+  const drafts: Draft[] = []
+  if (!roles || roles.length === 0) {
+    report.state = state === 'used' ? 'no_roles' : state
+    if (state === 'used') report.problems.push('brand.color.roles is not approved, so no role can be mapped.')
+    report.template_examples = SEMANTIC_SLOTS.map((slot) => SEMANTIC_COLOR_SLOTS[slot])
+    return { drafts, report }
+  }
+  if (state === 'used' && fact) {
+    const parsed = parseSemanticMap(String(fact.value), roles)
+    report.applied = parsed.assignments
+    report.kept_template = parsed.unmapped
+    report.problems = parsed.problems
+    if (parsed.assignments.length === 0 && parsed.unmapped.length === 0) state = 'invalid'
+    for (const item of parsed.assignments) {
+      drafts.push({
+        id: item.token_id,
+        file: 'color.tokens.json',
+        type: 'color',
+        value: { colorSpace: 'srgb', hex: item.hex },
+        description: `Draft from approved ${SEMANTIC_MAP_QUESTION}: ${item.slot} is the owner role ${item.role}.`,
+        fact,
+      })
+    }
+  }
+  report.state = state
+  const decided = new Set<SemanticSlot>([...report.applied.map((item) => item.slot), ...report.kept_template])
+  report.suggestions = suggestSemanticMap(roles, decided)
+  if (report.suggestions.length > 0) {
+    // The suggestion keeps the owner's own entries, so recording it never drops a decision already made.
+    const answer = semanticAnswerText([...report.applied, ...report.kept_template.map((slot) => ({ slot, role: 'none' })), ...report.suggestions])
+    report.suggested_answer = answer
+    report.answer_command = `npm run brand:interview -- --question ${SEMANTIC_MAP_QUESTION} --answer "${answer}"`
+  }
+  report.template_examples = SEMANTIC_SLOTS.filter((slot) => !report.applied.some((item) => item.slot === slot)).map((slot) => SEMANTIC_COLOR_SLOTS[slot])
+  return { drafts, report }
+}
+
 export function generateTokens(root: string, brandId: string, options: { dryRun?: boolean } = {}): TokenGenerateReport {
   const facts = readFacts(root, 'approved', brandId)
   const approvals = readTokenApprovals(root)
+  // Draft tokens per file, in source order. The color file carries the owner roles and the semantic map.
+  const byFile = new Map<string, { sources: string[]; drafts: Draft[] }>()
+  const group = (file: string) => {
+    if (!byFile.has(file)) byFile.set(file, { sources: [], drafts: [] })
+    return byFile.get(file)!
+  }
+  const sources: TokenGenerateReport['sources'] = []
+  let roles: ColorEntry[] | null = null
+  for (const source of TOKEN_SOURCES) {
+    const fact = facts[source.question_id]
+    let state = sourceState(fact)
+    const entry = group(source.file)
+    entry.sources.push(source.question_id)
+    if (state === 'used' && fact) {
+      const made = draftsFrom(source.question_id, source.type, source.file, fact)
+      if (made === null) state = 'invalid'
+      else entry.drafts.push(...made)
+      if (source.type === 'color') {
+        const parsed = parseStructured('color', fact.value)
+        roles = parsed?.type === 'color' ? parsed.colors : null
+      }
+    }
+    sources.push({ question_id: source.question_id, state, version: fact?.version ?? null })
+  }
+  const semantic = semanticDrafts(facts, roles)
+  group('color.tokens.json').sources.push(SEMANTIC_MAP_QUESTION)
+  group('color.tokens.json').drafts.push(...semantic.drafts)
+  sources.push({ question_id: SEMANTIC_MAP_QUESTION, state: semantic.report.state === 'no_roles' ? 'invalid' : semantic.report.state, version: facts[SEMANTIC_MAP_QUESTION]?.version ?? null })
+
   const report: TokenGenerateReport = {
     ok: true,
     dry_run: options.dryRun === true,
     files: [],
     tokens: [],
-    sources: [],
+    sources,
+    semantic: semantic.report,
     note: 'Generated tokens are drafts. Approve them with brand:tokens:approve and publish them with brand:tokens:publish before any agent or public build can read them.',
   }
   const docs = new Map<string, TokenNode>()
-  const previous = new Map<string, TokenNode | undefined>()
-  for (const source of TOKEN_SOURCES) {
-    previous.set(source.file, readGenerated(root, source.file))
-    const fact = facts[source.question_id]
-    let state: TokenGenerateReport['sources'][number]['state'] = 'used'
-    let drafts: Draft[] = []
-    if (!fact || fact.value === null || fact.value === undefined) state = 'missing'
-    else if (fact.status !== 'approved') state = 'not_approved'
-    else if (fact.classification === 'restricted') state = 'restricted'
-    else {
-      const made = draftsFrom(source.question_id, source.type, source.file, fact)
-      if (made === null) state = 'invalid'
-      else drafts = made
-    }
-    report.sources.push({ question_id: source.question_id, state, version: fact?.version ?? null })
+  for (const [file, { sources: fileSources, drafts }] of byFile) {
+    const old = readGenerated(root, file)
     const doc: TokenNode = {
-      $description: `DRAFT tokens generated from approved ${source.question_id}. Not approved tokens until brand/tokens/approvals.yaml holds a matching hash.`,
+      $description: `DRAFT tokens generated from approved ${fileSources.join(', ')}. Not approved tokens until brand/tokens/approvals.yaml holds a matching hash.`,
     }
-    const old = previous.get(source.file)
     const produced = new Set<string>()
     for (const draft of drafts) {
+      const sourceFact = draft.fact.id
       produced.add(draft.id)
       const node: TokenNode = {
         $type: draft.type,
         $value: draft.value,
         $description: draft.description,
-        $extensions: { 'brand.os': { status: 'draft', generated: true, source_fact: source.question_id, source_version: draft.fact.version } },
+        $extensions: { 'brand.os': { status: 'draft', generated: true, source_fact: sourceFact, source_version: draft.fact.version } },
       }
       const prior = getPath(old, draft.id)
       const approval = approvals[draft.id]
@@ -184,28 +312,32 @@ export function generateTokens(root: string, brandId: string, options: { dryRun?
         const same = typeof approval.value_sha256 === 'string' && approval.value_sha256 === tokenDigest({ value: draft.value, hex: draft.type === 'color' ? (draft.value as { hex: string }).hex : undefined })
         if (same) {
           setPath(doc, draft.id, prior ?? node)
-          report.tokens.push({ id: draft.id, outcome: 'unchanged', source_fact: source.question_id, reason: 'Already approved with this value.' })
+          report.tokens.push({ id: draft.id, outcome: 'unchanged', source_fact: sourceFact, reason: 'Already approved with this value.' })
         } else {
           if (prior) setPath(doc, draft.id, prior)
-          report.tokens.push({ id: draft.id, outcome: 'refused_approved', source_fact: source.question_id, reason: 'This token id is already approved. It was not overwritten; change it through a reviewed token edit.' })
+          report.tokens.push({ id: draft.id, outcome: 'refused_approved', source_fact: sourceFact, reason: 'This token id is already approved. It was not overwritten; change it through a reviewed token edit.' })
         }
         continue
       }
       const outcome: TokenOutcome = !prior ? 'created' : JSON.stringify(prior.$value) === JSON.stringify(node.$value) ? 'unchanged' : 'updated'
       setPath(doc, draft.id, node)
-      report.tokens.push({ id: draft.id, outcome, source_fact: source.question_id, reason: 'Draft. Needs token approval and publication.' })
+      report.tokens.push({ id: draft.id, outcome, source_fact: sourceFact, reason: 'Draft. Needs token approval and publication.' })
     }
     for (const id of leafIds(old)) {
       if (produced.has(id)) continue
       const prior = getPath(old, id)
+      const sourceFact = prior?.$extensions?.['brand.os']?.source_fact ?? fileSources[0] ?? 'generated'
       if (approvals[id] && prior) {
         setPath(doc, id, prior)
-        report.tokens.push({ id, outcome: 'refused_approved', source_fact: source.question_id, reason: 'The source answer no longer yields this id, but it is approved, so it was kept.' })
+        report.tokens.push({ id, outcome: 'refused_approved', source_fact: sourceFact, reason: 'The source answer no longer yields this id, but it is approved, so it was kept.' })
       } else {
-        report.tokens.push({ id, outcome: 'removed', source_fact: source.question_id, reason: 'The approved answer no longer yields this draft token.' })
+        report.tokens.push({ id, outcome: 'removed', source_fact: sourceFact, reason: 'The approved answer no longer yields this draft token.' })
       }
     }
-    docs.set(source.file, doc)
+    docs.set(file, doc)
+  }
+  if (semantic.report.suggestions.length > 0 && roles) {
+    report.note += ` Template color ids (${semantic.report.template_examples.slice(0, 4).join(', ')}${semantic.report.template_examples.length > 4 ? ' …' : ''}) stay template examples until the owner answers ${SEMANTIC_MAP_QUESTION}. A suggested mapping is printed; it was not applied.`
   }
   if (!report.dry_run) {
     const dir = path.join(root, GENERATED_TOKEN_DIR)

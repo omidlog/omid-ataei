@@ -46,6 +46,19 @@ export interface BrandView {
   cached: CachedBrand
   stale: boolean
   refreshing: boolean
+  /** ISO time the running refresh started; shown as "Syncing… (started HH:MM)". */
+  refreshStartedAt?: string | null
+}
+
+/**
+ * The `?sync=` flash to show. `syncing` stays while the refresh runs and turns into the result once it
+ * has finished, so the self-reloading page ends on "Refreshed" or "Refresh failed".
+ */
+export function syncFlash(flash: string | null, brand: BrandView): 'synced' | 'failed' | 'too-soon' | 'syncing' | null {
+  if (flash === 'synced' || flash === 'failed' || flash === 'too-soon') return flash
+  if (flash !== 'syncing') return null
+  if (brand.refreshing) return 'syncing'
+  return brand.cached.status.last_error ? 'failed' : 'synced'
 }
 
 /** Sidebar groups by intent (Visual V2.4, R1): the reader's question, not the storage module. */

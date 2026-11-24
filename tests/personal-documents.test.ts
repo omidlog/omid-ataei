@@ -74,10 +74,12 @@ test('two bio lengths cite the same approved facts with identical values and nev
   }
   assert.equal(short.length?.state, 'below')
   assert.match(short.length?.note ?? '', /not padded/)
+  assert.equal(short.length?.basis, 'composed_draft')
   assert.ok((short.length?.approved_words ?? 0) < 50)
   // Everything else in the long bio is missing, not invented.
   assert.ok(long.items.filter((item) => item.tag === 'missing').length >= 5)
-  assert.match(renderDocumentMarkdown(bio), /Length: Approved material is \d+ words/)
+  // BOS-19: the count is the composed draft of the first edition (the brand's default language, en here).
+  assert.match(renderDocumentMarkdown(bio), /Length: The en draft is \d+ words/)
 })
 
 test('documents label owner-stated, unverified and verified personal claims and separate drafts from facts', () => {

@@ -2,7 +2,7 @@ import { isOpenAnswer } from '../completeness.js'
 import { personalConfig } from '../conditions.js'
 import { asciiDigits } from '../structured.js'
 import type { PersonalFacet } from '../types.js'
-import { answerText, type CoachContext } from './context.js'
+import { answerText, verificationOf, type CoachContext } from './context.js'
 import { containsTerm, contentWordCount } from './lexicon.js'
 import type { CoachCriterion, CoachFindingCode, CoachSourceRef, CoachStatus } from './model.js'
 import type { QualityAssessment, QualityFinding } from './quality.js'
@@ -218,7 +218,10 @@ export function applyFacetRubrics(ctx: CoachContext, assessment: QualityAssessme
     { kind: 'answer', id: assessment.answer.answer_id, revision: assessment.answer.answer_id },
   ]
   const added: QualityFinding[] = []
+  // A claim that already has verified, current, independent evidence in the register gets no evidence_support note.
+  const verified = verificationOf(ctx, question) === 'verified'
   for (const rubric of rubrics) {
+    if (rubric.criterion === 'evidence_support' && verified) continue
     if (!rubric.fires(ctx, text)) continue
     const canonical = rubric.canonical && ctx.byId.has(rubric.canonical) ? rubric.canonical : null
     added.push({

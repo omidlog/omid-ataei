@@ -28,7 +28,7 @@
 
 import path from 'node:path'
 import { AGENT_TOKEN_ENV } from '../agent-tokens.js'
-import { isCurrent, type EvidenceItem } from '../evidence.js'
+import { isCurrent, isIndependentSource, type EvidenceItem } from '../evidence.js'
 import { KnowledgeError, NOTE_ID } from '../knowledge/model.js'
 import { dirUsable, safeRead, withLock, writeVaultFile, type KnowledgeWorkspace } from '../knowledge/workspace.js'
 import { canonicalJson, sha256Hex } from '../strategy/model.js'
@@ -175,7 +175,8 @@ export function linkAsOf(history: LinkRevision[], day: string): LinkRevision | n
 export function linkState(link: LinkRevision, note: { revision: string; question_ids: string[] }, entry: EvidenceItem | undefined, day: string): LinkState {
   if (link.note_revision !== note.revision) return 'note_changed'
   if (!entry) return 'entry_missing'
-  if (entry.kind !== 'verification' || entry.source_type === 'owner_testimony') return 'not_independent'
+  // Owner testimony and sources the owner controls (`owned`) are the owner's own word, never independent.
+  if (!isIndependentSource(entry)) return 'not_independent'
   if (!note.question_ids.includes(entry.claim_id)) return 'claim_mismatch'
   if (entry.status === 'withdrawn') return 'withdrawn'
   if (entry.status === 'rejected') return 'rejected'

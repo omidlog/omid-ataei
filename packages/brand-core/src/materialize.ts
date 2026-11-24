@@ -8,6 +8,7 @@ import { buildMascotCatalog, CANONICAL_ANGLES, catalogCounts, CORE_MOTIONS, EXAM
 import { renderIntroduction, renderModulePage, renderRecord } from './content/render.js'
 import { emptySession, InterviewEngine } from './engine.js'
 import { exists, readYaml, writeText, writeYaml } from './fsutil.js'
+import { bankName } from './question-text.js'
 import type { BrandConfig, FieldQuestion } from './types.js'
 
 const WORDMARK = `<?xml version="1.0" encoding="UTF-8"?>
@@ -48,14 +49,6 @@ function putYaml(file: string, data: unknown): void {
 
 function sha256(text: string): string {
   return createHash('sha256').update(text).digest('hex')
-}
-
-function bankName(question: FieldQuestion): string {
-  if (question.id.startsWith('brand.mascot.')) return 'mascot.yaml'
-  if (question.id.startsWith('brand.gamification.')) return 'gamification.yaml'
-  if (question.module.startsWith('business')) return 'business.yaml'
-  if (question.module.startsWith('personal')) return 'personal.yaml'
-  return 'brand.yaml'
 }
 
 function doc(title: string, body: string, extras: Record<string, string> = {}): string {

@@ -3,8 +3,9 @@ import path from 'node:path'
 import { build } from 'esbuild'
 
 /**
- * Builds the production Studio bundle: `apps/studio/dist/main.mjs` (the server) and
- * `apps/studio/dist/cli.mjs` (owner server commands). Each is one self-contained ES module with the
+ * Builds the production Studio bundle: `apps/studio/dist/main.mjs` (the server),
+ * `apps/studio/dist/cli.mjs` (owner server commands) and `apps/studio/dist/projection-worker.mjs` (the
+ * sync's projection build, run in a worker thread so the server keeps answering). Each is one self-contained ES module with the
  * workspace packages and their npm dependencies inlined, so the runtime image needs only Node, the
  * bundle and `apps/studio/static`. Nothing from `brand/`, `.env` or the docs app is bundled.
  *
@@ -18,7 +19,7 @@ const outdir = path.resolve(outIndex >= 0 ? (args[outIndex + 1] ?? '') : path.jo
 fs.rmSync(outdir, { recursive: true, force: true })
 const result = await build({
   absWorkingDir: root,
-  entryPoints: { main: 'apps/studio/src/main.ts', cli: 'apps/studio/src/cli.ts' },
+  entryPoints: { main: 'apps/studio/src/main.ts', cli: 'apps/studio/src/cli.ts', 'projection-worker': 'apps/studio/src/projection-worker.ts' },
   outdir,
   outExtension: { '.js': '.mjs' },
   bundle: true,
@@ -41,7 +42,7 @@ if (offenders.length) {
   console.error(`Studio bundle includes files it must not: ${offenders.join(', ')}`)
   process.exit(1)
 }
-for (const name of ['main.mjs', 'cli.mjs']) {
+for (const name of ['main.mjs', 'cli.mjs', 'projection-worker.mjs']) {
   const size = fs.statSync(path.join(outdir, name)).size
   console.log(`${path.relative(root, path.join(outdir, name))} ${(size / 1024).toFixed(0)} KiB`)
 }

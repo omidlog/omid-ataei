@@ -9,7 +9,9 @@ import { validateMascotLifecycle } from './mascot-lifecycle.js'
 import { evaluateCondition } from './conditions.js'
 import { templateConfig } from './config.js'
 import { readYaml } from './fsutil.js'
+import { readFacts } from './facts.js'
 import { readIdentityIntake } from './identity-intake.js'
+import { checkLogoMastersInRepo } from './logo-masters.js'
 import { approvalGrantErrors } from './permissions.js'
 import { canonicalReferenceErrors } from './personal.js'
 import { profileErrors, profileExists } from './profiles.js'
@@ -32,10 +34,19 @@ export function validateRepo(root: string): ValidationReport {
   const starter = safeStarter(errors)
   if (starter) {
     const byId = new Map(questions.map((question) => [question.id, question]))
+    const withoutHelpLocales: string[] = []
     for (const question of starter) {
       const stored = byId.get(question.id)
-      if (!stored) errors.push(`Question bank is missing starter question ${question.id}`)
-      else if (stored.prompt.en !== question.prompt.en) errors.push(`Prompt drift for ${question.id}`)
+      if (!stored) {
+        errors.push(`Question bank is missing starter question ${question.id}`)
+        continue
+      }
+      const drift = questionTextDrift(stored, question)
+      if (drift.fields.length > 0) errors.push(`Prompt drift for ${question.id} (${drift.fields.join(', ')}). Run npm run brand:migrate to refresh the question text from the template.`)
+      if (drift.missingHelpLocales) withoutHelpLocales.push(question.id)
+    }
+    if (withoutHelpLocales.length > 0) {
+      warnings.push(`${withoutHelpLocales.length} question(s) in the question bank have no Persian or Turkish help text yet (why_it_matters_i18n, examples_i18n), so the interview shows English there. Run npm run brand:migrate to add it.`)
     }
     const modules = new Set(starter.map((question) => question.module))
     for (const moduleId of modules) {
@@ -57,6 +68,7 @@ export function validateRepo(root: string): ValidationReport {
     errors.push(...llmConfigErrors(config))
     const identity = readIdentityIntake(config)
     if (identity.state === 'invalid') warnings.push(`brand.config.yaml onboarding.identity is ignored (${identity.reason}); it reads as unknown / undecided`)
+    warnings.push(...logoMastersWarnings(root, config))
   }
   validateMascot(root, errors)
   errors.push(...validateAssets(root))
@@ -65,12 +77,68 @@ export function validateRepo(root: string): ValidationReport {
   warnings.push(...registry.warnings)
   const compiled = compileTokens(root)
   errors.push(...compiled.errors)
-  const builtCss = path.join(root, 'packages', 'design-tokens', 'dist', 'tokens.css')
-  if (!fs.existsSync(builtCss)) warnings.push('Token CSS has not been written. Run npm run tokens:build before the docs build.')
-  else if (fs.readFileSync(builtCss, 'utf8') !== compiled.css) errors.push('packages/design-tokens/dist/tokens.css is stale. Run npm run tokens:build.')
+  // A missing build output is not a brand problem: brand work never needs it, so validate stays quiet and the docs
+  // build prints `tokenCssBuildNote` instead. A stale one that exists is still an error, since it would ship old values.
+  const builtCss = tokenCssPath(root)
+  if (fs.existsSync(builtCss) && fs.readFileSync(builtCss, 'utf8') !== compiled.css) errors.push('packages/design-tokens/dist/tokens.css is stale. Run npm run tokens:build.')
   scanSecrets(root, errors)
   scanCanary(root, errors)
   return { ok: errors.length === 0, errors, warnings }
+}
+
+/**
+ * Template-owned question text that differs between the stored bank and the template source: the prompt in en, fa
+ * and tr, `why_it_matters` and the examples, each in all three locales. A bank written before the fa/tr help text
+ * existed (no `*_i18n` field at all) is not drift: it is reported once as `missingHelpLocales`, so old data stays valid.
+ */
+export function questionTextDrift(stored: FieldQuestion, source: FieldQuestion): { fields: string[]; missingHelpLocales: boolean } {
+  const fields: string[] = []
+  for (const locale of ['en', 'fa', 'tr'] as const) {
+    if ((stored.prompt?.[locale] ?? '') !== source.prompt[locale]) fields.push(`prompt.${locale}`)
+  }
+  if (stored.why_it_matters !== source.why_it_matters) fields.push('why_it_matters.en')
+  if (JSON.stringify(stored.examples ?? []) !== JSON.stringify(source.examples)) fields.push('examples.en')
+  let missingHelpLocales = false
+  for (const locale of ['fa', 'tr'] as const) {
+    const sourceWhy = source.why_it_matters_i18n?.[locale]
+    const sourceExamples = source.examples_i18n?.[locale]
+    if (sourceWhy !== undefined) {
+      if (stored.why_it_matters_i18n === undefined) missingHelpLocales = true
+      else if (stored.why_it_matters_i18n[locale] !== sourceWhy) fields.push(`why_it_matters.${locale}`)
+    }
+    if (sourceExamples !== undefined) {
+      if (stored.examples_i18n === undefined) missingHelpLocales = true
+      else if (JSON.stringify(stored.examples_i18n[locale] ?? null) !== JSON.stringify(sourceExamples)) fields.push(`examples.${locale}`)
+    }
+  }
+  return { fields, missingHelpLocales }
+}
+
+function tokenCssPath(root: string): string {
+  return path.join(root, 'packages', 'design-tokens', 'dist', 'tokens.css')
+}
+
+/**
+ * Informational note for the docs build only: the token CSS build output has not been written yet. Brand work
+ * (interview, approval, validate) never needs it, so `validateRepo` does not report it.
+ */
+export function tokenCssBuildNote(root: string): string | null {
+  if (fs.existsSync(tokenCssPath(root))) return null
+  return 'Token CSS (packages/design-tokens/dist/tokens.css) has not been written yet. It matters only for a docs build: run npm run tokens:build first, or npm run build, which does both.'
+}
+
+/** BOS-16: the approved `brand.logo.masters` answer must name an asset exactly, or the brand book cannot find the master. */
+function logoMastersWarnings(root: string, config: BrandConfig): string[] {
+  try {
+    const slug = config.brand?.slug
+    if (typeof slug !== 'string' || !slug) return []
+    const fact = readFacts(root, 'approved', slug)['brand.logo.masters']
+    if (!fact || fact.status !== 'approved' || typeof fact.value !== 'string') return []
+    const check = checkLogoMastersInRepo(root, fact.value)
+    return check.message ? [check.message] : []
+  } catch {
+    return []
+  }
 }
 
 function safeStarter(errors: string[]): FieldQuestion[] | null {

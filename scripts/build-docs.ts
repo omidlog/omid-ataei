@@ -1,5 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import { pathToFileURL } from 'node:url'
+import { tokenCssBuildNote } from '@brand-os/brand-core'
 import { docsAudience } from './docs-audience.js'
 
 /**
@@ -41,6 +42,8 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const extra = separator === -1 ? [] : argv.slice(separator + 1)
   const plan = docsBuildPlan(process.cwd(), { nomascot: flags.includes('--nomascot'), extra })
   if (plan.note) console.log(`[docs] ${plan.note}`)
+  const tokenNote = plan.steps.length > 0 ? tokenCssBuildNote(process.cwd()) : null
+  if (tokenNote) console.log(`[docs] note: ${tokenNote}`)
   for (const step of plan.steps) {
     console.log(`[docs] ${step.label}: ${step.command} ${step.args.join(' ')}`)
     const result = spawnSync(step.command, step.args, { stdio: 'inherit' })

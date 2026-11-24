@@ -2,12 +2,12 @@ import fs from 'node:fs'
 import { RateLimiter } from '../auth/rate-limit.js'
 import { first, redirect, safeLocalPath } from '../http.js'
 import type { BrandRecord } from '../registry.js'
-import { brandIsReady } from '../sync.js'
+import { brandIsReady, withDisplayName } from '../sync.js'
 import type { UpdateStatus } from '../template-update.js'
 import { calendarPage } from '../views/calendar.js'
 import { creativePage } from '../views/creative.js'
 import { knowledgeNotePage, knowledgePage, parseKnowledgeQuery } from '../views/knowledge.js'
-import { LEGACY_SECTION_PATHS, PAGE_SECTION_PATHS, type BrandSection, type BrandView } from '../views/layout.js'
+import { LEGACY_SECTION_PATHS, PAGE_SECTION_PATHS, syncFlash, type BrandSection, type BrandView } from '../views/layout.js'
 import * as pages from '../views/pages.js'
 import { publishingPage } from '../views/publishing.js'
 import { brandBookPage } from '../views/visual-book.js'
@@ -19,6 +19,8 @@ const SECTION_BY_PATH = new Map<string, BrandSection>(PAGE_SECTION_PATHS)
 /** Old flat paths before V2.4, answered with 301 for one release. */
 export const LEGACY_PATHS = LEGACY_SECTION_PATHS.map(([from]) => from)
 const LEGACY_TARGET = new Map<string, string>(LEGACY_SECTION_PATHS)
+/** How long a request may wait for a sync before it answers with the "syncing" state. */
+const QUICK_WAIT_MS = 800
 
 export interface BrandRoutes {
   home: Handler
@@ -43,8 +45,8 @@ export function brandRoutes(core: StudioCore): BrandRoutes {
   async function brandView(ctx: RequestContext, record: BrandRecord): Promise<BrandView> {
     let cached = sync.get(record.slug)
     if (cached.status.state === 'never' && !sync.isRefreshing(record.slug)) {
-      // First view: read GitHub now, but never hang the page for long.
-      cached = await Promise.race([sync.refresh(record.slug), new Promise<typeof cached>((resolve) => setTimeout(() => resolve(sync.get(record.slug)), 25_000))])
+      // First view: start reading GitHub, wait under a second, then show the "syncing" state (BOS-14).
+      cached = await Promise.race([sync.refresh(record.slug).catch(() => sync.get(record.slug)), new Promise<typeof cached>((resolve) => setTimeout(() => resolve(sync.get(record.slug)), QUICK_WAIT_MS))])
     } else if (sync.isStale(record.slug, cached.status) && !sync.isRefreshing(record.slug)) {
       const last = autoRefreshAt.get(record.slug) ?? 0
       if (now() - last > 30_000) {
@@ -52,7 +54,8 @@ export function brandRoutes(core: StudioCore): BrandRoutes {
         void sync.refresh(record.slug).catch(() => undefined)
       }
     }
-    return { record, cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug) }
+    // The first view may have just synced: resolve the display name from what this page shows (BOS-20).
+    return { record: withDisplayName(registry.get(record.slug) ?? record, cached.projection), cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug), refreshStartedAt: sync.refreshStartedAt(record.slug) }
   }
 
   const home: Handler = (ctx) => redirect(ctx.res, '/brands', 302)
@@ -78,7 +81,11 @@ export function brandRoutes(core: StudioCore): BrandRoutes {
     const target = back === `/brands/${record.slug}` || back.startsWith(`/brands/${record.slug}/`) ? back : `/brands/${record.slug}`
     if (!brandIsReady(record)) return redirect(ctx.res, `/brands/${record.slug}/provisioning`)
     if (!refreshLimiter.take(record.slug).ok) return redirect(ctx.res, `${target}?sync=too-soon`)
-    const result = await Promise.race([sync.refresh(record.slug), new Promise<null>((resolve) => setTimeout(() => resolve(null), 30_000))])
+    // Never hold the request for the sync (BOS-14): a quick sync reports its result, a slow one
+    // continues in the background and the page shows "Syncing…" and reloads itself until it is done.
+    const job = sync.refresh(record.slug).catch(() => null)
+    const result = await Promise.race([job, new Promise<'pending'>((resolve) => setTimeout(() => resolve('pending'), QUICK_WAIT_MS))])
+    if (result === 'pending') return redirect(ctx.res, `${target}?sync=syncing`)
     const ok = result !== null && result.status.last_error === null
     redirect(ctx.res, `${target}?sync=${ok ? 'synced' : 'failed'}`)
   }
@@ -131,7 +138,7 @@ export function brandRoutes(core: StudioCore): BrandRoutes {
     if (!section) return notFound(ctx)
     const brand = await brandView(ctx, record)
     const flash = ctx.url.searchParams.get('sync')
-    const flashValue = flash === 'synced' || flash === 'failed' || flash === 'too-soon' ? flash : null
+    const flashValue = syncFlash(flash, brand)
     const doc = ctx.url.searchParams.get('doc')
     const v = view(ctx)
     switch (section) {
@@ -160,7 +167,8 @@ export function brandRoutes(core: StudioCore): BrandRoutes {
       case 'personal':
         // The section exists only when the Personal Brand OS module is enabled in the repository.
         if (!brand.cached.projection?.personal) return notFound(ctx)
-        return render(ctx, 200, pages.personalPage(v, brand, doc, flashValue))
+        // `locale` only picks which projected language edition of the composed drafts is shown (BOS-19).
+        return render(ctx, 200, pages.personalPage(v, brand, doc, flashValue, ctx.url.searchParams.get('locale')))
       case 'knowledge': {
         // Read only. Query parameters only filter the already safe projection of merged shared notes.
         const query = parseKnowledgeQuery(ctx.url.searchParams)

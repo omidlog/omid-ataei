@@ -1,7 +1,7 @@
 import { latestAnswers } from '../completeness.js'
 import { itemFor, type DocumentAudience, type DocumentItem, type ItemContext } from '../documents/model.js'
+import { brandApplicability, type FrameworkRef } from '../applicability.js'
 import type { InterviewEngine } from '../engine.js'
-import type { PersonalFacet } from '../types.js'
 import { readEvidence } from '../evidence.js'
 import { readFacts, type CanonicalFact } from '../facts.js'
 import { BMC_FRAMEWORK } from './frameworks.js'
@@ -49,9 +49,6 @@ export const BMC_ZONES: readonly BmcZoneSpec[] = [
   { zone: 'cost_structure', questions: ['business.model.cost_items', 'business.finance.costs', 'business.finance.economics_note'], proposed: ['business.model.cost_items'], related: ['business.finance.basis'] },
   { zone: 'revenue_streams', questions: ['business.model.revenue', 'business.sales.pricing'], proposed: [], related: ['business.finance.currency'] },
 ]
-
-/** Personal brands get a canvas only when a facet runs a business. */
-const BUSINESS_FACETS: readonly PersonalFacet[] = ['founder-executive', 'consultant-expert']
 
 const MAX_VALUE = 2000
 
@@ -157,10 +154,27 @@ export function zoneState(entries: Array<VisualEntry & { approved: boolean }>, g
 }
 
 /** Public gaps are "not published" whatever the reason, so a public page never hints at a hidden draft. */
-function missingReason(audience: DocumentAudience, status: string | undefined): MissingReason {
+export function frameworkMissingReason(audience: DocumentAudience, status: string | undefined): MissingReason {
   if (audience === 'public') return 'not_published'
   if (status === 'unknown' || status === 'skipped' || status === 'deprecated') return status
   return 'unanswered'
+}
+
+/**
+ * BOS-15: one framework entry for a resolved reference (`brandApplicability().refs`). A question that applies is
+ * itself; a personal answer standing in for a framework question keeps its own id, approval, verification and
+ * visibility and names the question it stands for; a question the profile does not ask is `not_applicable`, never
+ * missing. Every visual framework builder reads its answers through this.
+ */
+export function frameworkEntry(engine: InterviewEngine, context: ItemContext, ref: FrameworkRef, now: Date): (VisualEntry & { approved: boolean }) | null {
+  const question = engine.question(ref.id)
+  if (!question) return null
+  const item = itemFor(question, context)
+  const answer = context.answers.get(ref.id)
+  const ownerNa = item.tag === 'missing' && context.audience === 'internal' && answer?.status === 'not_applicable'
+  const entry = entryFromItem(item, context.facts[ref.id], ownerNa || ref.profile_na, now, frameworkMissingReason(context.audience, answer?.status))
+  if (ref.profile_na && entry.state === 'not_applicable') return { ...entry, note: null, na_reason: 'profile' }
+  return ref.stands_for ? { ...entry, stands_for: ref.stands_for } : entry
 }
 
 export interface BmcOptions {
@@ -249,13 +263,12 @@ export function canvasDocument(input: {
   }
 }
 
-/** True when the canvas applies to this brand: every business brand, and personal brands with a business facet. */
+/**
+ * True when the canvas applies to this brand: every business brand, `universal` with personal on, and a personal
+ * brand with a business facet (the canvas then describes the person's own practice). Same rule as every framework.
+ */
 export function canvasApplies(engine: InterviewEngine): boolean {
-  const config = engine.config()
-  const personal = config.modules.personal?.enabled === true || config.brand.profile === 'personal-brand'
-  if (!personal) return true
-  const facets: readonly PersonalFacet[] = config.modules.personal?.facets ?? []
-  return facets.some((facet) => BUSINESS_FACETS.includes(facet))
+  return brandApplicability(engine).frameworks
 }
 
 /**
@@ -271,15 +284,9 @@ export function buildBusinessModelCanvas(engine: InterviewEngine, audience: Docu
   const answers = latestAnswers(engine.ledger().records)
   const context: ItemContext = { facts, answers, audience, root, brandId, evidence: readEvidence(root), now }
   const existing = new Set(engine.questions().map((question) => question.id))
+  const applicability = brandApplicability(engine)
   const zones = BMC_ZONES.map((spec) => {
-    const entries = spec.questions.flatMap((id) => {
-      const question = engine.question(id)
-      if (!question) return []
-      const item = itemFor(question, context)
-      const answer = answers.get(id)
-      const notApplicable = item.tag === 'missing' && audience === 'internal' && answer?.status === 'not_applicable'
-      return [entryFromItem(item, facts[id], notApplicable, now, missingReason(audience, answer?.status))]
-    })
+    const entries = applicability.refsFor(spec.questions.filter((id) => engine.question(id))).flatMap((ref) => frameworkEntry(engine, context, ref, now) ?? [])
     return { spec, entries, existing }
   })
   return canvasDocument({ brand_id: brandId, brand_name: String(config.brand.name ?? brandId), audience, illustrative: false, zones })

@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { AnswerRecord, FieldQuestion } from './types.js'
+import { answerProvenance, provenanceLabel } from './provenance.js'
 import { writeText } from './fsutil.js'
 
 function escapeRegExp(value: string): string {
@@ -19,7 +20,7 @@ export function fieldBlock(question: FieldQuestion, answer: AnswerRecord | null,
     `- Status: ${status}`,
     `- Visibility: ${question.sensitivity}`,
     `- Authority: ${answer?.authority ?? 'unverified'}`,
-    `- Source: ${answer?.source_type ?? 'none'}`,
+    `- Source: ${answer?.source_type ?? 'none'}${answer?.source_type ? ` (${provenanceLabel(answerProvenance(answer))})` : ''}`,
     `- Uncertainty: ${answer?.uncertainty ?? 'none'}`,
     `- Updated: ${answer?.last_updated ?? 'n/a'}`,
     `- Answer id: ${answer?.answer_id ?? 'n/a'}`,
@@ -39,7 +40,10 @@ export function fieldBlock(question: FieldQuestion, answer: AnswerRecord | null,
   if (answer?.status === 'approved') {
     lines.push('', `Approved by: ${answer.reviewed_by ?? 'unknown'}`)
   }
-  if (answer?.source_type === 'agent_suggestion') {
+  const provenance = answerProvenance(answer)
+  if (provenance === 'agent_suggested_owner_confirmed') {
+    lines.push('', 'Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.')
+  } else if (provenance === 'agent_suggestion') {
     lines.push('', 'Origin: agent suggestion. This is not an owner-authored fact unless the status is approved.')
   }
   if (answer?.authority === 'estimated') {

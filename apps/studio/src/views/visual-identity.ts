@@ -5,6 +5,7 @@ import type {
   DataState,
   FrameworkRef,
   LogoConstructionBlock,
+  LogoVariant,
   TypeRole,
   TypographySpecimenBlock,
   VisualCatalog,
@@ -315,9 +316,12 @@ export function logoConstructionView(block: LogoConstructionBlock, ctx: Identity
     }
     if (!block.master) {
       reasons.push({ text: t.awaitingMaster[block.master_state === 'approved' ? 'missing' : block.master_state], state: null })
-      steps.push(block.master_state === 'ambiguous' ? t.stepMasterAmbiguous : t.stepMaster)
+      // BOS-16: the owner sees which approved files to choose from (ids only, internal edition only).
+      const candidates = ctx.doc.audience === 'internal' && ctx.showNext ? (block.candidates ?? []) : []
+      if (candidates.length) reasons.push({ text: fillVisual(t.masterCandidates, { ids: candidates.join(', ') }), state: null })
+      steps.push(block.master_state === 'ambiguous' ? t.stepMasterAmbiguous : block.master_state === 'not_previewable' ? t.stepMasterNotPreviewable : t.stepMaster)
     }
-    return html`<section class="vz-plate vz-plate--logo" id="${id}" aria-labelledby="${id}-t">${head}${awaiting(ctx, { variant: 'mark', title: t.awaitingLogoTitle, body: t.awaitingLogoBody, reasons, steps })}</section>`
+    return html`<section class="vz-plate vz-plate--logo" id="${id}" aria-labelledby="${id}-t">${head}${awaiting(ctx, { variant: 'mark', title: t.awaitingLogoTitle, body: t.awaitingLogoBody, reasons, steps })}${ctx.mode === 'screen' ? logoSystemView(block, ctx) : ''}</section>`
   }
   const spec = block.spec!
   const master = block.master!
@@ -346,8 +350,58 @@ export function logoConstructionView(block: LogoConstructionBlock, ctx: Identity
         <figure class="vz-min"><div class="vz-min-stage">${minimum}</div><figcaption class="vz-note">${t.drawnAtMin}</figcaption></figure>
       </div>
     </div>
+    ${ctx.mode === 'screen' ? logoSystemView(block, ctx) : ''}
     ${ctx.note ? '' : plateFoot(ctx, block.source, [master.name])}
   </section>`
+}
+
+function variantBadges(ctx: IdentityContext, variant: LogoVariant): SafeHtml | string {
+  const t = ctx.cat.identity
+  return ctx.doc.audience === 'internal' && variant.badges.length
+    ? html`<span class="vz-master-badges">${variant.badges.map((badge) => html`<span class="vz-chip vz-chip--draft vz-master-badge" data-badge="${badge}">${t.masterBadge[badge]}</span>`)}</span>`
+    : ''
+}
+
+function variantImage(ctx: IdentityContext, variant: LogoVariant, className: string, size: number | null = null): SafeHtml {
+  const url = ctx.assetUrl(variant.preview_key)
+  const dims = size === null ? '' : html` width="${size}" height="${size}"`
+  return url
+    ? html`<img class="${className}" src="${url}" alt="${variant.name}"${dims} decoding="async">`
+    : html`<svg class="${className}" viewBox="0 0 120 40" role="img" aria-label="${ctx.cat.identity.mockMark}"${dims}><rect class="vz-mockmark-min" width="100%" height="100%"/></svg>`
+}
+
+/**
+ * The logo system (BOS-16): the dark-ink file on a light plate, the light-ink file on a dark plate and the icon at
+ * favicon and avatar sizes, each from its own approved file. The plates are neutral paper and ink, not brand colours.
+ * The internal edition names the files, their badges and a role taken from the file name; ids stay in the sources.
+ */
+export function logoSystemView(block: LogoConstructionBlock, ctx: IdentityContext): SafeHtml {
+  const system = block.system
+  if (!system) return html``
+  const t = ctx.cat.identity
+  const internal = ctx.doc.audience === 'internal'
+  const caption = (variant: LogoVariant, label: string) =>
+    html`<figcaption class="vz-note"><span class="vz-logo-plate-label">${label}</span> <span dir="auto">${variant.name}</span>${variant.version ? html` <span class="vz-muted" dir="ltr">v${variant.version}</span>` : ''}${variantBadges(ctx, variant)}${internal && variant.role_by === 'file_name' ? html`<span class="vz-logo-role-note">${t.roleByFileName}</span>` : ''}</figcaption>`
+  const plate = (role: 'on_light' | 'on_dark', label: string) => {
+    const variant = system[role]
+    const tone = role === 'on_light' ? 'light' : 'dark'
+    if (!variant) return internal ? html`<figure class="vz-logo-plate vz-logo-plate--${tone} is-empty" data-role="${role}"><div class="vz-logo-plate-stage"></div><figcaption class="vz-note"><span class="vz-logo-plate-label">${label}</span> ${t.variantMissing[role]}</figcaption></figure>` : ''
+    return html`<figure class="vz-logo-plate vz-logo-plate--${tone}" data-role="${role}"><div class="vz-logo-plate-stage">${variantImage(ctx, variant, 'vz-logo-plate-img')}</div>${caption(variant, label)}</figure>`
+  }
+  const icon = system.icon
+  const sizes: Array<[number, string]> = [[16, t.iconFavicon], [32, t.iconFavicon], [48, t.iconFavicon], [96, t.iconAvatar], [160, t.iconAvatar]]
+  const n = numbers(ctx.lang)
+  const iconPart = icon
+    ? html`<figure class="vz-logo-icon" data-role="icon"><ul class="vz-logo-icon-sizes">${sizes.map(([size, label]) => html`<li class="vz-logo-icon-size${label === t.iconAvatar ? ' vz-logo-icon-size--avatar' : ''}">${variantImage(ctx, icon, 'vz-logo-icon-img', size)}<span class="vz-note">${label} · ${fillVisual(t.sizeLabel, { size: n.format(size) })}</span></li>`)}</ul>${caption(icon, t.iconTitle)}</figure>`
+    : internal
+      ? html`<p class="vz-note vz-logo-icon is-empty" data-role="icon">${t.variantMissing.icon}</p>`
+      : ''
+  return html`<div class="vz-logo-system">
+    <h3 class="vz-sub">${t.systemTitle}</h3>
+    <p class="vz-note">${t.systemLead}</p>
+    <div class="vz-logo-plates">${plate('on_light', t.plateOnLight)}${plate('on_dark', t.plateOnDark)}</div>
+    ${iconPart}
+  </div>`
 }
 
 /** Rows of the sources appendix: one per cited fact, then the approved master file when there is one. */

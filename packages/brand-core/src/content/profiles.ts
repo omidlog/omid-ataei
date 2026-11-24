@@ -49,6 +49,7 @@ export const FOUNDER_CORE: InterviewProfile & { schema_version: 1 } = {
     'brand.logo.misuse',
     'brand.logo.min_size',
     'brand.color.roles',
+    'brand.color.semantic_map',
     'brand.color.themes',
     'brand.type.intent',
     'brand.type.scale',
@@ -58,10 +59,15 @@ export const FOUNDER_CORE: InterviewProfile & { schema_version: 1 } = {
 }
 
 /**
- * Shared brand questions a personal brand reuses by id instead of redefining: personality, voice,
- * do/don't pairs, forbidden language, translation style, and the visual basics.
+ * Shared brand questions a personal brand reuses by id instead of redefining: purpose, vision, values and promise
+ * (they apply to a person too; BOS-15), personality, voice, do/don't pairs, forbidden language, translation style,
+ * and the visual basics.
  */
 export const PERSONAL_SHARED_QUESTIONS = [
+  'brand.strategy.purpose',
+  'brand.strategy.vision',
+  'brand.strategy.values',
+  'brand.strategy.promise',
   'brand.personality.traits',
   'brand.verbal.voice',
   'brand.verbal.voice_pairs',
@@ -69,6 +75,7 @@ export const PERSONAL_SHARED_QUESTIONS = [
   'brand.verbal.localization',
   'brand.photo.direction',
   'brand.color.roles',
+  'brand.color.semantic_map',
   'brand.type.intent',
 ]
 
@@ -77,7 +84,7 @@ export const PERSONAL_BRAND: InterviewProfile & { schema_version: 1 } = {
   id: 'personal-brand',
   title: 'Personal brand',
   description:
-    'A person-centered brand: identity, positioning, story, experience and credentials, evidence, content, visual presence and privacy, plus the shared voice and visual basics. Facet questions (founder-executive, consultant-expert, creator-educator, artist-designer, speaker-author) apply only for the facets selected in modules.personal.facets. The profile is exclusive: company legal-entity, SaaS, mascot and other Business OS questions count as not applicable, not missing. A person who also runs a business can set brand.profile back to universal and keep modules.personal enabled to work through both.',
+    'A person-centered brand: identity, positioning, story, experience and credentials, evidence, content, visual presence and privacy, plus the shared voice and visual basics. Facet questions (founder-executive, consultant-expert, creator-educator, artist-designer, speaker-author) apply only for the facets selected in modules.personal.facets. The profile is exclusive: company legal-entity, SaaS, mascot and other Business OS questions count as not applicable, not missing. With a business facet (founder-executive, consultant-expert) the canvas, business and marketing plans and the Strategy lab describe the person’s own practice from these personal answers; parts with no personal answer are not applicable. For a full plan of a venture, set brand.profile back to universal and keep modules.personal enabled, or give the venture its own repository.',
   exclusive: true,
   question_ids: [
     ...personalCoreModules.flatMap((module) => module.fields.map((field) => field.id)),

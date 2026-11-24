@@ -16,10 +16,12 @@ export { buildMascotCatalog, CANONICAL_ANGLES, CORE_MOTIONS, EXAMPLE_STAGES, cat
 export { InterviewEngine, applyInit, dispositionFor, emptySession, assertSlug, upgradeCore, syncManifest, personalInit } from './engine.js'
 export { completenessScope, listProfiles, loadProfile, profileErrors, UNIVERSAL_PROFILE } from './profiles.js'
 export { PERSONAL_BRAND, PERSONAL_SHARED_QUESTIONS, STARTER_PROFILES } from './content/profiles.js'
-export { canonicalReferenceErrors, ensureStarterProfiles, migratePersonal, PERSONAL_CANONICAL_REFERENCES } from './personal.js'
+export { addPersonalStrategyQuestions, addProfileAdditions, addProfileQuestions, PROFILE_ADDITIONS, canonicalReferenceErrors, ensureStarterProfiles, migratePersonal, PERSONAL_CANONICAL_REFERENCES, PERSONAL_STRATEGY_QUESTIONS } from './personal.js'
 export type { CanonicalReference } from './personal.js'
 export {
   addEvidence,
+  CLAIM_VERIFICATIONS,
+  claimEvidence,
   claimVerification,
   EVIDENCE_KINDS,
   EVIDENCE_SOURCES,
@@ -27,15 +29,23 @@ export {
   evidenceFor,
   evidencePath,
   gatePasses,
+  isIndependentSource,
+  ownerPartLabel,
   publicationBlockers,
   readEvidence,
   unpublishBlocked,
+  verificationNote,
+  withOwnership,
 } from './evidence.js'
-export type { AddEvidenceInput, ClaimVerification, EvidenceItem, EvidenceKind, EvidenceSource, EvidenceStatus } from './evidence.js'
+export { locationsIn, OWNED_LOCATION_FACTS, ownedLocations, ownedLocationsFrom, ownedMatch, SHARED_PLATFORM_HOSTS } from './evidence-ownership.js'
+export type { OwnedLocation } from './evidence-ownership.js'
+export type { AddEvidenceInput, ClaimEvidence, ClaimVerification, EvidenceItem, EvidenceKind, EvidenceSource, EvidenceStatus } from './evidence.js'
 export { RIGHTS_SUBJECTS, rightsBlocker, rightsSubject } from './asset-rights.js'
 export type { RightsSubject } from './asset-rights.js'
-export { moduleEnabled, personalConfig } from './conditions.js'
-export { PRIVATE_CUES, privateDataFindings, privateDataRefusal } from './personal-privacy.js'
+export { moduleEnabled, personalConfig, questionApplies } from './conditions.js'
+export { brandApplicability, BUSINESS_FACETS, frameworksApplyTo, PERSONAL_FRAMEWORK_SOURCES, VENTURE_PATH_NOTE } from './applicability.js'
+export type { ApplicabilityState, BrandApplicability, FrameworkRef, FrameworkSourceRow } from './applicability.js'
+export { namesPrivacyCategories, PRIVATE_CATEGORY_NAMES, PRIVATE_CUES, privateDataFindings, privateDataRefusal } from './personal-privacy.js'
 export type { PrivateDataFinding, PrivateDataKind } from './personal-privacy.js'
 export { OWNERSHIP_STATES, RELATION_TYPES } from './structured.js'
 export type { OwnershipState, RelationshipEntry, RelationType } from './structured.js'
@@ -105,6 +115,9 @@ export type {
   BatchOutcome,
   BatchResult,
   ChangeProposal,
+  PendingKind,
+  PlanDecision,
+  PlanEntry,
   PublishOutcome,
   PublishResult,
   ReviewItem,
@@ -160,11 +173,39 @@ export {
 export type { EntityFieldSpec, EntityItem, EntityList, EntityOperation, EntityRead, EntitySpec, SourceRefKind } from './entities.js'
 export { formatEntityMigration, migrateEntityAnswers } from './entity-migration.js'
 export type { EntityMigrationReport } from './entity-migration.js'
-export { BOOLEAN_WORDS, booleanWord } from './i18n.js'
+export { BOOLEAN_WORDS, booleanWord, questionHelp } from './i18n.js'
 export { approveAssets } from './asset-approval.js'
 export type { AssetApprovalOutcome, AssetApprovalResult } from './asset-approval.js'
-export { approveTokens, generateTokens, publishTokens, readTokenApprovals, TOKEN_SOURCES } from './token-generate.js'
-export type { GeneratedTokenResult, TokenGenerateReport, TokenOutcome, TokenReviewOutcome, TokenReviewResult } from './token-generate.js'
+export { approveAllPending, dryRunNotice, dryRunReport, formatAllPending, formatDryRun, PENDING_KINDS, planAllPending } from './approve-all.js'
+export type { AllPendingItem, AllPendingOutcome, AllPendingPlan, AllPendingResult, DryRunItem, DryRunReport } from './approve-all.js'
+export {
+  forgetKeychainProof,
+  KEYCHAIN_ENV,
+  KEYCHAIN_SERVICE,
+  keychainAvailable,
+  readKeychainProof,
+  resolveApprovalProof,
+  storeKeychainProof,
+  systemKeychainRunner,
+} from './approval-proof.js'
+export type { KeychainOptions, KeychainRun, KeychainRunner, KeychainStoreOutcome, KeychainStoreResult, ProofSource, ProofSources } from './approval-proof.js'
+export { ANSWER_ORIGINS, answerProvenance, provenanceLabel } from './provenance.js'
+export type { AnswerOrigin, AnswerProvenance } from './provenance.js'
+export { approveTokens, generateTokens, publishTokens, readTokenApprovals, TOKEN_SOURCE_QUESTIONS, TOKEN_SOURCES, tokenNextStep } from './token-generate.js'
+export type { GeneratedTokenResult, SemanticMapReport, TokenGenerateReport, TokenOutcome, TokenReviewOutcome, TokenReviewResult, TokenSourceState } from './token-generate.js'
+export {
+  BRAND_ROLE_PREFIX,
+  brandRoleTokenId,
+  parseSemanticMap,
+  SEMANTIC_COLOR_SLOTS,
+  SEMANTIC_MAP_FORMAT,
+  SEMANTIC_MAP_QUESTION,
+  SEMANTIC_SLOTS,
+  semanticAnswerText,
+  semanticSlotOf,
+  suggestSemanticMap,
+} from './token-semantic.js'
+export type { ParsedSemanticMap, SemanticAssignment, SemanticSlot, SemanticSuggestion } from './token-semantic.js'
 export {
   BRAND_BOOK,
   buildBrandBook,
@@ -182,10 +223,21 @@ export {
   lengthReport,
   PERSONAL_DOCUMENT_KINDS,
   PERSONAL_SPECS,
+  composeDrafts,
+  countWords,
+  DRAFT_CONNECTORS,
+  DRAFT_LABEL,
+  DRAFT_LOCALES,
+  draftLocales,
+  factLanguage,
+  localizedSegments,
+  TRANSLATION_COMPANIONS,
 } from './documents/index.js'
 export type { DocumentAudience, DocumentItem, DocumentKind, DocumentModel, DocumentSection, DocumentSpec, ItemTag, LengthReport, PersonalDocumentKind, SectionSpec } from './documents/index.js'
+export type { ComposedDraft, ComposeSource, DraftLocale, FactLanguage, UntranslatedFact } from './documents/index.js'
 export { evaluateCondition } from './conditions.js'
-export { validateRepo } from './validate-repo.js'
+export { questionTextDrift, tokenCssBuildNote, validateRepo } from './validate-repo.js'
+export { addMissingQuestions, bankName, refreshQuestionText } from './question-text.js'
 export { PERSONAL_FACETS, PROPOSAL_STATES, PUBLICATION_REQUIREMENTS } from './types.js'
 export type { BrandConfig, FieldQuestion, ModuleDef, AnswerRecord, PersonalFacet, PersonalModuleConfig, ProposalState, PublicationRequirement } from './types.js'
 export {
@@ -243,3 +295,5 @@ export {
 export { formatMigrationRuns, migrationFiles, migrationPaths, MIGRATIONS_DIR, parseMigration, pendingMigrations, planMigrations } from './template-migrations.js'
 export type { DeleteOperation, Migration, MigrationOperation, MigrationRun, MigrationSources } from './template-migrations.js'
 export type { ApplyResult, ChangeSources, Classification, PlannedChange, SyncKind, SyncManifest, SyncRule, TemplateRecord, UpdateAction, UpdatePlan } from './template-sync.js'
+export { checkLogoMastersInRepo, checkLogoMastersReference, isExampleAsset } from './logo-masters.js'
+export type { LogoMastersCheck } from './logo-masters.js'

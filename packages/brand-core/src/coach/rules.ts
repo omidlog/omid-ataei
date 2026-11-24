@@ -307,7 +307,7 @@ function requiresEvidence(question: FieldQuestion): boolean {
  * `evidence-claim-unverified` (needs_verification).
  * Fields: every answered question that declares `publication_requires: verified_evidence` (credentials, awards,
  * highlights, founder ventures, audience metrics, exhibitions, talks, publications, …).
- * Fires when `claimVerification` is `unverified` or `owner_stated`. The claim stays unverified until the owner
+ * Fires when `claimVerification` is anything but `verified` (`partly_verified`, `owner_published`, `owner_stated`, `unverified`). The claim stays unverified until the owner
  * verifies a source with `brand:evidence`; the coach never upgrades it.
  */
 function evidenceClaimUnverified(ctx: CoachContext): RuleOutput {

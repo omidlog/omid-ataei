@@ -7,8 +7,8 @@ export type { BmcOptions, BmcZoneSpec } from './bmc.js'
 export { fillVisual, isVisualLang, visualCatalog, VISUAL_LANGS } from './i18n.js'
 export type { VisualCatalog, VisualLang } from './i18n.js'
 export { ILLUSTRATIVE_BRAND, illustrativeBusinessModelCanvas } from './fixtures.js'
-export { buildVisualIdentity, contrastGrid, CONTRAST_GRID_MAX, declaredCombinations, IDENTITY_QUESTIONS, identityDocument, imageSize, LOGO_MASTERS_FACT, masterReferenceTokens, measurePair, pickMaster } from './identity.js'
-export type { IdentityOptions, LogoMasterCandidate } from './identity.js'
+export { buildVisualIdentity, contrastGrid, CONTRAST_GRID_MAX, declaredCombinations, IDENTITY_QUESTIONS, identityDocument, imageSize, LOGO_ICON_TAGS, LOGO_MASTERS_FACT, LOGO_PLATE_TAGS, logoChapterStatus, logoVariantRole, masterReferenceTokens, measurePair, pickMaster } from './identity.js'
+export type { IdentityOptions, LogoMasterCandidate, LogoResolution } from './identity.js'
 export { IDENTITY_TEXT } from './i18n-identity.js'
 export type { IdentityText } from './i18n-identity.js'
 export { illustrativeVisualIdentity } from './fixtures-identity.js'
@@ -38,6 +38,9 @@ export {
   coverageCells,
   EXPORT_PROFILE_SPECS,
   EXPORT_PROFILES,
+  isPersonalPublishingType,
+  PERSONAL_PUBLISHING_KIND,
+  PERSONAL_PUBLISHING_TYPES,
   PROFILE_DOCUMENTS,
   profilePermits,
   publishingExportCommand,
@@ -47,12 +50,14 @@ export {
   redactBook,
   redactDocumentModel,
   redactVisualDocument,
+  visualNotApplicable,
   visualProfilePermits,
 } from './publishing.js'
 export type {
   CoverageState,
   ExportProfile,
   ExportProfileSpec,
+  PersonalPublishingType,
   PublishingCell,
   PublishingDocumentType,
   PublishingExport,

@@ -36,6 +36,19 @@
     },
     "related_outputs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
     "depends_on": { "type": "array", "items": { "type": "string" } },
-    "why_it_matters": { "type": "string", "minLength": 1 }
+    "why_it_matters": { "type": "string", "minLength": 1 },
+    "why_it_matters_i18n": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "fa": { "type": "string", "minLength": 1 }, "tr": { "type": "string", "minLength": 1 } }
+    },
+    "examples_i18n": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fa": { "type": "array", "items": { "type": "string", "pattern": "^EXAMPLE ONLY: " } },
+        "tr": { "type": "array", "items": { "type": "string", "pattern": "^EXAMPLE ONLY: " } }
+      }
+    }
   }
 }

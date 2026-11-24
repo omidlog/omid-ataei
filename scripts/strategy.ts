@@ -1,8 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { stdin as input, stdout as output } from 'node:process'
-import readline from 'node:readline/promises'
 import { parseArgs } from 'node:util'
+import { readOwnerProof } from './proof.js'
 import { AGENT_TOKEN_ENV, KnowledgeError, openWorkspace, type KnowledgeWorkspace } from '@brand-os/brand-core'
 import {
   approveRevision,
@@ -92,28 +91,9 @@ function readJsonFile(file: string, label: string): unknown {
   }
 }
 
+/** The shared owner-proof resolver (scripts/proof.ts): env, piped stdin, macOS Keychain, hidden prompt. Never argv. */
 async function ownerProof(): Promise<string | undefined> {
-  const fromEnv = process.env.BRAND_OS_APPROVAL_PROOF?.trim()
-  if (fromEnv) return fromEnv
-  if (!input.isTTY) return undefined
-  const { Writable } = await import('node:stream')
-  let muted = false
-  const sink = new Writable({
-    write(chunk, encoding, callback) {
-      if (!muted) output.write(chunk, encoding)
-      callback()
-    },
-  })
-  const rl = readline.createInterface({ input, output: sink, terminal: true })
-  try {
-    const pending = rl.question('Owner approval proof (input hidden): ')
-    muted = true
-    const answer = await pending
-    output.write('\n')
-    return answer.trim() || undefined
-  } finally {
-    rl.close()
-  }
+  return readOwnerProof({ prompt: 'Owner approval proof (input hidden): ' })
 }
 
 function show(value: unknown): string {

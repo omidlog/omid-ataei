@@ -129,6 +129,7 @@ function checkConfig(): void {
       ['allowed owners', config.github.allowedOwners.join(', ') || '-'],
       ['template', `${config.github.templateOwner}/${config.github.templateRepo}`],
       ['webhook', config.github.webhookSecret ? 'configured' : 'not configured'],
+      ['head poll', config.headPollMs > 0 ? `every ${config.headPollMs / 1000} s` : 'off'],
     ]
     for (const [name, value] of lines) console.log(`${name.padEnd(17)} ${value}`)
     console.log('Configuration OK.')

@@ -5,6 +5,7 @@ import { isVisualLang } from '@brand-os/brand-core/visual'
 import type { MessageKey } from '../i18n/index.js'
 import type { ProjectionAsset, ProjectionToken, StudioProjection } from '../projection.js'
 import type { BrandRecord, ProvisionRequest } from '../registry.js'
+import type { PendingPull } from '../sync.js'
 import type { UpdateStatus } from '../template-update.js'
 import { cloneCommand, starterPrompt } from '../starter-prompt.js'
 import {
@@ -29,6 +30,7 @@ import { icon, type IconName } from './icons.js'
 import { brandAvatar, brandPath, plainShell, refreshButton, shell, type BrandSection, type BrandView, type ViewContext } from './layout.js'
 import { mascotLink } from './visual-mascot.js'
 import { commandStrip } from './publishing.js'
+import { personalDocumentView } from './personal-documents.js'
 
 /* ---------------------------------------------------------------- sign in */
 
@@ -436,17 +438,70 @@ function syncBanners(ctx: ViewContext, view: BrandView, flash: string | null): S
   if (flash === 'synced') out.push(banner({ tone: 'success', body: i.t('sync.done', { sha: shortSha(s.sha) }), live: true }))
   if (flash === 'failed') out.push(banner({ tone: 'danger', body: i.t('sync.failed'), live: true }))
   if (flash === 'too-soon') out.push(banner({ tone: 'info', body: i.t('sync.tooSoon'), live: true }))
+  if (view.refreshing) {
+    const started = view.refreshStartedAt ? i.dateTime(view.refreshStartedAt) : ''
+    out.push(banner({ tone: 'info', body: html`<span class="spinner" aria-hidden="true"></span> ${started ? i.t('sync.syncingSince', { time: started }) : i.t('sync.checking')}`, live: true }))
+  }
   if (s.last_error && flash !== 'failed') {
     out.push(
       view.cached.projection
         ? banner({ tone: 'warning', title: i.t('sync.errorTitle'), body: i.t('sync.errorBody', { sha: shortSha(s.sha), reason: s.last_error.message }) })
         : banner({ tone: 'danger', title: i.t('sync.errorTitle'), body: i.t('sync.errorNoData', { reason: s.last_error.message }), actions: refreshButton(ctx, view) }),
     )
-  } else if (view.stale && view.cached.projection && !flash) {
-    out.push(banner({ tone: 'neutral' as Tone, body: html`${view.refreshing ? html`<span class="spinner" aria-hidden="true"></span> ${i.t('sync.checking')} ` : ''}${i.t('sync.staleBody', { sha: shortSha(s.sha), time: i.dateTime(s.synced_at) })}` }))
+  } else if (view.stale && view.cached.projection && !flash && !view.refreshing) {
+    out.push(banner({ tone: 'neutral' as Tone, body: i.t('sync.staleBody', { sha: shortSha(s.sha), time: i.dateTime(s.synced_at) }) }))
   }
   if (s.repo_private === false) out.push(banner({ tone: 'danger', title: i.t('sync.public'), body: i.t('sync.publicWarning') }))
   return join(out)
+}
+
+/* BOS-02: open pull requests as counts only. Unmerged, never canonical, never brand truth. */
+
+function pendingPulls(view: BrandView): PendingPull[] {
+  return view.cached.projection ? (view.cached.history?.pulls ?? []) : []
+}
+
+function pendingTitle(ctx: ViewContext, count: number): string {
+  return count === 1 ? ctx.i.t('pending.titleOne') : ctx.i.t('pending.titleMany', { count: ctx.i.number(count) })
+}
+
+/** What one pull request would change, in words; never a value, file name or diff line. */
+export function pullChangeSummary(ctx: ViewContext, pull: PendingPull): SafeHtml {
+  const { i } = ctx
+  const c = pull.changes
+  if (!c) return html`<p class="pull-changes muted small">${i.t('pending.unknown')}</p>`
+  const parts: Array<[MessageKey, number]> = [
+    ['pending.facts', c.facts],
+    ['pending.evidence', c.evidence],
+    ['pending.assets', c.assets],
+    ['pending.other', c.other],
+  ]
+  return html`<p class="pull-changes small" data-pull-changes="${pull.number}">${join(
+    parts.map(([key, value]) => html`<span class="pull-count" data-kind="${key.slice('pending.'.length)}">${i.t(key, { count: i.number(value) })}</span>`),
+    '<span class="pull-count-sep" aria-hidden="true"> · </span>',
+  )}${c.partial ? html` <span class="muted">${i.t('pending.partial')}</span>` : ''}</p>`
+}
+
+function pendingPullsCard(ctx: ViewContext, view: BrandView): SafeHtml | '' {
+  const pulls = pendingPulls(view)
+  if (!pulls.length) return ''
+  const { i } = ctx
+  return html`<section class="card pending-card" id="pending-pulls" aria-labelledby="pending-title" data-pending-pulls="${pulls.length}">
+    <div class="card-head"><h2 class="card-title" id="pending-title">${icon('pr')} ${pendingTitle(ctx, pulls.length)}</h2>${badge(i.t('pending.label'), 'warning', 'alert')}</div>
+    <p class="muted small">${i.t('pending.body')}</p>
+    <ul class="pull-list">${pulls.map((pull) => {
+      const url = safeGitHubUrl(pull.html_url)
+      const label = html`#${pull.number} <span dir="auto">${pull.title}</span>`
+      return html`<li class="pull">${icon('pr', 'commit-icon')}<div class="commit-body"><p class="commit-title">${url ? externalLink(url, label, i, 'pull-link') : label}</p>${pullChangeSummary(ctx, pull)}</div><div class="pull-badges">${badge(i.t('pending.label'), 'warning', 'alert')}${pull.draft ? badge(i.t('history.draftPr'), 'neutral') : ''}</div></li>`
+    })}</ul>
+  </section>`
+}
+
+/** The compact line on every other brand page. */
+function pendingPullsLine(ctx: ViewContext, view: BrandView): SafeHtml | '' {
+  const pulls = pendingPulls(view)
+  if (!pulls.length) return ''
+  return html`<p class="pending-line" data-pending-pulls="${pulls.length}">${icon('pr')}<span>${pendingTitle(ctx, pulls.length)}</span> <span class="badge badge-warning">${ctx.i.t('pending.label')}</span> <a href="${brandPath(view.record.slug, 'overview')}#pending-pulls" class="link-sm">${ctx.i.t('pending.view')}</a></p>`
 }
 
 export function brandShell(ctx: ViewContext, view: BrandView, section: BrandSection, title: string, body: SafeHtml, flash: string | null, extraHead?: SafeHtml): SafeHtml {
@@ -456,14 +511,16 @@ export function brandShell(ctx: ViewContext, view: BrandView, section: BrandSect
   const content = view.cached.projection
     ? body
     : emptyState({ icon: view.refreshing ? 'refresh' : 'alert', title: view.cached.status.last_error ? i.t('sync.errorTitle') : i.t('sync.never'), body: view.cached.status.last_error?.message ?? i.t('sync.checking'), action: refreshButton(ctx, view) })
-  return shell(ctx, { title: `${title} · ${view.record.display_name}`, crumbs, brand: { view, section }, content: html`${syncBanners(ctx, view, flash)}${content}`, extraHead })
+  // While a sync runs the page reloads itself every few seconds, so the owner never waits on an open request.
+  const head = view.refreshing ? html`<meta http-equiv="refresh" content="5">${extraHead ?? html``}` : extraHead
+  return shell(ctx, { title: `${title} · ${view.record.display_name}`, crumbs, brand: { view, section }, content: html`${syncBanners(ctx, view, flash)}${section !== 'overview' ? pendingPullsLine(ctx, view) : ''}${content}`, extraHead: head })
 }
 
 export function brandHeader(ctx: ViewContext, view: BrandView, title: string, subtitle: string): SafeHtml {
   const p = view.cached.projection!
   const { i } = ctx
   return pageHeader({
-    eyebrow: html`${brandAvatar(p.brand.name)} <span dir="auto">${p.brand.name}</span>`,
+    eyebrow: html`${brandAvatar(view.record.display_name)} <span dir="auto">${view.record.display_name}</span>`,
     title,
     subtitle,
     meta: html`${profileBadge(ctx, p.brand.kind)}${view.cached.status.repo_private ? badge(i.t('sync.private'), 'neutral', 'lock') : ''}${code(`${view.record.repo.owner}/${view.record.repo.name}`)}`,
@@ -534,14 +591,15 @@ export function overviewPage(ctx: ViewContext, view: BrandView, flash: string | 
   const commits = view.cached.history?.commits.slice(0, 4) ?? []
   const body = html`
     <header class="brand-hero">
-      <div class="brand-hero-id">${brandAvatar(p.brand.name, 'brand-avatar-xl')}<div>
-        <h1 class="page-title" dir="auto">${p.brand.name}</h1>
+      <div class="brand-hero-id">${brandAvatar(view.record.display_name, 'brand-avatar-xl')}<div>
+        <h1 class="page-title" dir="auto">${view.record.display_name}</h1>
         <div class="page-meta">${profileBadge(ctx, p.brand.kind)}${view.cached.status.repo_private ? badge(i.t('sync.private'), 'neutral', 'lock') : ''}${code(`${view.record.repo.owner}/${view.record.repo.name}`)}</div>
       </div></div>
       <a class="btn btn-secondary" href="${brandPath(view.record.slug, 'handoff')}">${icon('handoff')}<span>${i.t('nav.handoff')}</span></a>
     </header>
     ${banner({ tone: 'info', body: html`${i.t('app.readOnlyNote')} <a href="${brandPath(view.record.slug, 'handoff')}">${i.t('nav.handoff')}</a>` })}
     ${!p.brand.initialized ? banner({ tone: 'warning', body: i.t('overview.notInitialized') }) : ''}
+    ${pendingPullsCard(ctx, view)}
     ${commandStrip(ctx, view)}
     <section class="stat-grid" aria-label="${i.t('overview.title')}">
       ${statCard({ label: i.t('overview.coverage'), value: i.percent(o.coverage), hint: i.t('overview.coverageHint'), ratio: o.coverage })}
@@ -561,7 +619,9 @@ export function overviewPage(ctx: ViewContext, view: BrandView, flash: string | 
         <div class="table-wrap"><table class="table">
           <thead><tr><th scope="col">${i.t('overview.group')}</th><th scope="col">${i.t('overview.requiredApproved')}</th><th scope="col">${i.t('overview.requiredUnanswered')}</th><th scope="col">${i.t('overview.pending')}</th></tr></thead>
           <tbody>${o.groups.map(
-            (group) => html`<tr>
+            (group) => group.applicable === 0
+              ? html`<tr data-applicable="false"><th scope="row">${GROUP_KEYS[group.group] ? i.t(GROUP_KEYS[group.group]!) : group.group}</th><td colspan="3" class="muted">${icon('skip')} ${i.t('doc.notApplicableTitle')}</td></tr>`
+              : html`<tr>
               <th scope="row">${GROUP_KEYS[group.group] ? i.t(GROUP_KEYS[group.group]!) : group.group}</th>
               <td><div class="cell-bar">${ratioBar(group.required ? group.required_approved / group.required : 0, `${group.required_approved}/${group.required}`, 'success')}<span>${i.t('common.of', { done: i.number(group.required_approved), total: i.number(group.required) })}</span></div></td>
               <td>${i.number(group.required_unanswered)}</td>
@@ -649,22 +709,54 @@ export function designPage(ctx: ViewContext, view: BrandView, flash: string | nu
   const fonts = items.filter((item) => item.structured?.type === 'font' && item.tag === 'approved')
   const logos = items.filter((item) => item.structured?.type === 'logo_spec' && item.tag === 'approved')
   const colorTokens = p.tokens.items.filter((token) => token.type === 'color')
+  // BOS-17: template example colours are never shown next to the owner's approved colours without separation. With
+  // approved roles, the examples move into a collapsed "Template examples (not your brand)" section, and the page
+  // says when the approved roles are not tokens yet and which command turns them into drafts.
+  const hasApprovedRoles = colors.length > 0
+  const exampleColors = colorTokens.filter((token) => token.example)
+  const brandColorTokens = colorTokens.filter((token) => !token.example)
+  const roleTokens = colorTokens.filter((token) => token.id.startsWith('color.brand-role.'))
+  const separateExamples = hasApprovedRoles && exampleColors.length > 0
+  const shownColors = separateExamples ? brandColorTokens : colorTokens
   const groups = new Map<string, ProjectionToken[]>()
   for (const token of p.tokens.items) {
     const group = token.id.split('.')[0] ?? token.type
     groups.set(group, [...(groups.get(group) ?? []), token])
   }
   const dimension = p.tokens.items.filter((token) => token.type === 'dimension' && /^-?\d+(\.\d+)?px$/.test(token.value)).slice(0, 16)
+  const tokenNotice = !hasApprovedRoles
+    ? ''
+    : roleTokens.length === 0
+      ? banner({
+          tone: 'warning',
+          id: 'tokens-not-generated',
+          title: i.t('design.notTokensTitle'),
+          body: html`<p>${i.t('design.notTokensBody')}</p><p>${code('npm run brand:tokens:generate')}</p><p class="muted small">${i.t('design.notTokensDraft')}</p>`,
+        })
+      : exampleColors.length > 0
+        ? banner({
+            tone: 'info',
+            id: 'tokens-semantic-unmapped',
+            title: i.t('design.unmappedTitle', { count: i.number(exampleColors.length) }),
+            body: html`<p>${i.t('design.unmappedBody')} ${code('brand.color.semantic_map')}</p><p>${code('npm run brand:tokens:generate')}</p>`,
+          })
+        : ''
+  const swatches = (tokens: ProjectionToken[]) => html`<div class="swatch-grid swatch-grid-lg">${tokens.map((token) => colorSwatch({ hex: safeHex(token.value), name: token.id, meta: tokenState(ctx, token), i }))}</div>`
   const body = html`${brandHeader(ctx, view, i.t('design.title'), i.t('design.subtitle'))}
     <section class="card" aria-labelledby="brand-colors">
       <h2 class="card-title" id="brand-colors">${i.t('design.brandColors')}</h2>
       ${colors.length ? join(colors.map((item) => documentItem(i, item))) : html`<p class="muted">${i.t('design.brandColorsEmpty')}</p>`}
     </section>
+    ${tokenNotice}
     <section class="card" aria-labelledby="token-colors">
-      <div class="card-head"><h2 class="card-title" id="token-colors">${i.t('design.colors')}</h2><span class="muted">${i.t('design.tokenCount', { approved: i.number(colorTokens.filter((token) => token.state === 'approved').length), draft: i.number(colorTokens.filter((token) => token.state === 'draft').length) })}</span></div>
-      ${colorTokens.length
-        ? html`<div class="swatch-grid swatch-grid-lg">${colorTokens.map((token) => colorSwatch({ hex: safeHex(token.value), name: token.id, meta: tokenState(ctx, token), i }))}</div>`
-        : html`<p class="muted">${i.t('design.colorsEmpty')}</p>`}
+      <div class="card-head"><h2 class="card-title" id="token-colors">${i.t('design.colors')}</h2><span class="muted">${i.t('design.tokenCount', { approved: i.number(shownColors.filter((token) => token.state === 'approved').length), draft: i.number(shownColors.filter((token) => token.state === 'draft').length) })}</span></div>
+      ${shownColors.length ? swatches(shownColors) : html`<p class="muted">${i.t(separateExamples ? 'design.colorsNotGenerated' : 'design.colorsEmpty')}</p>`}
+      ${separateExamples
+        ? html`<details class="disclosure" id="template-examples" data-template-examples><summary>${icon('sparkle')} ${i.t('design.examplesSummary')} <span class="muted">${i.number(exampleColors.length)}</span></summary>
+            <p class="muted small">${i.t('design.examplesHint')}</p>
+            ${swatches(exampleColors)}
+          </details>`
+        : ''}
     </section>
     <div class="two-col">
       <section class="card" aria-labelledby="type-title">
@@ -686,6 +778,7 @@ export function designPage(ctx: ViewContext, view: BrandView, flash: string | nu
       : ''}
     <section class="card" aria-labelledby="tokens-title">
       <div class="card-head"><h2 class="card-title" id="tokens-title">${i.t('design.tokens')}</h2><span class="muted">${i.t('design.tokenCount', { approved: i.number(p.tokens.approved), draft: i.number(p.tokens.draft) })}</span></div>
+      ${separateExamples ? html`<p class="muted small">${icon('info')} ${i.t('design.allTokensExampleHint')}</p>` : ''}
       ${[...groups.entries()].map(
         ([group, tokens]) => html`<details class="disclosure"><summary><span class="mono" dir="ltr">${group}</span> <span class="muted">${i.number(tokens.length)}</span></summary>
           <div class="table-wrap"><table class="table table-compact"><thead><tr><th scope="col">${i.t('design.token')}</th><th scope="col">${i.t('design.type')}</th><th scope="col">${i.t('common.value')}</th><th scope="col">${i.t('common.status')}</th></tr></thead>
@@ -714,6 +807,8 @@ function svgIssue(ctx: ViewContext, asset: ProjectionAsset): SafeHtml | string {
 function assetCard(ctx: ViewContext, slug: string, asset: ProjectionAsset): SafeHtml {
   const { i } = ctx
   const status = asset.published ? badge(i.t('assets.status.published'), 'accent', 'globe') : asset.approved ? badge(i.t('assets.status.approved'), 'success', 'checkCircle') : badge(i.t('assets.status.draft'), 'warning', 'clock')
+  // BOS-16: approved but not in the publication policy: say so, so the owner's preview is not read as published.
+  const unpublished = asset.approved && !asset.published ? html`<span data-asset-unpublished>${badge(i.t('assets.notPublished'), 'neutral', 'lock', i.t('assets.notPublishedHint'))}</span>` : ''
   return html`<li class="asset-card" data-kind="${asset.kind}">
     <div class="asset-preview${asset.preview_state === 'draft' ? ' asset-preview-draft' : ''}">${asset.preview_key
       ? asset.preview_state === 'draft'
@@ -722,7 +817,7 @@ function assetCard(ctx: ViewContext, slug: string, asset: ProjectionAsset): Safe
       : html`<div class="asset-placeholder">${icon('image')}<span>${i.t('assets.noPreview')}</span><span class="muted small">${asset.unavailable_reason ? i.t(`assets.reason.${asset.unavailable_reason}` as MessageKey) : ''}</span>${svgIssue(ctx, asset)}</div>`}</div>
     <div class="asset-body">
       <h3 class="asset-name" dir="auto">${asset.name}</h3>
-      <div class="asset-badges">${status}${badge(asset.kind, 'neutral')}</div>
+      <div class="asset-badges">${status}${unpublished}${badge(asset.kind, 'neutral')}</div>
       <dl class="asset-meta">
         <div><dt>${i.t('assets.visibility')}</dt><dd>${asset.visibility}</dd></div>
         ${asset.license ? html`<div><dt>${i.t('assets.license')}</dt><dd dir="auto">${asset.license}</dd></div>` : ''}
@@ -733,6 +828,33 @@ function assetCard(ctx: ViewContext, slug: string, asset: ProjectionAsset): Safe
   </li>`
 }
 
+/**
+ * BOS-12: the gallery order and what it leaves out. Real published, then approved, then other real assets, template
+ * examples last (stable within a group). A template example is hidden once an approved real asset of the same kind
+ * exists, and the mascot module's placeholders and empty slots are hidden while it is off (its filter too); the page
+ * says how many were hidden and why.
+ */
+export function galleryAssets(assets: ProjectionAsset[], mascotEnabled: boolean): { shown: ProjectionAsset[]; hiddenExamples: number; hiddenMascot: number } {
+  const example = (asset: ProjectionAsset) => asset.example ?? /EXAMPLE/.test(asset.license ?? '')
+  const realKinds = new Set(assets.filter((asset) => asset.approved && !example(asset)).map((asset) => asset.kind))
+  let hiddenExamples = 0
+  let hiddenMascot = 0
+  const shown = assets.filter((asset) => {
+    // Module off: its template placeholders and empty slots go; a real mascot file the brand added stays visible.
+    if (!mascotEnabled && asset.kind === 'mascot' && (example(asset) || (!asset.approved && asset.unavailable_reason === 'not_present'))) {
+      hiddenMascot += 1
+      return false
+    }
+    if (example(asset) && realKinds.has(asset.kind)) {
+      hiddenExamples += 1
+      return false
+    }
+    return true
+  })
+  const rank = (asset: ProjectionAsset) => (example(asset) ? 3 : asset.published ? 0 : asset.approved ? 1 : 2)
+  return { shown: shown.map((asset, index) => ({ asset, index })).sort((a, b) => rank(a.asset) - rank(b.asset) || a.index - b.index).map((item) => item.asset), hiddenExamples, hiddenMascot }
+}
+
 function countTable(ctx: ViewContext, title: string, counts: Record<string, number>): SafeHtml {
   return html`<div><h3 class="subhead">${title}</h3><ul class="count-list">${Object.entries(counts).map(([key, count]) => html`<li><span class="mono" dir="ltr">${key}</span><span>${ctx.i.number(count)}</span></li>`)}</ul></div>`
 }
@@ -741,15 +863,21 @@ export function assetsPage(ctx: ViewContext, view: BrandView, flash: string | nu
   const { i } = ctx
   const p = view.cached.projection
   if (!p) return brandShell(ctx, view, 'assets', i.t('assets.title'), html``, flash)
-  const kinds = [...new Set(p.assets.map((asset) => asset.kind))].sort()
+  const gallery = galleryAssets(p.assets, p.brand.modules.mascot)
+  const kinds = [...new Set(gallery.shown.map((asset) => asset.kind))].filter((kind) => p.brand.modules.mascot || kind !== 'mascot').sort()
+  const hidden = [
+    gallery.hiddenExamples ? i.t('assets.hiddenExamples', { count: i.number(gallery.hiddenExamples) }) : null,
+    gallery.hiddenMascot ? i.t('assets.hiddenMascot', { count: i.number(gallery.hiddenMascot) }) : null,
+  ].filter((line): line is string => line !== null)
   const body = html`${brandHeader(ctx, view, i.t('assets.title'), i.t('assets.subtitle'))}
-    ${p.assets.length
+    ${hidden.length ? html`<p class="muted small" data-assets-hidden>${join(hidden.map((line) => html`<span>${line}</span>`), ' ')}</p>` : ''}
+    ${gallery.shown.length
       ? html`<div class="filter-bar" data-asset-filter hidden role="group" aria-label="${i.t('assets.filter')}">
           <button type="button" class="chip" aria-pressed="true" data-filter="*">${i.t('common.all')}</button>
           ${kinds.map((kind) => html`<button type="button" class="chip" aria-pressed="false" data-filter="${kind}">${kind}</button>`)}
         </div>
         <h2 class="visually-hidden" id="asset-list-title">${i.t('nav.assets')}</h2>
-        <ul class="asset-grid" role="list" aria-labelledby="asset-list-title">${p.assets.map((asset) => assetCard(ctx, view.record.slug, asset))}</ul>`
+        <ul class="asset-grid" role="list" aria-labelledby="asset-list-title">${gallery.shown.map((asset) => assetCard(ctx, view.record.slug, asset))}</ul>`
       : emptyState({ icon: 'image', title: i.t('assets.empty'), body: i.t('assets.subtitle') })}
     ${p.mascot
       ? html`<section class="card" aria-labelledby="mascot-title">
@@ -790,7 +918,12 @@ export function businessPage(ctx: ViewContext, view: BrandView, doc: 'business-p
       ${modules.length
         ? html`<div class="table-wrap"><table class="table">
             <thead><tr><th scope="col">${i.t('common.module')}</th><th scope="col">${i.t('overview.coverage')}</th><th scope="col">${i.t('overview.approval')}</th><th scope="col">${i.t('overview.requiredUnanswered')}</th><th scope="col">${i.t('overview.pending')}</th></tr></thead>
-            <tbody>${modules.map((module) => html`<tr><th scope="row" dir="auto">${module.title}</th><td><div class="cell-bar">${ratioBar(module.coverage, i.percent(module.coverage))}<span>${i.percent(module.coverage)}</span></div></td><td>${i.percent(module.approval)}</td><td>${i.number(module.required_unanswered)}</td><td>${i.number(module.pending_review)}</td></tr>`)}</tbody>
+            <tbody>${modules.map((module) =>
+              // BOS-15: a module with no applicable question is not applicable to this profile, never "100 %".
+              module.applicable === 0
+                ? html`<tr data-applicable="false"><th scope="row" dir="auto">${module.title}</th><td colspan="4" class="muted">${icon('skip')} ${i.t('doc.notApplicableTitle')}</td></tr>`
+                : html`<tr><th scope="row" dir="auto">${module.title}</th><td><div class="cell-bar">${ratioBar(module.coverage, i.percent(module.coverage))}<span>${i.percent(module.coverage)}</span></div></td><td>${i.percent(module.approval)}</td><td>${i.number(module.required_unanswered)}</td><td>${i.number(module.pending_review)}</td></tr>`,
+            )}</tbody>
           </table></div>`
         : html`<p class="muted">${i.t('business.empty')}</p>`}
     </section>
@@ -799,7 +932,7 @@ export function businessPage(ctx: ViewContext, view: BrandView, doc: 'business-p
   return brandShell(ctx, view, section, i.t('business.title'), body, flash)
 }
 
-export function personalPage(ctx: ViewContext, view: BrandView, doc: string | null, flash: string | null): SafeHtml {
+export function personalPage(ctx: ViewContext, view: BrandView, doc: string | null, flash: string | null, locale: string | null = null): SafeHtml {
   const { i } = ctx
   const p = view.cached.projection!
   const personal = p.personal!
@@ -808,7 +941,7 @@ export function personalPage(ctx: ViewContext, view: BrandView, doc: string | nu
   const titles = Object.fromEntries(kinds.map((kind) => [kind, p.documents[kind]?.title ?? kind])) as Partial<Record<DocumentKind, string>>
   const body = html`${brandHeader(ctx, view, i.t('personal.title'), i.t('personal.subtitle'))}
     <div class="facts-strip"><span class="muted">${i.t('personal.facets')}:</span> ${personal.facets.length ? join(personal.facets.map((facet) => badge(i.t(`wizard.facet.${facet}` as MessageKey), 'accent', 'user'))) : html`<span class="muted">${i.t('personal.noFacets')}</span>`}</div>
-    ${kinds.length ? html`${docPicker(ctx, brandPath(view.record.slug, 'personal'), kinds, current, titles)}${p.documents[current] ? documentView(i, p.documents[current]!, current) : ''}` : emptyState({ icon: 'user', title: i.t('personal.title'), body: i.t('doc.empty') })}`
+    ${kinds.length ? html`${docPicker(ctx, brandPath(view.record.slug, 'personal'), kinds, current, titles)}${p.documents[current] ? personalDocumentView(ctx, p.documents[current]!, current, `${brandPath(view.record.slug, 'personal')}?doc=${current}`, locale) : ''}` : emptyState({ icon: 'user', title: i.t('personal.title'), body: i.t('doc.empty') })}`
   return brandShell(ctx, view, 'personal', i.t('personal.title'), body, flash)
 }
 
@@ -836,7 +969,7 @@ export function historyPage(ctx: ViewContext, view: BrandView, flash: string | n
         ${history?.pulls.length
           ? html`<ul class="pull-list">${history.pulls.map((pull) => {
               const url = safeGitHubUrl(pull.html_url)
-              return html`<li class="pull">${icon('pr', 'commit-icon')}<div class="commit-body"><p class="commit-title" dir="auto">${url ? html`<a href="${url}" target="_blank" rel="noopener noreferrer">#${pull.number} ${pull.title}<span class="visually-hidden"> ${i.t('common.opensNewTab')}</span></a>` : html`#${pull.number} ${pull.title}`}</p><p class="commit-meta muted">${code(pull.head_ref)} · ${i.relative(pull.updated_at, ctx.now)}</p></div><div class="pull-badges">${badge(i.t('history.noncanonical'), 'warning', 'alert')}${pull.draft ? badge(i.t('history.draftPr'), 'neutral') : ''}</div></li>`
+              return html`<li class="pull">${icon('pr', 'commit-icon')}<div class="commit-body"><p class="commit-title" dir="auto">${url ? html`<a href="${url}" target="_blank" rel="noopener noreferrer">#${pull.number} ${pull.title}<span class="visually-hidden"> ${i.t('common.opensNewTab')}</span></a>` : html`#${pull.number} ${pull.title}`}</p><p class="commit-meta muted">${code(pull.head_ref)} · ${i.relative(pull.updated_at, ctx.now)}</p>${pullChangeSummary(ctx, pull)}</div><div class="pull-badges">${badge(i.t('history.noncanonical'), 'warning', 'alert')}${pull.draft ? badge(i.t('history.draftPr'), 'neutral') : ''}</div></li>`
             })}</ul>`
           : html`<p class="muted">${i.t('history.pullsEmpty')}</p>`}
       </section>
@@ -904,7 +1037,27 @@ export interface AccountState {
   template: string
   allowedOwners: string[]
   webhookConfigured: boolean
+  /** Where GitHub should send push events (`<public origin>/webhooks/github`). */
+  webhookUrl: string
+  /** Default-branch head poll interval (0 = off). */
+  headPollMs: number
   test: { read: string | null; provision: string | null; error: string | null } | null
+}
+
+/** BOS-11: one-step webhook setup, shown only while no secret is configured. Names the variable, never a value. */
+function webhookGuide(ctx: ViewContext, state: AccountState): SafeHtml {
+  const { i } = ctx
+  const intro = state.headPollMs > 0 ? i.t('account.webhookSetupIntro', { minutes: i.number(Math.round((state.headPollMs / 60_000) * 10) / 10) }) : i.t('account.webhookSetupIntroNoPoll')
+  return html`<section class="card" id="webhook-setup" aria-labelledby="webhook-setup-title">
+    <h2 class="card-title" id="webhook-setup-title">${i.t('account.webhookSetupTitle')}</h2>
+    <p>${intro}</p>
+    <dl class="meta-list">
+      <div><dt>${i.t('account.webhookPayloadUrl')}</dt><dd>${code(state.webhookUrl)}</dd></div>
+      <div><dt>${i.t('account.webhookContentType')}</dt><dd>${code('application/json')}</dd></div>
+      <div><dt>${i.t('account.webhookEvents')}</dt><dd>${i.t('account.webhookEventsValue')}</dd></div>
+      <div><dt>${i.t('account.webhookSecret')}</dt><dd>${i.t('account.webhookSecretValue')}</dd></div>
+    </dl>
+  </section>`
 }
 
 export function accountPage(ctx: ViewContext, state: AccountState): SafeHtml {
@@ -928,6 +1081,7 @@ export function accountPage(ctx: ViewContext, state: AccountState): SafeHtml {
           <div><dt>${i.t('account.template')}</dt><dd>${code(state.template)}</dd></div>
           <div><dt>${i.t('account.allowedOwners')}</dt><dd>${state.allowedOwners.length ? join(state.allowedOwners.map((owner) => code(owner)), ' ') : '—'}</dd></div>
           <div><dt>${i.t('account.webhook')}</dt><dd>${yesNo(state.webhookConfigured)}</dd></div>
+          <div><dt>${i.t('account.headPoll')}</dt><dd>${state.headPollMs > 0 ? i.t('account.headPollEvery', { minutes: i.number(Math.round((state.headPollMs / 60_000) * 10) / 10) }) : i.t('account.headPollOff')}</dd></div>
         </dl>
         <p class="muted small">${icon('shield')} ${i.t('account.capabilities')}</p>
         ${state.test
@@ -937,7 +1091,8 @@ export function accountPage(ctx: ViewContext, state: AccountState): SafeHtml {
           : ''}
         <a class="btn btn-secondary" href="/account?test=1">${icon('refresh')}<span>${i.t('account.test')}</span></a>
       </section>
-    </div>`
+    </div>
+    ${state.webhookConfigured ? '' : webhookGuide(ctx, state)}`
   return shell(ctx, { title: i.t('account.title'), crumbs: [{ label: i.t('nav.account') }], content: body })
 }
 

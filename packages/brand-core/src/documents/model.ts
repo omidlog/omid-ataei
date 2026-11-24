@@ -1,11 +1,14 @@
+import { brandApplicability, type FrameworkRef } from '../applicability.js'
 import { allModules } from '../content/index.js'
 import { latestAnswers } from '../completeness.js'
 import type { InterviewEngine } from '../engine.js'
 import { readFacts, type CanonicalFact } from '../facts.js'
 import { factIsPublic } from '../publication.js'
 import { isStructuredType, parseStructured, type StructuredType, type StructuredValue } from '../structured.js'
-import { claimVerification, evidenceFor, readEvidence, type ClaimVerification, type EvidenceItem } from '../evidence.js'
+import { claimEvidence, evidenceFor, readEvidence, verificationNote, type ClaimVerification, type EvidenceItem } from '../evidence.js'
+import { answerProvenance } from '../provenance.js'
 import type { AnswerRecord, FieldQuestion, PersonalFacet } from '../types.js'
+import type { ComposedDraft, DraftLocale } from './compose.js'
 
 /**
  * Section model shared by the Brand Book, business plan and marketing plan.
@@ -50,28 +53,54 @@ export interface DocumentItem {
   withheld: boolean
   note: string | null
   /**
-   * Personal claims only: verified (independent, current evidence), owner_stated (the owner's word),
-   * unverified (needs evidence, has none) or not_required. Null for non-personal items.
+   * Personal claims only: verified (only independent, current evidence), partly_verified (independent
+   * evidence plus an owner-stated part, named in the note), owner_published (only sources the owner
+   * controls), owner_stated (the owner's word), unverified (needs evidence, has none) or not_required.
+   * Null for non-personal items.
    */
   verification: ClaimVerification | null
+  /**
+   * Set to `agent_suggested_owner_confirmed` when an agent proposed the value and the owner confirmed it (BOS-06), so
+   * a reader never takes it for owner-authored wording. Absent for owner-originated items and in public editions.
+   */
+  provenance?: 'agent_suggested_owner_confirmed' | null
+  /**
+   * BOS-15: the framework question this personal answer stands in for (a personal brand's own practice). `id` is the
+   * personal question; its approval, verification and visibility rules decided the value. Absent otherwise.
+   */
+  stands_for?: string
 }
 
 export interface LengthReport {
   /** Guideline word range. A guideline, never a target to pad toward. */
   guideline: [number, number]
-  /** Words in the approved values of this section. */
+  /** Words in the approved values of this section, or in the composed draft when `basis` says so. */
   approved_words: number
   state: 'below' | 'within' | 'above'
   note: string
+  /** BOS-19: personal documents count the composed draft of the first edition (`locale`), not the fact list. */
+  basis?: 'approved_values' | 'composed_draft'
+  locale?: DraftLocale
 }
 
 export interface DocumentSection {
   id: string
   title: string
   purpose: string
-  status: 'complete' | 'partial' | 'missing'
+  /** `not_applicable`: no question of this section applies to the brand's profile (BOS-15). */
+  status: 'complete' | 'partial' | 'missing' | 'not_applicable'
   items: DocumentItem[]
   length?: LengthReport
+  /**
+   * BOS-15: questions of this section the active profile does not ask and no personal answer stands in for. Labels and
+   * ids only; they are "not applicable to this profile", never missing, and never counted as open.
+   */
+  not_applicable?: Array<{ id: string; label: string }>
+  /**
+   * BOS-19, personal documents: one composed draft paragraph per language edition, built only from the approved items
+   * above (which stay as the Sources). Always a draft for the owner's approval.
+   */
+  drafts?: ComposedDraft[]
 }
 
 export interface DocumentModel {
@@ -102,6 +131,11 @@ export interface DocumentSpec {
   sections: SectionSpec[]
   /** Personal documents need the personal module; a facet document also needs its facet. */
   requires?: { personal: true; facet?: PersonalFacet }
+  /**
+   * BOS-15: a framework document (Brand Book, business and marketing plans) reads its questions through
+   * `brandApplicability`: each question shows itself, the personal answer standing in for it, or not applicable.
+   */
+  framework?: boolean
 }
 
 const MISSING_NOTES: Record<string, string> = {
@@ -150,8 +184,10 @@ function missing(question: FieldQuestion, note: string, sources: string[] = []):
   }
 }
 
-function fromFact(question: FieldQuestion, fact: CanonicalFact, withheld: boolean): DocumentItem {
+function fromFact(question: FieldQuestion, fact: CanonicalFact, withheld: boolean, answer?: AnswerRecord): DocumentItem {
+  const confirmedSuggestion = answer && fact.source.answer_ids.includes(answer.answer_id) && answerProvenance(answer) === 'agent_suggested_owner_confirmed'
   return {
+    ...(confirmedSuggestion ? { provenance: 'agent_suggested_owner_confirmed' as const } : {}),
     id: question.id,
     label: question.label,
     tag: 'approved',
@@ -168,8 +204,11 @@ function fromFact(question: FieldQuestion, fact: CanonicalFact, withheld: boolea
 
 function fromDraft(question: FieldQuestion, answer: AnswerRecord): DocumentItem {
   const restricted = question.sensitivity === 'restricted'
-  const suggestion = answer.source_type === 'agent_suggestion'
-  const note = suggestion
+  const confirmed = answerProvenance(answer) === 'agent_suggested_owner_confirmed'
+  const suggestion = answer.source_type === 'agent_suggestion' && !confirmed
+  const note = confirmed
+    ? 'Agent-suggested, owner-confirmed. Not approved.'
+    : suggestion
     ? 'Agent suggestion. Not approved and not an owner decision.'
     : answer.proposal_state === 'tentative'
       ? 'Tentative. The owner described this as possible, not decided.'
@@ -180,6 +219,7 @@ function fromDraft(question: FieldQuestion, answer: AnswerRecord): DocumentItem 
     id: question.id,
     label: question.label,
     tag: suggestion ? 'recommendation' : 'assumption',
+    ...(confirmed ? { provenance: 'agent_suggested_owner_confirmed' as const } : {}),
     kind: kindOf(question),
     value: restricted ? null : displayValue(answer.value),
     structured: restricted ? null : structured(question, answer.value),
@@ -207,17 +247,14 @@ export function itemFor(question: FieldQuestion, context: ItemContext): Document
   if (!question.id.startsWith('personal.') || item.tag === 'missing' || item.tag === 'recommendation') return item
   const evidence = context.evidence ?? []
   const now = context.now ?? new Date()
-  const verification = claimVerification(question, evidence, now)
+  const summary = claimEvidence(question, evidence, now)
+  const verification = summary.verification
   const found = evidenceFor(question.id, evidence, now)
-  const ids = context.audience === 'public' ? [] : [...found.independent, ...found.permissions].map((entry) => `evidence:${entry.id}`)
-  const label =
-    verification === 'verified'
-      ? 'Verified by an independent, current source.'
-      : verification === 'owner_stated'
-        ? 'Owner-stated. Not independently verified.'
-        : verification === 'unverified'
-          ? 'Unverified. Needs a source before public release.'
-          : null
+  // The owner's own part is cited too, so a reader sees which evidence is not independent.
+  const ownerIds = verification === 'partly_verified' || verification === 'owner_published' ? summary.owner_parts : []
+  const ids = context.audience === 'public' ? [] : [...found.independent, ...ownerIds, ...found.permissions].map((entry) => `evidence:${entry.id}`)
+  // A public reader never sees register entries, so the owner part is not named there.
+  const label = verificationNote(summary, context.audience !== 'public')
   return {
     ...item,
     verification,
@@ -238,7 +275,7 @@ function baseItemFor(question: FieldQuestion, context: ItemContext): DocumentIte
     return missing(question, 'Not published.')
   }
   const restricted = question.sensitivity === 'restricted' || approved?.classification === 'restricted'
-  if (approved) return fromFact(question, approved, restricted)
+  if (approved) return fromFact(question, approved, restricted, context.answers.get(question.id))
   const answer = context.answers.get(question.id)
   if (answer && (answer.status === 'draft' || answer.status === 'in_review') && (answer.value !== null || answer.private_ref)) {
     return fromDraft(question, answer)
@@ -266,8 +303,9 @@ export function lengthReport(items: DocumentItem[], guideline: [number, number])
   return { guideline, approved_words: count, state, note }
 }
 
-function sectionStatus(items: DocumentItem[]): DocumentSection['status'] {
+function sectionStatus(items: DocumentItem[], notApplicable = 0): DocumentSection['status'] {
   const facts = items.filter((item) => item.tag !== 'recommendation')
+  if (facts.length === 0 && notApplicable > 0) return 'not_applicable'
   const approved = facts.filter((item) => item.tag === 'approved').length
   if (facts.length > 0 && approved === facts.length) return 'complete'
   if (facts.some((item) => item.tag !== 'missing')) return 'partial'
@@ -288,14 +326,27 @@ export function buildDocument(engine: InterviewEngine, spec: DocumentSpec, audie
     now: new Date(),
   }
   const modules = new Map(allModules().map((module) => [module.id, module]))
+  const applicability = spec.framework ? brandApplicability(engine) : null
+  const resolve = (ids: readonly string[]): FrameworkRef[] => {
+    const known = ids.filter((id) => engine.question(id))
+    if (!applicability) return known.map((id) => ({ id, stands_for: null, profile_na: false }))
+    return applicability.refsFor(known)
+  }
   const sections: DocumentSection[] = spec.sections.map((section) => {
     const items: DocumentItem[] = []
     const moduleIds: string[] = []
-    for (const id of section.questions) {
-      const question = engine.question(id)
+    const notApplicable: Array<{ id: string; label: string }> = []
+    for (const ref of resolve(section.questions)) {
+      const question = engine.question(ref.id)
       if (!question) continue
-      items.push(itemFor(question, context))
-      if (!moduleIds.includes(question.module)) moduleIds.push(question.module)
+      if (ref.profile_na) {
+        notApplicable.push({ id: question.id, label: question.label })
+        continue
+      }
+      const item = itemFor(question, context)
+      items.push(ref.stands_for ? { ...item, stands_for: ref.stands_for } : item)
+      // Template guidance follows the framework questions that apply, not the personal answers standing in.
+      if (!ref.stands_for && !moduleIds.includes(question.module)) moduleIds.push(question.module)
     }
     if (audience === 'internal' && section.guidance) {
       for (const moduleId of moduleIds) {
@@ -316,7 +367,8 @@ export function buildDocument(engine: InterviewEngine, spec: DocumentSpec, audie
         })
       }
     }
-    const built: DocumentSection = { id: section.id, title: section.title, purpose: section.purpose, status: sectionStatus(items), items }
+    const built: DocumentSection = { id: section.id, title: section.title, purpose: section.purpose, status: sectionStatus(items, notApplicable.length), items }
+    if (notApplicable.length) built.not_applicable = notApplicable
     if (section.words) built.length = lengthReport(items, section.words)
     return built
   })

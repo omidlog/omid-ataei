@@ -197,12 +197,12 @@ function planEntry(cat: VisualCatalog, t: PlanText, lang: VisualLang, entry: Vis
     )}</ol>${more > 0 ? html`<p class="vz-items-more">${fillVisual(cat.entities.moreItems, { count: numbers(lang).format(more) })}</p>` : ''}`
   } else if (entry.legacy && entry.value !== null) body = html`<p class="vz-entry-value" dir="auto">${entry.value}</p><p class="vz-legacy">${icon('alert')}<span>${t.common.legacyTitle}</span></p>`
   else if (entry.state === 'withheld') body = html`<p class="vz-entry-value vz-entry-value--withheld">${icon('lock')}<span>${cat.text.withheldValue}</span></p>`
-  else if (entry.state === 'not_applicable') body = html`<p class="vz-entry-value vz-entry-value--ghost">${cat.text.notApplicableZone}</p>`
+  else if (entry.state === 'not_applicable') body = html`<p class="vz-entry-value vz-entry-value--ghost">${entry.na_reason === 'profile' ? cat.text.notApplicableProfile : cat.text.notApplicableZone}</p>`
   else if (entry.value === null) body = html`<p class="vz-entry-value vz-entry-value--ghost">${entry.missing_reason ? cat.missingReason[entry.missing_reason] : cat.text.noValueYet}</p>`
   else body = html`<p class="vz-entry-value" dir="auto">${entry.value}</p>`
   return html`<li class="vz-entry vz-entry--${meta.tone}">
     <p class="vz-entry-meta"><span class="vz-entry-label">${labelOf(lang, entry)}</span>${stateChip(cat, entry.state)}${entry.version !== null ? html`<span class="vz-entry-version">${fillVisual(cat.text.version, { version: numbers(lang).format(entry.version) })}</span>` : ''}</p>
-    ${body}
+    ${body}${entry.stands_for ? html`<p class="vz-entry-from">${fillVisual(cat.text.standsFor, { id: entry.id })}</p>` : ''}
   </li>`
 }
 
@@ -286,10 +286,14 @@ export function okrTreeView(block: OkrTreeBlock, ctx: BlockContext): SafeHtml {
   const legacy = [block.legacy.objectives ? legacyNote(t, block.objectives_source) : '', block.legacy.key_results ? legacyNote(t, block.key_results_source) : '']
   const total = block.objectives.reduce((sum, objective) => sum + objective.key_results.length, 0) + block.unlinked.length
   let tree: SafeHtml
+  // BOS-15: a personal brand's own practice: the goals are prose personal answers standing in for the OKR lists.
+  const mapped = [block.objectives_source, block.key_results_source].filter((entry) => entry.stands_for && (entry.value !== null || entry.state === 'withheld'))
   if (!block.objectives.length && !block.unlinked.length) {
     tree = block.legacy.objectives || block.legacy.key_results
       ? html``
-      : planEmpty(t, { variant: 'okr', title: t.okr.emptyTitle, body: ctx.doc.audience === 'public' ? t.okr.emptyPublic : t.okr.emptyBody, steps: ctx.showNext ? t.okr.emptySteps : null })
+      : mapped.length
+        ? html`<ul class="vz-entries">${mapped.map((entry) => planEntry(cat, t, lang, entry, ctx.mode))}</ul>`
+        : planEmpty(t, { variant: 'okr', title: t.okr.emptyTitle, body: ctx.doc.audience === 'public' ? t.okr.emptyPublic : t.okr.emptyBody, steps: ctx.showNext ? t.okr.emptySteps : null })
   } else {
     const branches = block.objectives.map((objective, index) => {
       const n = nf.format(index + 1)

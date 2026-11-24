@@ -113,3 +113,18 @@ export function booleanWord(raw: string): 'yes' | 'no' | null {
   }
   return null
 }
+
+/**
+ * The help text of a question in a locale: `why_it_matters` and the examples. English is the base; a locale with no
+ * stored text falls back to English, and `fellBack` says so. Each example keeps its "EXAMPLE ONLY:" marker.
+ */
+export function questionHelp(
+  question: { why_it_matters: string; examples: string[]; why_it_matters_i18n?: Partial<Record<'fa' | 'tr', string>>; examples_i18n?: Partial<Record<'fa' | 'tr', string[]>> },
+  locale: Locale,
+): { why: string; examples: string[]; locale: Locale; fellBack: boolean } {
+  if (locale === 'en') return { why: question.why_it_matters, examples: question.examples, locale: 'en', fellBack: false }
+  const why = question.why_it_matters_i18n?.[locale]?.trim()
+  const examples = question.examples_i18n?.[locale]?.filter((example) => example.trim())
+  if (why && examples?.length) return { why, examples, locale, fellBack: false }
+  return { why: why || question.why_it_matters, examples: examples?.length ? examples : question.examples, locale: why || examples?.length ? locale : 'en', fellBack: true }
+}

@@ -359,6 +359,45 @@ test('Persian mirrors the layout right-to-left while code, SHAs and URLs stay le
   assertClean('locales')
 })
 
+test('BOS-21: a mixed Persian/English value (parentheses, a file name, a URL) reads in logical order in the English and the Persian UI', { skip }, async () => {
+  const mixed = 'Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ نمونه در https://omidataei.com/work (۲۰۲۴).'
+  editOutsideStudio(s, 'acme-learning', (engine, root) => approve(engine, root, { 'brand.strategy.vision': mixed }))
+  s.studio.sync.markDirty('acme-learning')
+  await s.studio.sync.refresh('acme-learning')
+  await page.viewport(1440, 900)
+  for (const lang of ['en', 'fa'] as const) {
+    await page.goto(`${s.url}/brands/acme-learning/brand/book?lang=${lang}`)
+    const layout = await page.eval<{ found: boolean; direction: string; align: string; runs: Array<{ text: string; left: number; right: number; top: number; direction: string; bidi: string }>; openParen: number; closeParen: number }>(`(() => {
+      const el = [...document.querySelectorAll('[data-bidi="mixed"]')].find((node) => node.textContent.includes('logo-omid-ataei-black.svg'))
+      if (!el) return { found: false, direction: '', align: '', runs: [], openParen: 0, closeParen: 0 }
+      const style = getComputedStyle(el)
+      const runs = [...el.querySelectorAll('bdi.bidi-run')].map((run) => { const r = run.getBoundingClientRect(); const s = getComputedStyle(run); return { text: run.textContent, left: r.left, right: r.right, top: r.top, direction: s.direction, bidi: s.unicodeBidi } })
+      const file = [...el.querySelectorAll('bdi.bidi-run')].find((run) => run.textContent.includes('.svg'))
+      const charRect = (node, index) => { const range = document.createRange(); range.setStart(node, index); range.setEnd(node, index + 1); return range.getBoundingClientRect() }
+      const before = file.previousSibling
+      const after = file.nextSibling
+      return { found: true, direction: style.direction, align: style.textAlign, runs, openParen: charRect(before, before.textContent.length - 1).left, closeParen: charRect(after, 0).right }
+    })()`)
+    assert.ok(layout.found, `${lang}: the mixed value is marked`)
+    assert.equal(layout.direction, 'rtl', `${lang}: a mostly Persian value reads right to left inside the ${lang} UI`)
+    assert.ok(layout.align === 'start' || layout.align === 'right', `${lang}: Persian keeps RTL alignment, got ${layout.align}`)
+    const [wordmark, file, url] = layout.runs
+    assert.deepEqual(layout.runs.map((run) => run.text), ['Wordmark', 'logo-omid-ataei-black.svg', 'https://omidataei.com/work'])
+    assert.ok(layout.runs.every((run) => run.direction === 'ltr' && run.bidi === 'isolate'), `${lang}: Latin runs are isolated left-to-right`)
+    // Logical order in right-to-left lines: a later run sits further left on the same line, or on a later line.
+    const follows = (a: { left: number; right: number; top: number }, b: { left: number; right: number; top: number }): boolean => (Math.abs(a.top - b.top) < 3 ? a.left > b.right : b.top > a.top)
+    assert.ok(follows(wordmark!, file!), `${lang}: Wordmark comes first (right), then the file name`)
+    assert.ok(follows(file!, url!), `${lang}: then the URL`)
+    // The parentheses wrap the file name: "(" on its right, ")" on its left.
+    assert.ok(layout.openParen >= file!.right - 1, `${lang}: the opening parenthesis precedes the file name`)
+    assert.ok(layout.closeParen <= file!.left + 1, `${lang}: the closing parenthesis follows the file name`)
+    await assertNoOverflow(`${lang} mixed value`)
+    await capture(`${lang}-bidi-mixed`)
+  }
+  await page.goto(`${s.url}/brands?lang=en`)
+  assertClean('mixed fa/en values')
+})
+
 test('failed provisioning: Edit and retry is prefilled, the live name check suggests a free name (keyboard, RTL), Discard asks first', { skip }, async () => {
   await page.viewport(1440, 900)
   await page.goto(`${s.url}/brands?lang=en`)

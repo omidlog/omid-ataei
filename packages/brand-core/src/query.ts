@@ -13,6 +13,8 @@ import { rightsBlocker } from './asset-rights.js'
 import { moduleEnabled } from './conditions.js'
 import type { DocumentSpec } from './documents/model.js'
 import { PERSONAL_SPECS } from './documents/personal.js'
+import { composeDrafts, draftLocales, TRANSLATION_COMPANIONS, type ComposeSource } from './documents/compose.js'
+import { isStructuredType } from './structured.js'
 import { claimVerification, gatePasses, readEvidence } from './evidence.js'
 import { readFacts } from './facts.js'
 import { factIsPublic, readPublicationPolicy } from './publication.js'
@@ -984,7 +986,8 @@ export function resolveAgentRequest(engine: InterviewEngine, requestId: 'instagr
 export const DRAFT_RULES = [
   'This is a draft operation. It has no authority to approve, publish, or write brand facts.',
   'Use only the facts returned here. Do not add degrees, clients, awards, numbers, testimonials or outcomes.',
-  'A fact labelled owner_stated or unverified must not be presented as independently verified.',
+  'A fact labelled owner_stated, owner_published or unverified must not be presented as independently verified. owner_published means the only source is one the owner controls (their own website or company).',
+  'A fact labelled partly_verified is only partly backed by an independent source: present it as the owner\'s statement, never as verified as a whole.',
   'Missing facts stay missing: say what is missing instead of inventing a replacement.',
   'Never include private contact details, home location, family or health information.',
   'Return the draft to the owner. Only the owner approves it, with the approval proof, in a trusted local shell.',
@@ -998,8 +1001,13 @@ export const DRAFT_RULES = [
 export function draftPersonalContent(engine: InterviewEngine, deliverable: string, ctx?: AuthContext, sectionId?: string): ToolResult {
   const spec = (PERSONAL_SPECS as Record<string, DocumentSpec | undefined>)[deliverable]
   const ids = spec ? [...new Set(spec.sections.filter((section) => !sectionId || section.id === sectionId).flatMap((section) => section.questions))] : []
+  // Translation companions (approved per-language forms such as the localized headline) are read through the same
+  // gate, so a composed edition never uses a form this caller may not read.
+  const companionIds = [...new Set(Object.values(TRANSLATION_COMPANIONS))].filter((id) => !ids.includes(id))
   const config = engine.config()
-  const result = run(engine, ctx, { kind: 'facts', ids }, {
+  const locales = draftLocales(config.brand.supported_locales, config.brand.default_locale)
+  const readable = (retrieval: { items: RetrievedItem[] }, id: string) => retrieval.items.find((item) => item.id === id && !item.withheld && item.value !== null && item.value !== undefined && item.value !== '')
+  const result = run(engine, ctx, { kind: 'facts', ids: [...ids, ...companionIds] }, {
     tool: 'draft_personal_content',
     source: FACTS_PATH,
     emptyStatus: 'missing',
@@ -1019,6 +1027,23 @@ export function draftPersonalContent(engine: InterviewEngine, deliverable: strin
             .map((id) => retrieval.items.find((item) => item.id === id && !item.withheld))
             .filter((item): item is RetrievedItem => Boolean(item))
             .map((item) => ({ id: item.id, value: item.value, verification: (item.meta?.verification as string | undefined) ?? 'not_required', revision: item.revision })),
+          // BOS-19: the same deterministic composition the documents show, one draft per language edition, built only
+          // from the facts above. Untranslated facts are listed, never translated.
+          composed: composeDrafts(
+            section.questions
+              .map((id) => readable(retrieval, id))
+              .filter((item): item is RetrievedItem => Boolean(item))
+              .map((item): ComposeSource => {
+                const question = engine.question(item.id)
+                return { id: item.id, label: question?.label ?? item.id, value: String(item.value), structured: question ? isStructuredType(question.question_type) : false }
+              }),
+            Object.fromEntries(Object.values(TRANSLATION_COMPANIONS).flatMap((id) => {
+              const item = readable(retrieval, id)
+              return item ? [[id, String(item.value)]] : []
+            })),
+            locales,
+            section.words,
+          ),
         })),
       missing: ids.filter((id) => !retrieval.items.some((item) => item.id === id && !item.withheld)),
     }),

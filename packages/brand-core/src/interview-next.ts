@@ -1,3 +1,4 @@
+import { brandApplicability, VENTURE_PATH_NOTE } from './applicability.js'
 import { isOpenAnswer, latestAnswers } from './completeness.js'
 import type { InterviewEngine } from './engine.js'
 import type { Locale } from './i18n.js'
@@ -13,9 +14,12 @@ export interface NextQuestion {
   question_type: FieldQuestion['question_type']
   prompt: string
   prompt_locale: Locale
+  /** In `help_locale`: the requested locale, or English when no translation is stored. */
   why_it_matters: string
   options: string[] | null
+  /** In `help_locale`. Every example keeps its "EXAMPLE ONLY:" marker. */
   examples: string[]
+  help_locale: Locale
   /** Why this question is suggested now. */
   reasons: string[]
   deferred: boolean
@@ -37,6 +41,11 @@ export interface NextReport {
   /** Derived rule contradictions from contradictions.yaml. */
   contradictions: Array<{ id: string; severity: string; message: string; fields: string[] }>
   drafts_awaiting_review: number
+  /**
+   * BOS-15: whether the business frameworks (canvas, business and marketing plans, Strategy lab) apply, and whether
+   * they describe a person's own practice from personal answers. The same rule Studio uses (`brandApplicability`).
+   */
+  frameworks: { applies: boolean; practice: boolean; note: string | null }
   suggested_actions: string[]
 }
 
@@ -89,6 +98,7 @@ export function nextReport(engine: InterviewEngine, opts: { limit?: number; prof
 
   const next = ordered.slice(0, limit).map((question) => {
     const prompt = engine.promptText(question, locale)
+    const help = engine.helpText(question, locale)
     return {
       id: question.id,
       module: question.module,
@@ -97,9 +107,10 @@ export function nextReport(engine: InterviewEngine, opts: { limit?: number; prof
       question_type: question.question_type,
       prompt: prompt.text,
       prompt_locale: prompt.fellBack ? ('en' as Locale) : locale,
-      why_it_matters: question.why_it_matters,
+      why_it_matters: help.why,
       options: question.options ?? null,
-      examples: question.examples,
+      examples: help.examples,
+      help_locale: help.locale,
       reasons: reasonsFor(engine, question, sector, recent),
       deferred: deferred.has(question.id),
     }
@@ -137,6 +148,14 @@ export function nextReport(engine: InterviewEngine, opts: { limit?: number; prof
   if (next.length > 0) actions.push(`Ask the next question: ${next[0]?.id}.`)
   if (ownerOnly.length > 0) actions.push(`Tell the owner that ${ownerOnly.length} restricted question(s) need them in the interactive interview (npm run brand:interview). Do not ask for those values in chat.`)
   if (drafts > 0) actions.push(`${drafts} draft(s) wait for human review: npm run brand:review. Only a human with the approval proof can approve.`)
+  const applicability = brandApplicability(engine)
+  const personalProfile = applicability.exclusive && (config.brand.profile === 'personal-brand' || config.modules.personal?.enabled === true)
+  const frameworkNote = personalProfile
+    ? applicability.frameworks
+      ? VENTURE_PATH_NOTE
+      : 'The canvas, business and marketing plans and the Strategy lab do not apply to this profile without the founder-executive or consultant-expert facet. For a plan of a venture, set brand.profile: universal and keep modules.personal enabled, or give the venture its own Brand OS repository.'
+    : null
+  if (frameworkNote) actions.push(frameworkNote)
   if (next.length === 0 && conflicts.length === 0 && followUps.length === 0) {
     actions.push(profile ? `The ${profile.id} profile has no open questions. Set brand.profile to universal for the full bank.` : 'No open questions.')
   }
@@ -153,6 +172,7 @@ export function nextReport(engine: InterviewEngine, opts: { limit?: number; prof
     owner_only: ownerOnly,
     contradictions,
     drafts_awaiting_review: drafts,
+    frameworks: { applies: applicability.frameworks, practice: applicability.practice, note: frameworkNote },
     suggested_actions: actions,
   }
 }

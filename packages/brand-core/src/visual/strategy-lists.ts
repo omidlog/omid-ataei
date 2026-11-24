@@ -1,10 +1,11 @@
+import { brandApplicability } from '../applicability.js'
 import { latestAnswers } from '../completeness.js'
 import { itemFor, type DocumentAudience, type ItemContext } from '../documents/model.js'
 import type { InterviewEngine } from '../engine.js'
 import { sourceRefKind } from '../entities.js'
 import { readEvidence, type EvidenceItem } from '../evidence.js'
 import { readFacts } from '../facts.js'
-import { canvasApplies, entryFromItem } from './bmc.js'
+import { canvasApplies, frameworkEntry } from './bmc.js'
 import { frameworkRef } from './frameworks.js'
 import {
   emptyStatusSummary,
@@ -16,7 +17,6 @@ import {
   type FitRow,
   type ItemLink,
   type ListArea,
-  type MissingReason,
   type NextQuestion,
   type SourceNote,
   type SourceNotesBlock,
@@ -107,7 +107,7 @@ function area<Id extends string>(spec: ListAreaSpec<Id>, order: number, input: S
   const next: NextQuestion[] = []
   if (!raw) {
     if (!input.existing.has(spec.question)) next.push({ id: spec.question, kind: 'proposed' })
-  } else if (!raw.approved && raw.state !== 'not_applicable') next.push({ id: spec.question, kind: 'existing' })
+  } else if (!raw.approved && raw.state !== 'not_applicable') next.push({ id: raw.id, kind: 'existing' })
   return { area_id: spec.area, order, state: areaState(raw), entry, next_questions: next, related: spec.related.filter((id) => input.existing.has(id)) }
 }
 
@@ -274,13 +274,6 @@ export function valuePropositionDocument(input: StrategyListInput): VisualDocume
   return documentShell(input, 'value_proposition', 'VPC', present, [block, notesBlock(input, 'vpc-sources', 'VPC', numbered, ['vpc'])])
 }
 
-/** Public gaps are "not published" whatever the reason, so a public page never hints at a hidden draft. */
-function missingReason(audience: DocumentAudience, status: string | undefined): MissingReason {
-  if (audience === 'public') return 'not_published'
-  if (status === 'unknown' || status === 'skipped' || status === 'deprecated') return status
-  return 'unanswered'
-}
-
 export interface StrategyListOptions {
   now?: Date
   /** Shared knowledge notes Studio can see on this commit (id → title). Anything else is "not shared". */
@@ -317,13 +310,13 @@ function inputFor(engine: InterviewEngine, audience: DocumentAudience, questions
   const context: ItemContext = { facts, answers, audience, root, brandId, evidence, now }
   const existing = new Set(engine.questions().map((question) => question.id))
   const entries = new Map<string, StrategyEntry>()
+  const applicability = brandApplicability(engine)
   for (const id of questions) {
-    const question = engine.question(id)
-    if (!question) continue
-    const item = itemFor(question, context)
-    const answer = answers.get(id)
-    const notApplicable = item.tag === 'missing' && audience === 'internal' && answer?.status === 'not_applicable'
-    entries.set(id, entryFromItem(item, facts[id], notApplicable, now, missingReason(audience, answer?.status)))
+    if (!engine.question(id)) continue
+    // BOS-15: the question itself, the personal answer standing in for it (one per area), or not applicable.
+    const ref = applicability.refs(id)[0]
+    const entry = ref ? frameworkEntry(engine, context, ref, now) : null
+    if (entry) entries.set(id, entry)
   }
   const evidenceById = new Map(evidence.map((record) => [record.id, record]))
   const resolve = (ref: string): ResolvedSource => {
