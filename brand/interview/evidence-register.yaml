@@ -30,7 +30,7 @@ items:
     status: verified
     recorded_at: 2026-11-24T09:30:17.616Z
     recorded_by: owner
-    verified_at: 2026-11-24T09:52:46.590Z
+    verified_at: 2026-11-24T09:53:04.503Z
     verified_by: owner
     review_due: null
     status_reason: null
@@ -46,7 +46,7 @@ items:
     status: verified
     recorded_at: 2026-11-24T09:30:18.081Z
     recorded_by: owner
-    verified_at: 2026-11-24T09:52:47.029Z
+    verified_at: 2026-11-24T09:53:04.966Z
     verified_by: owner
     review_due: null
     status_reason: null
@@ -62,7 +62,7 @@ items:
     status: verified
     recorded_at: 2026-11-24T09:30:18.538Z
     recorded_by: owner
-    verified_at: 2026-11-24T09:52:47.436Z
+    verified_at: 2026-11-24T09:53:05.405Z
     verified_by: owner
     review_due: null
     status_reason: null
@@ -78,7 +78,7 @@ items:
     status: verified
     recorded_at: 2026-11-24T09:48:31.335Z
     recorded_by: owner
-    verified_at: 2026-11-24T09:52:47.832Z
+    verified_at: 2026-11-24T09:53:05.832Z
     verified_by: owner
     review_due: null
     status_reason: null
@@ -91,11 +91,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:52:31.533Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:53:06.242Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0007
@@ -108,11 +108,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:52:31.927Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:53:06.673Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0008
@@ -125,11 +125,11 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:52:32.326Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:53:07.076Z
+    verified_by: owner
     review_due: null
     status_reason: null
   - id: ev-0009
@@ -142,10 +142,10 @@ items:
     note: null
     granted_by: null
     scope: null
-    status: pending
+    status: verified
     recorded_at: 2026-11-24T09:52:32.722Z
     recorded_by: owner
-    verified_at: null
-    verified_by: null
+    verified_at: 2026-11-24T09:53:07.489Z
+    verified_by: owner
     review_due: null
     status_reason: null
