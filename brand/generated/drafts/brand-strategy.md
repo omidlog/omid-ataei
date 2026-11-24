@@ -143,17 +143,19 @@ TBD
 
 - Question: `brand.strategy.purpose`
 - Field: `brand.strategy.purpose`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T18:19:08.472Z
+- Answer id: ans-0158
 
 Value:
 
-TBD
+کمک به بنیان‌گذاران و کسب‌وکارها برای تصمیم‌های هوشمندانه‌تر، برندهای قوی‌تر و استراتژی‌های عملی برای رشد پایدار؛ با تجربهٔ کسی که هم کسب‌وکار خودش را ساخته و هم به تیم‌های دیگر در راه‌اندازی و رشد کمک کرده است.
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:brand.strategy.purpose end -->
 
 <!-- field:business.swot.weaknesses start -->
@@ -179,17 +181,19 @@ TBD
 
 - Question: `brand.strategy.vision`
 - Field: `brand.strategy.vision`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T18:19:09.138Z
+- Answer id: ans-0159
 
 Value:
 
-TBD
+آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در آن سرمایه‌گذاری کنند یا آن را بخرند.
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:brand.strategy.vision end -->
 
 <!-- field:business.swot.opportunities start -->
@@ -215,17 +219,19 @@ TBD
 
 - Question: `brand.strategy.values`
 - Field: `brand.strategy.values`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T18:19:09.785Z
+- Answer id: ans-0160
 
 Value:
 
-TBD
+۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲) ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار، برند، مشتری و تصمیم‌ها را با هم می‌بینم، نه فقط یک کمپین. ۴) آموزش بدون نصیحت: صبور و آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم.
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:brand.strategy.values end -->
 
 <!-- field:business.swot.threats start -->
@@ -287,17 +293,19 @@ TBD
 
 - Question: `brand.strategy.promise`
 - Field: `brand.strategy.promise`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T18:19:10.422Z
+- Answer id: ans-0161
 
 Value:
 
-TBD
+کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ تجربهٔ واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:brand.strategy.promise end -->
 
 <!-- field:business.fit.jobs start -->
