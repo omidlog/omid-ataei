@@ -119,3 +119,23 @@ Value:
 
 TBD
 <!-- field:brand.mascot.palette end -->
+
+<!-- field:brand.color.semantic_map start -->
+### Semantic color mapping
+
+- Question: `brand.color.semantic_map`
+- Field: `brand.color.semantic_map`
+- Status: draft
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-24T18:19:11.059Z
+- Answer id: ans-0162
+
+Value:
+
+primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent = orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas = dark-950; dark-text = surface-bg-1
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:brand.color.semantic_map end -->

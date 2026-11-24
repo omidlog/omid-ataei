@@ -3463,3 +3463,125 @@ records:
     superseded_by: null
     disposition_reason: null
     private_ref: null
+  - answer_id: ans-0158
+    question_id: brand.strategy.purpose
+    value: کمک به بنیان‌گذاران و کسب‌وکارها برای تصمیم‌های هوشمندانه‌تر، برندهای قوی‌تر و استراتژی‌های
+      عملی برای رشد پایدار؛ با تجربهٔ کسی که هم کسب‌وکار خودش را ساخته و هم به تیم‌های دیگر در
+      راه‌اندازی و رشد کمک کرده است.
+    raw_answer: کمک به بنیان‌گذاران و کسب‌وکارها برای تصمیم‌های هوشمندانه‌تر، برندهای قوی‌تر و
+      استراتژی‌های عملی برای رشد پایدار؛ با تجربهٔ کسی که هم کسب‌وکار خودش را ساخته و هم به تیم‌های
+      دیگر در راه‌اندازی و رشد کمک کرده است.
+    source_type: agent_suggestion
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T18:19:08.472Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: کمک به بنیان‌گذاران و کسب‌وکارها برای تصمیم‌های هوشمندانه‌تر، برندهای قوی‌تر و
+      استراتژی‌های عملی برای رشد پایدار؛ با تجربهٔ کسی که هم کسب‌وکار خودش را ساخته و هم به تیم‌های
+      دیگر در راه‌اندازی و رشد کمک کرده است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+    suggested_by: agent
+  - answer_id: ans-0159
+    question_id: brand.strategy.vision
+    value: "آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در آن
+      سرمایه‌گذاری کنند یا آن را بخرند."
+    raw_answer: "آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در
+      آن سرمایه‌گذاری کنند یا آن را بخرند."
+    source_type: agent_suggestion
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T18:19:09.138Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "آرمان (نه پیش‌بینی): ساختن یک استارتاپ بزرگ، در حد یونیکورن، که شرکت‌های مطرح دنیا در
+      آن سرمایه‌گذاری کنند یا آن را بخرند."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+    suggested_by: agent
+  - answer_id: ans-0160
+    question_id: brand.strategy.values
+    value: "۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲)
+      ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار،
+      برند، مشتری و تصمیم‌ها را با هم می‌بینم، نه فقط یک کمپین. ۴) آموزش بدون نصیحت: صبور و
+      آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم."
+    raw_answer: "۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲)
+      ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار،
+      برند، مشتری و تصمیم‌ها را با هم می‌بینم، نه فقط یک کمپین. ۴) آموزش بدون نصیحت: صبور و
+      آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم."
+    source_type: agent_suggestion
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T18:19:09.785Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "۱) حرفِ با پشتوانه: حرفی که فکت و پشتوانه ندارد نمی‌زنم و وعدهٔ رشد تضمینی نمی‌دهم. ۲)
+      ریسک‌پذیری سنجیده: ریسک را می‌پذیرم، ولی بی‌پروا نیستم. ۳) دیدن کل کسب‌وکار: مدل کسب‌وکار،
+      برند، مشتری و تصمیم‌ها را با هم می‌بینم، نه فقط یک کمپین. ۴) آموزش بدون نصیحت: صبور و
+      آموزش‌دهنده، ولی نه نصیحت‌گر. ۵) مرز روشن: در حقوق، مالیات و سرمایه‌گذاری مشاوره نمی‌دهم."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+    suggested_by: agent
+  - answer_id: ans-0161
+    question_id: brand.strategy.promise
+    value: کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ تجربهٔ
+      واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
+    raw_answer: کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ
+      تجربهٔ واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
+    source_type: agent_suggestion
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T18:19:10.422Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: کمک به تصمیم‌های هوشمندانه‌تر، برندی قوی‌تر و استراتژی عملی برای رشد پایدار، بر پایهٔ
+      تجربهٔ واقعی و حرف با پشتوانه. وعدهٔ رشد تضمینی نمی‌دهم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+    suggested_by: agent
+  - answer_id: ans-0162
+    question_id: brand.color.semantic_map
+    value: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent =
+      orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    raw_answer: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent
+      = orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    source_type: agent_suggestion
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T18:19:11.059Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: primary = lime; onPrimary = dark-950; secondary = violet; onSecondary = dark-950; accent
+      = orange; canvas = surface-bg-1; text = text-title; muted = text-subtitle; dark-canvas =
+      dark-950; dark-text = surface-bg-1
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+    suggested_by: agent

@@ -159,10 +159,15 @@ history:
   - brand.photo.direction
   - personal.portfolio.projects
   - personal.content.pillars
+  - brand.strategy.purpose
+  - brand.strategy.vision
+  - brand.strategy.values
+  - brand.strategy.promise
+  - brand.color.semantic_map
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T12:24:57.103Z
-last_answer_id: ans-0157
+updated_at: 2026-11-24T18:19:11.086Z
+last_answer_id: ans-0162
