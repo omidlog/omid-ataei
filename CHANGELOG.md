@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — CI: private brands skip the public docs prepare
+
+### Fixed
+
+- `npm run prepare:docs` with no `--audience` (and no `DOCS_AUDIENCE` of `public` or `internal`) no longer requests a public build. It picks from `brand.publish_docs`: a private brand prepares the internal audience and prints a notice. Before, the CLI defaulted to public, so the `validate` workflow failed on every brand Studio creates (private by default). An explicit `--audience public` or `DOCS_AUDIENCE=public` on a private brand is still refused; `deploy-docs.yml` is unchanged.
+- Tests: `ci-workflow` spawns the real CLI against a private starter workspace.
+
 ## Unreleased — Audit: Visual V3 area (V3.1 lists, V3.2 SWOT/TOWS and VPC, V3.3 journey, SOSTAC, OKR)
 
 ### Fixed

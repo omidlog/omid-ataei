@@ -2,12 +2,13 @@ import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { test } from 'node:test'
 import { parse } from 'yaml'
 import { writeStarterWorkspace } from '@brand-os/brand-core'
 import { docsBuildPlan } from '../scripts/build-docs.js'
 import { docsAudience } from '../scripts/docs-audience.js'
-import { prepareDocs } from '../scripts/prepare-docs.js'
+import { cliAudience, prepareDocs } from '../scripts/prepare-docs.js'
 import { codeChanged, isBrandContentOnly } from '../scripts/ci-scope.js'
 import { parseTestArgs, suiteFiles } from '../scripts/test.js'
 import { removeTempDir, tempDir } from './helpers/cleanup.js'
@@ -247,6 +248,51 @@ test('a private-docs brand: CI skips every public docs build and scan, and its r
   } finally {
     removeTempDir(root)
   }
+})
+
+test('prepare:docs CLI on a private brand: no flag prepares internal with a notice; an explicit public request is refused', () => {
+  const root = brand('private')
+  const env = { ...process.env }
+  delete env.DOCS_AUDIENCE
+  const run = (args: string[], extra: Record<string, string> = {}) =>
+    // cwd is the brand (prepareDocs reads process.cwd()), so tsx is loaded from the template by URL.
+    spawnSync(process.execPath, ['--import', pathToFileURL(path.join(REPO, 'node_modules/tsx/dist/esm/index.mjs')).href, path.join(REPO, 'scripts/prepare-docs.ts'), ...args], {
+      cwd: root,
+      encoding: 'utf8',
+      env: { ...env, ...extra },
+      timeout: 120_000,
+    })
+  try {
+    // Exactly what validate.yml runs: `npm run prepare:docs`, no audience.
+    const plain = run([])
+    assert.equal(plain.status, 0, plain.stderr)
+    assert.match(plain.stdout, /brand\.publish_docs is private: skipping the public docs build; preparing the internal audience instead/)
+    assert.match(plain.stdout, /Prepared docs \(internal\)/)
+
+    const internal = run([], { DOCS_AUDIENCE: 'internal' })
+    assert.equal(internal.status, 0, internal.stderr)
+    assert.match(internal.stdout, /Prepared docs \(internal\)/)
+
+    // The guard: no flag, no environment variable can force a public build of a private brand.
+    const flag = run(['--audience', 'public'])
+    assert.notEqual(flag.status, 0)
+    assert.match(flag.stderr, /publish_docs is private/)
+
+    const fromEnv = run([], { DOCS_AUDIENCE: 'public' })
+    assert.notEqual(fromEnv.status, 0)
+    assert.match(fromEnv.stderr, /publish_docs is private/)
+  } finally {
+    removeTempDir(root)
+  }
+})
+
+test('prepare-docs cliAudience: undefined only when neither flag nor a known DOCS_AUDIENCE is given', () => {
+  assert.equal(cliAudience(undefined, undefined), undefined)
+  assert.equal(cliAudience(undefined, 'staging'), undefined)
+  assert.equal(cliAudience(undefined, 'internal'), 'internal')
+  assert.equal(cliAudience(undefined, 'public'), 'public')
+  assert.equal(cliAudience('internal', 'public'), 'internal')
+  assert.equal(cliAudience('public', 'internal'), 'public')
 })
 
 test('a public-docs brand: CI builds and scans the public docs, with and without the mascot', () => {
