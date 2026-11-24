@@ -141,15 +141,14 @@ assets:
     version: 1.0.0
     visibility: public
     license: Owner-created icon; all rights reserved by the owner.
-    attribution: Supplied by the owner.
-    usage: Lime squircle with the dark logo bar, for avatars, favicons and end signatures.
+    attribution: Supplied by the owner; rendered at 1024x1024 PNG from the owner's SVG source at the owner's request.
+    usage: Lime squircle with the dark logo bar, for avatars, favicons and end signatures. Transparent background.
     restrictions: Use the supplied file only. Do not recolor the lime face or the dark bar.
-    path: brand/assets/icons/omid-key-icon.svg
-    present: false
-    checksum_sha256: null
-    mime: image/svg+xml
-    preview: null
-    missing_reason: The supplied SVG fails the publication check (mix-blend-mode styles and four url(#…) references to ids that are not in the file). It needs a clean re-export before it can be added.
+    path: brand/assets/icons/omid-key-icon.png
+    present: true
+    checksum_sha256: 3c56901e4c1645ccabd7f4da9ca947e32f61b4ff2a9670cfa80e179574805a72
+    mime: image/png
+    preview: brand/assets/icons/omid-key-icon.png
     tags:
       - icon
       - draft
