@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T11:03:50.658Z
-- Answer id: ans-0098
+- Updated: 2026-11-24T11:30:31.990Z
+- Answer id: ans-0117
 
 Value:
 
-Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع: https://omidataei.com/design-system)
+Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت glitch. فارسی: Shams برای تیتر و کاور، Yekan برای متن. لاتین: Rajdhani برای display و Inter برای متن. وزن‌ها: تیتر Bold (700)، زیرتیتر SemiBold (600)، تأکید Medium (500)، متن Regular (400).
 
 Approved by: owner
 <!-- field:brand.type.intent end -->
@@ -55,17 +55,19 @@ Approved by: owner
 
 - Question: `brand.type.scale`
 - Field: `brand.type.scale`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T11:11:30.755Z
-- Answer id: ans-0115
+- Updated: 2026-11-24T11:30:31.830Z
+- Answer id: ans-0116
 
 Value:
 
 display-fa: Shams, Yekan, Tahoma, sans-serif @ 48px/1.3; body-fa: Yekan, Tahoma, sans-serif @ 16px/1.9; display-en: Rajdhani, Arial Narrow, sans-serif @ 48px/1.1; body-en: Inter, system-ui, sans-serif @ 16px/1.5
+
+Approved by: owner
 <!-- field:brand.type.scale end -->
 
 <!-- field:brand.type.rtl start -->
