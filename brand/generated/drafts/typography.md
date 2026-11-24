@@ -55,17 +55,17 @@ Approved by: owner
 
 - Question: `brand.type.scale`
 - Field: `brand.type.scale`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:11:30.755Z
+- Answer id: ans-0115
 
 Value:
 
-TBD
+display-fa: Shams, Yekan, Tahoma, sans-serif @ 48px/1.3; body-fa: Yekan, Tahoma, sans-serif @ 16px/1.9; display-en: Rajdhani, Arial Narrow, sans-serif @ 48px/1.1; body-en: Inter, system-ui, sans-serif @ 16px/1.5
 <!-- field:brand.type.scale end -->
 
 <!-- field:brand.type.rtl start -->
