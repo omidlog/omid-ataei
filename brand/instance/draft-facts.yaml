@@ -686,8 +686,8 @@ facts:
   personal.story.timeline:
     value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
       ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
-      بریتانیا. ۲۰۲۶: ثبت شرکت در ترکیه؛ نوامبر ۲۰۲۶: ثبت شرکت در ایران. Dadvin در مرکز رشد دانشگاه
-      فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+      بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران. Dadvin در مرکز
+      رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -695,8 +695,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0121
-    updated: 2026-11-24T12:18:31.183Z
+    answer_id: ans-0135
+    updated: 2026-11-24T12:23:43.027Z
   personal.consulting.cta:
     value: رزرو 1:1 Strategy Session از سایت (https://omidataei.com/contact#book)؛ برای پروژه‌ها، فرم
       تماس (https://omidataei.com/contact#inquiry).
@@ -746,7 +746,7 @@ facts:
   personal.founder.leadership_topics:
     value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
       در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
-      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها.
+      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -754,8 +754,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0126
-    updated: 2026-11-24T12:18:34.285Z
+    answer_id: ans-0136
+    updated: 2026-11-24T12:23:56.278Z
   personal.founder.investor_relations:
     value: دربارهٔ تأمین مالی و سرمایه‌گذاری هیچ چیزی عمومی گفته نشود.
     stored_in: brand/instance/draft-facts.yaml
@@ -780,8 +780,8 @@ facts:
     answer_id: ans-0128
     updated: 2026-11-24T12:18:35.649Z
   personal.reputation.testimonials:
-    value: هنوز توصیه‌نامه‌ای با اجازهٔ استفادهٔ عمومی ندارم. یک توصیه در لینکدین هست، ولی اجازهٔ نقل آن
-      هنوز گرفته نشده.
+    value: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -789,8 +789,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0129
-    updated: 2026-11-24T12:18:36.361Z
+    answer_id: ans-0137
+    updated: 2026-11-24T12:24:05.347Z
   personal.content.channel_tone:
     value: نه؛ همهٔ کانال‌ها با همان صدای پیش‌فرض و یکدست.
     stored_in: brand/instance/draft-facts.yaml
@@ -846,3 +846,17 @@ facts:
     uncertainty: null
     answer_id: ans-0134
     updated: 2026-11-24T12:18:39.406Z
+  personal.goals.kpis:
+    value: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0138
+    updated: 2026-11-24T12:24:05.972Z

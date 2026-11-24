@@ -136,10 +136,14 @@ history:
   - personal.media.visual_templates
   - personal.privacy.availability
   - personal.governance.reviewer
+  - personal.story.timeline
+  - personal.founder.leadership_topics
+  - personal.reputation.testimonials
+  - personal.goals.kpis
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T12:18:39.430Z
-last_answer_id: ans-0134
+updated_at: 2026-11-24T12:24:05.996Z
+last_answer_id: ans-0138

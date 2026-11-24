@@ -2713,7 +2713,7 @@ records:
       سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
       LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت در ترکیه؛ نوامبر ۲۰۲۶: ثبت شرکت در ایران. Dadvin در مرکز
       رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
-    superseded_by: null
+    superseded_by: ans-0135
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0122
@@ -2815,7 +2815,7 @@ records:
     normalized: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
       کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
       و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها.
-    superseded_by: null
+    superseded_by: ans-0136
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0127
@@ -2875,7 +2875,7 @@ records:
     session_id: ses-0001
     normalized: هنوز توصیه‌نامه‌ای با اجازهٔ استفادهٔ عمومی ندارم. یک توصیه در لینکدین هست، ولی اجازهٔ
       نقل آن هنوز گرفته نشده.
-    superseded_by: null
+    superseded_by: ans-0137
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0130
@@ -2965,6 +2965,105 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: فقط خودم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0135
+    question_id: personal.story.timeline
+    value: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران.
+      ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در
+      بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران. Dadvin در مرکز
+      رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    raw_answer: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ
+      سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
+      LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران.
+      Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T12:23:43.027Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ
+      سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI
+      LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران.
+      Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0136
+    question_id: personal.founder.leadership_topics
+    value: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه کارهایی
+      در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی و
+      ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    raw_answer: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
+      کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
+      و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T12:23:56.278Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: راه‌اندازی استارتاپ؛ اصول برندینگ و مارکتینگ؛ ابزارهای مارکتینگ؛ استارتاپ چیست و چه
+      کارهایی در آن انجام می‌شود (اصطلاحات، جذب سرمایه، شتاب‌دهنده و پارک فناوری)؛ دنیای هوش مصنوعی
+      و ارتباطش با کسب‌وکار؛ ایجنت‌ها و بات‌ها؛ ساختن ابزار داخلی با ایجنت‌ها (مثل Brand OS).
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0137
+    question_id: personal.reputation.testimonials
+    value: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    raw_answer: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T12:24:05.347Z
+    reviewed_by: null
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک،
+      نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0138
+    question_id: personal.goals.kpis
+    value: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    raw_answer: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T12:24:05.972Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "منتورینگ: هدف ۳۰ ساعت جلسه در ماه (روزی یک ساعت)؛ مبنا: ۰ (به گفتهٔ مالک، نوامبر ۲۰۲۶).
+      پروژهٔ استراتژی: هدف یک پروژه در ماه، یا یک پروژهٔ بزرگ هر دو ماه. اینستاگرام: هدف ۵۰۰ هزار
+      فالوور؛ مبنا: ۷۳ هزار (به گفتهٔ مالک، ۲۰۲۶-۱۱-۲۴). Fiko و Dadvin: هدف ۵۰۰ کاربر برای هرکدام که
+      از طریق برند شخصی آمده باشند؛ مبنا: ثبت نشده."
     superseded_by: null
     disposition_reason: null
     private_ref: null

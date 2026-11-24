@@ -120,12 +120,12 @@ Approved by: owner
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:36.361Z
-- Answer id: ans-0129
+- Updated: 2026-11-24T12:24:05.347Z
+- Answer id: ans-0137
 
 Value:
 
-هنوز توصیه‌نامه‌ای با اجازهٔ استفادهٔ عمومی ندارم. یک توصیه در لینکدین هست، ولی اجازهٔ نقل آن هنوز گرفته نشده.
+یک توصیه‌نامه در لینکدین (https://www.linkedin.com/in/omid-ataei/) که به گفتهٔ مالک، نویسنده‌اش با استفادهٔ عمومی موافقت کرده است. نام نویسنده و متن توصیه هنوز ثبت نشده.
 <!-- field:personal.reputation.testimonials end -->
 
 <!-- field:personal.reputation.conflicts start -->

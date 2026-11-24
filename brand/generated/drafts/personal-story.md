@@ -80,12 +80,12 @@ Approved by: owner
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T12:18:31.183Z
-- Answer id: ans-0121
+- Updated: 2026-11-24T12:23:43.027Z
+- Answer id: ans-0135
 
 Value:
 
-۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت در ترکیه؛ نوامبر ۲۰۲۶: ثبت شرکت در ایران. Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است.
+۲۰۱۲: هم‌بنیان‌گذاری طراحان آزاد. ۲۰۱۸: مدیر مارکتینگ فراکوچ. ۲۰۲۲: مدیر مارکتینگ سهمیران. ۲۰۲۳: مصاحبه با N24. ۲۰۲۴: تأسیس Fiko و artsglob. ۲۰۲۵: تأسیس Dadvin و ثبت FIKO AI LABS LTD در بریتانیا. ۲۰۲۶: ثبت شرکت Fiko در ترکیه. نوامبر ۲۰۲۶: ثبت شرکت Dadvin در ایران. Dadvin در مرکز رشد دانشگاه فردوسی مشهد پذیرفته شده و در آنجا مستقر است.
 <!-- field:personal.story.timeline end -->
 
 <!-- field:personal.story.next_chapter start -->
