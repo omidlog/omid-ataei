@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { StudioConfig } from './config.js'
 import { GitHubClient, type FetchLike } from './github/client.js'
+import { HeadPollJob } from './head-poll.js'
 import { ProvisioningService } from './provision.js'
 import { Registry } from './registry.js'
 import { createStudio } from './server.js'
@@ -43,6 +44,8 @@ export function buildStudio(config: StudioConfig, options: { fetch?: FetchLike; 
   })
   // Built here, started only by main.ts, so tests and CLI commands never leave a timer behind.
   const templateJob = new TemplateUpdateJob({ registry, sync, updates: templateUpdates, dataDir: config.dataDir, intervalMs: config.templateCheck.intervalMs, autoOpen: config.templateCheck.autoOpen, now, log: options.log })
+  // BOS-11: also started only by main.ts. One GET per brand per interval; a moved head triggers a background refresh.
+  const headPoll = new HeadPollJob({ registry, sync, github: readClient, intervalMs: config.headPollMs, log: options.log })
   const studio = createStudio({ config, registry, sync, provisioning, templateUpdates, readClient, provisionClient, now, log: options.log })
-  return { ...studio, registry, sync, provisioning, templateUpdates, templateJob, readClient, provisionClient }
+  return { ...studio, registry, sync, provisioning, templateUpdates, templateJob, headPoll, readClient, provisionClient }
 }

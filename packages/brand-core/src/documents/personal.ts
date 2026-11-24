@@ -1,7 +1,9 @@
 import { moduleEnabled } from '../conditions.js'
 import type { InterviewEngine } from '../engine.js'
-import { claimVerification, evidenceFor, publicationBlockers, readEvidence } from '../evidence.js'
+import { claimEvidence, evidenceFor, ownerPartLabel, publicationBlockers, readEvidence } from '../evidence.js'
 import { readFacts } from '../facts.js'
+import { isStructuredType } from '../structured.js'
+import { composeDrafts, draftLocales, TRANSLATION_COMPANIONS, type ComposeSource, type DraftLocale } from './compose.js'
 import { buildDocument, type DocumentAudience, type DocumentItem, type DocumentModel, type DocumentSection, type DocumentSpec, type ItemTag, type PersonalDocumentKind } from './model.js'
 
 /**
@@ -180,10 +182,53 @@ export function buildPersonalDocument(engine: InterviewEngine, kind: PersonalDoc
     .map((section) => ({ ...section, questions: section.questions.filter((id) => applicable.has(id)) }))
     .filter((section) => section.questions.length > 0)
   const model = buildDocument(engine, { ...spec, sections }, audience)
+  const config = engine.config()
+  const locales = draftLocales(config.brand.supported_locales, config.brand.default_locale)
+  const companions = companionValues(engine, audience, applicable)
   return {
     ...model,
-    note: `${model.note} Personal claims show whether they are verified, owner-stated or unverified. Nothing was written for the person; drafts are composed from approved facts only.`,
+    sections: model.sections.map((section) => withDrafts(engine, section, companions, locales, sections.find((item) => item.id === section.id)?.words)),
+    note: `${model.note} Personal claims show whether they are verified, owner-stated or unverified. Each section carries a composed draft per language edition, built by fixed templates from the facts approved in that language only and labelled "Draft for owner approval"; facts without an approved translation are listed as untranslated, never machine-translated.`,
   }
+}
+
+/** The approved values of the translation companions this audience may see (`personal.identity.localized_headline` …). */
+function companionValues(engine: InterviewEngine, audience: DocumentAudience, applicable: ReadonlySet<string>): Record<string, string> {
+  const ids = [...new Set(Object.values(TRANSLATION_COMPANIONS))].filter((id) => applicable.has(id))
+  if (ids.length === 0) return {}
+  const model = buildDocument(engine, { kind: 'personal-brand-book', title: 'companions', sections: [{ id: 'companions', title: 'companions', purpose: '', questions: ids }] }, audience)
+  const out: Record<string, string> = {}
+  for (const item of model.sections.flatMap((section) => section.items)) {
+    if (item.tag === 'approved' && !item.withheld && item.value !== null) out[item.id] = String(item.value)
+  }
+  return out
+}
+
+/** Approved, readable items of a section as composer input. Drafts, gaps and withheld values never reach a draft. */
+export function composeSourcesOf(engine: InterviewEngine, section: DocumentSection): ComposeSource[] {
+  return section.items
+    .filter((item) => item.tag === 'approved' && !item.withheld && item.value !== null && item.value !== '')
+    .map((item) => {
+      const question = engine.question(item.id)
+      return { id: item.id, label: item.label, value: String(item.value), structured: item.kind !== 'text' || (question ? isStructuredType(question.question_type) : false) }
+    })
+}
+
+function withDrafts(engine: InterviewEngine, section: DocumentSection, companions: Record<string, string>, locales: DraftLocale[], words: [number, number] | undefined): DocumentSection {
+  const drafts = composeDrafts(composeSourcesOf(engine, section), companions, locales, words)
+  const first = drafts[0]
+  if (!section.length || !first || !words) return { ...section, drafts }
+  // Word counts count the composed draft (BOS-19), not the concatenated facts. The first edition is the brand's
+  // default language; every draft also carries its own count.
+  const [min, max] = words
+  const state = first.words < min ? 'below' : first.words > max ? 'above' : 'within'
+  const note =
+    state === 'below'
+      ? `The ${first.locale} draft is ${first.words} words, below the ${min}–${max} guideline. It is not padded: approve more facts in this language to lengthen it.`
+      : state === 'above'
+        ? `The ${first.locale} draft is ${first.words} words, above the ${min}–${max} guideline. Choose which approved facts to leave out; nothing is rewritten automatically.`
+        : `The ${first.locale} draft is ${first.words} words, within the ${min}–${max} guideline.`
+  return { ...section, drafts, length: { guideline: words, approved_words: first.words, state, note, basis: 'composed_draft', locale: first.locale } }
 }
 
 /**
@@ -209,7 +254,8 @@ export function buildEvidenceRegister(engine: InterviewEngine, audience: Documen
     const fact = facts[question.id]
     const found = evidenceFor(question.id, evidence, now)
     const blockers = publicationBlockers(question, fact?.value ?? null, evidence, now)
-    const verification = claimVerification(question, evidence, now)
+    const summary = claimEvidence(question, evidence, now)
+    const verification = summary.verification
     const claim: DocumentItem = {
       id: question.id,
       label: question.label,
@@ -223,6 +269,7 @@ export function buildEvidenceRegister(engine: InterviewEngine, audience: Documen
       note: [
         `Requires: ${(question.publication_requires ?? []).join(', ')}.`,
         `Verification: ${verification}.`,
+        verification === 'partly_verified' ? `Owner-stated part, not independently verified: ${summary.owner_parts.map(ownerPartLabel).join('; ')}.` : null,
         fact?.status === 'approved' ? null : 'Claim not approved.',
         blockers.length ? `Not eligible for public release: ${blockers.join(' ')}` : 'Eligible for public release once approved and published.',
         fact?.publication === 'published' ? 'Currently published.' : null,
@@ -231,7 +278,7 @@ export function buildEvidenceRegister(engine: InterviewEngine, audience: Documen
     }
     const sources: DocumentItem[] = found.all.map((item) => ({
       id: item.id,
-      label: `${item.kind === 'permission' ? 'Permission' : 'Source'} ${item.id} (${item.source_type})`,
+      label: `${item.kind === 'permission' ? 'Permission' : 'Source'} ${item.id} (${item.source_type}${item.kind === 'verification' && item.source_type !== 'owner_testimony' && item.owned === true ? ', owner-published' : ''})`,
       tag: (item.status === 'verified' ? 'approved' : 'assumption') as ItemTag,
       kind: 'text',
       value: item.reference,
@@ -243,6 +290,7 @@ export function buildEvidenceRegister(engine: InterviewEngine, audience: Documen
         `Status: ${item.status}${item.status_reason ? ` (${item.status_reason})` : ''}.`,
         item.kind === 'permission' ? `Scope: ${item.scope ?? 'none'}${item.granted_by ? `, granted by ${item.granted_by}` : ''}.` : null,
         item.source_type === 'owner_testimony' ? 'Owner testimony: never counts as independent verification.' : null,
+        item.source_type !== 'owner_testimony' && item.owned === true ? 'Owner-published (a source the owner controls): never counts as independent verification.' : null,
         item.review_due ? `Re-verify by ${item.review_due}.` : null,
         'Remove with brand:evidence withdraw; dependent public claims are unpublished at once.',
       ].filter(Boolean).join(' '),

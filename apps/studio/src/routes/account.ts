@@ -32,6 +32,9 @@ export function accountRoutes(core: StudioCore): { account: Handler } {
         template: `${config.github.templateOwner}/${config.github.templateRepo}`,
         allowedOwners: config.github.allowedOwners,
         webhookConfigured: config.github.webhookSecret !== null,
+        // BOS-11: setup guidance names where the secret goes, never a value.
+        webhookUrl: `${config.publicOrigin}/webhooks/github`,
+        headPollMs: config.headPollMs,
         test,
       }),
     )

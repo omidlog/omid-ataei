@@ -1,7 +1,7 @@
 import type { VisualDocument, VisualLang } from '@brand-os/brand-core/visual'
-import { strategyText, visualCatalog } from '@brand-os/brand-core/visual'
+import { strategyText, visualCatalog, visualNotApplicable } from '@brand-os/brand-core/visual'
 import { studioAssets } from '../static-assets.js'
-import { banner } from './components.js'
+import { banner, emptyState } from './components.js'
 import { html, join, type SafeHtml } from './html.js'
 import { icon } from './icons.js'
 import { brandPath, type BrandView, type ViewContext } from './layout.js'
@@ -49,6 +49,8 @@ export function strategyPage(ctx: ViewContext, view: BrandView, kind: StrategyPa
   const docs = docsOf(view, kind)
   if (visual === null || !docs) return shell(banner({ tone: 'warning', body: cat.text.unavailable }))
   const doc = docs.internal
+  // BOS-15: a framework with nothing that applies to this profile (and no personal answer standing in) says so.
+  if (visualNotApplicable(doc)) return shell(emptyState({ icon: 'skip', title: cat.text.notApplicableProfile, body: cat.text.profileNotApplicableBody }))
   const base = brandPath(view.record.slug, kind)
   const blockCtx = { cat, lang, mode: 'screen' as const, doc, idPrefix: kind === 'swot' ? 'st' : 'vpc', showNext: true, assetUrl: () => null }
   const sctx: StrategyContext = blockCtx

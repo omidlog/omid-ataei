@@ -4,7 +4,7 @@ import type { FieldQuestion } from '../types.js'
 import { followUpReview } from './analyze.js'
 import { isDisposition, openCoachContext, type CoachContext } from './context.js'
 import { chooseFollowUp } from './follow-up.js'
-import { CLARIFY_QUESTIONS, coachUi, CRITERION_NAMES } from './i18n.js'
+import { clarifyQuestion, coachUi, CRITERION_NAMES } from './i18n.js'
 import { expectsMeasure, isFreeText } from './lexicon.js'
 import { COACH_RULE_VERSION, CoachError, type CoachCriterion, type CoachSource, type CoachStatus } from './model.js'
 
@@ -270,9 +270,10 @@ export function coachBeforeApproval(
 
 function nextStep(note: CoachNote, locale: Locale): string {
   if (note.canonical_question_id) return `${coachUi(locale, 'momentAnswerFirst')} ${note.canonical_question_id}`
-  // The clarifying question is a closed per-criterion table, so it is re-read in the requested locale rather than
-  // reusing `suggested_question` (which is in the locale the note was computed in).
-  return CLARIFY_QUESTIONS[locale][note.criterion]
+  // The clarifying question is a closed table keyed by criterion and question family (both derived from the note),
+  // so it is re-read in the requested locale rather than reusing `suggested_question`, which is in the locale the
+  // note was computed in.
+  return clarifyQuestion(locale, note.criterion, note.question_id)
 }
 
 /** The interview's short note: three lines at most, in the session locale. Empty when the moment is silent. */
@@ -281,7 +282,7 @@ export function renderAfterAnswer(result: CoachMomentResult): string {
   const { locale, note } = result
   const lines = [
     `${coachUi(locale, 'momentTitle')} — ${note.question_id}: ${CRITERION_NAMES[locale][note.criterion]}`,
-    `  ${note.canonical_question_id ? coachUi(locale, 'useExisting') : coachUi(locale, 'momentAsk')}: ${note.canonical_question_id ?? CLARIFY_QUESTIONS[locale][note.criterion]}`,
+    `  ${note.canonical_question_id ? coachUi(locale, 'useExisting') : coachUi(locale, 'momentAsk')}: ${note.canonical_question_id ?? clarifyQuestion(locale, note.criterion, note.question_id)}`,
     `  ${note.requires_change_request ? coachUi(locale, 'changeFlow') : coachUi(locale, 'momentAfterHint').replace('{question}', note.question_id)}`,
   ]
   return lines.join('\n')

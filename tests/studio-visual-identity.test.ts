@@ -196,10 +196,10 @@ test('sync: an identity chapter cached under the old master-logo rule is rebuilt
   const req = await provisioned(h)
   const file = path.join(h.dataDir, 'cache', req.slug, 'state.json')
   const state = JSON.parse(fs.readFileSync(file, 'utf8')) as { projection: { visual: { identity: Record<string, unknown> } } }
-  assert.equal(state.projection.visual.identity.master_rule, 2)
+  assert.equal(state.projection.visual.identity.master_rule, 3)
   // A cache written by the deployed V2.1 build: same commit, no rule marker (master tag only).
   delete state.projection.visual.identity.master_rule
   fs.writeFileSync(file, JSON.stringify(state))
   const after = await h.sync.refresh(req.slug)
-  assert.equal(after.projection!.visual?.identity?.master_rule, 2)
+  assert.equal(after.projection!.visual?.identity?.master_rule, 3)
 })

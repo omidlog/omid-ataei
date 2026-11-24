@@ -113,7 +113,9 @@ function areaBody(ctx: StrategyContext, area: ListArea<string>, emptyTitle: stri
     return html`<p class="vz-entry-value" dir="auto">${entry.value}</p><p class="vz-legacy">${icon('alert')}<span>${ctx.cat.entities.legacy}</span><span class="vz-legacy-hint">${ctx.cat.entities.legacyHint}</span></p>`
   }
   if (entry?.state === 'withheld') return html`<p class="vz-entry-value vz-entry-value--withheld">${icon('lock')}<span>${ctx.cat.text.withheldValue}</span></p>`
-  if (entry?.state === 'not_applicable') return html`<p class="vz-entry-value vz-entry-value--ghost">${ctx.cat.text.notApplicableZone}</p>`
+  if (entry?.state === 'not_applicable') return html`<p class="vz-entry-value vz-entry-value--ghost">${entry.na_reason === 'profile' ? ctx.cat.text.notApplicableProfile : ctx.cat.text.notApplicableZone}</p>`
+  // BOS-15: a personal answer standing in for this list (a person's own practice) is prose, shown as written.
+  if (entry?.stands_for && entry.value !== null) return html`<p class="vz-entry-value" dir="auto">${entry.value}</p><p class="vz-entry-from">${fillVisual(ctx.cat.text.standsFor, { id: entry.id })}</p>`
   const t = strategyText(ctx.lang)
   const reason = entry?.missing_reason && entry.missing_reason !== 'unanswered' ? ctx.cat.missingReason[entry.missing_reason] : ctx.doc.audience === 'public' ? ctx.cat.missingReason.not_published : t.emptyBody
   return ghostChart({ title: emptyTitle, body: reason })

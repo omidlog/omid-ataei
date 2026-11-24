@@ -6,6 +6,7 @@ import {
   buildStudioKnowledge,
   buildNamedDocument,
   InterviewEngine,
+  isExampleAsset,
   PERSONAL_DOCUMENT_KINDS,
   readFacts,
   readPublicationPolicy,
@@ -15,7 +16,7 @@ import {
 import { buildStudioCalendar, type StudioCalendarProjection } from '@brand-os/brand-core/content-bridge'
 import { coachBeforeApproval, coachNoteText, type CoachCriterion, type CoachStatus } from '@brand-os/brand-core/coach'
 import { buildStudioCreative, type StudioCreativeProjection } from '@brand-os/brand-core/creative'
-import { buildBusinessModelCanvas, buildVisualIdentity, canvasApplies, imageSize, type LogoMasterCandidate, type VisualDocument } from '@brand-os/brand-core/visual'
+import { buildBusinessModelCanvas, buildVisualIdentity, canvasApplies, imageSize, LOGO_ICON_TAGS, logoChapterStatus, type LogoMasterCandidate, type VisualDocument } from '@brand-os/brand-core/visual'
 import { buildCompetitorComparison, buildMascotAtlas, type MascotAssetCandidate } from '@brand-os/brand-core/visual'
 import { buildPublishingGallery, questionClassifier, redactBook, redactVisualDocument, type PublishingGallery, type QuestionClassifier } from '@brand-os/brand-core/visual'
 import { buildBook, type BookDocument } from '@brand-os/brand-core/visual'
@@ -82,6 +83,8 @@ export interface ProjectionAsset {
   unavailable_reason: 'not_approved' | 'not_present' | 'unsafe' | 'checksum' | 'unsupported_type' | null
   /** For a refused SVG: the issue to show first (a non-fixable one if any). Absent in older caches. */
   unavailable_detail?: { code: SvgIssueCode; line: number | null; fixable: boolean } | null
+  /** A template placeholder (tag `example` / `placeholder`, an EXAMPLE licence or an example id). Absent in older caches. */
+  example?: boolean
 }
 
 export interface StudioProjection {
@@ -111,7 +114,8 @@ export interface StudioProjection {
     approved_facts: number
     restricted_withheld: number
     contradictions: number
-    groups: Array<{ group: string; required: number; required_approved: number; required_unanswered: number; pending_review: number }>
+    /** `applicable`: questions of the group that apply to the brand's profile (BOS-15); 0 is "not applicable". Absent in older caches. */
+    groups: Array<{ group: string; required: number; required_approved: number; required_unanswered: number; pending_review: number; applicable?: number }>
     next: Array<{ id: string; priority: string; prompt: string }>
   }
   modules: DashboardModule[]
@@ -199,17 +203,20 @@ export interface StudioVisualProjection {
   strategy?: { swot: { internal: VisualDocument; public: VisualDocument }; value_proposition: { internal: VisualDocument; public: VisualDocument } }
   /**
    * Customer journey swimlane, SOSTAC overview and OKR tree (V3.3), in both editions. Internal: approved, labelled
-   * drafts, gaps; public: approved and published only. `applies` follows the canvas (business brands, and personal
-   * brands with a business facet). Absent in caches written before it existed; sync rebuilds those.
+   * drafts, gaps; public: approved and published only. `applies` follows the canvas (`brandApplicability().frameworks`:
+   * business brands, universal with personal on, and personal brands with a business facet). Absent in caches written
+   * before it existed; sync rebuilds those.
    */
   plans?: { applies: boolean; internal: PlanDocuments; public: PlanDocuments }
 }
 
 /**
  * Version of the master-logo resolution rule baked into a cached identity chapter. 2: named in `brand.logo.masters`,
- * else tagged `master`, else the only approved logo. Bump it when the rule changes so caches at the same commit rebuild.
+ * else tagged `master`, else the only approved logo. 3 (BOS-16): a file name naming exactly one asset counts as a
+ * reference, a light/dark pair resolves as one logo system, the icon is offered, and the Brand Book logo chapter is
+ * never complete without a drawn master. Bump it when the rule changes so caches at the same commit rebuild.
  */
-export const IDENTITY_MASTER_RULE = 2
+export const IDENTITY_MASTER_RULE = 3
 
 export class ProjectionError extends Error {
   constructor(
@@ -441,8 +448,9 @@ export function buildProjection(root: string, expectedSlug: string): { projectio
 
   const groups = new Map<string, StudioProjection['overview']['groups'][number]>()
   for (const module of dashboard.modules) {
-    const entry = groups.get(module.group) ?? { group: module.group, required: 0, required_approved: 0, required_unanswered: 0, pending_review: 0 }
+    const entry = groups.get(module.group) ?? { group: module.group, required: 0, required_approved: 0, required_unanswered: 0, pending_review: 0, applicable: 0 }
     entry.required += module.required
+    entry.applicable = (entry.applicable ?? 0) + module.applicable
     entry.required_approved += module.required_approved
     entry.required_unanswered += module.required_unanswered
     entry.pending_review += module.pending_review
@@ -523,7 +531,8 @@ export function buildProjection(root: string, expectedSlug: string): { projectio
       width: null,
       height: null,
     })
-    if (tags.includes('logo')) {
+    // Logo files and the icon / mark of the logo system (BOS-16) are offered; the core decides which is drawn.
+    if (tags.includes('logo') || LOGO_ICON_TAGS.some((tag) => tags.includes(tag))) {
       const size = preview_key ? (sizes.get(preview_key) ?? null) : null
       logoCandidates.push({
         asset_id: asset.id.slice(0, 200),
@@ -558,6 +567,7 @@ export function buildProjection(root: string, expectedSlug: string): { projectio
         mime: preview_key ? mime : null,
         unavailable_reason,
         unavailable_detail,
+        example: isExampleAsset(asset),
       },
     ]
   })
@@ -587,6 +597,9 @@ export function buildProjection(root: string, expectedSlug: string): { projectio
 
   const knowledge = projectKnowledge(engine)
   const visual = projectVisual(engine, logoCandidates, assetCandidates, knowledge)
+  // BOS-16: the Brand Book's logo chapter is never "complete" while the identity chapter draws no master logo.
+  const book = documents['brand-book']
+  if (book) documents['brand-book'] = { ...book, sections: book.sections.map((section) => (section.id === 'logo' ? { ...section, status: logoChapterStatus(section.status, visual?.identity?.internal) } : section)) }
   const projection: StudioProjection = {
     schema_version: 1,
     brand: {

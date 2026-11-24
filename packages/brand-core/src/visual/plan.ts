@@ -1,17 +1,17 @@
+import { brandApplicability } from '../applicability.js'
 import { latestAnswers } from '../completeness.js'
 import { itemFor, type DocumentAudience, type ItemContext } from '../documents/model.js'
 import type { InterviewEngine } from '../engine.js'
 import { entitySpec, type EntityItem } from '../entities.js'
 import { readEvidence } from '../evidence.js'
 import { readFacts } from '../facts.js'
-import { entryFromItem, zoneState } from './bmc.js'
+import { frameworkEntry, zoneState } from './bmc.js'
 import { frameworkRef } from './frameworks.js'
 import {
   emptyStatusSummary,
   VISUAL_SCHEMA,
   type BlockBase,
   type FrameworkRef,
-  type MissingReason,
   type NextQuestion,
   type VisualBlock,
   type VisualDocument,
@@ -118,9 +118,16 @@ function nextFor(ids: readonly string[], input: PlanInput): NextQuestion[] {
       if (entitySpec(id)) out.push({ id, kind: 'proposed' })
       continue
     }
-    if (source && !source.entry.approved && source.entry.state !== 'not_applicable') out.push({ id, kind: 'existing' })
+    // BOS-15: the entry's own id, so a personal answer standing in for this question is what the owner is asked.
+    if (source && !source.entry.approved && source.entry.state !== 'not_applicable' && !out.some((item) => item.id === source.entry.id)) out.push({ id: source.entry.id, kind: 'existing' })
   }
   return out
+}
+
+/** Entries in order, each answer once (several framework questions can be stood in for by one personal answer). */
+function unique(entries: Array<VisualEntry & { approved: boolean }>): Array<VisualEntry & { approved: boolean }> {
+  const seen = new Set<string>()
+  return entries.filter((entry) => (seen.has(entry.id) ? false : (seen.add(entry.id), true)))
 }
 
 function base(input: PlanInput, kind: PlanDocumentKind, entries: Array<VisualEntry & { approved: boolean }>, computedFrom: string[]): BlockBase {
@@ -227,7 +234,7 @@ export function journeyDocument(input: PlanInput): VisualDocument {
 export function sostacDocument(input: PlanInput): VisualDocument {
   const all: Array<VisualEntry & { approved: boolean }> = []
   const sections: SostacSection[] = SOSTAC_SPECS.map((spec, index) => {
-    const entries = spec.questions.filter((id) => input.existing.has(id)).map((id) => source(input, id).entry)
+    const entries = unique(spec.questions.filter((id) => input.existing.has(id)).map((id) => source(input, id).entry))
     all.push(...entries)
     return {
       stage: spec.stage,
@@ -286,7 +293,7 @@ export function okrDocument(input: PlanInput): VisualDocument {
     key_results: results.filter((kr) => kr.objective?.id === item.id),
   }))
   const unlinked = results.filter((kr) => !kr.objective || !visible.has(kr.objective.id))
-  const entries = [objectivesSrc.entry, resultsSrc.entry, ...(root ? [root.entry] : [])]
+  const entries = unique([objectivesSrc.entry, resultsSrc.entry, ...(root ? [root.entry] : [])])
   const block: OkrTreeBlock = {
     ...base(input, 'okr_tree', entries, [OBJECTIVES_QUESTION, KEY_RESULTS_QUESTION, ANNUAL_OBJECTIVE]),
     type: 'okr_tree',
@@ -303,13 +310,6 @@ export function okrDocument(input: PlanInput): VisualDocument {
 
 // ---- repository builder --------------------------------------------------------------------------------------
 
-/** Public gaps are "not published" whatever the reason, so a public page never hints at a hidden draft. */
-function missingReason(audience: DocumentAudience, status: string | undefined): MissingReason {
-  if (audience === 'public') return 'not_published'
-  if (status === 'unknown' || status === 'skipped' || status === 'deprecated') return status
-  return 'unanswered'
-}
-
 export interface PlanOptions {
   /** Clock for `stale` (an approved fact past its `review_due`). Defaults to now. */
   now?: Date
@@ -325,16 +325,19 @@ export function planSources(engine: InterviewEngine, audience: DocumentAudience,
   const answers = latestAnswers(engine.ledger().records)
   const context: ItemContext = { facts, answers, audience, root, brandId, evidence: readEvidence(root), now }
   const existing = new Set(engine.questions().map((question) => question.id))
+  const applicability = brandApplicability(engine)
   const sources = new Map<string, PlanSource>()
   for (const id of PLAN_QUESTIONS) {
-    const question = engine.question(id)
-    if (!question) continue
-    const item = itemFor(question, context)
-    const answer = answers.get(id)
-    const notApplicable = item.tag === 'missing' && audience === 'internal' && answer?.status === 'not_applicable'
-    const entry = entryFromItem(item, facts[id], notApplicable, now, missingReason(audience, answer?.status))
+    if (!engine.question(id)) continue
+    // BOS-15: a framework question shows itself, the personal answer standing in for it, or not applicable. The
+    // plan documents read one answer per question, so a question with several stand-ins shows the first.
+    const ref = applicability.refs(id)[0]
+    const entry = ref ? frameworkEntry(engine, context, ref, now) : null
+    if (!entry) continue
     const visible = entry.value !== null && entry.state !== 'withheld' && !entry.legacy
-    const items = visible && item.structured?.type === 'repeating_entity' ? item.structured.items.map((one) => ({ id: one.id, fields: { ...one.fields }, links: [...one.links] })) : null
+    const question = visible ? engine.question(entry.id) : undefined
+    const structured = question ? itemFor(question, context).structured : null
+    const items = structured?.type === 'repeating_entity' ? structured.items.map((one) => ({ id: one.id, fields: { ...one.fields }, links: [...one.links] })) : null
     sources.set(id, { entry, items })
   }
   return { brand_id: brandId, brand_name: String(config.brand.name ?? brandId), audience, illustrative: false, sources, existing }

@@ -1,4 +1,4 @@
-import { coverageCells, publishingExportCommand, type CoverageState, type ExportProfile, type PublishingCell, type PublishingDocumentType, type PublishingReadiness } from '@brand-os/brand-core/visual'
+import { coverageCells, isPersonalPublishingType, PERSONAL_PUBLISHING_KIND, publishingExportCommand, type CoverageState, type ExportProfile, type PublishingCell, type PublishingDocumentType, type PublishingReadiness } from '@brand-os/brand-core/visual'
 import type { MessageKey } from '../i18n/index.js'
 import type { StudioProjection } from '../projection.js'
 import { badge, emptyState, type Tone } from './components.js'
@@ -13,7 +13,7 @@ import { brandHeader, brandShell } from './pages.js'
  * Both are read-only views over the sync-time projection. The gallery shows document types × export profiles with the
  * readiness measured on each profile's redacted output (`buildPublishingGallery` in core); it carries counts only,
  * links to the print views that already exist and shows, as text, the local export command where one exists (the full
- * Brand Book). Nothing here exports, renders a file, runs a command, or writes.
+ * Brand Book, and the personal documents' `brand:document` command for a personal brand). Nothing here exports, renders a file, runs a command, or writes.
  */
 
 const READINESS: Record<PublishingReadiness, { tone: Tone; icon: IconName }> = {
@@ -39,6 +39,8 @@ function printHref(slug: string, type: PublishingDocumentType, profile: ExportPr
 /** The on-screen page of each document type, for the row heading. */
 function pageHref(view: BrandView, type: PublishingDocumentType): string {
   const slug = view.record.slug
+  // BOS-19: a personal document opens on the Personal Brand page with that document selected.
+  if (isPersonalPublishingType(type)) return brandPath(slug, 'personal', `?doc=${PERSONAL_PUBLISHING_KIND[type]}`)
   switch (type) {
     case 'brand_book':
       return brandPath(slug, 'brand-book')
@@ -180,7 +182,7 @@ export function commandStrip(ctx: ViewContext, view: BrandView): SafeHtml {
           return html`<li class="cc-map-row">
             <a class="cc-map-name" href="${row.href}">${i.t(row.key)}</a>
             <span class="cc-map-cells" aria-hidden="true">${row.cells.map((cell) => html`<span class="cc-cell cc-cell--${cell.state}" title="${i.t(`command.state.${cell.state}` as MessageKey)}"></span>`)}</span>
-            <span class="cc-map-text small">${i.t('command.complete', { done: i.number(counts.complete), total: i.number(considered) })}${counts.partial ? html` · ${i.t('command.partial', { count: i.number(counts.partial) })}` : ''}${counts.missing ? html` · ${i.t('command.missing', { count: i.number(counts.missing) })}` : ''}</span>
+            <span class="cc-map-text small">${considered === 0 ? i.t('doc.notApplicableTitle') : i.t('command.complete', { done: i.number(counts.complete), total: i.number(considered) })}${counts.partial ? html` · ${i.t('command.partial', { count: i.number(counts.partial) })}` : ''}${counts.missing ? html` · ${i.t('command.missing', { count: i.number(counts.missing) })}` : ''}</span>
           </li>`
         })}</ul>
         <p class="cc-legend muted small" aria-hidden="true">${COVERAGE_ORDER.slice(0, 4).map((state) => html`<span class="cc-legend-item"><span class="cc-cell cc-cell--${state}"></span>${i.t(`command.state.${state}` as MessageKey)}</span>`)}</p>`

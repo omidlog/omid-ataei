@@ -295,11 +295,12 @@ test('journey A: education app with mascot, English-first interview with a local
   const marketing = buildMarketingPlan(engine, 'internal')
   assert.equal(docItem(marketing, MARKETING_OBJECTIVE).tag, 'approved')
   assert.equal(docItem(marketing, VOICE).tag, 'approved')
-  // Design tokens generated from the approved palette are drafts until hash-approved.
+  // Design tokens generated from the approved palette are drafts until hash-approved. Each owner role is its own
+  // token (color.brand-role.*); template ids need the approved brand.color.semantic_map (BOS-17).
   const tokens = generateTokens(root, A_SLUG)
   assert.equal(tokens.ok, true, tokens.note)
-  assert.equal(approveTokens(root, ['color.brand.primary'], proof).ok, true)
-  assert.equal(publishTokens(root, ['color.brand.primary'], proof).ok, true)
+  assert.equal(approveTokens(root, ['color.brand-role.primary'], proof).ok, true)
+  assert.equal(publishTokens(root, ['color.brand-role.primary'], proof).ok, true)
 
   // 12. Approved/public publication: only the trade name is published.
   const published = engine.approvals().publish({ ids: [TRADE_NAME] }, proof)
@@ -533,14 +534,14 @@ test('journey C: token drift, invalid asset uploads and stale proposal approval'
   answer(engine, COLORS, 'primary #0B2A55')
   approveIds(engine, proof, [COLORS])
   assert.equal(generateTokens(root, C_SLUG).ok, true)
-  assert.equal(approveTokens(root, ['color.brand.primary'], proof).ok, true)
-  assert.equal(publishTokens(root, ['color.brand.primary'], proof).ok, true)
+  assert.equal(approveTokens(root, ['color.brand-role.primary'], proof).ok, true)
+  assert.equal(publishTokens(root, ['color.brand-role.primary'], proof).ok, true)
   const design = agentTokenContext(C_SLUG, 'agt_design', 'design')
   const tokenIds = () => items(brandRetrieve(engine, design, { kind: 'tokens' })).map((item) => item.id)
-  assert.ok(tokenIds().includes('color.brand.primary'))
+  assert.ok(tokenIds().includes('color.brand-role.primary'))
   const generated = path.join(root, 'brand/tokens/generated/color.tokens.json')
   fs.writeFileSync(generated, fs.readFileSync(generated, 'utf8').replace('#0B2A55', '#0B2A56'))
-  assert.equal(tokenIds().includes('color.brand.primary'), false, 'a drifted value no longer matches its approval hash')
+  assert.equal(tokenIds().includes('color.brand-role.primary'), false, 'a drifted value no longer matches its approval hash')
   prepareDocs(root, { audience: 'public', rootIndex: false })
   assert.equal(fs.readFileSync(path.join(root, 'apps/docs/src/data/tokens.json'), 'utf8').includes('#0B2A56'), false)
 

@@ -99,7 +99,7 @@ function gapReason(entry: VisualEntry, lang: VisualLang): string {
   const cat = visualCatalog(lang)
   if (entry.state === 'assumption' || entry.state === 'recommendation') return t.draftNotPrinted
   if (entry.state === 'withheld') return t.withheldNotPrinted
-  if (entry.state === 'not_applicable') return t.notApplicable
+  if (entry.state === 'not_applicable') return entry.na_reason === 'profile' ? t.notApplicableProfile : t.notApplicable
   return entry.missing_reason ? cat.missingReason[entry.missing_reason] : cat.text.noValueYet
 }
 

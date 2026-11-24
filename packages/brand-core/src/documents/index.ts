@@ -12,6 +12,8 @@ export { buildDocument, ITEM_TAGS, itemFor, lengthReport, PERSONAL_DOCUMENT_KIND
 export { buildEvidenceRegister, buildPersonalDocument, PERSONAL_SPECS } from './personal.js'
 export type { DocumentAudience, DocumentItem, DocumentKind, DocumentModel, DocumentSection, DocumentSpec, ItemTag, LengthReport, PersonalDocumentKind, SectionSpec } from './model.js'
 export { renderDocumentMarkdown } from './markdown.js'
+export { composeDrafts, countWords, DRAFT_CONNECTORS, DRAFT_LABEL, DRAFT_LOCALES, draftLocales, factLanguage, localizedSegments, TRANSLATION_COMPANIONS } from './compose.js'
+export type { ComposedDraft, ComposeSource, DraftLocale, FactLanguage, UntranslatedFact } from './compose.js'
 
 export const DOCUMENT_KINDS: readonly DocumentKind[] = ['brand-book', 'business-plan', 'marketing-plan', ...PERSONAL_DOCUMENT_KINDS]
 

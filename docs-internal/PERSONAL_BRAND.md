@@ -32,6 +32,44 @@ You can edit the facet list later. The interview, documents and docs build follo
 | `brand.profile: personal-brand` | The personal core, the selected facets and the shared voice and visual questions. | Exclusive. Company legal entity, SaaS, mascot and other Business OS questions are not applicable, not missing. They can still be answered by id. |
 | `brand.profile: universal`, personal on | The whole bank, including personal and the selected facets. | Everything counts. |
 
+Purpose, vision, values and promise apply to a person too: the `personal-brand` profile asks `brand.strategy.purpose`, `brand.strategy.vision`, `brand.strategy.values` and `brand.strategy.promise` (BOS-15). The profile file is brand-owned, so a template update does not rewrite it: `npm run brand:migrate` adds the four ids to an older `brand/interview/profiles/personal-brand.yaml` (additive, idempotent, the owner's edits kept), and `brand:next` then reports them as open.
+
+## Frameworks for a personal brand (decision, BOS-15)
+
+Owner decision, settled: for a `personal-brand` profile with a business facet (`founder-executive` or `consultant-expert`), the Business Model Canvas, the business plan, the marketing plan and the Strategy lab (SWOT / TOWS, Value Proposition Canvas, customer journey, SOSTAC, OKR) describe **the person's own practice**. They are built from approved personal answers wherever a mapping exists. Ventures in `personal.experience.relationships` (a company the person founded or advises) stay relationships; they are never the canvas subject.
+
+One rule decides what applies, in `packages/brand-core/src/applicability.ts` (`brandApplicability`), and `brand:next`, `brand:status` / completeness, the framework documents, the visual builders and every Studio framework and counter use it:
+
+- A question **applies** when it is in the completeness scope of the active profile (an exclusive profile lists it), its module is on and its `skip_when` does not hold (`questionApplies`). That is the set `brand:next` asks and `open` counts.
+- A framework question that does not apply is **mapped** when a personal answer describes the same thing. The framework then shows the personal answer under its own id (for example `personal.positioning.primary_audience`), with its own approval, verification label and visibility, and names the framework question it stands for (`stands_for`). Nothing is copied into a `business.*` or `brand.*` field.
+- Otherwise it is **not applicable to this profile**. Studio says so; it is never "missing" and never counted as open. A module or chapter with no applicable question shows "Not applicable", not "100 %".
+- An answer already recorded on a question outside the profile (it can be answered by id) is shown as itself.
+
+Invariant: if Studio shows a framework item as missing, it is a question of the active profile that `brand:next` asks (once its own dependencies are answered) and `open` counts it.
+
+| Framework question | Personal answer shown | Rows |
+| --- | --- | --- |
+| `brand.identity.public_name_override` | `personal.identity.public_name` | every personal profile |
+| `brand.verbal.tagline` | `personal.identity.headline` | every personal profile |
+| `brand.verbal.name_use` | `personal.identity.name_forms` | every personal profile |
+| `brand.strategy.differentiation` | `personal.positioning.perspective` | every personal profile |
+| `brand.gov.approver` | `personal.governance.reviewer` | every personal profile |
+| `business.customer.primary_segment` | `personal.positioning.primary_audience` | business facet |
+| `business.model.segments`, `business.sales.buyer` | `personal.consulting.target_clients` | business facet (consultant answers only when that facet is on) |
+| `business.offer.value_proposition`, `business.fit.creators` | `personal.positioning.outcome` | business facet |
+| `business.offer.summary`, `business.model.revenue` | `personal.services.offers` + `personal.consulting.engagements` | business facet |
+| `business.fit.products` | `personal.services.offers` | business facet |
+| `business.sales.pricing` | `personal.consulting.pricing_policy` (the policy; never an amount) | business facet |
+| `business.model.key_activities` | `personal.consulting.methodology` | business facet |
+| `business.marketing.channels`, `brand.social.channels` | `personal.content.channels` | business facet |
+| `business.marketing.pillars` | `personal.content.pillars` | business facet |
+| `business.marketing.objective`, `business.goals.annual` | `personal.goals.outcomes` | business facet |
+| `business.goals.north_star`, `business.goals.key_results` | `personal.goals.kpis` | business facet |
+
+The table is `PERSONAL_FRAMEWORK_SOURCES`. Everything else in the frameworks (company trade name, stage, product, finance, risks, key partners and resources, cost structure, customer relationships, SWOT, journey stages, the measurement section) is not applicable to a personal profile. Without a business facet the frameworks do not apply at all (Studio shows the canvas and plans as not used for this profile); the Brand Book still maps the `every personal profile` rows.
+
+**A full plan for a venture.** `brand:next` and `brand:status` say this for a personal profile: set `brand.profile: universal` and keep `modules.personal` enabled (the whole bank is asked, and the `business.*` questions describe the venture), or give the venture its own Brand OS repository. One repository has one `business.*` namespace, so it describes one business.
+
 ## Question bank
 
 The bank is `brand/interview/question-bank/personal.yaml`. It is generated from `packages/brand-core/src/content/personal-core.ts` and `personal-facets.ts` like every other bank, so `brand:validate` checks it for prompt drift. Prompts exist in English (base), Persian and Turkish as locale data.
@@ -63,7 +101,9 @@ Ids are stable and prefixed: `personal.<area>.<field>`, for example `personal.id
 
 Brand OS does not collect a home address, personal phone, birth date, government id or family details for a personal brand.
 
-- Every personal write path refuses answers that look like they contain that data: interview answers, change proposals, notes, agent proposal batches (value and quotation) and the evidence register. The refusal names the kind of data and never echoes it. The cues are locale data in `packages/brand-core/src/personal-privacy.ts` (en, fa, tr).
+- Every personal write path refuses answers that look like they contain that data: interview answers, change proposals, notes, agent proposal batches (value and quotation) and the evidence register. The refusal names the kind of data, the kind of pattern that triggered it (a digit run, a name@domain pattern, a cue phrase, a category name followed by a value) and where it starts (line and word), and never echoes the value. The cues and category names are locale data in `packages/brand-core/src/personal-privacy.ts` (en, fa, tr).
+- A social profile URL (`https://www.tiktok.com/@handle`, Medium, YouTube, Threads, Mastodon) and a bare `@handle` are not email addresses.
+- The `personal.privacy.*` questions exist to list categories of data, so there a category name alone ("date of birth", «تاریخ تولد», "doğum tarihi") is allowed. A category name followed by a value in the same clause (a digit, or `:` and text) is still refused, and so is every phrase that states a value ("born on", "my address is", «همسرم», "eşim"). Everywhere else a category name is refused as before.
 - Email addresses are allowed only in the professional contact field, `personal.contact.public_channels`.
 - Career relationships, responsibilities, the evidence register and the privacy boundaries are `internal`. They cannot be published. Of the agent profiles, only `internal-read` can read career history, evidence and boundaries. `design` reads identity, presence and the artist facet. `marketing` reads identity, positioning, story, content, presence and the consultant, creator and speaker facets. `finance` reads no personal module.
 - The guard is a filter, not a classifier. It errs on the side of refusing. It is not a GDPR, KVKK or other legal compliance certification. Obligations that depend on the jurisdiction (lawful basis, retention, data-subject requests, consent records for people other than the owner) need a dedicated legal review. They are listed as risks in `archive/PHASE_8_PERSONAL_BRAND_REVIEW.md`.
@@ -78,7 +118,10 @@ npm run brand:evidence -- add --claim personal.credibility.credentials --source 
   --reference "https://registry.example.org/…" [--review-due 2027-06-30]
 npm run brand:evidence -- add --claim personal.portfolio.projects --kind permission --scope public \
   --source document --reference "Signed consent, held offline" --granted-by "Client marketing lead"
+npm run brand:evidence -- add --claim personal.positioning.known_for --source link \
+  --reference "https://your-site.example/about" --owned   # the owner's own site or company: owner-published
 npm run brand:evidence -- verify --id ev-0001     # owner proof from env, stdin or a hidden prompt
+npm run brand:evidence -- verify --id ev-0002,ev-0003   # several ids, one proof; each id is reported
 npm run brand:evidence -- withdraw --id ev-0002 --reason "Client revoked consent"
 npm run brand:evidence -- check                   # verification state and blockers per claim
 npm run brand:retract -- --question personal.credibility.awards --reason "Wrong year"
@@ -86,6 +129,9 @@ npm run brand:retract -- --question personal.credibility.awards --reason "Wrong 
 
 - Anyone, including an agent, may record evidence. It starts `pending`. Only the owner, with the approval proof, marks it `verified` or `rejected`. Both commands refuse to run while `BRAND_OS_AGENT_TOKEN` is set.
 - Owner testimony (`--source owner_testimony`) is recorded and shown as owner-stated. It never counts as independent verification.
+- A source the owner controls (their own website or profile, a venture they founded or own) carries `owned: true` and is shown as **Owner-published**. It never counts as independent verification. `brand:evidence add --owned` sets it; it is also inferred, on add and on every read, from the brand's own domains: approved `personal.contact.public_channels` (including a work-email domain), `personal.content.channels`, `personal.consulting.cta`, `personal.founder.ventures`, and `personal.experience.relationships` entries that are `founded`/`co-founded` or `owner`/`co-owner` and name a domain. Shared platforms (LinkedIn, YouTube, Medium, …) match only the owner's own profile path; public mail providers never count. Inference only ever marks a source as owned. Registers written before the flag need no migration: entries without `owned` are inferred on read and never rewritten. Mark an owner-controlled source the domains cannot reveal (a company brochure) by recording a new entry with `--owned` and withdrawing the old one.
+- Labels: `verified` (only independent, current sources), `partly_verified` (an independent source plus an owner-stated or owner-published part, named by evidence id in internal documents), `owner_published`, `owner_stated`, `unverified`, `not_required`. One independent item never makes a mixed field `verified`. Publication still needs at least one independent source; a partly verified claim can be published, and drafts must present its owner part as the owner's statement.
+- Verifying evidence that is already verified (or rejecting a rejected one) prints "already verified" and writes nothing, so re-running leaves Git clean.
 - A question can declare `publication_requires`:
   - `verified_evidence`: credentials, awards, demonstrable results, case studies, ventures, prior talks, publications, exhibitions and creator metrics. Publication needs at least one verified, current, independent source.
   - `rights_permission`: case studies, testimonials and portraits. Publication needs a verified, current permission with `scope: public`.
@@ -121,7 +167,16 @@ rights:
 | `services-pack` | Offers vs ideas, clients, method, boundaries, pricing policy (no amounts), proof, inquiry |
 | `evidence-register` | Every claim that needs evidence or permission, its sources, status, eligibility and re-verification date. Internal only; the public edition is empty. |
 
-Documents list approved facts. They do not write prose. Each personal item carries a verification label: `verified`, `owner_stated` or `unverified`. The public edition contains only published facts and no evidence ids.
+Each personal item carries a verification label: `verified`, `partly_verified`, `owner_published`, `owner_stated` or `unverified`. The public edition contains only published facts and no evidence ids.
+
+**Composed drafts (BOS-19).** Every section of the nine pack documents (not the evidence register) also carries one composed draft paragraph per language edition (`drafts`, labelled "Draft for owner approval"), with the approved facts kept below as its Sources. Composition is deterministic templating in `packages/brand-core/src/documents/compose.ts`, never a model call:
+
+- Only approved facts the edition may show are used, verbatim. Drafts, gaps, withheld values and structured answers (lists, relationships) never enter the paragraph.
+- A fact goes into the edition of the language it is written in, read from its script (Arabic script is fa; Latin with ğ, ş, ı or İ is tr; other Latin is en; both scripts in similar measure is mixed). URLs and e-mail addresses do not count.
+- A fact in another language is used only through an approved translation: the language-labelled forms in `personal.identity.localized_headline` (for the headline) or `personal.identity.name_forms` (for the name), written `fa: … tr: …` (the labels `فارسی:`, `ترکی:`, `English:` and `Türkçe:` work too). Otherwise it is listed as untranslated and left out of that edition. Nothing is machine-translated. The public name stands in every edition unless an approved form for that language exists.
+- The only added words are neutral connectors defined per locale (`DRAFT_CONNECTORS`, such as "Known for:" / «شناخته‌شده به‌عنوان:» / "Bilinen yönü:") and the dash between name and headline.
+- Editions are the brand's supported locales among en, fa and tr, the default locale first. Word counts (`length`) count the composed draft of the first edition (`basis: composed_draft`); every draft also carries its own count.
+- `brand:document` prints the drafts above a "Sources" heading; Studio's Personal Brand page shows one edition at a time (`?locale=fa|en|tr`); `draft_personal_content` returns the same drafts in each section's `composed`, read through the caller's gate. The owner still approves the final text through the interview.
 
 ## Agents and drafting
 

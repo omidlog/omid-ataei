@@ -64,7 +64,11 @@ Returns **0 or 1** clarifying question for one answered question.
   clarifying question about which of the two statements should stand.
 - If the gap is **inside the answer** (it is vague, it carries no figure, it has no evidence), no other
   question can close it, so the coach asks its own single clarifying question from
-  `CLARIFY_QUESTIONS` — one per criterion, in en, fa and tr.
+  `clarifyQuestion` — one per criterion and question family, in en, fa and tr. The family comes from the question
+  id (`questionFamily`): `audience` (segments, buyers, target clients, pains), `boundaries` (boundaries, things to
+  avoid or never publish, misuse, guardrails) or `general`. Only `specificity` differs by family, so a boundaries
+  answer is asked which topics are off-limits, never which group it serves; every other criterion is worded for any
+  question, and `evidence_support` names no company, so it fits a person too (coach-rules/6, BOS-08).
 - **Decline.** `decide later` on the target question is a decline: the coach reports
   `follow_up_none` with reason `already_deferred` and does not re-dress the same gap as a new question.
   `skip` / `unknown` / `not relevant` on the target is equally final.
@@ -80,7 +84,7 @@ and one concrete next step. It judges the data, never the person.
 | Criterion | When it applies | What fires | Status |
 | --- | --- | --- | --- |
 | `relevance` | always | the stored value is a template placeholder (`TBD`, `EXAMPLE: …`, `—`) | `needs_review` |
-| `evidence_support` | the question declares `publication_requires: verified_evidence` | `claimVerification` says `unverified` or `owner_stated` | `evidence_missing` |
+| `evidence_support` | the question declares `publication_requires: verified_evidence` | `claimVerification` says `unverified` or `owner_stated`. A verified, current, independent source in the evidence register silences it, and also silences the facet rubrics' `evidence_support` findings for that claim | `evidence_missing` |
 | `clarity_coherence` | always | the field is named by an open contradiction from `findContradictions` | `needs_review` |
 | `specificity` | `short_text`, `long_text` | fewer content words than the type's minimum (8 / 2; 1 for facts short by design — `brand.verbal.tagline`, `brand.strategy.promise`, `SHORT_BY_DESIGN_IDS`), or a vague lexicon term in an answer of ≤25 content words | `needs_clarification` |
 | `completeness_for_output` | the question declares `depends_on` | a declared prerequisite is still open | `needs_clarification` |
@@ -218,7 +222,7 @@ Findings:
    Read: question:business.customer.primary_segment, answer:ans-0002
 
 No model was called. Every finding is deterministic.
-engine coach/1 · rules coach-rules/5 · authorizes: []
+engine coach/1 · rules coach-rules/6 · authorizes: []
 ```
 
 (Line-wrapped here for the page; the command prints each field on one line.)

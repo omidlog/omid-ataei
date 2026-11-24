@@ -1,6 +1,6 @@
 import { redirect } from '../http.js'
 import { brandIsReady } from '../sync.js'
-import type { BrandView } from '../views/layout.js'
+import { syncFlash, type BrandView } from '../views/layout.js'
 import { identityPage, identityPrintPage, visualPage, visualPrintPage } from '../views/visual-page.js'
 import { competitorsPage, competitorsPrintPage } from '../views/visual-competitors-page.js'
 import { mascotPage, mascotPrintPage } from '../views/visual-mascot-page.js'
@@ -21,9 +21,9 @@ export function visualRoutes(core: StudioCore): { visual: Handler } {
     if (!brandIsReady(record)) return redirect(ctx.res, `/brands/${record.slug}/provisioning`, 302)
     const cached = sync.get(record.slug)
     if (cached.status.state === 'never') return redirect(ctx.res, `/brands/${record.slug}`, 302)
-    const brand: BrandView = { record, cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug) }
+    const brand: BrandView = { record, cached, stale: sync.isStale(record.slug, cached.status), refreshing: sync.isRefreshing(record.slug), refreshStartedAt: sync.refreshStartedAt(record.slug) }
     const flash = ctx.url.searchParams.get('sync')
-    const flashValue = flash === 'synced' || flash === 'failed' || flash === 'too-soon' ? flash : null
+    const flashValue = syncFlash(flash, brand)
     // match[2]: the stable path (Visual V2.4); match[3]: its print view.
     // market/competitors: the competitor comparison matrix (V2.2), internal edition only.
     if (match[2] === 'market/competitors') {

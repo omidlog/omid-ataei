@@ -70,6 +70,13 @@ export interface VisualEntry {
   items?: VisualEntityItem[]
   /** Visual V3.1: a list question whose stored value is not a list. `value` is the text as written; flagged. */
   legacy?: true
+  /**
+   * BOS-15: the framework question this personal answer stands in for (a personal brand's own practice). `id` is then
+   * the personal question, whose approval, verification and visibility rules decided the value. Absent otherwise.
+   */
+  stands_for?: string
+  /** BOS-15: `not_applicable` because the active profile does not ask this question (not an owner answer). */
+  na_reason?: 'profile'
 }
 
 /** One item of a list question, as drawn on the canvas. Choice values are option keys; renderers label them. */
@@ -223,10 +230,41 @@ export interface LogoMaster {
   /** Intrinsic size when it could be read (SVG viewBox/width/height, PNG header); null otherwise. */
   width: number | null
   height: number | null
-  /** How the master was found: named in `brand.logo.masters`, tagged `master`, or the only approved logo. */
-  resolved_by: 'reference' | 'tag' | 'sole_logo'
+  /**
+   * How the master was found: named in `brand.logo.masters` (exact id, exact path, or a file name that names exactly
+   * one asset), tagged `master`, the only approved logo, or the on-light half of a light/dark pair (BOS-16).
+   */
+  resolved_by: 'reference' | 'tag' | 'sole_logo' | 'pair'
   /** Internal edition only (always empty in public): the file still carries a `draft` tag, or it is not published. */
   badges: Array<'draft_tag' | 'internal_only'>
+}
+
+/**
+ * One file of the logo system (BOS-16): the wordmark for light backgrounds, the one for dark backgrounds, or the icon /
+ * mark. Same eligibility as the master (approved, checksummed, previewable, not an example; published in public).
+ */
+export interface LogoVariant {
+  role: 'on_light' | 'on_dark' | 'icon'
+  asset_id: string
+  name: string
+  version: string | null
+  preview_key: string
+  mime: string
+  width: number | null
+  height: number | null
+  /**
+   * How the role is known: a manifest tag (`on-light`, `on-dark`, `icon` / `mark` / `logomark` / `favicon`) or the
+   * documented file-name convention (`dark` / `black` ink goes on a light plate, `light` / `white` / `reversed` on a dark
+   * one). A tag always wins; the internal edition says when a role came from the file name.
+   */
+  role_by: 'tag' | 'file_name'
+  badges: Array<'draft_tag' | 'internal_only'>
+}
+
+export interface LogoSystem {
+  on_light: LogoVariant | null
+  on_dark: LogoVariant | null
+  icon: LogoVariant | null
 }
 
 export interface LogoConstructionBlock extends BlockBase {
@@ -240,6 +278,16 @@ export interface LogoConstructionBlock extends BlockBase {
    * several approved logos and none named in `brand.logo.masters` (the builder never guesses between them).
    */
   master_state: 'approved' | 'missing' | 'example_only' | 'not_previewable' | 'ambiguous'
+  /**
+   * The logo system around the master (BOS-16): light plate, dark plate, icon. Null without a master or when no file
+   * has a role. Absent in documents built before it existed.
+   */
+  system?: LogoSystem | null
+  /**
+   * Internal edition only: the asset ids the owner can choose from when the state is `ambiguous` or `not_previewable`,
+   * so the one-line fix can name them. Empty in public. Absent in older documents.
+   */
+  candidates?: string[]
 }
 
 export type VisualBlock =

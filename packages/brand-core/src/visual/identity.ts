@@ -16,6 +16,8 @@ import {
   type ContrastPair,
   type LogoConstructionBlock,
   type LogoMaster,
+  type LogoSystem,
+  type LogoVariant,
   type MissingReason,
   type TypeRole,
   type TypographySpecimenBlock,
@@ -137,50 +139,164 @@ export function masterReferenceTokens(text: string | null | undefined): string[]
   return tokens
 }
 
-function referenceIndex(asset: LogoMasterCandidate, tokens: string[]): number {
-  const names = [asset.asset_id, ...(asset.paths ?? []).map((item) => item.replace(/^\.\//, ''))].filter(Boolean)
+/** File name of a manifest path (`brand/assets/logo/x.svg` gives `x.svg`). */
+function baseName(file: string): string {
+  return file.replace(/^\.\//, '').split('/').pop() ?? ''
+}
+
+/**
+ * Index of the first token that names this asset: its exact id, an exact manifest `path`/`preview`, or (BOS-16) a bare
+ * file name, but only a file name that belongs to exactly one offered asset. A folder, a prefix or a near miss never
+ * matches. -1 when the text does not name it.
+ */
+function referenceIndex(asset: LogoMasterCandidate, tokens: string[], uniqueNames: Set<string> = new Set()): number {
+  const paths = (asset.paths ?? []).map((item) => item.replace(/^\.\//, ''))
+  const names = [asset.asset_id, ...paths, ...paths.map(baseName).filter((name) => uniqueNames.has(name))].filter(Boolean)
   const hits = names.map((name) => tokens.indexOf(name)).filter((index) => index >= 0)
   return hits.length ? Math.min(...hits) : -1
+}
+
+/** File names that belong to exactly one offered asset (a name shared by two files names neither). */
+function uniqueBaseNames(candidates: LogoMasterCandidate[]): Set<string> {
+  const owners = new Map<string, Set<string>>()
+  for (const asset of candidates) {
+    for (const file of asset.paths ?? []) {
+      const name = baseName(file)
+      if (!name.includes('.')) continue
+      owners.set(name, (owners.get(name) ?? new Set()).add(asset.asset_id))
+    }
+  }
+  return new Set([...owners].filter(([, ids]) => ids.size === 1).map(([name]) => name))
+}
+
+/** Tags that mark the icon / mark of a logo system. */
+export const LOGO_ICON_TAGS = ['icon', 'mark', 'logomark', 'favicon'] as const
+/** Tags that place a logo file on a light or a dark background. */
+export const LOGO_PLATE_TAGS = { on_light: 'on-light', on_dark: 'on-dark' } as const
+/** File-name words of the documented convention: dark ink goes on a light plate, light ink on a dark plate. */
+const DARK_INK = new Set(['dark', 'black'])
+const LIGHT_INK = new Set(['light', 'white', 'reversed', 'reverse', 'inverse', 'inverted', 'negative'])
+
+function nameWords(asset: LogoMasterCandidate): string[] {
+  const names = [asset.asset_id.split('.').pop() ?? '', ...(asset.paths ?? []).map((file) => baseName(file).replace(/\.[A-Za-z0-9]+$/, ''))]
+  return names.flatMap((name) => name.toLowerCase().split(/[-_.\s]+/)).filter(Boolean)
+}
+
+/**
+ * The role of a file in the logo system, never guessed beyond two documented rules: a tag (`on-light`, `on-dark`, or
+ * one of `icon` / `mark` / `logomark` / `favicon`), else, for a file tagged `logo`, the file-name convention (a name
+ * with `dark` or `black` is dark ink for a light plate; `light`, `white`, `reversed`, `inverse` or `negative` is light
+ * ink for a dark plate; both or neither: no role).
+ */
+export function logoVariantRole(asset: Pick<LogoMasterCandidate, 'asset_id' | 'tags' | 'paths'>): { role: LogoVariant['role']; by: LogoVariant['role_by'] } | null {
+  const tags = asset.tags.map((tag) => tag.toLowerCase())
+  const onLight = tags.includes(LOGO_PLATE_TAGS.on_light)
+  const onDark = tags.includes(LOGO_PLATE_TAGS.on_dark)
+  if (onLight !== onDark) return { role: onLight ? 'on_light' : 'on_dark', by: 'tag' }
+  if (onLight && onDark) return null
+  if (LOGO_ICON_TAGS.some((tag) => tags.includes(tag))) return { role: 'icon', by: 'tag' }
+  if (!tags.includes('logo')) return null
+  const words = nameWords(asset as LogoMasterCandidate)
+  const dark = words.some((word) => DARK_INK.has(word))
+  const light = words.some((word) => LIGHT_INK.has(word))
+  if (dark === light) return null
+  return { role: dark ? 'on_light' : 'on_dark', by: 'file_name' }
+}
+
+function badgesFor(asset: LogoMasterCandidate, audience: VisualAudience): LogoMaster['badges'] {
+  const badges: LogoMaster['badges'] = []
+  if (audience === 'internal' && asset.tags.includes('draft')) badges.push('draft_tag')
+  if (audience === 'internal' && !asset.published) badges.push('internal_only')
+  return badges
+}
+
+/** The result of resolving the master logo and the system around it. */
+export interface LogoResolution {
+  master: LogoMaster | null
+  state: LogoConstructionBlock['master_state']
+  system: LogoSystem | null
+  /** Internal only: the asset ids to choose from when the state is `ambiguous` or `not_previewable`. */
+  candidates: string[]
 }
 
 /**
  * Picks the master, deterministically and never guessing. Only approved, non-example, previewable assets tagged
  * `logo` qualify; the public edition also needs the asset published. Among those, in order:
- * 1. the assets named (by exact asset id or manifest path) in the approved `brand.logo.masters` fact, first named wins;
+ * 1. the assets named in the approved `brand.logo.masters` fact (exact asset id, exact manifest path, or a file name
+ *    that belongs to exactly one asset), first named wins;
  * 2. assets tagged `master` (first by id);
- * 3. the only approved logo. Several approved logos and none named or tagged: `ambiguous`, no master.
+ * 3. the only approved logo;
+ * 4. a light/dark pair (BOS-16): exactly two approved logos, one for light and one for dark backgrounds (tags
+ *    `on-light` / `on-dark`, or the file-name convention): one logo system, the on-light file is the master.
+ * Anything else with several approved logos is `ambiguous`, no master. With a master, the system lists the light and
+ * dark plates and the icon (see `logoVariantRole`).
  */
-export function pickMaster(candidates: LogoMasterCandidate[], audience: VisualAudience, reference: string | null = null): { master: LogoMaster | null; state: LogoConstructionBlock['master_state'] } {
+export function pickMaster(candidates: LogoMasterCandidate[], audience: VisualAudience, reference: string | null = null): LogoResolution {
   const logos = candidates.filter((asset) => asset.tags.includes('logo'))
   const real = logos.filter((asset) => !asset.example)
-  const eligible = real.filter((asset) => asset.approved && (audience === 'internal' || asset.published))
-  const previewable = (assets: LogoMasterCandidate[]) => assets.filter((asset) => asset.preview_key && asset.mime).sort((a, b) => a.asset_id.localeCompare(b.asset_id))
-  const choose = (chosen: LogoMasterCandidate, resolved_by: LogoMaster['resolved_by']) => {
-    const badges: LogoMaster['badges'] = []
-    if (audience === 'internal' && chosen.tags.includes('draft')) badges.push('draft_tag')
-    if (audience === 'internal' && !chosen.published) badges.push('internal_only')
-    const master: LogoMaster = { asset_id: chosen.asset_id, name: chosen.name, version: chosen.version, preview_key: chosen.preview_key!, mime: chosen.mime!, width: chosen.width, height: chosen.height, resolved_by, badges }
-    return { master, state: 'approved' as const }
-  }
+  const allowed = (asset: LogoMasterCandidate) => !asset.example && asset.approved && (audience === 'internal' || asset.published)
+  const isReady = (asset: LogoMasterCandidate) => Boolean(asset.preview_key && asset.mime)
+  const eligible = real.filter(allowed)
+  const byId = (a: LogoMasterCandidate, b: LogoMasterCandidate) => a.asset_id.localeCompare(b.asset_id)
+  const previewable = (assets: LogoMasterCandidate[]) => assets.filter(isReady).sort(byId)
   const tokens = masterReferenceTokens(reference)
-  const named = eligible
-    .map((asset) => ({ asset, index: referenceIndex(asset, tokens) }))
-    .filter((item) => item.index >= 0)
-    .sort((a, b) => a.index - b.index || a.asset.asset_id.localeCompare(b.asset.asset_id))
-    .map((item) => item.asset)
-  const namedReady = named.filter((asset) => asset.preview_key && asset.mime)
+  const unique = uniqueBaseNames(candidates)
+  const namedOrder = (assets: LogoMasterCandidate[]) =>
+    assets
+      .map((asset) => ({ asset, index: referenceIndex(asset, tokens, unique) }))
+      .filter((item) => item.index >= 0)
+      .sort((a, b) => a.index - b.index || byId(a.asset, b.asset))
+      .map((item) => item.asset)
+  const ids = (assets: LogoMasterCandidate[]) => (audience === 'internal' ? assets.map((asset) => asset.asset_id).sort() : [])
+  const none = (state: LogoConstructionBlock['master_state'], offered: LogoMasterCandidate[] = []): LogoResolution => ({ master: null, state, system: null, candidates: ids(offered) })
+  const choose = (chosen: LogoMasterCandidate, resolved_by: LogoMaster['resolved_by']): LogoResolution => {
+    const master: LogoMaster = { asset_id: chosen.asset_id, name: chosen.name, version: chosen.version, preview_key: chosen.preview_key!, mime: chosen.mime!, width: chosen.width, height: chosen.height, resolved_by, badges: badgesFor(chosen, audience) }
+    return { master, state: 'approved', system: logoSystem(chosen), candidates: [] }
+  }
+  const variant = (asset: LogoMasterCandidate, role: LogoVariant['role'], by: LogoVariant['role_by']): LogoVariant => ({
+    role,
+    asset_id: asset.asset_id,
+    name: asset.name,
+    version: asset.version,
+    preview_key: asset.preview_key!,
+    mime: asset.mime!,
+    width: asset.width,
+    height: asset.height,
+    role_by: by,
+    badges: badgesFor(asset, audience),
+  })
+  /** One file per role: the master for its own role; else the first named, else the only one. Several: none. */
+  const logoSystem = (master: LogoMasterCandidate): LogoSystem | null => {
+    const pool = candidates.filter((asset) => allowed(asset) && isReady(asset))
+    const pick = (role: LogoVariant['role']): LogoVariant | null => {
+      const masterRole = logoVariantRole(master)
+      if (role !== 'icon' && masterRole?.role === role) return variant(master, role, masterRole.by)
+      const matching = pool.filter((asset) => asset.asset_id !== master.asset_id && logoVariantRole(asset)?.role === role && (role === 'icon' || asset.tags.includes('logo')))
+      const chosen = namedOrder(matching)[0] ?? (matching.length === 1 ? matching[0] : undefined)
+      return chosen ? variant(chosen, role, logoVariantRole(chosen)!.by) : null
+    }
+    const system: LogoSystem = { on_light: pick('on_light'), on_dark: pick('on_dark'), icon: pick('icon') }
+    return system.on_light || system.on_dark || system.icon ? system : null
+  }
+  const named = namedOrder(eligible)
+  const namedReady = named.filter(isReady)
   if (namedReady[0]) return choose(namedReady[0], 'reference')
-  if (named.length) return { master: null, state: 'not_previewable' }
+  if (named.length) return none('not_previewable', named)
   const tagged = eligible.filter((asset) => asset.tags.includes('master'))
   const taggedReady = previewable(tagged)
   if (taggedReady[0]) return choose(taggedReady[0], 'tag')
-  if (tagged.length) return { master: null, state: 'not_previewable' }
+  if (tagged.length) return none('not_previewable', tagged)
   const ready = previewable(eligible)
   if (ready.length === 1) return choose(ready[0]!, 'sole_logo')
-  if (ready.length > 1) return { master: null, state: 'ambiguous' }
-  if (eligible.length) return { master: null, state: 'not_previewable' }
-  if (logos.length && !real.length) return { master: null, state: 'example_only' }
-  return { master: null, state: 'missing' }
+  if (ready.length === 2) {
+    const roles = ready.map((asset) => logoVariantRole(asset)?.role)
+    const light = ready[roles.indexOf('on_light')]
+    if (light && roles.includes('on_dark')) return choose(light, 'pair')
+  }
+  if (ready.length > 1) return none('ambiguous', ready)
+  if (eligible.length) return none('not_previewable', eligible)
+  if (logos.length && !real.length) return none('example_only')
+  return none('missing')
 }
 
 /** Assembles the chapter from three source entries; shared by the repository builder and the illustrative fixture. */
@@ -220,7 +336,7 @@ export function identityDocument(input: {
   }
   const logoEntry = strict(input.logo.entry)
   const spec = drawable(logoEntry) && input.logo.structured?.type === 'logo_spec' ? { min_size_px: input.logo.structured.logo.min_size_px, clear_space: { ...input.logo.structured.logo.clear_space }, min_print_mm: input.logo.structured.logo.min_print_mm } : null
-  const { master, state } = pickMaster(input.masters, input.audience, input.masters_reference ?? null)
+  const { master, state, system, candidates } = pickMaster(input.masters, input.audience, input.masters_reference ?? null)
   const construction: LogoConstructionBlock = {
     ...base({ block_id: 'logo-construction', framework_id: guide.framework_id, entry: logoEntry, filled: spec !== null && master !== null, audience: input.audience, variant: 'logo.construction.v1' }),
     type: 'logo_construction',
@@ -228,8 +344,13 @@ export function identityDocument(input: {
     spec,
     master,
     master_state: state,
+    system,
+    candidates,
   }
   if (master) construction.sources = [...construction.sources, `asset:${master.asset_id}`]
+  for (const item of [system?.on_light, system?.on_dark, system?.icon]) {
+    if (item && !construction.sources.includes(`asset:${item.asset_id}`)) construction.sources.push(`asset:${item.asset_id}`)
+  }
   const entries = [colorEntry, typeEntry, logoEntry]
   const summary = emptyStatusSummary()
   for (const entry of entries) summary[entry.state] += 1
@@ -335,4 +456,15 @@ export function imageSize(bytes: Buffer, mime: string): { width: number; height:
     if (w && h && Number(w[1]) > 0 && Number(h[1]) > 0) return { width: Number(w[1]), height: Number(h[1]) }
   }
   return null
+}
+
+/**
+ * BOS-16: a Brand Book chapter whose central artefact is missing is never "complete". The logo chapter is capped at
+ * `partial` while the identity chapter has no drawn master (missing, ambiguous, not previewable, examples only) or no
+ * identity document could be built. Other chapters keep their status.
+ */
+export function logoChapterStatus<S extends 'complete' | 'partial' | 'missing' | 'not_applicable'>(status: S, identity: Pick<VisualDocument, 'blocks'> | null | undefined): S | 'partial' {
+  if (status !== 'complete') return status
+  const block = identity?.blocks.find((item): item is LogoConstructionBlock => item.type === 'logo_construction')
+  return block?.master ? status : 'partial'
 }

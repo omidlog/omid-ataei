@@ -8,6 +8,7 @@ import { buildMascotCatalog, CANONICAL_ANGLES, catalogCounts, CORE_MOTIONS, EXAM
 import { renderIntroduction, renderModulePage, renderRecord } from './content/render.js'
 import { emptySession, InterviewEngine } from './engine.js'
 import { exists, readYaml, writeText, writeYaml } from './fsutil.js'
+import { bankName, fieldRegistryEntry, knowledgeGraphEdges } from './question-text.js'
 import type { BrandConfig, FieldQuestion } from './types.js'
 
 const WORDMARK = `<?xml version="1.0" encoding="UTF-8"?>
@@ -50,14 +51,6 @@ function sha256(text: string): string {
   return createHash('sha256').update(text).digest('hex')
 }
 
-function bankName(question: FieldQuestion): string {
-  if (question.id.startsWith('brand.mascot.')) return 'mascot.yaml'
-  if (question.id.startsWith('brand.gamification.')) return 'gamification.yaml'
-  if (question.module.startsWith('business')) return 'business.yaml'
-  if (question.module.startsWith('personal')) return 'personal.yaml'
-  return 'brand.yaml'
-}
-
 function doc(title: string, body: string, extras: Record<string, string> = {}): string {
   const front = ['---', `title: ${JSON.stringify(title)}`, 'visibility: public', ...Object.entries(extras).map(([key, value]) => `${key}: ${value}`), '---', '']
   return `${front.join('\n')}\n${body.trim()}\n`
@@ -76,26 +69,8 @@ export function writeStarterWorkspace(root: string): void {
   for (const [name, group] of banks) {
     putYaml(path.join(root, 'brand', 'interview', 'question-bank', name), { schema_version: 1, questions: group })
   }
-  putYaml(path.join(root, 'brand', 'interview', 'field-registry.yaml'), {
-    schema_version: 1,
-    fields: questions.map((question) => ({
-      id: question.field_path,
-      module: question.module,
-      field_path: question.field_path,
-      label: question.label,
-      required: question.required,
-      weight: question.weight,
-      sensitivity: question.sensitivity,
-      question_ids: [question.id],
-      documents: question.related_outputs,
-      validator: question.completion_rule,
-      related_ids: question.related_ids,
-    })),
-  })
-  const edges = questions.flatMap((question) => [
-    ...question.depends_on.map((dependency) => ({ from: dependency, to: question.id, relation: 'prerequisite' })),
-    ...question.related_ids.map((related) => ({ from: question.id, to: related, relation: 'related' })),
-  ])
+  putYaml(path.join(root, 'brand', 'interview', 'field-registry.yaml'), { schema_version: 1, fields: questions.map(fieldRegistryEntry) })
+  const edges = questions.flatMap(knowledgeGraphEdges)
   putYaml(path.join(root, 'brand', 'interview', 'knowledge-graph.yaml'), { schema_version: 1, edges })
   for (const profile of STARTER_PROFILES) putYaml(path.join(root, 'brand', 'interview', 'profiles', `${profile.id}.yaml`), profile)
 

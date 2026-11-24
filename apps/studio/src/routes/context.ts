@@ -7,7 +7,7 @@ import { sendHtml } from '../http.js'
 import type { I18n, Locale } from '../i18n/index.js'
 import type { ProvisioningService } from '../provision.js'
 import type { BrandRecord, Registry } from '../registry.js'
-import type { SyncService } from '../sync.js'
+import { withDisplayName, type SyncService } from '../sync.js'
 import type { TemplateUpdateService } from '../template-update.js'
 import type { SafeHtml } from '../views/html.js'
 import type { ViewContext } from '../views/layout.js'
@@ -91,7 +91,8 @@ export function createCore(deps: StudioDeps, sessions: SessionStore, totp: TotpV
       path: ctx.url.pathname,
       csrf: ctx.session?.csrf ?? null,
       login: ctx.session?.login ?? null,
-      brands: ctx.session ? registry.list().sort((a, b) => a.display_name.localeCompare(b.display_name)) : [],
+      // BOS-20: every surface (switcher, brand list) shows the synced, approved brand name once there is one.
+      brands: ctx.session ? registry.list().map((record) => withDisplayName(record, deps.sync.get(record.slug).projection)).sort((a, b) => a.display_name.localeCompare(b.display_name)) : [],
       now: now(),
     }
   }
@@ -106,8 +107,12 @@ export function createCore(deps: StudioDeps, sessions: SessionStore, totp: TotpV
 
   function brandRecord(ctx: RequestContext, slug: string): BrandRecord | null {
     const record = registry.get(slug)
-    if (!record) notFound(ctx)
-    return record
+    if (!record) {
+      notFound(ctx)
+      return null
+    }
+    // BOS-20: breadcrumbs, titles and headers use the synced, approved name; the registry value only before that.
+    return withDisplayName(record, deps.sync.get(record.slug).projection)
   }
 
   return {

@@ -87,9 +87,15 @@ export interface FieldQuestion {
   field_path: string
   label: string
   prompt: LocalizedPrompt
+  /** English, the base. Persian and Turkish live in `why_it_matters_i18n`; a missing locale falls back to this. */
   why_it_matters: string
+  /** Locale data for `why_it_matters`. Optional, so a bank written before it existed stays valid. */
+  why_it_matters_i18n?: Partial<Record<'fa' | 'tr', string>>
   question_type: QuestionType
+  /** English, the base. Every example starts with "EXAMPLE ONLY:" in every locale. */
   examples: string[]
+  /** Locale data for `examples`. Optional, so a bank written before it existed stays valid. */
+  examples_i18n?: Partial<Record<'fa' | 'tr', string[]>>
   options?: string[]
   suggestions?: string[]
   validation?: { min_length?: number; max_length?: number }
@@ -173,6 +179,11 @@ export interface AnswerRecord {
   private_ref?: string | null
   /** Set when the answer came from an interview proposal (agent or model extraction). */
   proposal_state?: ProposalState | null
+  /**
+   * `agent` when an agent proposed the value and the owner confirmed it (`--origin agent_suggestion`).
+   * Set together with `source_type: agent_suggestion` and `authority: confirmed_by_owner`; absent otherwise.
+   */
+  suggested_by?: 'agent' | null
 }
 
 /**

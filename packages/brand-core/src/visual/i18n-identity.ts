@@ -70,6 +70,21 @@ export interface IdentityText {
   /** Internal edition only: notes on the master file itself (never shown in the public edition). */
   masterBadge: Record<'draft_tag' | 'internal_only', string>
   stepMasterAmbiguous: string
+  /** A master is registered but its file cannot be read safely: the one-line fix. */
+  stepMasterNotPreviewable: string
+  /** Internal edition: the asset ids to choose from, after the reason. */
+  masterCandidates: string
+  /** Logo system (BOS-16): the master with its light and dark plates and the icon. */
+  systemTitle: string
+  systemLead: string
+  plateOnLight: string
+  plateOnDark: string
+  iconTitle: string
+  iconFavicon: string
+  iconAvatar: string
+  variantMissing: Record<'on_light' | 'on_dark' | 'icon', string>
+  /** Internal edition: a role taken from the file name, with how to confirm it. */
+  roleByFileName: string
   awaitingDraft: string
   awaitingWithheld: string
   awaitingStepsTitle: string
@@ -154,7 +169,18 @@ const en: IdentityText = {
     ambiguous: 'Several approved logo files are registered and none is named as the master, so none is drawn. Nothing is guessed.',
   },
   masterBadge: { draft_tag: 'Tagged draft', internal_only: 'Internal · not published' },
-  stepMasterAmbiguous: 'Name the master file by its asset id or path in the approved “Master location” answer (brand.logo.masters).',
+  stepMasterAmbiguous: 'Two or more approved logo files and none is named as master: tag one master (or tag a light/dark pair on-light and on-dark), or name its asset id in the approved “Master location” answer (brand.logo.masters).',
+  stepMasterNotPreviewable: 'Run npm run brand:assets -- check in the brand repository, fix or re-export the file it reports (normalize <id> when it is fixable), then approve the new file.',
+  masterCandidates: 'Approved logo files: {ids}',
+  systemTitle: 'Logo system',
+  systemLead: 'The master with its versions for light and dark backgrounds and the icon, each drawn from its own approved file.',
+  plateOnLight: 'On a light background',
+  plateOnDark: 'On a dark background',
+  iconTitle: 'Icon',
+  iconFavicon: 'Favicon',
+  iconAvatar: 'Avatar',
+  variantMissing: { on_light: 'No approved file for light backgrounds is identified. Tag it on-light.', on_dark: 'No approved file for dark backgrounds is identified. Tag it on-dark.', icon: 'No approved icon is identified. Tag it icon (or name it in brand.logo.masters when there are several).' },
+  roleByFileName: 'Placed by its file name; tag the file on-light or on-dark in the asset manifest to confirm.',
   awaitingDraft: 'A draft exists and is waiting for review.',
   awaitingWithheld: 'The value is restricted and withheld here.',
   awaitingStepsTitle: 'To complete this page',
@@ -239,7 +265,18 @@ const fa: IdentityText = {
     ambiguous: 'چند فایل لوگوی تأییدشده ثبت شده و هیچ‌کدام به‌عنوان فایل اصلی نام برده نشده، پس هیچ‌کدام رسم نمی‌شود. هیچ چیز حدس زده نمی‌شود.',
   },
   masterBadge: { draft_tag: 'برچسب پیش‌نویس', internal_only: 'داخلی · منتشرنشده' },
-  stepMasterAmbiguous: 'فایل اصلی را با شناسهٔ دارایی یا مسیر آن در پاسخ تأییدشدهٔ «محل فایل اصلی» (brand.logo.masters) نام ببرید.',
+  stepMasterAmbiguous: 'دو یا چند فایل لوگوی تأییدشده هست و هیچ‌کدام فایل اصلی نام برده نشده: به یکی برچسب master بزنید (یا به جفت روشن/تیره برچسب‌های on-light و on-dark)، یا شناسهٔ دارایی آن را در پاسخ تأییدشدهٔ «محل فایل اصلی» (brand.logo.masters) بنویسید.',
+  stepMasterNotPreviewable: 'در مخزن برند npm run brand:assets -- check را اجرا کنید، فایلی را که گزارش می‌دهد اصلاح یا دوباره خروجی بگیرید (اگر قابل اصلاح است با normalize <id>)، سپس فایل تازه را تأیید کنید.',
+  masterCandidates: 'فایل‌های لوگوی تأییدشده: {ids}',
+  systemTitle: 'نظام لوگو',
+  systemLead: 'فایل اصلی همراه با نسخه‌های آن برای پس‌زمینهٔ روشن و تیره و آیکون، هر کدام از فایل تأییدشدهٔ خودش.',
+  plateOnLight: 'روی پس‌زمینهٔ روشن',
+  plateOnDark: 'روی پس‌زمینهٔ تیره',
+  iconTitle: 'آیکون',
+  iconFavicon: 'فاوآیکون',
+  iconAvatar: 'آواتار',
+  variantMissing: { on_light: 'فایل تأییدشده‌ای برای پس‌زمینهٔ روشن مشخص نیست. به آن برچسب on-light بزنید.', on_dark: 'فایل تأییدشده‌ای برای پس‌زمینهٔ تیره مشخص نیست. به آن برچسب on-dark بزنید.', icon: 'آیکون تأییدشده‌ای مشخص نیست. به آن برچسب icon بزنید (یا اگر چند تا هست، در brand.logo.masters نامش را بیاورید).' },
+  roleByFileName: 'از روی نام فایل جای‌گذاری شده؛ برای تأیید، در مانیفست دارایی‌ها به فایل برچسب on-light یا on-dark بزنید.',
   awaitingDraft: 'یک پیش‌نویس هست و منتظر بازبینی است.',
   awaitingWithheld: 'این مقدار محدود است و اینجا نمایش داده نمی‌شود.',
   awaitingStepsTitle: 'برای کامل‌شدن این صفحه',
@@ -324,7 +361,18 @@ const tr: IdentityText = {
     ambiguous: 'Birden çok onaylı logo dosyası kayıtlı ve hiçbiri ana dosya olarak adlandırılmamış, bu yüzden hiçbiri çizilmiyor. Tahmin yapılmaz.',
   },
   masterBadge: { draft_tag: 'Taslak etiketli', internal_only: 'Dahili · yayımlanmadı' },
-  stepMasterAmbiguous: 'Ana dosyayı, onaylı “Ana dosya konumu” yanıtında (brand.logo.masters) varlık kimliği veya yoluyla adlandırın.',
+  stepMasterAmbiguous: 'İki veya daha fazla onaylı logo dosyası var ve hiçbiri ana dosya olarak adlandırılmamış: birine master etiketi verin (veya açık/koyu çifte on-light ve on-dark etiketleri), ya da varlık kimliğini onaylı “Ana dosya konumu” yanıtında (brand.logo.masters) yazın.',
+  stepMasterNotPreviewable: 'Marka deposunda npm run brand:assets -- check komutunu çalıştırın, bildirdiği dosyayı düzeltin veya yeniden dışa aktarın (düzeltilebiliyorsa normalize <id>), ardından yeni dosyayı onaylayın.',
+  masterCandidates: 'Onaylı logo dosyaları: {ids}',
+  systemTitle: 'Logo sistemi',
+  systemLead: 'Ana dosya, açık ve koyu arka planlar için sürümleri ve simge; her biri kendi onaylı dosyasından çizilir.',
+  plateOnLight: 'Açık arka planda',
+  plateOnDark: 'Koyu arka planda',
+  iconTitle: 'Simge',
+  iconFavicon: 'Favicon',
+  iconAvatar: 'Avatar',
+  variantMissing: { on_light: 'Açık arka planlar için onaylı bir dosya belirlenmedi. on-light etiketi verin.', on_dark: 'Koyu arka planlar için onaylı bir dosya belirlenmedi. on-dark etiketi verin.', icon: 'Onaylı bir simge belirlenmedi. icon etiketi verin (birden çok varsa brand.logo.masters içinde adlandırın).' },
+  roleByFileName: 'Dosya adına göre yerleştirildi; doğrulamak için varlık listesinde dosyaya on-light veya on-dark etiketi verin.',
   awaitingDraft: 'Bir taslak var ve incelemeyi bekliyor.',
   awaitingWithheld: 'Değer kısıtlı ve burada gösterilmiyor.',
   awaitingStepsTitle: 'Bu sayfayı tamamlamak için',

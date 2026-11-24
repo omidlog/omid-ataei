@@ -1,5 +1,6 @@
 import { entityOptionLabel, entitySpec } from '../entities.js'
 import type { StructuredValue } from '../structured.js'
+import type { ComposedDraft } from './compose.js'
 import type { DocumentItem, DocumentModel, ItemTag } from './model.js'
 
 const TAG_LABEL: Record<ItemTag, string> = {
@@ -9,7 +10,7 @@ const TAG_LABEL: Record<ItemTag, string> = {
   missing: 'Missing',
 }
 
-const VERIFICATION_LABEL = { verified: 'Verified', owner_stated: 'Owner-stated', unverified: 'Unverified' } as const
+const VERIFICATION_LABEL = { verified: 'Verified', partly_verified: 'Partly verified', owner_published: 'Owner-published', owner_stated: 'Owner-stated', unverified: 'Unverified' } as const
 
 function escape(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\|/g, '\\|')
@@ -71,6 +72,22 @@ function itemLines(item: DocumentItem): string[] {
   return lines
 }
 
+const WRITTEN_IN: Record<string, string> = { en: 'English', fa: 'Persian', tr: 'Turkish', mixed: 'mixed languages', none: 'no language' }
+
+function draftLines(drafts: ComposedDraft[], guideline: [number, number] | null): string[] {
+  const lines: string[] = []
+  for (const draft of drafts) {
+    lines.push(`### ${draft.label} (${draft.locale})`, '')
+    lines.push(draft.text ? `> ${escape(draft.text)}` : '> No approved fact in this section is written in this language yet.', '')
+    lines.push(`${draft.words} words${guideline ? ` (guideline ${guideline[0]}–${guideline[1]})` : ''}. Composed by fixed templates from approved facts only; nothing was translated or invented.`, '')
+    for (const item of draft.translations) lines.push(`- \`${item.id}\` uses the approved ${draft.locale} form in \`${item.from}\`.`)
+    for (const item of draft.untranslated) lines.push(`- Untranslated, left out: \`${item.id}\` (written in ${WRITTEN_IN[item.written_in] ?? item.written_in}; no approved ${draft.locale} translation).`)
+    for (const id of draft.not_composed) lines.push(`- Kept as a source only (structured): \`${id}\`.`)
+    if (draft.translations.length || draft.untranslated.length || draft.not_composed.length) lines.push('')
+  }
+  return lines
+}
+
 /** Markdown edition of a document model. Every item shows its tag and its sources. */
 export function renderDocumentMarkdown(model: DocumentModel): string {
   const lines = [
@@ -84,6 +101,10 @@ export function renderDocumentMarkdown(model: DocumentModel): string {
   for (const section of model.sections) {
     lines.push(`## ${escape(section.title)}`, '', `${escape(section.purpose)} Status: ${section.status}.`, '')
     if (section.length) lines.push(`> Length: ${escape(section.length.note)}`, '')
+    if (section.drafts?.length) {
+      lines.push(...draftLines(section.drafts, section.length?.guideline ?? null))
+      lines.push('### Sources', '')
+    }
     for (const item of section.items) lines.push(...itemLines(item))
   }
   return `${lines.join('\n').trimEnd()}\n`

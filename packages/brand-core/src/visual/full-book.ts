@@ -1,13 +1,14 @@
+import { brandApplicability, type FrameworkRef } from '../applicability.js'
 import { latestAnswers } from '../completeness.js'
 import { BRAND_BOOK } from '../documents/brand-book.js'
 import { BUSINESS_PLAN } from '../documents/business-plan.js'
-import { itemFor, type DocumentAudience, type DocumentSpec, type ItemContext } from '../documents/model.js'
+import { type DocumentAudience, type DocumentSpec, type ItemContext } from '../documents/model.js'
 import type { InterviewEngine } from '../engine.js'
 import { readEvidence } from '../evidence.js'
 import { readFacts } from '../facts.js'
-import { BMC_ZONE_IDS, entryFromItem } from './bmc.js'
+import { BMC_ZONE_IDS, frameworkEntry } from './bmc.js'
 import { IDENTITY_QUESTIONS } from './identity.js'
-import type { BmcZoneId, DataState, MissingReason, VisualDocument, VisualEntry } from './model.js'
+import type { BmcZoneId, DataState, VisualDocument, VisualEntry } from './model.js'
 
 /**
  * Full Brand Book and Business Report (Visual V4.2): book-level documents for the V1.2 `book_a4_portrait` engine.
@@ -53,7 +54,7 @@ export const BOOK_CHAPTER_IDS = [
 export type BookChapterId = (typeof BOOK_CHAPTER_IDS)[number]
 export type PlateChapterId = 'color' | 'type' | 'logo'
 
-export const UNAVAILABLE_REASONS = ['no_approved_facts', 'planned', 'separate_print', 'module_off'] as const
+export const UNAVAILABLE_REASONS = ['no_approved_facts', 'planned', 'separate_print', 'module_off', 'not_applicable'] as const
 export type UnavailableReason = (typeof UNAVAILABLE_REASONS)[number]
 
 /** Text chapter: approved entries print their value; every other entry prints its label and state only. */
@@ -127,7 +128,7 @@ function printable(entries: VisualEntry[], audience: DocumentAudience): VisualEn
   return entries
     .map(printableEntry)
     .filter((entry): entry is VisualEntry => entry !== null)
-    .map((entry) => (audience === 'public' && entry.state !== 'approved' && entry.state !== 'stale' ? { ...valueless(entry), state: 'missing' as const, note: null, missing_reason: 'not_published' as const } : entry))
+    .map((entry) => (audience === 'public' && entry.state !== 'approved' && entry.state !== 'stale' && entry.na_reason !== 'profile' ? { ...valueless(entry), state: 'missing' as const, note: null, missing_reason: 'not_published' as const } : entry))
 }
 
 function hasValue(entries: VisualEntry[]): boolean {
@@ -138,9 +139,15 @@ function unavailable(chapter_id: BookChapterId, reason: UnavailableReason, audie
   return { kind: 'unavailable', chapter_id, reason, awaiting: audience === 'internal' ? awaiting : [] }
 }
 
+/** BOS-15: every entry is a question the profile does not ask (and nothing stands in for it). */
+function profileNotApplicable(entries: VisualEntry[]): boolean {
+  return entries.length > 0 && entries.every((entry) => entry.na_reason === 'profile')
+}
+
 function factsChapter(chapter_id: BookChapterId, entries: VisualEntry[], audience: DocumentAudience): BookChapter {
   const kept = printable(entries, audience)
-  return hasValue(kept) ? { kind: 'facts', chapter_id, entries: kept } : unavailable(chapter_id, 'no_approved_facts', audience, kept)
+  if (hasValue(kept)) return { kind: 'facts', chapter_id, entries: kept }
+  return unavailable(chapter_id, profileNotApplicable(kept) ? 'not_applicable' : 'no_approved_facts', audience, kept)
 }
 
 /** Section id of the Brand Book / business plan spec behind each text chapter. */
@@ -211,7 +218,7 @@ export function composeBook(input: BookInput): BookDocument {
         return { zone_id, order: zone?.order ?? BMC_ZONE_IDS.indexOf(zone_id) + 1, entries: printable(zone?.entries ?? [], audience) }
       })
       const all = zones.flatMap((zone) => zone.entries)
-      chapters.push(hasValue(all) ? { kind: 'canvas', chapter_id: 'business_model_canvas', zones } : unavailable('business_model_canvas', 'no_approved_facts', audience, all))
+      chapters.push(hasValue(all) ? { kind: 'canvas', chapter_id: 'business_model_canvas', zones } : unavailable('business_model_canvas', profileNotApplicable(all) ? 'not_applicable' : 'no_approved_facts', audience, all))
     } else chapters.push(unavailable('business_model_canvas', 'no_approved_facts', audience))
     // Competitor data is internal by design (owner-reviewed, cited observations); the public report leaves it out.
     if (audience === 'internal') chapters.push(unavailable('competitors', input.competitors ? 'separate_print' : 'no_approved_facts', audience))
@@ -234,12 +241,6 @@ export function composeBook(input: BookInput): BookDocument {
   }
 }
 
-function missingReason(audience: DocumentAudience, status: string | undefined): MissingReason {
-  if (audience === 'public') return 'not_published'
-  if (status === 'unknown' || status === 'skipped' || status === 'deprecated') return status
-  return 'unanswered'
-}
-
 /** Entries of every section of a document spec, through `itemFor` (approved facts, drafts, gaps, withheld). */
 function specEntries(engine: InterviewEngine, spec: DocumentSpec, audience: DocumentAudience, now: Date): Record<string, VisualEntry[]> {
   const root = engine.workspaceRoot()
@@ -248,14 +249,18 @@ function specEntries(engine: InterviewEngine, spec: DocumentSpec, audience: Docu
   const answers = latestAnswers(engine.ledger().records)
   const context: ItemContext = { facts, answers, audience, root, brandId, evidence: readEvidence(root), now }
   const out: Record<string, VisualEntry[]> = {}
+  // BOS-15: the same applicability as the documents and Studio: itself, a personal answer standing in, or not applicable.
+  const applicability = brandApplicability(engine)
+  const resolve = (ids: readonly string[]): FrameworkRef[] => {
+    const known = ids.filter((id) => engine.question(id))
+    return applicability.refsFor(known)
+  }
   for (const section of spec.sections) {
-    out[section.id] = section.questions.flatMap((id) => {
-      const question = engine.question(id)
-      if (!question) return []
-      const item = itemFor(question, context)
-      const answer = answers.get(id)
-      const notApplicable = item.tag === 'missing' && audience === 'internal' && answer?.status === 'not_applicable'
-      const { approved: _approved, ...entry } = entryFromItem(item, facts[id], notApplicable, now, missingReason(audience, answer?.status))
+    out[section.id] = resolve(section.questions).flatMap((ref) => {
+      const question = engine.question(ref.id)
+      const framed = question ? frameworkEntry(engine, context, ref, now) : null
+      if (!question || !framed) return []
+      const { approved: _approved, ...entry } = framed
       // Defence in depth: a restricted question never carries a value into a book, whatever the fact says.
       return [question.sensitivity === 'restricted' ? { ...valueless(entry), state: (audience === 'public' ? 'missing' : 'withheld') as DataState, missing_reason: audience === 'public' ? ('not_published' as const) : null } : entry]
     })

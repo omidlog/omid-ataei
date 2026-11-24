@@ -10,9 +10,17 @@ questions:
       tr: Bu marka bir maskot veya tekrarlayan karakter kullanacak mı?
     why_it_matters: A no here removes mascot questions and hides the module. It does not delete the
       catalog from the template.
+    why_it_matters_i18n:
+      fa: پاسخ «نه» پرسش‌های مسکات را حذف و این ماژول را پنهان می‌کند، اما کاتالوگ را از قالب پاک نمی‌کند.
+      tr: Burada hayır demek maskot sorularını kaldırır ve modülü gizler. Kataloğu şablondan silmez.
     question_type: boolean
     examples:
       - "EXAMPLE ONLY: no"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: no"
+      tr:
+        - "EXAMPLE ONLY: no"
     suggestions:
       - yes
       - no
@@ -48,9 +56,17 @@ questions:
       fa: شخصیت در برند چه کاری انجام می‌دهد؟
       tr: Karakter markada hangi işi yapar?
     why_it_matters: A role limits where the character appears.
+    why_it_matters_i18n:
+      fa: نقش مشخص، جاهایی را که شخصیت ظاهر می‌شود محدود می‌کند.
+      tr: Bir rol, karakterin nerede görüneceğini sınırlar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: A guide for empty states. Not a spokesperson for legal claims."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: راهنمایی برای حالت‌های خالی؛ نه سخنگوی ادعاهای حقوقی."
+      tr:
+        - "EXAMPLE ONLY: Boş durumlar için bir rehber. Hukuki iddiaların sözcüsü değil."
     required_when: answers[brand.mascot.enabled] == yes
     skip_when: config.modules.mascot == false
     depends_on:
@@ -81,9 +97,19 @@ questions:
       fa: کدام ویژگی‌های شخصیت، شخصیت برند را گسترش می‌دهند و کدام ممنوع‌اند؟
       tr: Hangi karakter özellikleri marka kişiliğini genişletir ve hangileri yasaktır?
     why_it_matters: The character is not a second brand.
+    why_it_matters_i18n:
+      fa: شخصیت، برند دوم نیست.
+      tr: Karakter ikinci bir marka değildir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Curious, never mean. Must still match the brand traits once those exist."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: کنجکاو، هرگز بدجنس. وقتی ویژگی‌های برند تعریف شد، باید با آن‌ها هم هماهنگ
+          باشد."
+      tr:
+        - "EXAMPLE ONLY: Meraklı, asla kaba değil. Marka özellikleri belirlendiğinde onlarla da
+          uyumlu olmalı."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -115,9 +141,18 @@ questions:
       fa: وقتی طرح وجود داشت، کدام قواعد آناتومی یا سیلوئت باید درست بمانند؟
       tr: Çizim olunca hangi anatomi veya siluet kuralları doğru kalmalı?
     why_it_matters: Expressions are useless if the body plan is unstable.
+    why_it_matters_i18n:
+      fa: اگر ساختار بدن ثابت نباشد، حالت‌های چهره بی‌فایده‌اند.
+      tr: Vücut planı tutarsızsa ifadelerin bir faydası olmaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD. No approved model sheet. Do not invent limb counts."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: TBD. هنوز شیت مدل تأییدشده‌ای وجود ندارد. تعداد اندام‌ها را از خودتان
+          نسازید."
+      tr:
+        - "EXAMPLE ONLY: TBD. Onaylı model paftası yok. Uzuv sayısı uydurmayın."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -148,9 +183,17 @@ questions:
       fa: کدام تحریف‌ها همیشه ممنوع‌اند؟
       tr: Hangi bozulmalar her zaman yasak?
     why_it_matters: The bible needs a no list before production volume grows.
+    why_it_matters_i18n:
+      fa: پیش از آنکه حجم تولید بالا برود، راهنمای شخصیت به فهرست ممنوعه‌ها نیاز دارد.
+      tr: Üretim hacmi büyümeden önce karakter rehberinin bir yasaklar listesine ihtiyacı var.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No extra limbs, no copied characters, no unsafe stereotypes."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بدون اندام اضافه، بدون کپی از شخصیت‌های دیگر، بدون کلیشه‌های ناامن."
+      tr:
+        - "EXAMPLE ONLY: Fazladan uzuv yok, kopya karakter yok, güvensiz stereotip yok."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -182,9 +225,18 @@ questions:
       fa: پالت شخصیت چگونه به نقش‌های رنگ برند مربوط شود؟ تا تأیید طرح، فام‌ها TBD می‌مانند.
       tr: Karakter paleti marka renk rollerine nasıl bağlansın? Çizim onaylanana kadar tonlar TBD kalsın.
     why_it_matters: Character color is a token decision, not a one-off PNG.
+    why_it_matters_i18n:
+      fa: رنگ شخصیت یک تصمیم توکنی است، نه یک فایل PNG یک‌باره.
+      tr: Karakter rengi tek seferlik bir PNG değil, bir token kararıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Use semantic roles. No unique hex until approval."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: از نقش‌های معنایی استفاده کنید. تا پیش از تأیید، هیچ hex اختصاصی تعریف
+          نشود."
+      tr:
+        - "EXAMPLE ONLY: Anlamsal rolleri kullanın. Onaya kadar özel hex yok."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -216,9 +268,17 @@ questions:
       fa: کدام احساس‌ها برای این برند اول مهم‌اند؟
       tr: Bu marka için önce hangi duygular önemli?
     why_it_matters: The long catalog is a backlog. Priority decides the first model sheet.
+    why_it_matters_i18n:
+      fa: کاتالوگ بلند فقط فهرست کارهای آینده است؛ اولویت تعیین می‌کند اولین شیت مدل چه باشد.
+      tr: Uzun katalog bir bekleyen iş listesidir. İlk model paftasını öncelik belirler.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: joyful, curious, determined. Others remain backlog."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: joyful، curious، determined. بقیه در فهرست کارهای آینده می‌مانند."
+      tr:
+        - "EXAMPLE ONLY: joyful, curious, determined. Diğerleri bekleyen listede kalır."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -249,9 +309,17 @@ questions:
       fa: کدام موقعیت‌های محصول اول به واکنش شخصیت نیاز دارند؟
       tr: Hangi ürün durumları önce bir karakter tepkisi ister?
     why_it_matters: UI states should be requested from real screens, not from a generic poster.
+    why_it_matters_i18n:
+      fa: حالت‌های رابط کاربری باید از صفحه‌های واقعی درخواست شوند، نه از یک پوستر عمومی.
+      tr: Arayüz durumları genel bir posterden değil, gerçek ekranlardan istenmeli.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Empty, success, and failure. Loading can stay typographic."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: خالی، موفقیت و خطا. حالت بارگذاری می‌تواند فقط تایپوگرافیک بماند."
+      tr:
+        - "EXAMPLE ONLY: Boş, başarı ve hata. Yükleniyor durumu tipografik kalabilir."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -283,9 +351,17 @@ questions:
       fa: شدت احساس چگونه توصیف شود (مثلاً کم، متوسط، زیاد)؟
       tr: Duygu yoğunluğu nasıl tarif edilsin (örneğin düşük, orta, yüksek)?
     why_it_matters: The catalog field emotion_intensity needs a shared scale.
+    why_it_matters_i18n:
+      fa: فیلد emotion_intensity در کاتالوگ به یک مقیاس مشترک نیاز دارد.
+      tr: Katalogdaki emotion_intensity alanının ortak bir ölçeğe ihtiyacı var.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Use low, medium, high. Do not add a numeric score."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: از کم، متوسط، زیاد استفاده کنید. امتیاز عددی اضافه نکنید."
+      tr:
+        - "EXAMPLE ONLY: Düşük, orta, yüksek kullanın. Sayısal puan eklemeyin."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -316,10 +392,19 @@ questions:
       fa: از هشت زاویهٔ canonical، کدام‌ها برای اولین شیت تأییدشده لازم‌اند؟
       tr: Sekiz kanonik açıdan hangileri ilk onaylı pafta için gerekli?
     why_it_matters: Asking for eight angles on day one stalls brands that only need a front view.
+    why_it_matters_i18n:
+      fa: درخواست هشت زاویه از روز اول، برندهایی را که فقط نمای روبه‌رو لازم دارند متوقف می‌کند.
+      tr: İlk günden sekiz açı istemek, yalnızca önden görünüme ihtiyacı olan markaları tıkar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Front and front-left three-quarter first. The other six stay defined but
         unproduced."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: اول نمای روبه‌رو و سه‌رخ جلو-چپ. شش زاویهٔ دیگر تعریف‌شده می‌مانند ولی
+          تولید نمی‌شوند."
+      tr:
+        - "EXAMPLE ONLY: Önce ön ve sol ön üç çeyrek. Diğer altısı tanımlı kalır ama üretilmez."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -351,9 +436,17 @@ questions:
       tr: Başlangıç MVP durum kimliklerini onaylayın veya düzenleyin. Fikriniz yoksa varsayılan küme
         kalsın.
     why_it_matters: The catalog flags an MVP subset so production does not try to draw all 90 states.
+    why_it_matters_i18n:
+      fa: کاتالوگ یک زیرمجموعهٔ MVP را علامت‌گذاری می‌کند تا تولید سراغ کشیدن هر 90 حالت نرود.
+      tr: Katalog bir MVP alt kümesini işaretler; böylece üretim 90 durumun hepsini çizmeye kalkışmaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Use the flagged MVP ids in brand/mascot/catalog.yaml."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: از idهای MVP علامت‌خورده در brand/mascot/catalog.yaml استفاده کنید."
+      tr:
+        - "EXAMPLE ONLY: brand/mascot/catalog.yaml içindeki işaretli MVP id'lerini kullanın."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -384,9 +477,18 @@ questions:
       fa: شخصیت چند مرحلهٔ بصری داشته باشد؟ اگر تکامل نمی‌یابد، ۱.
       tr: Karakterin kaç görsel aşaması olsun? Evrim yoksa 1.
     why_it_matters: The example file has six stages so the schema is proven. Your brand picks the count.
+    why_it_matters_i18n:
+      fa: فایل نمونه شش مرحله دارد تا درستی ساختار داده نشان داده شود. تعداد مرحله‌ها را برند شما انتخاب
+        می‌کند.
+      tr: Örnek dosyada şemanın çalıştığını göstermek için altı aşama var. Aşama sayısını markanız seçer.
     question_type: number
     examples:
       - "EXAMPLE ONLY: 1"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: 1"
+      tr:
+        - "EXAMPLE ONLY: 1"
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -417,10 +519,20 @@ questions:
       fa: اگر بیش از یک مرحله هست، از نظر بصری چه تغییر می‌کند و چه چیزی باید قابل تشخیص بماند؟
       tr: Birden fazla aşama varsa görsel olarak ne değişir ve ne tanınır kalmalı?
     why_it_matters: Evolution without continuity rules produces a different character.
+    why_it_matters_i18n:
+      fa: تکامل بدون قواعد پیوستگی، شخصیت دیگری می‌سازد.
+      tr: Süreklilik kuralları olmayan bir evrim, farklı bir karakter ortaya çıkarır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Not applicable at one stage. The egg-to-captain list is only an example
         configuration."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: در حالت تک‌مرحله‌ای کاربرد ندارد. فهرست تخم تا کاپیتان فقط یک پیکربندی
+          نمونه است."
+      tr:
+        - "EXAMPLE ONLY: Tek aşamada geçerli değil. Yumurtadan kaptana liste yalnızca örnek bir
+          yapılandırmadır."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -451,9 +563,17 @@ questions:
       fa: کدام نشانه‌ها، تناسب‌ها یا ابزارها باید در هر مرحله بمانند؟
       tr: Hangi işaretler, oranlar veya gereçler her aşamada kalmalı?
     why_it_matters: Recognition is a brand requirement, not a drawing habit.
+    why_it_matters_i18n:
+      fa: قابل‌شناسایی بودن یک الزام برند است، نه یک عادت طراحی.
+      tr: Tanınırlık bir çizim alışkanlığı değil, bir marka gereksinimidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD until a model sheet exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تا وقتی شیت مدلی وجود ندارد، TBD."
+      tr:
+        - "EXAMPLE ONLY: Bir model paftası olana kadar TBD."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -485,9 +605,17 @@ questions:
       fa: آیا تغییر مرحله به پیشرفت محصول وصل شود؟ اگر بله، مکانیک را جای‌نگهدار بگذارید نه یک عدد.
       tr: Aşama değişimi ürün ilerlemesine bağlansın mı? Evetse mekaniği sayı değil yer tutucu bırakın.
     why_it_matters: The spec forbids invented game economics.
+    why_it_matters_i18n:
+      fa: مشخصات، ساختن اقتصاد بازی از خود را ممنوع می‌کند.
+      tr: Şartname uydurma oyun ekonomisini yasaklar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Placeholder only. No XP value."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط جای‌نگهدار. بدون مقدار XP."
+      tr:
+        - "EXAMPLE ONLY: Yalnızca yer tutucu. XP değeri yok."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:
@@ -519,9 +647,18 @@ questions:
       fa: تغییر مرحله، از جمله با حرکت کم، چگونه حرکت کند؟
       tr: Bir aşama değişimi, azaltılmış hareket dahil, nasıl hareket etsin?
     why_it_matters: Motion and accessibility are part of evolution, not a later polish pass.
+    why_it_matters_i18n:
+      fa: حرکت و دسترس‌پذیری بخشی از تکامل‌اند، نه مرحلهٔ پرداخت بعدی.
+      tr: Hareket ve erişilebilirlik sonradan yapılacak bir rötuş değil, evrimin parçasıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Crossfade. Reduced motion shows the new still immediately."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: محوشدن متقاطع. در حالت حرکت کاهش‌یافته، تصویر ثابت جدید بلافاصله نمایش داده
+          می‌شود."
+      tr:
+        - "EXAMPLE ONLY: Çapraz geçiş. Azaltılmış harekette yeni durağan görsel hemen gösterilir."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on:

@@ -4,9 +4,11 @@ import path from 'node:path'
 import readline from 'node:readline/promises'
 import { parseArgs } from 'node:util'
 import { stdin as input, stdout as output } from 'node:process'
-import { applyInit, backupBrand, CHANGE_DEPTHS, IDENTITY_INTENTS, InterviewEngine, LOGO_PRESENCE, migrateBrand, readSyncManifest, RESET_CONFIRMATION, resetInterviewState, restoreBrand, validateIdentityChoice } from '@brand-os/brand-core'
-import type { BatchResult, IntakeReport, NextReport, ReviewQueue, Selection } from '@brand-os/brand-core'
+import { applyInit, backupBrand, CHANGE_DEPTHS, IDENTITY_INTENTS, InterviewEngine, LOGO_PRESENCE, migrateBrand, readSyncManifest, RESET_CONFIRMATION, resetInterviewState, restoreBrand, tokenNextStep, validateIdentityChoice } from '@brand-os/brand-core'
+import { checkLogoMastersInRepo } from '@brand-os/brand-core'
+import type { BatchResult, IntakeReport, LogoMastersCheck, NextReport, ReviewQueue, Selection } from '@brand-os/brand-core'
 import { coachAfterAnswer, coachBeforeApproval, renderAfterAnswer, renderBeforeApproval, type CoachMomentResult } from '@brand-os/brand-core/coach'
+import { readOwnerProof } from './proof.js'
 
 const [command, ...rest] = process.argv.slice(2)
 
@@ -23,6 +25,9 @@ function templateFromFlag(commit: string | undefined) {
 }
 const root = process.cwd()
 const engine = new InterviewEngine(root)
+/** One help line for every command that takes the proof. No placeholder sits next to the `<` redirect. */
+const PROOF_HELP =
+  'The approval proof is read from BRAND_OS_APPROVAL_PROOF, piped stdin (append: < brand/.private/approval-secret), the macOS Keychain (npm run brand:doctor -- --store-proof-keychain), or a hidden prompt. Never from argv.'
 
 if (command === 'init') {
   const { values } = parseArgs({
@@ -98,6 +103,12 @@ if (command === 'init') {
       batch: { type: 'string' },
       question: { type: 'string' },
       answer: { type: 'string' },
+      // BOS-04: propose a replacement for an approved fact without the interactive prompt.
+      change: { type: 'string' },
+      reason: { type: 'string' },
+      // BOS-06: the value came from an agent and the owner confirmed it.
+      origin: { type: 'string' },
+      'suggested-by': { type: 'string' },
       json: { type: 'boolean', default: false },
       assist: { type: 'boolean', default: false },
       text: { type: 'string' },
@@ -155,12 +166,16 @@ if (command === 'init') {
       steps += 1
     }
     console.log(`\n${engine.statusText()}`)
+  } else if (values.change !== undefined) {
+    await changeCommand(values)
   } else if (values.question !== undefined || values.answer !== undefined) {
     // Agent mode: answer any question by id, in any order. Same commands as the interactive interview.
     if (!values.question || values.answer === undefined) {
-      console.error('Usage: brand:interview --question <id> --answer "<text | unknown | skip | n/a | estimate: …>" [--json]')
+      console.error('Usage: brand:interview --question QUESTION_ID --answer "TEXT | unknown | skip | n/a | estimate: …" [--origin agent_suggestion] [--json]')
+      console.error('       brand:interview --question QUESTION_ID --change "NEW VALUE" [--reason "WHY"] [--json]')
       process.exit(2)
     }
+    const origin = answerOrigin(values.origin, values['suggested-by'])
     const { dispositionFor, nextReport } = await import('@brand-os/brand-core')
     const question = engine.question(values.question)
     if (question?.sensitivity === 'restricted' && !dispositionFor(values.answer)) {
@@ -170,10 +185,12 @@ if (command === 'init') {
       else console.error(message)
       process.exit(1)
     }
-    const result = engine.answerQuestion(values.question, values.answer)
+    const result = engine.answerQuestion(values.question, values.answer, { origin })
     const ok = result.kind === 'recorded'
     // Coach moment 1 (docs-internal/COACH_UX_DECISION.md): advisory, never blocks, silent unless it has one note.
     const coach = ok ? afterAnswerCoach(result.questionId ?? values.question) : null
+    // BOS-16: brand.logo.masters is machine-read; say at once when it names no asset exactly. A warning, never a block.
+    const logoMasters = ok && (result.questionId ?? values.question) === 'brand.logo.masters' ? logoMastersCheck(values.answer) : null
     if (values.json) {
       const upcoming = nextReport(engine, { limit: 3 })
       console.log(
@@ -183,11 +200,13 @@ if (command === 'init') {
             kind: result.kind,
             question_id: result.questionId ?? values.question,
             status: result.status ?? null,
+            origin,
             message: result.message,
             impact: result.impact ?? null,
             next: upcoming.next.map((item) => ({ id: item.id, prompt: item.prompt, reasons: item.reasons })),
             conflicts: upcoming.conflicts.length,
             coach,
+            ...(logoMasters ? { logo_masters: logoMasters } : {}),
           },
           null,
           2,
@@ -195,6 +214,7 @@ if (command === 'init') {
       )
     } else {
       console.log(result.message)
+      if (logoMasters?.message) console.error(`warning: ${logoMasters.message}`)
       if (coach?.shown) console.log(renderAfterAnswer(coach))
     }
     if (!ok) process.exit(1)
@@ -297,7 +317,9 @@ if (command === 'init') {
       'granted-by': { type: 'string' },
       scope: { type: 'string' },
       'review-due': { type: 'string' },
+      owned: { type: 'boolean', default: false },
       id: { type: 'string' },
+      ids: { type: 'string' },
       reason: { type: 'string' },
       json: { type: 'boolean', default: false },
       proof: { type: 'string' },
@@ -311,7 +333,7 @@ if (command === 'init') {
   try {
     if (action === 'add') {
       if (!values.claim || !values.source || !values.reference) {
-        console.error('Usage: brand:evidence add --claim <question id> --source owner_testimony|document|public_record|third_party|link --reference <url or where it is held> [--kind verification|permission] [--scope public|internal] [--granted-by <role or organization>] [--quote <text>] [--note <text>] [--review-due YYYY-MM-DD]')
+        console.error('Usage: brand:evidence add --claim <question id> --source owner_testimony|document|public_record|third_party|link --reference <url or where it is held> [--owned] [--kind verification|permission] [--scope public|internal] [--granted-by <role or organization>] [--quote <text>] [--note <text>] [--review-due YYYY-MM-DD]. --owned marks a source the owner controls (their own website or company); a reference on the brand\'s own domains is marked owned automatically.')
         process.exit(2)
       }
       const item = addEvidence(root, engine.questions(), {
@@ -325,20 +347,42 @@ if (command === 'init') {
         scope: (values.scope as 'public' | 'internal' | undefined) ?? null,
         review_due: values['review-due'] ?? null,
         recorded_by: process.env.BRAND_OS_AGENT_TOKEN ? 'agent' : 'owner',
+        owned: values.owned,
       })
-      console.log(values.json ? JSON.stringify(item, null, 2) : `Recorded ${item.id} for ${item.claim_id} as pending. The owner verifies it with brand:evidence verify --id ${item.id}.`)
+      const ownedNote = item.owned
+        ? values.owned
+          ? ' Marked owner-published: it never counts as independent verification.'
+          : ' The reference is on one of the brand\'s own domains, so it was marked owner-published: it never counts as independent verification.'
+        : ''
+      console.log(values.json ? JSON.stringify(item, null, 2) : `Recorded ${item.id} for ${item.claim_id} as pending.${ownedNote} The owner verifies it with brand:evidence verify --id ${item.id}.`)
     } else if (action === 'verify' || action === 'reject') {
-      if (!values.id) {
-        console.error(`Usage: brand:evidence ${action} --id ev-0001 [--reason <text>]. The proof is read from BRAND_OS_APPROVAL_PROOF, piped stdin, or a hidden prompt.`)
+      // One proof for one or several ids: --id ev-0001,ev-0002 or --ids ev-0001,ev-0002.
+      const ids = [...new Set([values.id, values.ids].filter((entry): entry is string => Boolean(entry)).flatMap((entry) => entry.split(',')).map((entry) => entry.trim()).filter(Boolean))]
+      if (ids.length === 0) {
+        console.error(`Usage: brand:evidence ${action} --id ev-0001[,ev-0002…] (or --ids) [--reason "WHY"]. ${PROOF_HELP}`)
         process.exit(2)
       }
       if (process.env.BRAND_OS_AGENT_TOKEN) {
         console.error('Evidence review is a human action. Run it from a shell without an agent token.')
         process.exit(2)
       }
-      const result = engine.approvals().reviewEvidence(values.id, action === 'verify' ? 'verified' : 'rejected', await readApprovalProof(), values.reason ?? null)
-      console.log(result.message + (result.unpublished.length ? ` Unpublished: ${result.unpublished.join(', ')}.` : ''))
-      if (!result.ok) process.exit(1)
+      const proof = await readApprovalProof()
+      let failed = false
+      for (const id of ids) {
+        try {
+          const result = engine.approvals().reviewEvidence(id, action === 'verify' ? 'verified' : 'rejected', proof, values.reason ?? null)
+          console.log(result.message + (result.unpublished.length ? ` Unpublished: ${result.unpublished.join(', ')}.` : ''))
+          if (!result.ok) {
+            failed = true
+            // A rejected proof fails every id the same way; stop instead of repeating it.
+            break
+          }
+        } catch (error) {
+          failed = true
+          console.error(`${id}: ${error instanceof Error ? error.message : String(error)}`)
+        }
+      }
+      if (failed) process.exit(1)
     } else if (action === 'withdraw') {
       if (!values.id || !values.reason) {
         console.error('Usage: brand:evidence withdraw --id ev-0001 --reason <why>')
@@ -396,21 +440,36 @@ if (command === 'init') {
       unpublish: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
       json: { type: 'boolean', default: false },
+      // BOS-01: everything pending (facts, change proposals, evidence, draft assets) with one proof.
+      'all-pending': { type: 'boolean', default: false },
+      exclude: { type: 'string' },
       // Declared only so it can be refused without echoing its value.
       proof: { type: 'string' },
     },
   })
   if (values.proof !== undefined) {
     console.error(`--proof is not accepted: a secret on the command line leaks into shell history and the process list. Nothing was changed.`)
-    console.error('Set BRAND_OS_APPROVAL_PROOF for this one command, pipe the proof on stdin, or type it at the hidden prompt.')
+    console.error(PROOF_HELP)
     process.exit(2)
   }
   if (process.env.BRAND_OS_AGENT_TOKEN) {
     console.error(`brand:${command} refuses to run while BRAND_OS_AGENT_TOKEN is set. Approval and publication are human actions; run them from a shell without an agent token.`)
     process.exit(2)
   }
-  if (command === 'publish' && values.question) {
+  if (command === 'publish' && (values.question || values['all-pending'])) {
     console.error('brand:publish takes --ids or --module.')
+    process.exit(2)
+  }
+  if (values['all-pending']) {
+    if (values.module || values.ids || values.question) {
+      console.error('--all-pending takes no --module, --ids or --question. Use --exclude id,… to leave items out.')
+      process.exit(2)
+    }
+    await approveAllPendingCommand({ dryRun: values['dry-run'], json: values.json, exclude: values.exclude, actor: values.actor ?? 'owner' })
+    process.exit(process.exitCode ?? 0)
+  }
+  if (values.exclude !== undefined) {
+    console.error('--exclude works with --all-pending only.')
     process.exit(2)
   }
   const ids = [values.ids, values.question].filter(Boolean).join(',')
@@ -418,10 +477,10 @@ if (command === 'init') {
   if (!selection.module && !selection.ids?.length) {
     console.error(
       command === 'approve'
-        ? 'Usage: brand:approve --module <id> | --ids <id,chg-…> [--actor owner] [--dry-run] [--json]'
-        : 'Usage: brand:publish --module <id> | --ids <id,…> [--unpublish] [--dry-run] [--json]',
+        ? 'Usage: brand:approve --module MODULE_ID | --ids ID,chg-… | --all-pending [--exclude ID,…] [--actor owner] [--dry-run] [--json]'
+        : 'Usage: brand:publish --module MODULE_ID | --ids ID,… [--unpublish] [--dry-run] [--json]',
     )
-    console.error('The approval proof is read from BRAND_OS_APPROVAL_PROOF, piped stdin, or a hidden prompt. Never from argv.')
+    console.error(PROOF_HELP)
     process.exit(2)
   }
   const approvals = engine.approvals()
@@ -431,15 +490,27 @@ if (command === 'init') {
     // blocking; the approve JSON contract is unchanged.
     const coachNotes = values.json ? '' : beforeApprovalCoach(queue)
     if (values['dry-run']) {
-      console.log(values.json ? JSON.stringify(queue, null, 2) : formatQueue(queue))
+      // BOS-07: a preview, never the review queue and never an approval result.
+      const { dryRunReport, formatDryRun } = await import('@brand-os/brand-core')
+      const report = dryRunReport(withSelectionErrors(() => approvals.approvalPlan(selection, { actor: values.actor ?? 'owner' })))
+      console.log(values.json ? JSON.stringify(report, null, 2) : formatDryRun(report))
       if (coachNotes) console.error(coachNotes)
       process.exit(0)
     }
     if (coachNotes) console.error(`${coachNotes}\n`)
+    // BOS-16: approving a brand.logo.masters answer that names no asset exactly leaves the brand book without a master.
+    const mastersDraft = queue.items.find((item) => item.question_id === 'brand.logo.masters' && item.action !== 'none')
+    const mastersText = mastersDraft ? (mastersDraft.changes.find((change) => !change.stale)?.proposed_value ?? mastersDraft.draft?.value) : null
+    const mastersCheck = typeof mastersText === 'string' ? logoMastersCheck(mastersText) : null
+    if (mastersCheck?.message) console.error(`warning: ${mastersCheck.message}\n`)
     if (!values.json) console.error(`About to approve ${queue.pending} item(s) as ${values.actor ?? 'owner'}. Approval does not publish.`)
     const proof = await readApprovalProof()
     const result = withSelectionErrors(() => approvals.approveBatch(selection, proof, values.actor ?? 'owner'))
     console.log(values.json ? JSON.stringify(result, null, 2) : formatBatch(result))
+    // BOS-17: approving a token source (color roles, semantic map, type scale, logo size) leaves the draft tokens
+    // out of date. Say what to run next; nothing is generated here. Text mode only: the JSON contract is unchanged.
+    const nextStep = values.json ? null : tokenNextStep(result.results.filter((item) => item.outcome === 'approved').map((item) => item.question_id))
+    if (nextStep) console.log(nextStep)
     if (!result.ok) process.exit(1)
   } else {
     if (values['dry-run']) {
@@ -587,7 +658,7 @@ if (command === 'init') {
   const core = await import('@brand-os/brand-core')
   if (!['issue', 'list', 'revoke'].includes(action ?? '')) {
     console.error('Usage: brand:agent-token issue --profile <internal-read|design|marketing|finance|knowledge-read|creative-read|strategy-seo-read|strategy-ads-read|content-read> --label <name> | list | revoke --id <agt_…>')
-    console.error('The approval proof is read from BRAND_OS_APPROVAL_PROOF or a hidden prompt. It is never accepted on the command line.')
+    console.error(PROOF_HELP)
     process.exit(1)
   }
   const proof = await readApprovalProof()
@@ -628,13 +699,35 @@ if (command === 'init') {
 } else if (command === 'doctor') {
   const { values } = parseArgs({
     args: rest,
-    options: { json: { type: 'boolean', default: false }, 'create-approval-secret': { type: 'boolean', default: false } },
+    options: {
+      json: { type: 'boolean', default: false },
+      'create-approval-secret': { type: 'boolean', default: false },
+      // Opt-in macOS Keychain storage of the approval proof (BOS-01). The value is never printed.
+      'store-proof-keychain': { type: 'boolean', default: false },
+      'forget-proof-keychain': { type: 'boolean', default: false },
+    },
   })
-  const { ensureApprovalSecret, formatDoctor, runDoctor } = await import('@brand-os/brand-core')
+  const { ensureApprovalSecret, forgetKeychainProof, formatDoctor, runDoctor, storeKeychainProof } = await import('@brand-os/brand-core')
   if (values['create-approval-secret']) {
     // Creates the file only when absent. The value is never printed; read it locally when you approve.
     ensureApprovalSecret(root)
     if (!values.json) console.log('Approval secret is at brand/.private/approval-secret (mode 0600). Its value is not printed.')
+  }
+  if (values['store-proof-keychain'] || values['forget-proof-keychain']) {
+    if (values['store-proof-keychain'] && values['forget-proof-keychain']) {
+      console.error('Choose --store-proof-keychain or --forget-proof-keychain, not both.')
+      process.exit(2)
+    }
+    if (process.env.BRAND_OS_AGENT_TOKEN) {
+      console.error('Keychain storage of the approval proof is an owner action. Refusing while BRAND_OS_AGENT_TOKEN is set. Nothing was changed.')
+      process.exit(2)
+    }
+    const slug = engine.config().brand.slug
+    const stored = values['store-proof-keychain'] ? storeKeychainProof(root, slug) : forgetKeychainProof(slug)
+    if (values.json) console.log(JSON.stringify({ keychain: stored }, null, 2))
+    else console.log(stored.message)
+    if (!stored.ok) process.exit(1)
+    process.exit(0)
   }
   const report = runDoctor(root)
   console.log(values.json ? JSON.stringify(report, null, 2) : formatDoctor(report))
@@ -669,6 +762,14 @@ if (command === 'init') {
   else {
     for (const source of report.sources) console.log(`${source.state.padEnd(12)} ${source.question_id}`)
     for (const token of report.tokens) console.log(`${token.outcome.padEnd(16)} ${token.id}  ${token.reason}`)
+    const semantic = report.semantic
+    for (const item of semantic.applied) console.log(`mapped           ${item.token_id} = ${item.role}  From approved ${semantic.question_id}.`)
+    for (const problem of semantic.problems) console.log(`problem          ${semantic.question_id}: ${problem}`)
+    if (semantic.suggestions.length > 0) {
+      console.log(`\nSuggested mapping for ${semantic.question_id} (NOT applied; the template ids stay template examples until you approve an answer):`)
+      for (const item of semantic.suggestions) console.log(`  ${item.slot.padEnd(12)} = ${item.role.padEnd(16)} ${item.reason}`)
+      console.log(`Review and edit it, then record it as a draft answer and approve it:\n  ${semantic.answer_command}\n`)
+    }
     console.log(report.files.length ? `Wrote ${report.files.join(', ')}` : report.dry_run ? 'Dry run. Nothing was written.' : 'No token files changed.')
     console.log(report.note)
   }
@@ -696,7 +797,7 @@ if (command === 'init') {
   const ids = (values.ids ?? '').split(',').map((id) => id.trim()).filter(Boolean)
   if (ids.length === 0) {
     console.error(`Usage: brand:${command} --ids <token.id,…>${command === 'tokens:publish' ? ' [--unpublish]' : ' [--actor owner]'} [--json]`)
-    console.error('The approval proof is read from BRAND_OS_APPROVAL_PROOF, piped stdin, or a hidden prompt. Never from argv.')
+    console.error(PROOF_HELP)
     process.exit(2)
   }
   const { approveTokens, publishTokens } = await import('@brand-os/brand-core')
@@ -751,6 +852,81 @@ if (command === 'init') {
       if (reports.some((report) => report.approval === 'reset')) console.log('An approval was reset. The owner approves the new file with: npm run brand:assets -- approve --ids <id>')
     }
     if (reports.some((report) => !report.ok)) process.exit(1)
+  } else if (sub === 'add') {
+    // BOS-03: agents may add; the record is always a draft and only the owner approves it (brand:assets approve).
+    const { values, positionals } = parseArgs({
+      args,
+      allowPositionals: true,
+      options: {
+        id: { type: 'string' },
+        name: { type: 'string' },
+        kind: { type: 'string' },
+        tags: { type: 'string' },
+        visibility: { type: 'string' },
+        license: { type: 'string' },
+        render: { type: 'string' },
+        size: { type: 'string' },
+        normalize: { type: 'boolean', default: false },
+        'dry-run': { type: 'boolean', default: false },
+        json: { type: 'boolean', default: false },
+      },
+    })
+    const file = positionals[0]
+    if (!file || !values.id || !values.name || positionals.length > 1) {
+      console.error('Usage: brand:assets add <file> --id <asset.id> --name "…" [--kind logo|icon|mascot|illustration|photo|motion|audio] [--tags a,b] [--visibility public|internal] [--license "…"] [--normalize | --render png [--size 1024]] [--dry-run] [--json]')
+      process.exit(2)
+    }
+    if (values.visibility !== undefined && values.visibility !== 'public' && values.visibility !== 'internal') {
+      console.error('--visibility must be public or internal.')
+      process.exit(2)
+    }
+    if (values.render !== undefined && values.render !== 'png') {
+      console.error('--render supports png only.')
+      process.exit(2)
+    }
+    const size = values.size === undefined ? undefined : Number(values.size)
+    const { addAsset } = await import('@brand-os/asset-catalog/manage')
+    const report = await addAsset(root, file, {
+      id: values.id,
+      name: values.name,
+      kind: values.kind,
+      tags: values.tags ? values.tags.split(',').map((tag) => tag.trim()).filter(Boolean) : [],
+      visibility: values.visibility as 'public' | 'internal' | undefined,
+      license: values.license,
+      render: values.render as 'png' | undefined,
+      size,
+      normalize: values.normalize,
+      dryRun: values['dry-run'],
+    })
+    if (values.json) console.log(JSON.stringify(report, null, 2))
+    else {
+      console.log(`${report.outcome.padEnd(9)} ${report.id}${report.path ? `  ${report.path}` : ''}`)
+      console.log(`          ${report.reason}`)
+      if (report.original) console.log(`          original kept at ${report.original}`)
+      if (report.checksum_sha256) console.log(`          sha256 ${report.checksum_sha256}  ${report.mime ?? ''}`)
+      if (report.verdict) {
+        console.log(`          publication check: ${report.verdict.publishable ? 'publishable' : 'refused'}`)
+        for (const issue of report.verdict.issues) console.log(`          ${issue.fixable ? 'fixable' : 'blocks '} ${issue.code}${issue.line ? ` line ${issue.line}` : ''}: ${issue.message}`)
+        for (const warning of report.verdict.warnings) console.log(`          warning ${warning.code}${warning.line ? ` line ${warning.line}` : ''}: ${warning.message}`)
+      }
+      for (const fix of report.fixes ?? []) console.log(`          fix: ${fix}`)
+      for (const error of report.validation ?? []) console.log(`          validate: ${error}`)
+    }
+    if (!report.ok) process.exit(1)
+  } else if (sub === 'prune-examples') {
+    const { values } = parseArgs({ args, options: { 'dry-run': { type: 'boolean', default: false }, json: { type: 'boolean', default: false } } })
+    const { pruneExampleAssets } = await import('@brand-os/asset-catalog/manage')
+    const report = pruneExampleAssets(root, { dryRun: values['dry-run'], modules: { mascot: engine.config().modules.mascot.enabled === true } })
+    if (values.json) console.log(JSON.stringify(report, null, 2))
+    else {
+      if (report.items.length === 0) console.log('No template example assets in the manifest.')
+      for (const item of report.items) {
+        console.log(`${item.outcome.padEnd(13)} ${item.id}  ${item.reason}`)
+        for (const file of item.files) console.log(`              ${item.outcome === 'removed' ? 'deleted' : 'would delete'} ${file}`)
+      }
+      if (values['dry-run']) console.log('Dry run: nothing was changed.')
+      else if (report.items.some((item) => item.outcome === 'removed')) console.log('Run npm run validate, then commit the manifest and the removed files.')
+    }
   } else if (sub === 'approve') {
     const { values } = parseArgs({
       args,
@@ -773,7 +949,7 @@ if (command === 'init') {
     const ids = (values.ids ?? '').split(',').map((id) => id.trim()).filter(Boolean)
     if (ids.length === 0) {
       console.error('Usage: brand:assets approve --ids <asset.id,…> [--actor owner] [--json]')
-      console.error('The approval proof is read from BRAND_OS_APPROVAL_PROOF, piped stdin, or a hidden prompt. Never from argv.')
+      console.error(PROOF_HELP)
       process.exit(2)
     }
     const { approveAssets } = await import('@brand-os/brand-core')
@@ -788,6 +964,8 @@ if (command === 'init') {
     console.error('Usage: brand:assets check [--ids <asset.id,…>] [--json]')
     console.error('       brand:assets approve --ids <asset.id,…> [--actor owner] [--json]   (owner only; proof never on argv)')
     console.error('       brand:assets normalize <asset.id> [--dry-run] [--json]')
+    console.error('       brand:assets add <file> --id <asset.id> --name "…" [--kind …] [--tags a,b] [--visibility public|internal] [--normalize | --render png [--size 1024]] [--dry-run] [--json]')
+    console.error('       brand:assets prune-examples [--dry-run] [--json]')
     process.exit(sub ? 1 : 0)
   }
 } else if (command === 'finance') {
@@ -826,6 +1004,7 @@ if (command === 'init') {
   console.log(`Migrated ${migrated.from} -> ${migrated.to}. Fact values and module prose were not rewritten.`)
   if (migrated.mascot.changed.length > 0) console.log(`Mascot lifecycle: ${migrated.mascot.changed.length} catalog states moved to the lifecycle enum (${migrated.mascot.files.join(', ')}).`)
   if (migrated.mascot.downgraded.length > 0) console.log(`These states claimed approved without artwork and are now defined: ${migrated.mascot.downgraded.join(', ')}`)
+  if (migrated.question_text.length > 0) console.log(`Question wording refreshed from the template (prompts, why it matters, examples; no answer changed): ${migrated.question_text.join(', ')}`)
   // Visual V3.1: list questions. Free text becomes a draft or a change proposal for review; nothing is approved, and
   // text that cannot be read as a list stays exactly as written and is flagged.
   const { formatEntityMigration, migrateEntityAnswers } = await import('@brand-os/brand-core')
@@ -872,10 +1051,13 @@ function formatQueue(queue: ReviewQueue): string {
     if (item.draft) {
       const state = item.draft.proposal_state ? `, ${item.draft.proposal_state} proposal` : ''
       lines.push(`- Draft ${item.draft.answer_id} (${item.draft.status}, ${item.draft.authority}${state}): ${show(item.draft.value, item.withheld)}`)
+      if (item.draft.provenance === 'agent_suggested_owner_confirmed') lines.push('- Origin: Agent-suggested, owner-confirmed. An agent proposed this value; the owner confirmed it. Not owner-authored.')
+      else if (item.draft.provenance === 'agent_suggestion') lines.push('- Origin: Agent suggestion, not confirmed by the owner.')
       if (item.draft.proposal_state === 'tentative') lines.push('- Tentative: the owner described this as possible, not decided. Approve only if it is now a decision.')
     }
     for (const change of item.changes) {
       lines.push(`- Change ${change.id} against v${change.expected_version}${change.stale ? ' (stale)' : ''}: ${show(change.proposed_value, item.withheld)}`)
+      if (change.reason) lines.push(`  Reason: ${change.reason}`)
     }
     if (item.impact.documents.length) lines.push(`- Documents: ${item.impact.documents.join(', ')}`)
     if (item.impact.questions.length) lines.push(`- Linked questions: ${item.impact.questions.join(', ')}`)
@@ -969,6 +1151,10 @@ function afterAnswerCoach(questionId: string): CoachMomentResult {
   return coachAfterAnswer(engine, questionId, { locale: engine.session().locale })
 }
 
+function logoMastersCheck(text: string): LogoMastersCheck {
+  return checkLogoMastersInRepo(root, text)
+}
+
 /** Coach moment 2: notes on the plain drafts in an approval batch (change proposals are counted, not advised on). */
 function beforeApprovalCoach(queue: ReviewQueue): string {
   const draftIds = queue.items.filter((item) => item.state === 'draft').map((item) => item.question_id)
@@ -1004,7 +1190,7 @@ async function interactive(): Promise<void> {
       console.log(`\n${question.id} [${question.priority}]`)
       if (prompt.fellBack) console.log(`No ${locale} prompt stored. Showing English.`)
       console.log(prompt.text)
-      console.log(`Why: ${question.why_it_matters}`)
+      console.log(`Why: ${engine.helpText(question, locale).why}`)
       if (question.options) console.log(`Options: ${question.options.join(', ')}`)
       if (question.question_type === 'repeating_entity') {
         const { entityFormat, entitySpec } = await import('@brand-os/brand-core')
@@ -1025,31 +1211,100 @@ async function interactive(): Promise<void> {
   }
 }
 
-/** Owner proof from the environment, a hidden TTY prompt, or the first line of piped stdin. Never argv. */
+/** Owner proof through the shared resolver (scripts/proof.ts): env, piped stdin, macOS Keychain, hidden prompt. Never argv. */
 async function readApprovalProof(): Promise<string | undefined> {
-  const fromEnv = process.env.BRAND_OS_APPROVAL_PROOF
-  if (fromEnv) return fromEnv.trim()
-  if (!input.isTTY) {
-    const chunks: Buffer[] = []
-    for await (const chunk of input) chunks.push(Buffer.from(chunk as Buffer))
-    return Buffer.concat(chunks).toString('utf8').split(/\r?\n/)[0]?.trim() || undefined
+  return readOwnerProof({ slug: engine.config().brand.slug })
+}
+
+/** BOS-06: `--origin agent_suggestion` (alias `--suggested-by agent`). Anything else is refused before writing. */
+function answerOrigin(origin: string | undefined, suggestedBy: string | undefined): 'owner' | 'agent_suggestion' {
+  if (origin === undefined && suggestedBy === undefined) return 'owner'
+  const fromOrigin = origin === undefined ? undefined : origin === 'agent_suggestion' || origin === 'agent' ? 'agent_suggestion' : origin === 'owner' ? 'owner' : null
+  const fromSuggested = suggestedBy === undefined ? undefined : suggestedBy === 'agent' ? 'agent_suggestion' : suggestedBy === 'owner' ? 'owner' : null
+  if (fromOrigin === null || fromSuggested === null || (fromOrigin && fromSuggested && fromOrigin !== fromSuggested)) {
+    console.error('--origin takes agent_suggestion or owner (alias: --suggested-by agent). Nothing was recorded.')
+    process.exit(2)
   }
-  const { Writable } = await import('node:stream')
-  let muted = false
-  const sink = new Writable({
-    write(chunk, encoding, callback) {
-      if (!muted) output.write(chunk, encoding)
-      callback()
-    },
-  })
-  const rl = readline.createInterface({ input, output: sink, terminal: true })
-  try {
-    const pending = rl.question('Approval proof (input hidden): ')
-    muted = true
-    const answer = await pending
-    output.write('\n')
-    return answer.trim() || undefined
-  } finally {
-    rl.close()
+  return (fromOrigin ?? fromSuggested) as 'owner' | 'agent_suggestion'
+}
+
+/**
+ * BOS-04: `brand:interview --question ID --change "VALUE" [--reason "WHY"] [--json]`. The same path as the interactive
+ * `change ID: VALUE`: on an approved fact it files a pending chg- proposal against the current version (the approved
+ * revision stays canonical); on a draft it updates the draft. Nothing is approved here.
+ */
+async function changeCommand(values: { question?: string; change?: string; reason?: string; origin?: string; 'suggested-by'?: string; json?: boolean }): Promise<void> {
+  const fail = (message: string, code = 1): never => {
+    if (values.json) console.log(JSON.stringify({ ok: false, kind: 'error', question_id: values.question ?? null, message }, null, 2))
+    else console.error(message)
+    process.exit(code)
   }
+  if (!values.question || !values.change?.trim()) fail('Usage: brand:interview --question QUESTION_ID --change "NEW VALUE" [--reason "WHY"] [--json]', 2)
+  if (values.origin !== undefined || values['suggested-by'] !== undefined) fail('--origin applies to --answer only. Nothing was recorded.', 2)
+  const questionId = values.question!
+  const question = engine.question(questionId)
+  if (!question) fail(`Unknown question ${questionId}. Nothing was recorded.`)
+  const { dispositionFor } = await import('@brand-os/brand-core')
+  if (question!.sensitivity === 'restricted' && !dispositionFor(values.change!)) {
+    fail(`${questionId} is restricted. Change it yourself in the interactive interview (change ${questionId}: …). Nothing was recorded.`)
+  }
+  const before = engine.approvals().reviewQueue({ ids: [questionId] }).items[0]
+  const result = engine.changeAnswer(questionId, values.change!, false, 'owner', { reason: values.reason ?? null })
+  if (result.kind === 'error') fail(result.message)
+  const impact = result.impact
+  const proposed = result.changeId ? engine.approvals().pendingChanges().find((item) => item.id === result.changeId)?.proposed_value ?? values.change! : values.change!
+  const payload = {
+    ok: true,
+    kind: result.changeId ? 'change_proposed' : 'draft_updated',
+    question_id: questionId,
+    change_id: result.changeId ?? null,
+    expected_version: result.expectedVersion ?? null,
+    approved: before?.approved ? { version: before.approved.version, value: before.approved.value } : null,
+    proposed_value: proposed,
+    reason: values.reason?.trim() || null,
+    impact: { documents: impact?.impactedDocuments ?? [], questions: impact?.impactedQuestions ?? [] },
+    message: result.message,
+    next: result.changeId ? `npm run brand:review -- --ids ${result.changeId}, then the owner approves it: npm run brand:approve -- --ids ${result.changeId}` : null,
+  }
+  if (values.json) {
+    console.log(JSON.stringify(payload, null, 2))
+    return
+  }
+  const lines = [result.message, '']
+  if (payload.approved) lines.push(`- approved v${payload.approved.version}: ${show(payload.approved.value, false)}`)
+  lines.push(`+ proposed${result.changeId ? ` (${result.changeId})` : ''}: ${proposed}`)
+  if (payload.reason) lines.push(`  reason: ${payload.reason}`)
+  lines.push('', `Impacted documents: ${payload.impact.documents.join(', ') || 'none'}`, `Impacted questions: ${payload.impact.questions.join(', ') || 'none'}`)
+  if (payload.next) lines.push('', `Next: ${payload.next}`)
+  console.log(lines.join('\n'))
+}
+
+/** BOS-01 and BOS-07: `brand:approve --all-pending [--exclude …] [--dry-run] [--json]`. */
+async function approveAllPendingCommand(options: { dryRun: boolean; json: boolean; exclude?: string; actor: string }): Promise<void> {
+  const { approveAllPending, dryRunReport, formatAllPending, formatDryRun, planAllPending } = await import('@brand-os/brand-core')
+  const approvals = engine.approvals()
+  const exclude = options.exclude ? options.exclude.split(',').map((id) => id.trim()).filter(Boolean) : []
+  const plan = planAllPending(approvals, root, { exclude, actor: options.actor })
+  const queue = approvals.reviewQueue({}, { includeSettled: false })
+  const approving = new Set(plan.entries.filter((entry) => entry.decision === 'approve' && entry.kind === 'fact').map((entry) => entry.id))
+  const coachNotes = options.json ? '' : beforeApprovalCoach({ ...queue, items: queue.items.filter((item) => approving.has(item.question_id)) })
+  if (options.dryRun) {
+    const report = dryRunReport(plan.entries, plan.unmatched_excludes)
+    console.log(options.json ? JSON.stringify(report, null, 2) : formatDryRun(report))
+    if (coachNotes) console.error(coachNotes)
+    return
+  }
+  const count = plan.entries.filter((entry) => entry.decision === 'approve').length
+  if (count === 0) {
+    // Nothing to approve: no proof is read and nothing is written. The skips are still reported.
+    const result = approveAllPending(approvals, root, plan, undefined, options.actor)
+    console.log(options.json ? JSON.stringify(result, null, 2) : formatAllPending(result))
+    return
+  }
+  if (coachNotes) console.error(`${coachNotes}\n`)
+  if (!options.json) console.error(`About to approve ${count} item(s) as ${options.actor}: facts, change proposals, evidence and assets. Approval does not publish.`)
+  const proof = await readApprovalProof()
+  const result = approveAllPending(approvals, root, plan, proof, options.actor)
+  console.log(options.json ? JSON.stringify(result, null, 2) : formatAllPending(result))
+  if (!result.ok) process.exitCode = 1
 }

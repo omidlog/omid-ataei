@@ -1,5 +1,5 @@
 import type { VisualDocument, VisualLang } from '@brand-os/brand-core/visual'
-import { fillVisual, planText, visualCatalog, visualProfilePermits } from '@brand-os/brand-core/visual'
+import { fillVisual, planText, visualCatalog, visualNotApplicable, visualProfilePermits } from '@brand-os/brand-core/visual'
 import { studioAssets } from '../static-assets.js'
 import { banner, emptyState } from './components.js'
 import { html, type SafeHtml } from './html.js'
@@ -51,6 +51,8 @@ export function planPage(ctx: ViewContext, view: BrandView, kind: PlanKind, flas
   if (visual === null || !visual.plans) return shell(html`${header}${banner({ tone: 'warning', body: cat.text.unavailable })}`)
   if (!visual.plans.applies) return shell(html`${header}${emptyState({ icon: 'briefcase', title: cat.text.notApplicableTitle, body: cat.text.notApplicableBody })}`)
   const doc = visual.plans.internal[kind]
+  // BOS-15: a framework with nothing that applies to this profile (and no personal answer standing in) says so.
+  if (visualNotApplicable(doc)) return shell(html`${header}${emptyState({ icon: 'skip', title: cat.text.notApplicableProfile, body: cat.text.profileNotApplicableBody })}`)
   const base = brandPath(view.record.slug, SECTION[kind])
   const asOf = dateOnly(doc.as_of, lang)
   const blockCtx = { cat, lang, mode: 'screen' as const, doc, idPrefix: kind, showNext: true, assetUrl: () => null }

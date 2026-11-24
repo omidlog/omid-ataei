@@ -3,6 +3,7 @@ import path from 'node:path'
 import { parse } from 'yaml'
 import type { CanonicalFact } from './facts.js'
 import { readFacts, writeFacts } from './facts.js'
+import { ownedLocations, ownedMatch, type OwnedLocation } from './evidence-ownership.js'
 import { readYaml, writeYaml } from './fsutil.js'
 import { privateDataRefusal } from './personal-privacy.js'
 import type { FieldQuestion, PublicationRequirement } from './types.js'
@@ -19,6 +20,13 @@ import type { FieldQuestion, PublicationRequirement } from './types.js'
  * - Anyone (including an agent) may record evidence. It starts `pending`.
  * - Only the owner, with the approval proof, marks it `verified` or `rejected`.
  * - Owner testimony is recorded and shown as owner-stated. It never counts as independent verification.
+ * - A source the owner controls (the owner's own website, a venture they founded or own) is `owned: true`
+ *   and shown as owner-published. It never counts as independent verification either. `owned` is also
+ *   inferred on every read from the brand's own domains (`evidence-ownership.ts`); inference only ever
+ *   marks a source as owned, never the reverse.
+ * - A claim backed by an independent source and by the owner's own word is `partly_verified`, never
+ *   `verified`: one independent item does not lift the owner-stated part.
+ * - Verifying evidence that is already verified (or rejecting rejected evidence) changes nothing and writes nothing.
  * - Withdrawing evidence needs no proof (it only restricts) and unpublishes every claim whose
  *   publication gate no longer passes.
  * - A `review_due` date in the past makes the evidence stale: it stops counting. Verifying again does not move the
@@ -39,6 +47,12 @@ export interface EvidenceItem {
   source_type: EvidenceSource
   /** A URL or a plain description of where the source is held. Never the content itself. */
   reference: string
+  /**
+   * True when the owner controls the source: their own website or profile, or a venture they founded or
+   * own. Optional for registers written before v0.3 (absent means not recorded); `readEvidence` then
+   * infers it from the brand's own domains. An owned source is owner-published, never independent.
+   */
+  owned?: boolean
   /** Optional short quotation from the source. */
   quote: string | null
   note: string | null
@@ -61,7 +75,13 @@ export interface EvidenceFile {
   items: EvidenceItem[]
 }
 
-export type ClaimVerification = 'verified' | 'owner_stated' | 'unverified' | 'not_required'
+/**
+ * How a claim is labelled. `verified`: only independent, current evidence. `partly_verified`: independent
+ * evidence plus an owner-stated or owner-published part. `owner_published`: only sources the owner
+ * controls. `owner_stated`: only the owner's testimony. `unverified`: needs evidence and has none.
+ */
+export const CLAIM_VERIFICATIONS = ['verified', 'partly_verified', 'owner_published', 'owner_stated', 'unverified', 'not_required'] as const
+export type ClaimVerification = (typeof CLAIM_VERIFICATIONS)[number]
 
 export const EVIDENCE_LIMITS = { reference: 500, quote: 400, note: 400, grantedBy: 120 } as const
 const NOTE = 'References only. Contents are not fetched or stored. Status changes to verified or rejected need the owner approval proof.'
@@ -70,12 +90,32 @@ export function evidencePath(root: string): string {
   return path.join(root, 'brand', 'interview', 'evidence-register.yaml')
 }
 
-export function readEvidence(root: string): EvidenceItem[] {
+/** The register exactly as stored. Used by the write paths, so an inferred flag is never written back on its own. */
+function readStoredEvidence(root: string): EvidenceItem[] {
   const file = evidencePath(root)
   if (!fs.existsSync(file)) return []
   const doc = readYaml<Partial<EvidenceFile> | null>(file)
   if (!doc || !Array.isArray(doc.items)) throw new Error('Invalid evidence register: expected items')
   return doc.items
+}
+
+/**
+ * Mark every item whose reference points at one of the owner's own locations as `owned: true`. Items the
+ * register already marks owned stay owned. Nothing is ever marked not owned.
+ */
+export function withOwnership(items: EvidenceItem[], locations: OwnedLocation[]): EvidenceItem[] {
+  return items.map((item) => (item.owned === true || !ownedMatch(item.reference, locations) ? item : { ...item, owned: true }))
+}
+
+/** The register for reading: every item with `owned` resolved against the brand's own domains. */
+export function readEvidence(root: string): EvidenceItem[] {
+  const items = readStoredEvidence(root)
+  return items.length ? withOwnership(items, ownedLocations(root)) : items
+}
+
+/** True for a verification whose source is independent of the owner: not testimony and not owner-controlled. */
+export function isIndependentSource(item: Pick<EvidenceItem, 'kind' | 'source_type' | 'owned'>): boolean {
+  return item.kind === 'verification' && item.source_type !== 'owner_testimony' && item.owned !== true
 }
 
 function writeEvidence(root: string, items: EvidenceItem[]): void {
@@ -102,6 +142,8 @@ export interface AddEvidenceInput {
   scope?: 'public' | 'internal' | null
   review_due?: string | null
   recorded_by?: string
+  /** The owner controls the source. When false or absent it is still inferred from the brand's own domains. */
+  owned?: boolean
 }
 
 /** Record a source for a claim. It starts pending; nothing becomes verified here. */
@@ -126,13 +168,16 @@ export function addEvidence(root: string, questions: FieldQuestion[], input: Add
     const refusal = text ? privateDataRefusal({ id: input.claim_id, contact_field: false }, text) : null
     if (refusal) throw new Error(refusal.replace('Nothing was saved.', 'Nothing was recorded.'))
   }
-  const items = readEvidence(root)
+  const items = readStoredEvidence(root)
+  // Owner testimony is already the owner's word; `owned` describes a published source.
+  const owned = input.source_type !== 'owner_testimony' && (input.owned === true || ownedMatch(reference, ownedLocations(root)) !== null)
   const item: EvidenceItem = {
     id: `ev-${String(items.length + 1).padStart(4, '0')}`,
     claim_id: input.claim_id,
     kind: input.kind,
     source_type: input.source_type,
     reference,
+    owned,
     quote,
     note,
     granted_by: grantedBy,
@@ -149,12 +194,17 @@ export function addEvidence(root: string, questions: FieldQuestion[], input: Add
   return item
 }
 
-/** Owner review. The caller has already checked the approval proof. */
-export function reviewEvidence(root: string, id: string, decision: 'verified' | 'rejected', actor: string, now = new Date(), reason: string | null = null): EvidenceItem {
-  const items = readEvidence(root)
+/**
+ * Owner review. The caller has already checked the approval proof. Reviewing an item that already has
+ * this decision is a no-op: nothing is written, so `verified_at` does not move and Git stays clean.
+ * `unchanged` says so.
+ */
+export function reviewEvidence(root: string, id: string, decision: 'verified' | 'rejected', actor: string, now = new Date(), reason: string | null = null): EvidenceItem & { unchanged?: boolean } {
+  const items = readStoredEvidence(root)
   const item = items.find((entry) => entry.id === id)
   if (!item) throw new Error(`No evidence ${id}.`)
   if (item.status === 'withdrawn') throw new Error(`${id} was withdrawn. Record a new item instead.`)
+  if (item.status === decision) return { ...item, unchanged: true }
   item.status = decision
   item.verified_at = now.toISOString()
   item.verified_by = actor
@@ -165,7 +215,7 @@ export function reviewEvidence(root: string, id: string, decision: 'verified' | 
 
 /** Withdraw evidence (for example a client revoked consent). Needs no proof: it only restricts. */
 export function withdrawEvidence(root: string, id: string, reason: string, now = new Date()): EvidenceItem {
-  const items = readEvidence(root)
+  const items = readStoredEvidence(root)
   const item = items.find((entry) => entry.id === id)
   if (!item) throw new Error(`No evidence ${id}.`)
   item.status = 'withdrawn'
@@ -177,23 +227,80 @@ export function withdrawEvidence(root: string, id: string, reason: string, now =
   return item
 }
 
-/** Current evidence for a claim, split by what it can prove. */
+/**
+ * Current evidence for a claim, split by what it can prove. `independent` excludes owner testimony and
+ * owner-controlled sources. `testimony` and `owner_published` are the owner's own word (pending included,
+ * withdrawn and rejected excluded).
+ */
 export function evidenceFor(claimId: string, items: EvidenceItem[], now: Date) {
   const mine = items.filter((item) => item.claim_id === claimId)
+  const live = (item: EvidenceItem) => item.status !== 'withdrawn' && item.status !== 'rejected'
   return {
     all: mine,
-    independent: mine.filter((item) => item.kind === 'verification' && item.source_type !== 'owner_testimony' && isCurrent(item, now)),
-    testimony: mine.filter((item) => item.kind === 'verification' && item.source_type === 'owner_testimony' && item.status !== 'withdrawn' && item.status !== 'rejected'),
+    independent: mine.filter((item) => isIndependentSource(item) && isCurrent(item, now)),
+    testimony: mine.filter((item) => item.kind === 'verification' && item.source_type === 'owner_testimony' && live(item)),
+    owner_published: mine.filter((item) => item.kind === 'verification' && item.source_type !== 'owner_testimony' && item.owned === true && live(item)),
     permissions: mine.filter((item) => item.kind === 'permission' && item.scope === 'public' && isCurrent(item, now)),
   }
 }
 
-/** How a claim is labelled wherever it is shown. Owner testimony is never shown as verified. */
+/**
+ * How a claim is labelled wherever it is shown. Owner testimony and owner-published sources are never shown
+ * as verified. A claim with an independent source and an owner part is `partly_verified`: the weakest part
+ * decides, so one independent item never makes a mixed claim `verified`.
+ */
 export function claimVerification(question: Pick<FieldQuestion, 'id' | 'publication_requires'>, items: EvidenceItem[], now: Date): ClaimVerification {
+  return claimEvidence(question, items, now).verification
+}
+
+export interface ClaimEvidence {
+  verification: ClaimVerification
+  /** Independent, current sources. */
+  independent: EvidenceItem[]
+  /** The owner's own part: testimony and owner-controlled sources that are not withdrawn or rejected. */
+  owner_parts: EvidenceItem[]
+}
+
+/** The label plus the items behind it, so a surface can name the owner-stated part of a mixed claim. */
+export function claimEvidence(question: Pick<FieldQuestion, 'id' | 'publication_requires'>, items: EvidenceItem[], now: Date): ClaimEvidence {
   const found = evidenceFor(question.id, items, now)
-  if (found.independent.length) return 'verified'
-  if (!question.publication_requires?.includes('verified_evidence')) return found.testimony.length ? 'owner_stated' : 'not_required'
-  return found.testimony.length ? 'owner_stated' : 'unverified'
+  const ownerParts = [...found.testimony, ...found.owner_published].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
+  let verification: ClaimVerification
+  if (found.independent.length) verification = ownerParts.length ? 'partly_verified' : 'verified'
+  else if (found.owner_published.length) verification = 'owner_published'
+  else if (found.testimony.length) verification = 'owner_stated'
+  else verification = question.publication_requires?.includes('verified_evidence') ? 'unverified' : 'not_required'
+  return { verification, independent: found.independent, owner_parts: ownerParts }
+}
+
+/** One owner part, named for an internal reader: id, kind of source, and what it says or where it is. */
+export function ownerPartLabel(item: EvidenceItem): string {
+  const kind = item.source_type === 'owner_testimony' ? 'owner testimony' : 'owner-published'
+  const what = item.quote ?? item.note ?? item.reference
+  return `${item.id} (${kind}: ${what})`
+}
+
+/**
+ * The English note shown next to a personal claim. `detail` names the owner-stated part of a mixed claim by
+ * evidence id and content; leave it off for a public reader, who never sees register entries.
+ */
+export function verificationNote(summary: ClaimEvidence, detail = true): string | null {
+  switch (summary.verification) {
+    case 'verified':
+      return 'Verified by an independent, current source.'
+    case 'partly_verified': {
+      const base = 'Partly verified. An independent, current source supports part of this claim; the rest is the owner\'s own word and is not independently verified.'
+      return detail && summary.owner_parts.length ? `${base} Owner-stated part: ${summary.owner_parts.map(ownerPartLabel).join('; ')}.` : base
+    }
+    case 'owner_published':
+      return 'Owner-published. Not independently verified: the only source is one the owner controls.'
+    case 'owner_stated':
+      return 'Owner-stated. Not independently verified.'
+    case 'unverified':
+      return 'Unverified. Needs a source before public release.'
+    default:
+      return null
+  }
 }
 
 /** Reasons a claim cannot be published today, beyond approval and classification. Empty means none. */
@@ -203,9 +310,11 @@ export function publicationBlockers(question: Pick<FieldQuestion, 'id' | 'public
   const requires: PublicationRequirement[] = question.publication_requires ?? []
   if (requires.includes('verified_evidence') && found.independent.length === 0) {
     blockers.push(
-      found.testimony.length
-        ? 'Only owner testimony supports this claim. Publication needs an independent source verified with brand:evidence verify.'
-        : 'No verified, current evidence. Record a source with brand:evidence add and verify it.',
+      found.owner_published.length
+        ? 'Only sources the owner controls (owner-published, for example their own website) support this claim. Publication needs an independent source verified with brand:evidence verify.'
+        : found.testimony.length
+          ? 'Only owner testimony supports this claim. Publication needs an independent source verified with brand:evidence verify.'
+          : 'No verified, current evidence. Record a source with brand:evidence add and verify it.',
     )
   }
   if (requires.includes('rights_permission') && found.permissions.length === 0) {

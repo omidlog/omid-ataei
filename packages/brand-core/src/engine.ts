@@ -1,11 +1,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { disabledModule, shouldSkip, type ConditionContext } from './conditions.js'
+import { brandApplicability, VENTURE_PATH_NOTE } from './applicability.js'
+import { disabledModule, questionApplies, shouldSkip, type ConditionContext } from './conditions.js'
 import { completeness, isOpenAnswer, latestAnswers } from './completeness.js'
 import { findContradictions } from './contradictions.js'
 import { fieldBlock, renderDraftFile, upsertFieldBlock } from './documents.js'
 import { exists, readYaml, writeAtomic, writeYaml } from './fsutil.js'
-import { t, normalizeCommand, type Locale } from './i18n.js'
+import { t, normalizeCommand, questionHelp, type Locale } from './i18n.js'
 import { ApprovalService, isPersonalQuestion, normalizeAnswer, type AnswerMeta, type ApprovalStep } from './approval.js'
 import { exportPublic as projectPublic } from './projection.js'
 import { authorize, guestContext, operatorContext, verifiedHumanContext } from './auth.js'
@@ -31,6 +32,7 @@ import { templateConfig } from './config.js'
 import { ensureStarterProfiles } from './personal.js'
 import type { ImpactReport, InitInput, StepResult } from './engine-types.js'
 import { dispositionFor } from './dispositions.js'
+import { answerProvenance, provenanceLabel, type AnswerOrigin } from './provenance.js'
 import { CONFIG_BINDINGS, isPersonalBrand, priorityRank } from './config-bindings.js'
 import { assertSlug, emptySession, personalInit, recordTemplate, syncManifest } from './init.js'
 import { identityIntakeRecord } from './identity-intake.js'
@@ -40,8 +42,25 @@ export type { StepResult, ImpactReport, InitInput } from './engine-types.js'
 export { dispositionFor } from './dispositions.js'
 export { assertSlug, emptySession, personalInit, syncManifest, upgradeCore } from './init.js'
 
+/** Identity of a file on disk. writeAtomic renames a new file into place, so any write changes it. */
+function fileSignature(file: string): string | null {
+  try {
+    const stat = fs.statSync(file)
+    return `${stat.ino}:${stat.size}:${stat.mtimeMs}:${stat.ctimeMs}`
+  } catch {
+    return null
+  }
+}
+
 export class InterviewEngine {
   private cachedQuestions: FieldQuestion[] | null = null
+  /**
+   * Parsed ledger and config, keyed on the file signature. Parsing the ledger on every
+   * applicability check made projection time grow with questions x ledger size (BOS-14).
+   * Treat the cached objects as read-only: methods that write read a fresh copy instead.
+   */
+  private ledgerCache: { sig: string; value: LedgerFile } | null = null
+  private contextCache: { sig: string; value: ConditionContext } | null = null
 
   constructor(
     private readonly root: string,
@@ -83,9 +102,30 @@ export class InterviewEngine {
 
   private saveConfig(config: BrandConfig): void {
     writeYaml(this.file('brand', 'brand.config.yaml'), config)
+    this.invalidate()
   }
 
+  /** The answer ledger. Cached until the file changes; callers must not mutate it. */
   ledger(): LedgerFile {
+    const file = this.file('brand', 'interview', 'answer-ledger.yaml')
+    const sig = fileSignature(file)
+    if (sig && this.ledgerCache?.sig === sig) return this.ledgerCache.value
+    const value = readYaml<LedgerFile>(file)
+    this.ledgerCache = sig ? { sig, value } : null
+    return value
+  }
+
+  /**
+   * Drops the cached ledger and context. The file signature catches other writers; this catches the
+   * engine's own writes even when a rename reuses an inode within one coarse mtime tick.
+   */
+  invalidate(): void {
+    this.ledgerCache = null
+    this.contextCache = null
+  }
+
+  /** A private copy of the ledger for methods that modify and write it. */
+  private ledgerForWrite(): LedgerFile {
     return readYaml<LedgerFile>(this.file('brand', 'interview', 'answer-ledger.yaml'))
   }
 
@@ -99,7 +139,13 @@ export class InterviewEngine {
   }
 
   private context(): ConditionContext {
-    return { config: this.config(), answers: latestAnswers(this.ledger().records) }
+    const configSig = fileSignature(this.file('brand', 'brand.config.yaml'))
+    const ledgerSig = fileSignature(this.file('brand', 'interview', 'answer-ledger.yaml'))
+    const sig = configSig && ledgerSig ? `${configSig}|${ledgerSig}` : null
+    if (sig && this.contextCache?.sig === sig) return this.contextCache.value
+    const value = { config: this.config(), answers: latestAnswers(this.ledger().records) }
+    this.contextCache = sig ? { sig, value } : null
+    return value
   }
 
   private depsSatisfied(question: FieldQuestion, ctx: ConditionContext): boolean {
@@ -128,8 +174,7 @@ export class InterviewEngine {
     const inProfile = profile ? new Set(profile.question_ids) : null
     return this.questions()
       .filter((question) => {
-        if (inProfile && !inProfile.has(question.id)) return false
-        if (disabledModule(question.id, ctx) || shouldSkip(question.skip_when, ctx)) return false
+        if (!questionApplies(question, ctx, inProfile)) return false
         // A retracted (deprecated) answer reopens the question; see isOpenAnswer.
         if (!isOpenAnswer(ctx.answers.get(question.id))) return false
         return this.depsSatisfied(question, ctx)
@@ -184,6 +229,11 @@ export class InterviewEngine {
     return { text: question.prompt.en, fellBack: locale !== 'en' }
   }
 
+  /** `why_it_matters` and the examples in the locale, with English fallback. */
+  helpText(question: FieldQuestion, locale: Locale = this.session().locale): ReturnType<typeof questionHelp> {
+    return questionHelp(question, locale)
+  }
+
   submit(rawInput: string, actor = 'owner'): StepResult {
     const decision = authorize(operatorContext(this.config().brand.slug), { brand_id: this.config().brand.slug, classification: 'internal', status: 'draft', publication: 'unpublished' }, 'write')
     if (!decision.allow) return { kind: 'error', message: decision.reason }
@@ -222,7 +272,7 @@ export class InterviewEngine {
       return {
         kind: 'info',
         questionId: current.id,
-        message: `${t(locale, 'examplesTitle')}\n${current.examples.map((example) => `- ${example}`).join('\n')}`,
+        message: `${t(locale, 'examplesTitle')}\n${this.helpText(current, locale).examples.map((example) => `- ${example}`).join('\n')}`,
       }
     }
     if (lower === 'suggest options') {
@@ -311,6 +361,7 @@ export class InterviewEngine {
       confidence?: number | null
       sourceReference?: string | null
       raw: string
+      suggestedBy?: 'agent' | null
     },
   ): StepResult {
     const normalized = normalizeAnswer(question, rawValue, this.context().answers.get(question.id)?.value ?? null)
@@ -329,6 +380,7 @@ export class InterviewEngine {
       confidence?: number | null
       sourceReference?: string | null
       raw?: string
+      suggestedBy?: 'agent' | null
     },
   ): StepResult {
     const latest = this.context().answers.get(question.id)
@@ -356,7 +408,7 @@ export class InterviewEngine {
     return { kind: 'recorded', questionId: question.id, status: answer.status, message }
   }
 
-  changeAnswer(questionId: string, rawValue: string, _confirm = false, _actor = 'owner'): StepResult {
+  changeAnswer(questionId: string, rawValue: string, _confirm = false, _actor = 'owner', options: { reason?: string | null } = {}): StepResult {
     const write = authorize(operatorContext(this.config().brand.slug), { brand_id: this.config().brand.slug, classification: 'internal', status: 'draft', publication: 'unpublished' }, 'write')
     if (!write.allow) return { kind: 'error', message: write.reason }
     const question = this.question(questionId)
@@ -378,10 +430,12 @@ export class InterviewEngine {
         if (!checked.ok) return { kind: 'error', questionId, message: checked.message }
         proposed = String(checked.value)
       }
-      const proposal = this.requestChange(questionId, proposed)
+      const proposal = this.requestChange(questionId, proposed, { reason: options.reason })
       return {
         kind: 'impact',
         questionId,
+        changeId: proposal.id,
+        expectedVersion: proposal.expected_version,
         impact: { ...impact, approvalsPreserved: true, requiresConfirmation: true },
         message: `Approved fact was not changed. Proposal ${proposal.id} is pending. A human must approve that proposal. confirm=true is not authority.`,
       }
@@ -420,7 +474,7 @@ export class InterviewEngine {
    * The same commands as the interactive interview apply (unknown, skip, n/a, estimate:). Questions
    * that the current configuration or answers make not applicable are refused rather than recorded.
    */
-  answerQuestion(questionId: string, rawInput: string): StepResult {
+  answerQuestion(questionId: string, rawInput: string, options: { origin?: AnswerOrigin } = {}): StepResult {
     const write = authorize(operatorContext(this.config().brand.slug), { brand_id: this.config().brand.slug, classification: 'internal', status: 'draft', publication: 'unpublished' }, 'write')
     if (!write.allow) return { kind: 'error', message: write.reason }
     const question = this.question(questionId)
@@ -432,18 +486,21 @@ export class InterviewEngine {
     if (disposition) {
       return this.record(question, null, { sourceType: 'owner', authority: 'unverified', status: disposition.status, uncertainty: disposition.uncertainty, raw })
     }
+    // BOS-06: a value the agent proposed and the owner confirmed keeps its agent origin. Dispositions stay the owner's.
+    const fromAgent = options.origin === 'agent_suggestion'
+    const origin = fromAgent ? { sourceType: 'agent_suggestion' as const, suggestedBy: 'agent' as const } : { sourceType: 'owner' as const }
     const estimate = raw.match(/^estimate\s*:\s*([\s\S]+)$/i)
     if (estimate) {
       return this.recordNormalized(question, estimate[1] ?? '', {
-        sourceType: 'owner',
+        ...origin,
         authority: 'estimated',
         status: 'draft',
-        uncertainty: 'Owner described this as an estimate.',
+        uncertainty: fromAgent ? 'Agent-suggested estimate, confirmed by the owner as an estimate.' : 'Owner described this as an estimate.',
         confidence: 0.4,
         raw,
       })
     }
-    return this.recordNormalized(question, raw, { sourceType: 'owner', authority: 'confirmed_by_owner', status: 'draft', uncertainty: null, raw })
+    return this.recordNormalized(question, raw, { ...origin, authority: 'confirmed_by_owner', status: 'draft', uncertainty: null, raw })
   }
 
   /** Null when the question applies; otherwise the reason it does not under the current config and answers. */
@@ -548,8 +605,8 @@ export class InterviewEngine {
     })
   }
 
-  requestChange(questionId: string, rawValue: string): { id: string; expected_version: number } {
-    return this.approvals().requestChange(questionId, rawValue)
+  requestChange(questionId: string, rawValue: string, options: { reason?: string | null } = {}): { id: string; expected_version: number } {
+    return this.approvals().requestChange(questionId, rawValue, options)
   }
 
   approveChange(changeId: string, proof: string | undefined, expectedVersion: number, actor = 'owner'): StepResult {
@@ -599,16 +656,17 @@ export class InterviewEngine {
   }
 
   private supersede(answerId: string): void {
-    const ledger = this.ledger()
+    const ledger = this.ledgerForWrite()
     const record = ledger.records.find((item) => item.answer_id === answerId && !item.superseded_by)
     if (!record) return
     const next = `ans-${String(ledger.records.length + 1).padStart(4, '0')}`
     record.superseded_by = next
     writeYaml(this.file('brand', 'interview', 'answer-ledger.yaml'), ledger)
+    this.invalidate()
   }
 
   private appendAnswer(question: FieldQuestion, value: AnswerRecord['value'], meta: AnswerMeta): AnswerRecord {
-    const ledger = this.ledger()
+    const ledger = this.ledgerForWrite()
     const sessionId = this.ensureSession()
     let storedValue = value
     let storedRaw = meta.raw ?? (value === null ? null : String(value))
@@ -640,9 +698,11 @@ export class InterviewEngine {
       disposition_reason: meta.uncertainty,
       private_ref: privateRef,
       ...(meta.proposalState ? { proposal_state: meta.proposalState } : {}),
+      ...(meta.suggestedBy ? { suggested_by: meta.suggestedBy } : {}),
     }
     ledger.records.push(answer)
     writeYaml(this.file('brand', 'interview', 'answer-ledger.yaml'), ledger)
+    this.invalidate()
     const session = this.session()
     session.last_answer_id = answer.answer_id
     session.cursor_question_id = null
@@ -788,6 +848,11 @@ export class InterviewEngine {
       'Next questions:',
       ...report.next.map((item) => `- [${item.priority}] ${item.id}`),
     ]
+    // BOS-15: a module with no applicable question is "not applicable", never "100 %".
+    const notApplicable = report.modules.filter((score) => score.applicable === 0).length
+    if (notApplicable > 0) lines.push(`Modules not applicable to this profile: ${notApplicable}`)
+    const applicability = brandApplicability(this)
+    if (applicability.exclusive && (this.config().brand.profile === 'personal-brand' || this.config().modules.personal?.enabled === true)) lines.push(applicability.frameworks ? VENTURE_PATH_NOTE : 'Business frameworks do not apply to this profile. For a plan of a venture, set brand.profile: universal with modules.personal enabled, or use a separate repository.')
     return lines.join('\n')
   }
 
@@ -900,7 +965,7 @@ export class InterviewEngine {
         lines.push(`### ${question.label}`)
         lines.push(`- Status: ${answer.status}`)
         lines.push(`- Authority: ${answer.authority}`)
-        lines.push(`- Source: ${answer.source_type ?? 'none'}`)
+        lines.push(`- Source: ${answer.source_type ?? 'none'} (${provenanceLabel(answerProvenance(answer))})`)
         lines.push(`- Uncertainty: ${answer.uncertainty ?? 'none'}`)
         lines.push(`- Value: ${hidden ? '[restricted withheld]' : answer.value === null ? 'none' : String(answer.value)}`)
         lines.push('')

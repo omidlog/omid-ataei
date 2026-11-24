@@ -1,4 +1,4 @@
-import { PERSONAL_FACETS, type AnswerRecord, type BrandConfig, type PersonalFacet, type PersonalModuleConfig } from './types.js'
+import { PERSONAL_FACETS, type AnswerRecord, type BrandConfig, type FieldQuestion, type PersonalFacet, type PersonalModuleConfig } from './types.js'
 
 export interface ConditionContext {
   config: BrandConfig
@@ -117,4 +117,14 @@ export function evaluateCondition(expression: string | undefined, ctx: Condition
 export function shouldSkip(expression: string | undefined, ctx: ConditionContext): boolean {
   if (!expression) return false
   return evaluateCondition(expression, ctx)
+}
+
+/**
+ * The one rule for "this question applies" (BOS-15): inside `scope` when one is given (an exclusive interview profile
+ * for completeness, the profile's list for asking order), its module is on and its `skip_when` does not hold.
+ * Completeness, the interview queue and the framework views (`brandApplicability`) all call this.
+ */
+export function questionApplies(question: Pick<FieldQuestion, 'id' | 'skip_when'>, ctx: ConditionContext, scope: ReadonlySet<string> | null = null): boolean {
+  if (scope && !scope.has(question.id)) return false
+  return !disabledModule(question.id, ctx) && !shouldSkip(question.skip_when, ctx)
 }

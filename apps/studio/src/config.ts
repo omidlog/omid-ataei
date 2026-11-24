@@ -38,6 +38,8 @@ export interface StudioConfig {
   github: GitHubSettings
   /** Periodic template check: minutes between runs (0 = off) and whether it opens update pull requests. */
   templateCheck: { intervalMs: number; autoOpen: boolean }
+  /** BOS-11: seconds between default-branch head checks per brand, in ms (0 = off). */
+  headPollMs: number
 }
 
 export class ConfigError extends Error {
@@ -134,6 +136,8 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): StudioConfig {
   const autoRaw = (optional(env, 'STUDIO_TEMPLATE_AUTO_PR') ?? '0').toLowerCase()
   if (!['0', '1', 'true', 'false'].includes(autoRaw)) problems.push('STUDIO_TEMPLATE_AUTO_PR must be 0 or 1.')
   const autoOpen = autoRaw === '1' || autoRaw === 'true'
+  const headPollSeconds = intIn(env, 'STUDIO_HEAD_POLL_SECONDS', 180, 0, 3600, problems)
+  if (headPollSeconds > 0 && headPollSeconds < 60) problems.push('STUDIO_HEAD_POLL_SECONDS must be 0 (off) or at least 60.')
 
   if (problems.length) throw new ConfigError(problems)
   return {
@@ -152,5 +156,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): StudioConfig {
     trustProxy: env.STUDIO_TRUST_PROXY === '1' || env.STUDIO_TRUST_PROXY === 'true',
     github: { readToken, provisionToken, templateOwner, templateRepo, allowedOwners, webhookSecret },
     templateCheck: { intervalMs: checkMinutes * 60_000, autoOpen },
+    headPollMs: headPollSeconds * 1000,
   }
 }

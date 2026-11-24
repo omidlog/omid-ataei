@@ -5,6 +5,7 @@ import { buildDocument, type DocumentAudience, type DocumentModel, type Document
 export const BRAND_BOOK: DocumentSpec = {
   kind: 'brand-book',
   title: 'Brand Book',
+  framework: true,
   sections: [
     {
       id: 'overview',

@@ -1,0 +1,22 @@
+schema_version: 1
+applied:
+  - id: 0.0.0->0.3.0
+    touched:
+      - brand/engine.lock
+      - brand/migrations.yaml
+  - id: personal-brand@0.3.0
+    touched:
+      - brand/interview/profiles/personal-brand.yaml
+      - brand/interview/profiles/founder-core.yaml
+  - id: question-bank-additions@0.3.0
+    touched:
+      - brand/interview/question-bank/brand.yaml
+      - brand/interview/field-registry.yaml
+      - brand/interview/knowledge-graph.yaml
+  - id: question-text@0.3.0
+    touched:
+      - brand/interview/question-bank/brand.yaml
+      - brand/interview/question-bank/business.yaml
+      - brand/interview/question-bank/gamification.yaml
+      - brand/interview/question-bank/mascot.yaml
+      - brand/interview/question-bank/personal.yaml

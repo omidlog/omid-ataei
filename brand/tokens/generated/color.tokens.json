@@ -1,0 +1,327 @@
+{
+  "$description": "DRAFT tokens generated from approved brand.color.roles, brand.color.semantic_map. Not approved tokens until brand/tokens/approvals.yaml holds a matching hash.",
+  "color": {
+    "brand-role": {
+      "lime": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#D5FE00"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role lime).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "violet": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#646AED"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role violet).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "orange": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#FC4B08"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role orange).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-950": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#121212"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-950).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#141414"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-900).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#1E1E1E"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-800).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#242424"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-600).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#383838"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-100).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-50": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#545454"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-50).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-40": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#787878"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-40).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-30": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#949494"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-30).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-20": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#B8B8B8"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-20).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "dark-10": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#D6D6D6"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role dark-10).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "surface-bg-1": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F9FAFB"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role surface-bg-1).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "surface-bg-2": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F6F7F8"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role surface-bg-2).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "surface": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#F2F4F5"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role surface).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "border": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#DADEE2"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role border).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "border-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#C8CFD5"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role border-hover).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "text-title": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#191C20"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role text-title).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      },
+      "text-subtitle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "hex": "#4E5964"
+        },
+        "$description": "Draft from approved brand.color.roles (owner role text-subtitle).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.color.roles",
+            "source_version": 1
+          }
+        }
+      }
+    }
+  }
+}

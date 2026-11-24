@@ -9,6 +9,9 @@ export interface StepResult {
   questionId?: string
   status?: Status
   impact?: ImpactReport
+  /** Set when a change proposal was filed against an approved fact (`change <id>: …`, `--change`). */
+  changeId?: string
+  expectedVersion?: number
 }
 
 export interface ImpactReport {

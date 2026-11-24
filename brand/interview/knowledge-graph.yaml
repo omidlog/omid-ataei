@@ -324,3 +324,6 @@ edges:
   - from: personal.speaking.topics
     to: personal.speaking.abstracts
     relation: prerequisite
+  - from: brand.color.roles
+    to: brand.color.semantic_map
+    relation: prerequisite

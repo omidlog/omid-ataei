@@ -1,5 +1,121 @@
 # Changelog
 
+
+## Unreleased — brand:migrate adds questions a newer template introduced
+
+### Fixed
+
+- `brand:migrate` now adds every question the template defines but a brand's question bank lacks (for example `brand.color.semantic_map`), and adds it to the starter profiles that ask it (`personal-brand`, `founder-core`). Before, an existing brand failed `validate` with "Question bank is missing starter question" after a template update. It also adds the field-registry rows and knowledge-graph edges the template defines and the brand's copies lack, so the brand's own `visual-plan` graph test passes after an update. Append-only and idempotent; no answer, fact or approval changes.
+
+## Unreleased — Studio: open pull requests, automatic refresh, approved names, mixed fa/en text (BOS-02, BOS-11, BOS-20, BOS-21)
+
+### Added
+
+- BOS-02: the brand overview shows "N changes are waiting in open pull requests" with a link to each pull request and what it would change: facts (answer-ledger records), evidence (register and index entries), assets (manifest rows) and other files. Every other brand page shows the same as one compact line. Everything is labelled "Unmerged, not canonical"; no branch value, file name or diff line is shown or cached. The background sync reads each pull request's file list (`GET /repos/{owner}/{repo}/pulls/{n}/files`, new `GitHubClient.listPullFiles`), caches the counts in `state.json` with the history, re-reads a pull request only when its `updated_at` changed, and stops reading file lists for the rest of a sync after a GitHub error or rate limit (those counts show as "could not be read yet"). The History page shows the same counts.
+- BOS-11: a background poll of each brand's default-branch head (`HeadPollJob`, one `GET git/ref/heads/<branch>` per ready brand per interval, read credential). When the head moved, the brand is marked dirty and the same read-only refresh as **Refresh** runs, so a merge appears within the interval without a webhook. New setting `STUDIO_HEAD_POLL_SECONDS` (default `180`; `0` off; otherwise 60 to 3600). Started only by `main.ts`, never by tests or CLI commands; a rate limit waits at least 15 minutes, errors back off up to an hour. `check-config` prints the interval.
+- BOS-11: while no webhook secret is configured, the Account page shows one-step webhook setup: payload URL (`<public origin>/webhooks/github`), content type `application/json`, "Just the push event", and that the secret goes in GitHub and in `STUDIO_GITHUB_WEBHOOK_SECRET` (never printed). It also shows the poll interval.
+
+### Fixed
+
+- BOS-20: Studio shows the synced, approved `brand.name` (`name_status: approved`) on every surface: sidebar switcher, brand list, breadcrumbs, page titles, the overview hero, page headers and the GitHub & Claude Code header. The name recorded at registration is used only before that (first sync, or a name that is not approved yet). The registry file is not rewritten.
+- BOS-21: owner-written text that mixes Persian and Latin script no longer renders out of order. Any value placed in a `dir="auto"` element goes through one central rule in `views/html.ts`: the element gets the direction of most of its words (not of its first letter), marked `data-bidi="mixed"`, and runs of the other script (file names, URLs, product names) are wrapped in `<bdi class="bidi-run">`. `.bidi-run` and `[data-bidi]` use `unicode-bidi: isolate` (in `studio.css` and, for the print views, `visual.css`). Values in one script only are unchanged.
+
+### Tests
+
+- `studio-pending-sync`: record counting, paginated GET-only file lists, caching and rate limits in the sync, the overview card and compact line in en/fa/tr with no branch content, the head poll (one GET per brand, moved head refreshes, rate-limit back-off, configuration), `/healthz` while GitHub fails, the webhook guide, approved names on every surface, and mixed fa/en markup (`dir`, `<bdi>`) in the helpers and on a real page.
+- `studio-browser`: a mixed fa/en value with parentheses, a file name and a URL reads in logical order in the en and fa UI (skips without Chrome).
+## Unreleased — Approval CLI: one command for everything pending, Keychain proof, change flow, agent provenance (BOS-01, BOS-04, BOS-06, BOS-07)
+
+### Added
+
+- `npm run brand:approve -- --all-pending [--exclude id,…] [--dry-run] [--json]` (BOS-01): lists pending fact drafts, change proposals, evidence awaiting verification and draft assets, grouped by kind, and approves them with one proof. Each item is reported `approved`, `skipped`, `refused` or `stale`. Facts and changes go through `ApprovalService.approveBatch`, evidence through `reviewEvidence`, assets through `approveAssets`; no rule is duplicated. Tentative drafts and template example or placeholder assets are skipped (approve those by id). It refuses to run while `BRAND_OS_AGENT_TOKEN` is set, `--proof` on argv is refused, and a wrong proof writes nothing. With nothing approvable it reads no proof.
+- Opt-in macOS Keychain storage of the approval proof: `npm run brand:doctor -- --store-proof-keychain` stores `brand/.private/approval-secret` (service `brand-os-approval`, account = brand slug; the value goes to `security -i` on stdin, never argv, and is never printed); `--forget-proof-keychain` removes it. Both are refused under an agent token.
+- One proof resolver for every command that takes the proof (`brand:approve`, `publish`, `evidence verify|reject`, `retract`, `assets approve`, `tokens:approve|publish`, `agent-token`, `brand:strategy`, `brand:content`, `brand:creative`, restricted `brand:knowledge`): `BRAND_OS_APPROVAL_PROOF` → piped stdin → macOS Keychain (only when the entry exists; never while `BRAND_OS_AGENT_TOKEN` is set; `BRAND_OS_KEYCHAIN=off` disables it) → hidden prompt. `brand:knowledge` skips the stdin step because stdin carries note text there. Core: `packages/brand-core/src/approval-proof.ts` (injectable Keychain runner); CLI: `scripts/proof.ts`.
+- `npm run brand:interview -- --question ID --change "…" [--reason "…"] [--json]` (BOS-04): the non-interactive `change ID: value`. It files a `chg-…` proposal against the current approved version through the same `changeAnswer` path and prints the diff (approved vs proposed) and the impacted documents and questions. The reason is stored on the proposal and shown in `brand:review`. Stale handling is unchanged; restricted questions are refused on argv.
+- `brand:interview --answer … --origin agent_suggestion` (alias `--suggested-by agent`) (BOS-06): records `source_type: agent_suggestion`, `authority: confirmed_by_owner` and `suggested_by: agent`, kept through approval. `brand:review` (text and JSON `draft.provenance`), generated drafts, the document model (`DocumentItem.provenance`, internal editions only) and Studio (badge "Agent-suggested, owner-confirmed", en/fa/tr) show it apart from owner-originated answers. `agent-skills/brand-interviewer/SKILL.md` requires agents to pass the flag when the value came from them.
+- Tests: `approve-all-pending` (mixed batch of fact, change, stale change, evidence and assets; agent token, argv proof and wrong proof refused with nothing written; Keychain fake and resolver order; `--change`; `--origin`; dry-run wording; no `<placeholder>` beside a `<` redirect in docs and help).
+
+### Changed
+
+- `brand:approve --dry-run` (also with `--module` / `--ids`) no longer prints the review queue (BOS-07). It starts with `DRY RUN: N items would be approved. Nothing was changed.`, marks each item `would approve` or `would skip` with the reason, and ends with the same notice. `--json` returns `{ mode: "dry_run", dry_run: true, nothing_changed: true, notice, would_approve, would_skip, items[] }` instead of the queue. The real-approval JSON for `--module` / `--ids` is unchanged.
+- CLI help and README never show a `<placeholder>` in a command that also uses the `<` redirect; README explains that `<` is a shell redirect and shows a complete example.
+## Unreleased — Evidence labels: owner-published sources, mixed claims, idempotent verify (BOS-18, BOS-10)
+
+### Fixed
+
+- A source the owner controls no longer shows as independent verification. Before, every `link`, `document`, `public_record` or `third_party` entry counted as independent, so a claim backed only by the owner's own website or company site was labelled **Verified**. Such a claim is now **Owner-published / not independently verified** (`owner_published`) in brand-core labels, documents and their Markdown, `brand:evidence check`, `brand_retrieve` / `draft_personal_content`, the coach, Studio personal pages (en/fa/tr) and the assurance link check (`not_independent`; linking such an entry is refused).
+- A field backed by an independent source and by the owner's word (testimony or an owner-published source) is **Partly verified** (`partly_verified`), never **Verified**. Internal documents and the evidence register name the owner-stated part by evidence id and quote. Studio shows it with a warning tone.
+- `brand:evidence verify` on evidence that is already verified (and `reject` on rejected evidence) prints "already verified" / "already rejected", writes nothing and exits 0, so re-running leaves `git status` clean. `reviewEvidence` keeps its signature and adds `unchanged: true` to its result.
+
+### Added
+
+- `owned` on evidence-register entries (optional; absent in older registers). `brand:evidence add --owned` sets it. It is also inferred, on add and on every read, from the brand's own domains in approved facts: `personal.contact.public_channels` (work-email domains too), `personal.content.channels`, `personal.consulting.cta`, `personal.founder.ventures`, and `personal.experience.relationships` entries the person founded, co-founded, owns or co-owns that name a domain. Shared platforms match only the owner's own profile path; public mail providers never count. Inference only marks sources as owned, never the reverse, and a read never rewrites the register.
+- `brand:evidence verify|reject --id a,b,c` (or `--ids`): several ids with one proof, each reported; exits 1 if any id fails.
+- Core: `claimEvidence`, `verificationNote`, `isIndependentSource`, `withOwnership`, `CLAIM_VERIFICATIONS`, and `evidence-ownership.ts` (`ownedLocations`, `ownedMatch`).
+- Tests: `personal-evidence-ownership`.
+
+### Upgrading a brand
+
+- No migration is required: entries without `owned` are inferred from the brand's approved domains when read. Labels can only become more conservative: a claim whose only verified source is the owner's own site turns from Verified to Owner-published, and a claim that requires `verified_evidence` with no other independent source is hidden from public readers at read time (run `brand:evidence check` to see which). For an owner-controlled source the domains cannot reveal (a company brochure or deck), record a new entry with `--owned` and withdraw the old one. A mixed field with redundant owner testimony shows Partly verified; withdraw the testimony if the independent source covers the whole claim.
+## Unreleased — Owner feedback: privacy guard, coach follow-up, localized help, validate noise (BOS-05, BOS-08, BOS-09, BOS-13)
+
+### Fixed
+
+- BOS-05: the personal privacy guard no longer reads a social profile URL with `/@handle` (TikTok, Medium, YouTube, Threads, Mastodon) or a bare `@handle` as an email address. In `personal.privacy.*` questions a category name without a value ("date of birth", «تاریخ تولد», "doğum tarihi") is allowed; a name followed by a value, and every phrase that states a value, is still refused. A refusal now says which kind of pattern triggered it and where (line and word), never the value. New export `PRIVATE_CATEGORY_NAMES`; the category names moved out of `PRIVATE_CUES`.
+- BOS-08: the coach chooses its clarifying question per question family (`clarifyQuestion`, `questionFamily`), so `personal.positioning.boundaries` gets a boundaries question instead of an audience one; the general `specificity` and `evidence_support` wordings no longer assume an audience or a company. A claim with verified, current, independent evidence gets no `evidence_support` note from the facet rubrics either. `COACH_RULE_VERSION` is `coach-rules/6`.
+- BOS-09: every question carries Persian and Turkish `why_it_matters_i18n` and `examples_i18n` (optional sibling fields; English stays in `why_it_matters` and `examples`; "EXAMPLE ONLY:" kept in every language). `brand:interview`, `brand:next --json` (`help_locale`) and `show examples` use the session locale with English fallback. Reworded in en, fa and tr: `personal.media.visual_templates` ("Which templates should be built first?"), `personal.goals.kpis` ("For each goal, which number do you watch, and what is it today (with source and date)?") and `brand.verbal.voice_pairs` ("In your own words, …"). `brand:validate` checks drift in the prompt, `why_it_matters` and `examples` for en, fa and tr; a bank without the new fields stays valid with one warning, and `npm run brand:migrate` refreshes question text only (`refreshQuestionText`).
+- BOS-13: `npm run validate` no longer warns "Token CSS has not been written". The docs build prints an informational note instead (`tokenCssBuildNote`); a stale built file is still an error.
+- Tests: `personal-privacy-guard`, `coach-question-family`, `question-help-i18n`.
+## Unreleased — BOS-15: one definition of "applies" for the CLI and Studio
+
+### Fixed
+
+- `brand:next` could report a personal brand's interview as complete while Studio showed the canvas, business plan, marketing plan and Strategy lab as mostly missing: the interview profile excluded `business.*` questions and the Studio frameworks included them. One rule now decides, `brandApplicability` (`packages/brand-core/src/applicability.ts`, predicate `questionApplies` in `conditions.ts`), used by `brand:next`, `brand:status` / completeness, the Brand Book, business and marketing plan documents, the canvas, SWOT / TOWS, Value Proposition Canvas, journey, SOSTAC, OKR, the full books, the publishing gallery and every Studio counter. If Studio shows an item as missing, `brand:next` asks it and `open` counts it.
+- Coverage maths: a module, group, section or chapter with no applicable question shows "Not applicable to this profile" instead of "100 %" (Business OS module list, Command Center groups and framework map, Brand Book chapters). `completeness()` and the dashboard carry an `applicable` count per module.
+
+### Changed
+
+- Owner decision: for a `personal-brand` profile with a business facet, the frameworks describe the person's own practice. A framework question the profile does not ask shows the approved personal answer that describes the same thing (for example `business.customer.primary_segment` ← `personal.positioning.primary_audience`), under the personal id, with its own approval, verification and visibility and a `stands_for` reference; without a mapping it is not applicable, never missing. Ventures stay relationships. The table is `PERSONAL_FRAMEWORK_SOURCES`; the decision is in `docs-internal/PERSONAL_BRAND.md`.
+- The `personal-brand` profile asks `brand.strategy.purpose`, `brand.strategy.vision`, `brand.strategy.values` and `brand.strategy.promise`. The profile file is brand-owned, so `npm run brand:migrate` adds them to an older `personal-brand.yaml` (additive, idempotent; `addPersonalStrategyQuestions`), and `brand:next` then reports them as open.
+- `brand:next --json` has a `frameworks` object (`applies`, `practice`, `note`); for a personal profile it and `brand:status` point to `brand.profile: universal` with personal on, or a separate repository, for a full venture plan.
+- Document sections can be `not_applicable` and list the questions the profile does not ask (`not_applicable`); visual entries carry `stands_for` and `na_reason: 'profile'`; book chapters have the unavailable reason `not_applicable`. New strings in en/fa/tr (Studio and visual catalogs). Studio rebuilds a cached projection without the module `applicable` counts once at the same commit.
+- Tests: `studio-applicability` (personal without business facets, personal with business facets, universal with personal on; synthetic data).
+## Unreleased — Logo system, asset add and example prune (BOS-03, BOS-12, BOS-16)
+
+### Added
+
+- `npm run brand:assets -- add <file> --id <asset.id> --name "…" [--kind …] [--tags a,b] [--visibility public|internal] [--license "…"] [--normalize | --render png [--size 1024]] [--dry-run] [--json]` (BOS-03). Copies the file into `brand/assets/<kind>/`, appends a `status: draft` record with `checksum_sha256`, `mime`, `preview` and tags, and runs `check` at once. An SVG that would fail the publication check is not written; the output names each problem (for example `<use>` around a raster, `url(#id)` to a missing id, `mix-blend-mode` in a style attribute) and the fix. `--normalize` fixes what the normalizer can at ingest; `--render png` rasterizes with resvg-js (already a dependency), keeps the SVG in `brand/assets-src/` and records `derived_from`. Agents may run it; `approve` stays owner-only.
+- `npm run brand:assets -- prune-examples [--dry-run] [--json]` (BOS-12): removes template placeholders (row and file) only when an approved real asset of the same kind exists, or when their module (mascot) is off. A referenced, shared or modified file is kept with the reason.
+- Logo system in the identity chapter and the Brand Book (BOS-16): `logo_construction.system` draws the file for light backgrounds on a light plate, the one for dark backgrounds on a dark plate, and the icon at favicon and avatar sizes. Roles come from tags (`on-light`, `on-dark`, `icon`/`mark`/`logomark`/`favicon`), else the documented file-name convention (`dark`/`black`, `light`/`white`/`reversed`…), which the internal edition labels.
+- `brand.logo.masters` check (BOS-16): when the answer is recorded, before it is approved and in `validate`, a warning lists the matching asset ids when it names no exact id or manifest path (bare file names are matched).
+- Tests: `logo-system`, `asset-manage`.
+
+### Changed
+
+- Master resolution (`pickMaster`): a bare file name that belongs to exactly one asset counts as a reference, and exactly two approved logos that form a light/dark pair resolve as one system (on-light file is the master) instead of `ambiguous`. `IDENTITY_MASTER_RULE` is 3, so Studio caches rebuild.
+- `ambiguous` and `not_previewable` show the reason, the approved candidate ids (owner only) and a one-line fix in en/fa/tr.
+- The Brand Book's logo chapter is never *Complete* while no master logo is drawn (capped at *Partial*, also in the Command Center mini-map).
+- The `brand.logo.masters` prompt (en/fa/tr) asks for the asset id or full manifest path. A brand repository whose question bank still has the earlier prompt gets a validate warning instead of a drift error.
+- Studio assets page: real assets first (published, approved, drafts), examples last; EXAMPLE rows hidden once an approved real asset of their kind exists; mascot placeholders, empty slots and the mascot filter hidden while the module is off (real mascot files stay), with a count of what was hidden; approved but unpublished assets carry *Not published · internal preview*.
+## Unreleased — BOS-17 approved colours become draft tokens; BOS-19 composed personal drafts and personal documents in the gallery
+
+### Added
+
+- New interview question `brand.color.semantic_map` (color-system module, optional, internal; en/fa/tr; in the founder-core and personal-brand profiles): which owner colour role plays each template slot (`primary = <role>; onPrimary = <role>; canvas = <role>; …`, `none` keeps the template example). Core `token-semantic.ts` parses it against the approved roles and reports unknown slots, unknown roles and repeats.
+- `brand:tokens:generate` suggests a semantic mapping when the slots are unmapped (role names, listed order, luminance and measured contrast; a colour meaning such as danger is only suggested for a role with that name). The suggestion is printed with a ready `brand:interview --question brand.color.semantic_map --answer "…"` command and is never applied (`report.semantic` in `--json`).
+- `brand:approve` prints “Run `npm run brand:tokens:generate` to turn these into draft tokens.” after a batch that approved `brand.color.roles`, `brand.color.semantic_map`, `brand.type.scale` or `brand.logo.min_size` (text mode; the JSON contract is unchanged).
+- Studio Design System: with approved colour roles and no generated role tokens, a notice says the approved colours are not tokens yet and gives `npm run brand:tokens:generate`; with role tokens but unmapped slots, a notice names `brand.color.semantic_map`. Template example colours then sit in a collapsed “Template examples (not your brand)” section, never next to the approved colours (en/fa/tr).
+- Personal pack documents (core `documents/compose.ts`): each section carries one composed draft paragraph per language edition, labelled “Draft for owner approval”, built by fixed templates from the facts approved in that language only (language read from the script; approved per-language forms from `personal.identity.localized_headline` / `name_forms`). Facts without an approved translation are listed as untranslated and left out; nothing is machine-translated, and the only added words are per-locale neutral connectors. `brand:document` prints the drafts above a “Sources” heading; `draft_personal_content` returns them per section in `composed`.
+- Studio Personal Brand page: each section leads with the composed draft of one edition, chosen by `?locale=fa|en|tr` (read-only; default language first), the untranslated facts named, and the fact cards below as “Sources” (en/fa/tr).
+- Publishing gallery: for a brand with `modules.personal.enabled`, the personal documents that apply (nine without the speaker-author facet) are listed with the same audience × readiness model (public and internal for the outward packs; content strategy and evidence register internal only; no investor edition), with `npm run brand:document -- --type <kind> --audience …` shown as text. They count in the Command Center’s “Exports ready” through the existing gallery cells (no coverage code changed).
+- Tests: `token-semantic`, `personal-drafts`, `studio-personal-drafts`.
+
+### Changed
+
+- Every approved colour role now becomes `color.brand-role.<role>` (lower case), whatever its name. Template ids (`color.brand.primary`, `color.light.canvas`, `color.semantic.danger` …) are generated only from an approved `brand.color.semantic_map`; a role named `primary` no longer becomes `color.brand.primary` by itself. An already approved token is kept and reported, as before; an unapproved generated `color.brand.<role>` from an earlier run is reported as removed.
+- Professional Bio and the other personal sections count words in the composed draft of the first edition (`length.basis: composed_draft`), not in the concatenated facts.
+- Tests updated: `brand-tokens`, `journeys`, `task-context` (role tokens and the semantic map), `personal-documents` (composed word count).
+
 ## Unreleased — CI: private brands skip the public docs prepare
 
 ### Fixed

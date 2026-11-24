@@ -79,7 +79,8 @@ test('unverified education and owner testimony cannot be published as verified c
   assert.match(String(guestValue(engine, 'personal.credibility.credentials')), /Example Institute/)
   const internal = brandRetrieve(engine, agentTokenContext(SLUG, 'tok-1', 'internal-read'), { kind: 'facts', ids: ['personal.credibility.credentials'] })
   const item = (internal.data as { items: Array<{ meta?: { verification?: string } }> }).items[0]
-  assert.equal(item?.meta?.verification, 'verified')
+  // The owner testimony is still recorded next to the registry entry, so the claim is only partly verified (BOS-18).
+  assert.equal(item?.meta?.verification, 'partly_verified')
 
   // Withdrawing the source unpublishes the claim at once, everywhere.
   const withdrawn = engine.approvals().withdrawEvidence(registry.id, 'Registry entry removed')

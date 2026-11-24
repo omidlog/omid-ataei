@@ -30,12 +30,14 @@ function main(): void {
     if (!config.github.readToken) log('GitHub read access is not configured; brand pages cannot sync.')
     if (!config.github.provisionToken) log('Repository provisioning is not configured; the new-brand wizard is disabled.')
     studio.templateJob.start()
+    studio.headPoll.start()
   })
   const stop = (): void => {
     log('shutting down')
     const job = studio.templateJob.stop()
+    const poll = studio.headPoll.stop()
     server.close(() => {
-      void Promise.allSettled([job, studio.provisioning.settled(), studio.sync.settled()]).then(() => process.exit(0))
+      void Promise.allSettled([job, poll, studio.provisioning.settled(), studio.sync.settled()]).then(() => process.exit(0))
     })
     setTimeout(() => process.exit(0), 10_000).unref()
   }

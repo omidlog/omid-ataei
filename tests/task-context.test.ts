@@ -168,7 +168,7 @@ test('one visual_design call returns identity, voice, tokens, source revisions a
   const generated = generateTokens(s.root, 'pilito-visual')
   assert.equal(generated.ok, true, generated.note)
   const ids = generated.tokens.map((token) => token.id)
-  assert.ok(ids.includes('color.brand.primary'), JSON.stringify(ids))
+  assert.ok(ids.includes('color.brand-role.primary'), JSON.stringify(ids))
   const approved = approveTokens(s.root, ids.slice(0, 2), s.proof)
   assert.equal(approved.proof, 'accepted')
   assert.ok(approved.changed > 0, JSON.stringify(approved.results))

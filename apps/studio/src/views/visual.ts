@@ -73,12 +73,12 @@ function entryView(cat: VisualCatalog, entry: VisualEntry, names: ItemNames = ne
         : entry.state === 'withheld'
       ? html`<p class="vz-entry-value vz-entry-value--withheld">${icon('lock')}<span>${cat.text.withheldValue}</span></p>`
       : entry.state === 'not_applicable'
-        ? html`<p class="vz-entry-value vz-entry-value--ghost">${cat.text.notApplicableZone}</p>`
+        ? html`<p class="vz-entry-value vz-entry-value--ghost">${entry.na_reason === 'profile' ? cat.text.notApplicableProfile : cat.text.notApplicableZone}</p>`
         : entry.value === null
           ? html`<p class="vz-entry-value vz-entry-value--ghost">${entry.missing_reason ? cat.missingReason[entry.missing_reason] : cat.text.noValueYet}</p>`
           : html`<p class="vz-entry-value" dir="auto">${entry.value}</p>`
   return html`<li class="vz-entry vz-entry--${meta.tone}">
-    ${body}
+    ${body}${entry.stands_for ? html`<p class="vz-entry-from">${fillVisual(cat.text.standsFor, { id: entry.id })}</p>` : ''}
     <p class="vz-entry-meta"><span class="vz-entry-label" dir="auto">${entry.label}</span>${stateChip(cat, entry.state)}${entry.version !== null ? html`<span class="vz-entry-version">${fillVisual(cat.text.version, { version: entry.version })}</span>` : ''}</p>
   </li>`
 }

@@ -1,4 +1,4 @@
-import { disabledModule, evaluateCondition, shouldSkip, type ConditionContext } from './conditions.js'
+import { evaluateCondition, questionApplies, type ConditionContext } from './conditions.js'
 import type { AnswerRecord, FieldQuestion } from './types.js'
 
 export interface ModuleScore {
@@ -10,6 +10,8 @@ export interface ModuleScore {
   requiredUnresolved: number
   optionalOpen: number
   notApplicable: number
+  /** Questions of this module that apply (required or optional). 0 means the module is not applicable: show that, never 100 %. */
+  applicable: number
   coverage: number
   approval: number
 }
@@ -56,6 +58,7 @@ export function completeness(questions: FieldQuestion[], ctx: ConditionContext, 
       requiredUnresolved: 0,
       optionalOpen: 0,
       notApplicable: 0,
+      applicable: 0,
       coverage: 0,
       approval: 0,
     }
@@ -65,10 +68,11 @@ export function completeness(questions: FieldQuestion[], ctx: ConditionContext, 
 
   for (const question of questions) {
     const score = ensure(question.module)
-    if ((scope && !scope.has(question.id)) || disabledModule(question.id, ctx) || shouldSkip(question.skip_when, ctx)) {
+    if (!questionApplies(question, ctx, scope)) {
       score.notApplicable += 1
       continue
     }
+    score.applicable += 1
     const mandatory = question.required && evaluateCondition(question.required_when, ctx)
     const answer = ctx.answers.get(question.id)
     const open = isOpenAnswer(answer)

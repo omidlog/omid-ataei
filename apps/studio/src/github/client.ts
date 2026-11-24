@@ -60,6 +60,16 @@ export interface PullSummary {
   updated_at: string | null
 }
 
+/**
+ * One file of a pull request (BOS-02). `patch` is the unified diff GitHub returns, or null when it left the diff out
+ * (very large changes). Studio only counts records in it and never stores or shows it.
+ */
+export interface PullFile {
+  filename: string
+  status: string
+  patch: string | null
+}
+
 export interface TreeEntry {
   path: string
   mode: '100644' | '100755'
@@ -369,5 +379,25 @@ export class GitHubClient {
       draft: item.draft === true,
       updated_at: text(item.updated_at, 40) || null,
     }))
+  }
+
+  /**
+   * The files an open pull request changes (GET only, BOS-02), at most `maxPages` pages of 100. `truncated` is true
+   * when GitHub may have more. File contents are never requested; only the listing with its diff text.
+   */
+  async listPullFiles(owner: string, repo: string, number: number, maxPages = 3): Promise<{ files: PullFile[]; truncated: boolean }> {
+    if (!Number.isInteger(number) || number < 1 || number > 1e9) throw new GitHubError('invalid', 0, 'Invalid pull request number.')
+    const files: PullFile[] = []
+    for (let page = 1; page <= maxPages; page += 1) {
+      const raw = await this.json<Array<Record<string, unknown>>>('GET', `/repos/${seg(owner)}/${seg(repo)}/pulls/${number}/files?per_page=100${page > 1 ? `&page=${page}` : ''}`, 'Read pull request files')
+      const items = Array.isArray(raw) ? raw : []
+      for (const item of items.slice(0, 100)) {
+        const filename = text(item.filename, 500)
+        if (!filename) continue
+        files.push({ filename, status: text(item.status, 20), patch: typeof item.patch === 'string' ? item.patch.slice(0, 2_000_000) : null })
+      }
+      if (items.length < 100) return { files, truncated: false }
+    }
+    return { files, truncated: true }
   }
 }
