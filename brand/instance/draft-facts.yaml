@@ -503,38 +503,38 @@ facts:
       دادنم است.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0092
-    updated: 2026-11-24T10:53:26.335Z
+    answer_id: ans-0099
+    updated: 2026-11-24T11:03:51.369Z
   personal.consulting.target_clients:
     value: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با کسانی که
       فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی کلاهبرداری
       می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0093
-    updated: 2026-11-24T10:53:26.906Z
+    answer_id: ans-0100
+    updated: 2026-11-24T11:03:52.041Z
   personal.consulting.confidentiality:
     value: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
       کسب‌وکاری که بخواهد NDA امضا می‌کنم.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0094
-    updated: 2026-11-24T10:53:27.464Z
+    answer_id: ans-0101
+    updated: 2026-11-24T11:03:52.225Z
   brand.color.roles:
     value: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414; dark-800
       #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878; dark-30
@@ -542,17 +542,30 @@ facts:
       #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle #4E5964"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0095
-    updated: 2026-11-24T10:53:34.613Z
+    answer_id: ans-0097
+    updated: 2026-11-24T11:03:49.894Z
   brand.type.intent:
     value: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
       glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
       https://omidataei.com/design-system)"
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0098
+    updated: 2026-11-24T11:03:50.658Z
+  brand.logo.variants:
+    value: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: draft
@@ -560,5 +573,63 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0096
-    updated: 2026-11-24T10:53:35.199Z
+    answer_id: ans-0102
+    updated: 2026-11-24T11:04:51.500Z
+  brand.logo.clear_space:
+    value: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0103
+    updated: 2026-11-24T11:04:52.100Z
+  brand.logo.min_size:
+    value: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0104
+    updated: 2026-11-24T11:04:52.681Z
+  brand.logo.misuse:
+    value: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا
+      افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0105
+    updated: 2026-11-24T11:04:53.296Z
+  brand.logo.masters:
+    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
+      منبع Illustrator نزد مالک است.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0106
+    updated: 2026-11-24T11:04:53.907Z
+  brand.type.license:
+    value: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: draft
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: owner
+    uncertainty: null
+    answer_id: ans-0107
+    updated: 2026-11-24T11:04:54.483Z

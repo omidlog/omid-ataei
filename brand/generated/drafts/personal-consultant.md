@@ -55,17 +55,19 @@ Approved by: owner
 
 - Question: `personal.consulting.target_clients`
 - Field: `personal.consulting.target_clients`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:53:26.906Z
-- Answer id: ans-0093
+- Updated: 2026-11-24T11:03:52.041Z
+- Answer id: ans-0100
 
 Value:
 
 دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با کسانی که فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی کلاهبرداری می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+
+Approved by: owner
 <!-- field:personal.consulting.target_clients end -->
 
 <!-- field:personal.consulting.pricing_policy start -->
@@ -93,17 +95,19 @@ Approved by: owner
 
 - Question: `personal.consulting.confidentiality`
 - Field: `personal.consulting.confidentiality`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:53:27.464Z
-- Answer id: ans-0094
+- Updated: 2026-11-24T11:03:52.225Z
+- Answer id: ans-0101
 
 Value:
 
 اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+
+Approved by: owner
 <!-- field:personal.consulting.confidentiality end -->
 
 <!-- field:personal.consulting.cta start -->

@@ -98,10 +98,21 @@ history:
   - personal.consulting.confidentiality
   - brand.color.roles
   - brand.type.intent
+  - brand.color.roles
+  - brand.type.intent
+  - personal.founder.narrative
+  - personal.consulting.target_clients
+  - personal.consulting.confidentiality
+  - brand.logo.variants
+  - brand.logo.clear_space
+  - brand.logo.min_size
+  - brand.logo.misuse
+  - brand.logo.masters
+  - brand.type.license
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T10:53:35.218Z
-last_answer_id: ans-0096
+updated_at: 2026-11-24T11:04:54.503Z
+last_answer_id: ans-0107

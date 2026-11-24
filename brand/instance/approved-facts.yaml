@@ -1140,3 +1140,148 @@ facts:
     review_due: null
     related_ids: []
     private_ref: null
+  brand.color.roles:
+    id: brand.color.roles
+    brand_id: omid-ataei
+    module: color-system
+    value: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414; dark-800
+      #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878; dark-30
+      #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8; surface
+      #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle #4E5964"
+    value_type: color
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0097
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:03:49.894Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:03:49.894Z
+    version: 1
+    revision_hash: brand.color.roles:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.type.intent:
+    id: brand.type.intent
+    brand_id: omid-ataei
+    module: typography
+    value: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
+      glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
+      https://omidataei.com/design-system)"
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0098
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:03:50.658Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:03:50.658Z
+    version: 1
+    revision_hash: brand.type.intent:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.founder.narrative:
+    id: personal.founder.narrative
+    brand_id: omid-ataei
+    module: personal-founder
+    value: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را برای
+      بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
+      دادنم است.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0099
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:03:51.369Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:03:51.369Z
+    version: 1
+    revision_hash: personal.founder.narrative:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.target_clients:
+    id: personal.consulting.target_clients
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با کسانی که
+      فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی کلاهبرداری
+      می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0100
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:03:52.041Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:03:52.041Z
+    version: 1
+    revision_hash: personal.consulting.target_clients:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  personal.consulting.confidentiality:
+    id: personal.consulting.confidentiality
+    brand_id: omid-ataei
+    module: personal-consultant
+    value: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
+      کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0101
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:03:52.225Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:03:52.225Z
+    version: 1
+    revision_hash: personal.consulting.confidentiality:1
+    review_due: null
+    related_ids: []
+    private_ref: null

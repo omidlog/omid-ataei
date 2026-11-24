@@ -15,17 +15,19 @@ generated: true
 
 - Question: `brand.type.intent`
 - Field: `brand.type.intent`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:53:35.199Z
-- Answer id: ans-0096
+- Updated: 2026-11-24T11:03:50.658Z
+- Answer id: ans-0098
 
 Value:
 
 Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع: https://omidataei.com/design-system)
+
+Approved by: owner
 <!-- field:brand.type.intent end -->
 
 <!-- field:brand.type.license start -->
@@ -33,17 +35,17 @@ Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکست�
 
 - Question: `brand.type.license`
 - Field: `brand.type.license`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:54.483Z
+- Answer id: ans-0107
 
 Value:
 
-TBD
+Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F).
 <!-- field:brand.type.license end -->
 
 <!-- field:brand.type.scale start -->

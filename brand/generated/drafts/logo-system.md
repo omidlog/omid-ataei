@@ -15,17 +15,17 @@ generated: true
 
 - Question: `brand.logo.variants`
 - Field: `brand.logo.variants`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:51.500Z
+- Answer id: ans-0102
 
 Value:
 
-TBD
+Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار، فاوآیکن و امضای پایانی.
 <!-- field:brand.logo.variants end -->
 
 <!-- field:brand.logo.clear_space start -->
@@ -33,17 +33,17 @@ TBD
 
 - Question: `brand.logo.clear_space`
 - Field: `brand.logo.clear_space`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:52.100Z
+- Answer id: ans-0103
 
 Value:
 
-TBD
+فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
 <!-- field:brand.logo.clear_space end -->
 
 <!-- field:brand.logo.min_size start -->
@@ -51,17 +51,17 @@ TBD
 
 - Question: `brand.logo.min_size`
 - Field: `brand.logo.min_size`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:52.681Z
+- Answer id: ans-0104
 
 Value:
 
-TBD
+min-size: 96px; clear-space: 1x; min-print: 25mm
 <!-- field:brand.logo.min_size end -->
 
 <!-- field:brand.logo.misuse start -->
@@ -69,17 +69,17 @@ TBD
 
 - Question: `brand.logo.misuse`
 - Field: `brand.logo.misuse`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:53.296Z
+- Answer id: ans-0105
 
 Value:
 
-TBD
+کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛ بازطراحی یا تایپ دوبارهٔ حروف.
 <!-- field:brand.logo.misuse end -->
 
 <!-- field:brand.logo.masters start -->
@@ -87,15 +87,15 @@ TBD
 
 - Question: `brand.logo.masters`
 - Field: `brand.logo.masters`
-- Status: unanswered
+- Status: draft
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: owner
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-24T11:04:53.907Z
+- Answer id: ans-0106
 
 Value:
 
-TBD
+brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل منبع Illustrator نزد مالک است.
 <!-- field:brand.logo.masters end -->

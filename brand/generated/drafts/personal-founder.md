@@ -35,17 +35,19 @@ Approved by: owner
 
 - Question: `personal.founder.narrative`
 - Field: `personal.founder.narrative`
-- Status: draft
+- Status: approved
 - Visibility: internal
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:53:26.335Z
-- Answer id: ans-0092
+- Updated: 2026-11-24T11:03:51.369Z
+- Answer id: ans-0099
 
 Value:
 
 هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را برای بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه دادنم است.
+
+Approved by: owner
 <!-- field:personal.founder.narrative end -->
 
 <!-- field:personal.founder.sectors start -->

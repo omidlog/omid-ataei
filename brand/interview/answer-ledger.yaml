@@ -2058,7 +2058,7 @@ records:
     normalized: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را
       برای بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
       دادنم است.
-    superseded_by: null
+    superseded_by: ans-0099
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0093
@@ -2082,7 +2082,7 @@ records:
     normalized: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با
       کسانی که فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی
       کلاهبرداری می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
-    superseded_by: null
+    superseded_by: ans-0100
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0094
@@ -2103,7 +2103,7 @@ records:
     session_id: ses-0001
     normalized: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
       کسب‌وکاری که بخواهد NDA امضا می‌کنم.
-    superseded_by: null
+    superseded_by: ans-0101
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0095
@@ -2132,7 +2132,7 @@ records:
       dark-30 #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8;
       surface #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle
       #4E5964"
-    superseded_by: null
+    superseded_by: ans-0097
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0096
@@ -2156,6 +2156,251 @@ records:
     normalized: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
       glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
       https://omidataei.com/design-system)"
+    superseded_by: ans-0098
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0097
+    question_id: brand.color.roles
+    value: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414; dark-800
+      #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878; dark-30
+      #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8; surface
+      #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle #4E5964"
+    raw_answer: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414;
+      dark-800 #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878;
+      dark-30 #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8;
+      surface #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle
+      #4E5964"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:03:49.894Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "lime #D5FE00; violet #646AED; orange #FC4B08; dark-950 #121212; dark-900 #141414;
+      dark-800 #1E1E1E; dark-600 #242424; dark-100 #383838; dark-50 #545454; dark-40 #787878;
+      dark-30 #949494; dark-20 #B8B8B8; dark-10 #D6D6D6; surface-bg-1 #F9FAFB; surface-bg-2 #F6F7F8;
+      surface #F2F4F5; border #DADEE2; border-hover #C8CFD5; text-title #191C20; text-subtitle
+      #4E5964"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0098
+    question_id: brand.type.intent
+    value: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
+      glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
+      https://omidataei.com/design-system)"
+    raw_answer: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
+      glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
+      https://omidataei.com/design-system)"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:03:50.658Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Monochrome first, lime as signal. تیترهای دورنگ: lead-in خاکستری و payoff تیره، با افکت
+      glitch. لاتین: Rajdhani برای display و Inter برای متن. فارسی: Vazirmatn و Shams. (منبع:
+      https://omidataei.com/design-system)"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0099
+    question_id: personal.founder.narrative
+    value: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را برای
+      بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
+      دادنم است.
+    raw_answer: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را
+      برای بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
+      دادنم است.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:03:51.369Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: هر استارتاپم از دل یک مشکل و دردی بوده که برای خودم پیش آمده؛ بعد خواستم این مشکل را
+      برای بقیه هم حل کنم. علاقه‌ام این است که تا جایی که توان دارم به بقیه کمک کنم و این دلیل ادامه
+      دادنم است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0100
+    question_id: personal.consulting.target_clients
+    value: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با کسانی که
+      فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی کلاهبرداری
+      می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+    raw_answer: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با
+      کسانی که فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی
+      کلاهبرداری می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:03:52.041Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: دوست دارم با کسانی کار کنم که عاشق رشد هستند، خلاق‌اند و دوست دارند پیشرفت کنند. با
+      کسانی که فکر می‌کنند همه‌چیز را می‌دانند کار نمی‌کنم. با برندی که به نظرم درست نیست و بوی
+      کلاهبرداری می‌دهد کار نمی‌کنم؛ این خط قرمز من است و برای پول هر کاری نمی‌کنم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0101
+    question_id: personal.consulting.confidentiality
+    value: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
+      کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+    raw_answer: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
+      کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:03:52.225Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: اسم مشتری‌ها را جایی نمی‌برم، مخصوصاً در بازار فارکس، چون نمی‌خواهند کسی بداند. برای هر
+      کسب‌وکاری که بخواهد NDA امضا می‌کنم.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0102
+    question_id: brand.logo.variants
+    value: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    raw_answer: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:51.500Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0103
+    question_id: brand.logo.clear_space
+    value: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    raw_answer: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:52.100Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0104
+    question_id: brand.logo.min_size
+    value: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    raw_answer: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:52.681Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0105
+    question_id: brand.logo.misuse
+    value: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا
+      افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    raw_answer: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان
+      یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:53.296Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان
+      یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0106
+    question_id: brand.logo.masters
+    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
+      منبع Illustrator نزد مالک است.
+    raw_answer: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
+      فایل منبع Illustrator نزد مالک است.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:53.907Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
+      فایل منبع Illustrator نزد مالک است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0107
+    question_id: brand.type.license
+    value: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    raw_answer: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: draft
+    last_updated: 2026-11-24T11:04:54.483Z
+    reviewed_by: null
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
     superseded_by: null
     disposition_reason: null
     private_ref: null

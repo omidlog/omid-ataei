@@ -76,3 +76,74 @@ assets:
     tags:
       - mascot
       - missing
+  - id: asset.logo.wordmark-dark
+    name: Omid Ataei wordmark (dark, for light backgrounds)
+    status: draft
+    owner: design
+    version: 1.0.0
+    visibility: public
+    license: Owner-created logo; all rights reserved by the owner.
+    attribution: Designed by Omid Ataei in Adobe Illustrator (owner statement).
+    usage: OMID / ATAEI wordmark with the lime bar inside the O, for light backgrounds.
+    restrictions: Use the supplied file only. Do not redraw, stretch or recolor.
+    path: brand/assets/logo/logo-omid-ataei-black.svg
+    present: true
+    checksum_sha256: c5142385aad860772df44ec70202a9c594e44f35e61b9bb2832d95afbf5cc58d
+    mime: image/svg+xml
+    preview: brand/assets/logo/logo-omid-ataei-black.svg
+    tags:
+      - logo
+      - wordmark
+      - draft
+    derived_from:
+      path: brand/assets-src/logo/logo-omid-ataei-black.svg
+      sha256: 5663149a2c9c560d7cdf2e412df36b563bd3925c08df57b3971f79ef3c8202f3
+    normalizer:
+      name: brand-os-svg-normalizer
+      version: 1.0.0
+      svgo: 4.1.0
+  - id: asset.logo.wordmark-light
+    name: Omid Ataei wordmark (light, for dark backgrounds)
+    status: draft
+    owner: design
+    version: 1.0.0
+    visibility: public
+    license: Owner-created logo; all rights reserved by the owner.
+    attribution: Designed by Omid Ataei in Adobe Illustrator (owner statement).
+    usage: OMID / ATAEI wordmark with white letters and the lime bar inside the O, for dark backgrounds.
+    restrictions: Use the supplied file only. Do not redraw, stretch or recolor.
+    path: brand/assets/logo/logo-omid-ataei-white.svg
+    present: true
+    checksum_sha256: 3e56d36e1972732e127e313de24b5e17b8717c93328e8ca3f6fe4796c54fa349
+    mime: image/svg+xml
+    preview: brand/assets/logo/logo-omid-ataei-white.svg
+    tags:
+      - logo
+      - wordmark
+      - draft
+    derived_from:
+      path: brand/assets-src/logo/logo-omid-ataei-white.svg
+      sha256: 76208861a0f12253e15ad87946792b551546565e752f23810a039ba23bdd078c
+    normalizer:
+      name: brand-os-svg-normalizer
+      version: 1.0.0
+      svgo: 4.1.0
+  - id: asset.icon.key
+    name: Omid Ataei key icon
+    status: draft
+    owner: design
+    version: 1.0.0
+    visibility: public
+    license: Owner-created icon; all rights reserved by the owner.
+    attribution: Supplied by the owner.
+    usage: Lime squircle with the dark logo bar, for avatars, favicons and end signatures.
+    restrictions: Use the supplied file only. Do not recolor the lime face or the dark bar.
+    path: brand/assets/icons/omid-key-icon.svg
+    present: false
+    checksum_sha256: null
+    mime: image/svg+xml
+    preview: null
+    missing_reason: The supplied SVG fails the publication check (mix-blend-mode styles and four url(#…) references to ids that are not in the file). It needs a clean re-export before it can be added.
+    tags:
+      - icon
+      - draft

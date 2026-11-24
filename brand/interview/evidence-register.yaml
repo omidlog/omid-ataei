@@ -181,3 +181,36 @@ items:
     verified_by: owner
     review_due: null
     status_reason: null
+  - id: ev-0012
+    claim_id: brand.type.license
+    kind: verification
+    source_type: document
+    reference: https://fontiran.com/license/AQINVM4F
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T11:04:55.530Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
+  - id: ev-0013
+    claim_id: personal.experience.highlights
+    kind: verification
+    source_type: owner_testimony
+    reference: "Owner statement: 300+ brands served (web, logo, app design to marketing management);
+      client names confidential"
+    quote: null
+    note: null
+    granted_by: null
+    scope: null
+    status: pending
+    recorded_at: 2026-11-24T11:04:55.940Z
+    recorded_by: owner
+    verified_at: null
+    verified_by: null
+    review_due: null
+    status_reason: null
