@@ -20,12 +20,12 @@ generated: true
 - Authority: confirmed_by_owner
 - Source: owner
 - Uncertainty: none
-- Updated: 2026-11-24T10:52:52.244Z
-- Answer id: ans-0069
+- Updated: 2026-11-24T11:07:22.473Z
+- Answer id: ans-0114
 
 Value:
 
-مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir
+مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال: https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است).
 
 Approved by: owner
 <!-- field:personal.experience.highlights end -->

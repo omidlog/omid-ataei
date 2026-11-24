@@ -1521,7 +1521,7 @@ records:
     normalized: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
       https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
       sadakatidir"
-    superseded_by: null
+    superseded_by: ans-0114
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0070
@@ -2302,7 +2302,7 @@ records:
     normalized: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
       (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
       فاوآیکن و امضای پایانی.
-    superseded_by: null
+    superseded_by: ans-0108
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0103
@@ -2320,7 +2320,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
-    superseded_by: null
+    superseded_by: ans-0109
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0104
@@ -2338,7 +2338,7 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: "min-size: 96px; clear-space: 1x; min-print: 25mm"
-    superseded_by: null
+    superseded_by: ans-0110
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0105
@@ -2362,7 +2362,7 @@ records:
     normalized: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان
       یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
       بازطراحی یا تایپ دوبارهٔ حروف.
-    superseded_by: null
+    superseded_by: ans-0111
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0106
@@ -2383,7 +2383,7 @@ records:
     session_id: ses-0001
     normalized: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
       فایل منبع Illustrator نزد مالک است.
-    superseded_by: null
+    superseded_by: ans-0112
     disposition_reason: null
     private_ref: null
   - answer_id: ans-0107
@@ -2401,6 +2401,156 @@ records:
     uncertainty: null
     session_id: ses-0001
     normalized: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    superseded_by: ans-0113
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0108
+    question_id: brand.logo.variants
+    value: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    raw_answer: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:21.576Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0109
+    question_id: brand.logo.clear_space
+    value: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    raw_answer: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:21.735Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0110
+    question_id: brand.logo.min_size
+    value: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    raw_answer: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:21.895Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0111
+    question_id: brand.logo.misuse
+    value: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا
+      افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    raw_answer: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان
+      یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:22.036Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان
+      یا افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0112
+    question_id: brand.logo.masters
+    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
+      منبع Illustrator نزد مالک است.
+    raw_answer: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
+      فایل منبع Illustrator نزد مالک است.
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:22.181Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg).
+      فایل منبع Illustrator نزد مالک است.
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0113
+    question_id: brand.type.license
+    value: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    raw_answer: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:22.322Z
+    reviewed_by: owner
+    visibility: internal
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    superseded_by: null
+    disposition_reason: null
+    private_ref: null
+  - answer_id: ans-0114
+    question_id: personal.experience.highlights
+    value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا
+      مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است)."
+    raw_answer: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا
+      مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است)."
+    source_type: owner
+    source_reference: null
+    authority: confirmed_by_owner
+    confidence: null
+    status: approved
+    last_updated: 2026-11-24T11:07:22.473Z
+    reviewed_by: owner
+    visibility: public
+    uncertainty: null
+    session_id: ses-0001
+    normalized: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
+      https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
+      sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا
+      مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است)."
     superseded_by: null
     disposition_reason: null
     private_ref: null

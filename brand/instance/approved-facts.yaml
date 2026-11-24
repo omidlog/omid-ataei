@@ -488,7 +488,8 @@ facts:
     module: personal-career
     value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
       https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
-      sadakatidir"
+      sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا
+      مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است)."
     value_type: long_text
     status: approved
     classification: public
@@ -496,18 +497,18 @@ facts:
     source:
       kind: interview
       answer_ids:
-        - ans-0069
+        - ans-0114
       reference_ids: []
       citation_paths:
         - brand/instance/approved-facts.yaml
-      observed_at: 2026-11-24T10:52:52.244Z
+      observed_at: 2026-11-24T11:07:22.473Z
     confidence: null
     assumptions: []
     owner: null
     reviewer_id: owner
-    approved_at: 2026-11-24T10:52:52.244Z
-    version: 1
-    revision_hash: personal.experience.highlights:1
+    approved_at: 2026-11-24T11:07:22.473Z
+    version: 2
+    revision_hash: personal.experience.highlights:2
     review_due: null
     related_ids: []
     private_ref: null
@@ -1282,6 +1283,173 @@ facts:
     approved_at: 2026-11-24T11:03:52.225Z
     version: 1
     revision_hash: personal.consulting.confidentiality:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.logo.variants:
+    id: brand.logo.variants
+    brand_id: omid-ataei
+    module: logo-system
+    value: Wordmark تیره (logo-omid-ataei-black.svg) برای پس‌زمینهٔ روشن؛ Wordmark روشن
+      (logo-omid-ataei-white.svg) برای پس‌زمینهٔ تیره؛ آیکن کلید (omid-key-icon.svg) برای آواتار،
+      فاوآیکن و امضای پایانی.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0108
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:21.576Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:21.576Z
+    version: 1
+    revision_hash: brand.logo.variants:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.logo.clear_space:
+    id: brand.logo.clear_space
+    brand_id: omid-ataei
+    module: logo-system
+    value: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0109
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:21.735Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:21.735Z
+    version: 1
+    revision_hash: brand.logo.clear_space:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.logo.min_size:
+    id: brand.logo.min_size
+    brand_id: omid-ataei
+    module: logo-system
+    value: "min-size: 96px; clear-space: 1x; min-print: 25mm"
+    value_type: logo_spec
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0110
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:21.895Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:21.895Z
+    version: 1
+    revision_hash: brand.logo.min_size:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.logo.misuse:
+    id: brand.logo.misuse
+    brand_id: omid-ataei
+    module: logo-system
+    value: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا
+      افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
+      بازطراحی یا تایپ دوبارهٔ حروف.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0111
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:22.036Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:22.036Z
+    version: 1
+    revision_hash: brand.logo.misuse:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.logo.masters:
+    id: brand.logo.masters
+    brand_id: omid-ataei
+    module: logo-system
+    value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
+      منبع Illustrator نزد مالک است.
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0112
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:22.181Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:22.181Z
+    version: 1
+    revision_hash: brand.logo.masters:1
+    review_due: null
+    related_ids: []
+    private_ref: null
+  brand.type.license:
+    id: brand.type.license
+    brand_id: omid-ataei
+    module: typography
+    value: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
+    value_type: long_text
+    status: approved
+    classification: internal
+    publication: unpublished
+    source:
+      kind: interview
+      answer_ids:
+        - ans-0113
+      reference_ids: []
+      citation_paths:
+        - brand/instance/approved-facts.yaml
+      observed_at: 2026-11-24T11:07:22.322Z
+    confidence: null
+    assumptions: []
+    owner: null
+    reviewer_id: owner
+    approved_at: 2026-11-24T11:07:22.322Z
+    version: 1
+    revision_hash: brand.type.license:1
     review_due: null
     related_ids: []
     private_ref: null

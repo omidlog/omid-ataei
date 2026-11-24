@@ -311,7 +311,8 @@ facts:
   personal.experience.highlights:
     value: "مصاحبه با N24 (ترکیه)، ژانویهٔ ۲۰۲۳، دربارهٔ استراتژی برند دیجیتال:
       https://n24.com.tr/teknoloji/omid-ataeiden-dijital-marka-stratejisinde-en-onemli-unsur-marka-\
-      sadakatidir"
+      sadakatidir. همکاری با بیش از ۳۰۰ برند در طول این سال‌ها، از طراحی سایت، لوگو و اپلیکیشن تا
+      مدیریت مارکتینگ (به گفتهٔ مالک؛ اسم مشتری‌ها محرمانه است)."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
     status: approved
@@ -319,8 +320,8 @@ facts:
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0069
-    updated: 2026-11-24T10:52:52.244Z
+    answer_id: ans-0114
+    updated: 2026-11-24T11:07:22.473Z
   personal.content.channels:
     value: "Instagram: https://www.instagram.com/ataei.ca/؛ X: https://x.com/ataei_ca؛ YouTube:
       https://www.youtube.com/@ataei_ca؛ TikTok (نام کاربری omid.ca)؛ Telegram:
@@ -568,68 +569,68 @@ facts:
       فاوآیکن و امضای پایانی.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0102
-    updated: 2026-11-24T11:04:51.500Z
+    answer_id: ans-0108
+    updated: 2026-11-24T11:07:21.576Z
   brand.logo.clear_space:
     value: فضای خالی دور لوگو از هر طرف حداقل به اندازهٔ ارتفاع حرف O در وردمارک.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0103
-    updated: 2026-11-24T11:04:52.100Z
+    answer_id: ans-0109
+    updated: 2026-11-24T11:07:21.735Z
   brand.logo.min_size:
     value: "min-size: 96px; clear-space: 1x; min-print: 25mm"
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0104
-    updated: 2026-11-24T11:04:52.681Z
+    answer_id: ans-0110
+    updated: 2026-11-24T11:07:21.895Z
   brand.logo.misuse:
     value: کشیدن یا تغییر نسبت؛ تغییر رنگ به‌جز دو نسخهٔ تیره و روشن؛ چرخاندن؛ افزودن سایه، گرادیان یا
       افکت؛ قرار دادن روی پس‌زمینهٔ شلوغ یا کم‌کنتراست؛ حذف یا جابه‌جا کردن نوار لیمویی داخل O؛
       بازطراحی یا تایپ دوبارهٔ حروف.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0105
-    updated: 2026-11-24T11:04:53.296Z
+    answer_id: ans-0111
+    updated: 2026-11-24T11:07:22.036Z
   brand.logo.masters:
     value: brand/assets/logo/ در همین مخزن (logo-omid-ataei-black.svg و logo-omid-ataei-white.svg). فایل
       منبع Illustrator نزد مالک است.
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0106
-    updated: 2026-11-24T11:04:53.907Z
+    answer_id: ans-0112
+    updated: 2026-11-24T11:07:22.181Z
   brand.type.license:
     value: "Shams: لایسنس خریداری‌شده از فونت‌ایران (https://fontiran.com/license/AQINVM4F)."
     stored_in: brand/instance/draft-facts.yaml
     private_ref: null
-    status: draft
+    status: approved
     visibility: internal
     authority: confirmed_by_owner
     source_type: owner
     uncertainty: null
-    answer_id: ans-0107
-    updated: 2026-11-24T11:04:54.483Z
+    answer_id: ans-0113
+    updated: 2026-11-24T11:07:22.322Z
