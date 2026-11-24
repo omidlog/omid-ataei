@@ -10,9 +10,19 @@ questions:
       tr: İnsanlar markadan hangi kişilik özelliklerini hissetmeli ve hangileri sınır dışıdır?
     why_it_matters: Voice, mascot behavior, and motion all inherit personality. A trait list without
       boundaries gets misused.
+    why_it_matters_i18n:
+      fa: لحن، رفتار ماسکات و حرکت همگی از شخصیت برند پیروی می‌کنند. فهرست ویژگی‌هایی که مرز نداشته باشد،
+        به‌سادگی نادرست به کار می‌رود.
+      tr: Ses tonu, maskot davranışı ve hareket kişilikten beslenir. Sınırları olmayan bir özellik listesi
+        yanlış kullanılır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Calm and precise. Not sarcastic. This is only an illustration."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: آرام و دقیق. نه کنایه‌آمیز. این فقط یک نمونه است."
+      tr:
+        - "EXAMPLE ONLY: Sakin ve titiz. Alaycı değil. Bu yalnızca bir örnektir."
     suggestions:
       - Name three traits and one excluded trait
       - Defer with decide later if the offer is still moving
@@ -50,9 +60,17 @@ questions:
       fa: این برند، فراتر از فروش، چرا وجود دارد؟ اگر تصمیم نگرفته‌اید، ناشناخته.
       tr: Bu marka satışın ötesinde neden var? Karar vermediyseniz bilinmiyor.
     why_it_matters: Purpose is a long-horizon strategy sentence, not a campaign headline.
+    why_it_matters_i18n:
+      fa: هدف، جمله‌ای راهبردی با افق بلندمدت است، نه تیتر یک کمپین.
+      tr: Amaç, bir kampanya başlığı değil, uzun vadeli bir strateji cümlesidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Unknown. Too early to claim a social purpose."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: ناشناخته. هنوز برای ادعای یک هدف اجتماعی زود است."
+      tr:
+        - "EXAMPLE ONLY: Bilinmiyor. Toplumsal bir amaç iddia etmek için henüz çok erken."
     required_when: always
     depends_on: []
     priority: high
@@ -81,9 +99,18 @@ questions:
       fa: اگر برند کار کند، چه وضعیت آینده‌ای را می‌خواهید؟ آن را آرمان علامت بزنید.
       tr: Marka işe yararsa hangi gelecek doğru olsun? Bunu özlem olarak işaretleyin.
     why_it_matters: Vision is not a forecast and must not be charted as a metric.
+    why_it_matters_i18n:
+      fa: چشم‌انداز پیش‌بینی نیست و نباید مثل یک شاخص روی نمودار برود.
+      tr: Vizyon bir tahmin değildir ve bir metrik gibi grafiğe dökülmemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Aspiration only: the category feels less intimidating. Not a forecast."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط یک آرمان: این حوزه کمتر ترسناک به نظر برسد. پیش‌بینی نیست."
+      tr:
+        - "EXAMPLE ONLY: Yalnızca bir özlem: bu kategori daha az göz korkutucu hissettirsin. Bir
+          tahmin değildir."
     required_when: always
     depends_on: []
     priority: high
@@ -112,9 +139,17 @@ questions:
       fa: با کدام ارزش‌ها واقعاً کار را رد می‌کنید؟ فهرست پوستر را کنار بگذارید.
       tr: İşi geri çevirmek için gerçekten hangi değerleri kullanacaksınız? Poster listesini bırakın.
     why_it_matters: Values that never change a decision are decoration.
+    why_it_matters_i18n:
+      fa: ارزش‌هایی که هیچ‌وقت تصمیمی را تغییر نمی‌دهند، فقط تزئین‌اند.
+      tr: Hiçbir kararı değiştirmeyen değerler yalnızca süstür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Unknown. No value has been tested against a decision yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: ناشناخته. هنوز هیچ ارزشی در برابر یک تصمیم واقعی سنجیده نشده است."
+      tr:
+        - "EXAMPLE ONLY: Bilinmiyor. Henüz hiçbir değer bir karar karşısında sınanmadı."
     required_when: always
     depends_on: []
     priority: high
@@ -146,9 +181,17 @@ questions:
       tr: İnsanlar bu teklifi gerçekten düşündükleri alternatiflerden nasıl ayırsın? Kanıt verin veya
         hipotez deyin.
     why_it_matters: Competitive frames without sources become false advertising.
+    why_it_matters_i18n:
+      fa: مقایسه با رقبا بدون منبع، به تبلیغ گمراه‌کننده تبدیل می‌شود.
+      tr: Kaynaksız rekabet karşılaştırmaları yanıltıcı reklama dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Hypothesis: shorter sessions than a classroom. Not verified."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فرضیه: جلسه‌ها کوتاه‌تر از کلاس حضوری‌اند. تأیید نشده."
+      tr:
+        - "EXAMPLE ONLY: Hipotez: oturumlar bir sınıftakinden daha kısa. Doğrulanmadı."
     required_when: always
     depends_on:
       - business.offer.value_proposition
@@ -178,9 +221,18 @@ questions:
       fa: چه وعده‌ای را فقط اگر بتوانید به آن عمل کنید می‌دهید؟
       tr: Yalnızca tutabileceğiniz bir söz varsa o nedir?
     why_it_matters: A promise is a public commitment. Unknown is safer than an empty superlative.
+    why_it_matters_i18n:
+      fa: وعده یک تعهد عمومی است. «ناشناخته» از یک صفت عالی توخالی امن‌تر است.
+      tr: Söz, kamuya açık bir taahhüttür. «Bilinmiyor» demek, içi boş bir üstünlük iddiasından daha
+        güvenlidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No promise approved."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ وعده‌ای تأیید نشده است."
+      tr:
+        - "EXAMPLE ONLY: Onaylanmış bir söz yok."
     required_when: always
     depends_on: []
     priority: high
@@ -209,9 +261,19 @@ questions:
       fa: هم‌تیمی با چه قاعده‌ای یک ایدهٔ برند را بپذیرد یا رد کند؟
       tr: Bir ekip arkadaşı bir marka fikrini hangi kuralla kabul veya reddetsin?
     why_it_matters: Governance needs a rule before the asset library fills up.
+    why_it_matters_i18n:
+      fa: حاکمیت برند پیش از آنکه کتابخانهٔ دارایی‌ها پر شود، به یک قاعده نیاز دارد.
+      tr: Yönetişim, varlık kütüphanesi dolmadan önce bir kurala ihtiyaç duyar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Reject anything that claims a feature product.public_status does not allow."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هر چیزی را که ادعای قابلیتی را دارد که product.public_status اجازه نمی‌دهد،
+          رد کنید."
+      tr:
+        - "EXAMPLE ONLY: product.public_status alanının izin vermediği bir özelliği iddia eden her
+          şeyi reddedin."
     required_when: always
     depends_on: []
     priority: high
@@ -241,9 +303,19 @@ questions:
       fa: محصول، پشتیبانی و بازاریابی کدام اصول تجربه را مشترک داشته باشند؟
       tr: Ürün, destek ve pazarlama hangi deneyim ilkelerini paylaşsın?
     why_it_matters: Principles connect the brand book to UI states and support copy.
+    why_it_matters_i18n:
+      fa: اصول تجربه، کتاب برند را به وضعیت‌های رابط کاربری و متن‌های پشتیبانی پیوند می‌دهد.
+      tr: İlkeler, marka kitabını arayüz durumlarına ve destek metinlerine bağlar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Tell the truth about progress. Do not shame a mistake. Illustration only."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: دربارهٔ پیشرفت راستش را بگویید. کسی را به خاطر اشتباه شرمنده نکنید. فقط یک
+          نمونه است."
+      tr:
+        - "EXAMPLE ONLY: İlerleme konusunda doğruyu söyleyin. Bir hata yüzünden kimseyi
+          utandırmayın. Yalnızca örnektir."
     required_when: always
     depends_on: []
     priority: high
@@ -274,9 +346,17 @@ questions:
       fa: نام تجاری چگونه نوشته، تلفظ و هرگز تغییر داده نشود؟
       tr: Ticari ad nasıl yazılır, söylenir ve asla nasıl değiştirilmez?
     why_it_matters: Logo and voice start from one spelling.
+    why_it_matters_i18n:
+      fa: لوگو و لحن از یک املای واحد شروع می‌شوند.
+      tr: Logo ve ses tonu tek bir yazımdan yola çıkar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Use the full trade name. Pronunciation TBD by the owner."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: از نام تجاری کامل استفاده کنید. تلفظ را مالک بعداً مشخص می‌کند."
+      tr:
+        - "EXAMPLE ONLY: Ticari adın tamamını kullanın. Telaffuzu sahibi daha sonra belirleyecek."
     required_when: always
     depends_on:
       - business.identity.trade_name
@@ -307,9 +387,17 @@ questions:
       fa: اگر نام عمومی برند با نام تجاری فرق دارد، چیست؟ اگر فرق ندارد، same.
       tr: Herkese açık marka adı ticari addan farklıysa nedir? Farklı değilse same yazın.
     why_it_matters: Two names are allowed only when the difference is intentional.
+    why_it_matters_i18n:
+      fa: داشتن دو نام فقط وقتی مجاز است که این تفاوت عمدی باشد.
+      tr: İki ad ancak aradaki fark bilinçli olduğunda kabul edilir.
     question_type: short_text
     examples:
       - "EXAMPLE ONLY: same"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: same"
+      tr:
+        - "EXAMPLE ONLY: same"
     required_when: always
     depends_on:
       - business.identity.trade_name
@@ -340,9 +428,17 @@ questions:
       fa: شعار تأییدشده‌ای هست؟ اگر نه، none.
       tr: Onaylı bir slogan var mı? Yoksa none.
     why_it_matters: Empty lockups should not receive a filler slogan.
+    why_it_matters_i18n:
+      fa: جای خالی شعار در ترکیب لوگو نباید با یک شعار پرکننده پر شود.
+      tr: Boş logo kilitlenmelerine dolgu niyetine bir slogan konmamalıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: none"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: none"
+      tr:
+        - "EXAMPLE ONLY: none"
     required_when: always
     depends_on: []
     priority: high
@@ -371,10 +467,21 @@ questions:
       fa: برند در یک جملهٔ عادی محصول و در یک خطا چگونه صدا بدهد؟
       tr: Marka normal bir ürün cümlesinde ve bir hatada nasıl duyulsun?
     why_it_matters: Channel tone adapts a base voice. Errors are where brands usually break character.
+    why_it_matters_i18n:
+      fa: لحن هر کانال، نسخهٔ تطبیق‌یافتهٔ یک لحن پایه است. پیام‌های خطا معمولاً جایی‌اند که برندها از
+        شخصیت خود خارج می‌شوند.
+      tr: Kanal tonu, temel bir sesi uyarlar. Markalar karakterden en çok hata mesajlarında çıkar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Plain and specific. Errors say what happened and what to do next.
         Illustration only."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: ساده و مشخص. پیام خطا می‌گوید چه اتفاقی افتاد و قدم بعدی چیست. فقط یک نمونه
+          است."
+      tr:
+        - "EXAMPLE ONLY: Sade ve net. Hata mesajları ne olduğunu ve sırada ne yapılacağını söyler.
+          Yalnızca örnektir."
     required_when: always
     depends_on:
       - brand.personality.traits
@@ -406,9 +513,17 @@ questions:
       fa: کدام واژه‌ها، ادعاها یا شوخی‌ها ممنوع‌اند؟
       tr: Hangi sözcükler, iddialar veya şakalar yasak?
     why_it_matters: Forbidden language is a review checklist, not a vibe.
+    why_it_matters_i18n:
+      fa: زبان ممنوع یک چک‌لیست بازبینی است، نه یک حس کلی.
+      tr: Yasaklı dil bir his değil, bir inceleme kontrol listesidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No “guaranteed fluency”, no fake awards, no shame."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: نه «تسلط تضمینی»، نه جایزهٔ ساختگی، نه شرمنده‌کردن."
+      tr:
+        - "EXAMPLE ONLY: “Garantili akıcılık” yok, sahte ödül yok, utandırma yok."
     required_when: always
     depends_on: []
     priority: high
@@ -437,9 +552,17 @@ questions:
       fa: کدام زبان‌ها می‌توانند جمله‌های رسمی برند را حمل کنند و هر کدام را چه کسی تأیید می‌کند؟
       tr: Hangi diller resmi marka cümlelerini taşıyabilir ve her birini kim onaylar?
     why_it_matters: The portal can show fa-IR and tr-TR chrome without translating approved claims.
+    why_it_matters_i18n:
+      fa: پورتال می‌تواند رابط را به fa-IR و tr-TR نشان دهد، بی‌آنکه ادعاهای تأییدشده ترجمه شوند.
+      tr: Portal, onaylı iddiaları çevirmeden arayüzü fa-IR ve tr-TR olarak gösterebilir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: English only until an owner approves another language."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط انگلیسی، تا وقتی مالک زبان دیگری را تأیید کند."
+      tr:
+        - "EXAMPLE ONLY: Sahibi başka bir dili onaylayana kadar yalnızca İngilizce."
     required_when: always
     depends_on: []
     priority: high
@@ -468,9 +591,17 @@ questions:
       fa: قاعدهٔ دکمه‌ها، حالت‌های خالی و اعلان‌ها چیست؟
       tr: Düğmeler, boş durumlar ve bildirimler için kural nedir?
     why_it_matters: Product UI copy should not invent a second voice.
+    why_it_matters_i18n:
+      fa: متن‌های رابط محصول نباید لحن دومی بسازند.
+      tr: Ürün arayüzü metinleri ikinci bir ses icat etmemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Verb first. No exclamation marks until a celebration rule exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: اول فعل. تا وقتی قاعده‌ای برای جشن‌گرفتن نداریم، علامت تعجب نه."
+      tr:
+        - "EXAMPLE ONLY: Önce fiil. Bir kutlama kuralı oluşana kadar ünlem işareti yok."
     required_when: always
     depends_on: []
     priority: high
@@ -496,17 +627,30 @@ questions:
     field_path: brand.verbal.voice_pairs
     label: Voice do and don’t
     prompt:
-      en: "Give two to five do/don’t pairs for the voice, one per line: what to write | what not to
-        write."
-      fa: "دو تا پنج جفت «انجام بده / انجام نده» برای لحن بنویسید، هر جفت در یک خط: چه بنویسیم | چه
-        ننویسیم."
-      tr: "Ses için iki ila beş yap/yapma çifti yazın, her satıra bir tane: ne yazılır | ne yazılmaz."
+      en: "In your own words, give two to five do/don’t pairs for the voice, one per line: what to write |
+        what not to write."
+      fa: "به زبان خودتان دو تا پنج جفت «انجام بده / انجام نده» برای لحن بنویسید، هر جفت در یک خط: چه
+        بنویسیم | چه ننویسیم."
+      tr: "Kendi sözlerinizle, ses için iki ila beş yap/yapma çifti yazın, her satıra bir tane: ne yazılır
+        | ne yazılmaz."
     why_it_matters: Paired examples are the fastest way for a writer or an agent to hear the voice. The
       Brand Book shows them side by side.
+    why_it_matters_i18n:
+      fa: نمونه‌های جفتی سریع‌ترین راه است تا نویسنده یا یک ایجنت لحن برند را بشنود. کتاب برند آن‌ها را
+        کنار هم نشان می‌دهد.
+      tr: Eşleştirilmiş örnekler, bir yazarın ya da bir ajanın sesi duymasının en hızlı yoludur. Marka
+        Kitabı bunları yan yana gösterir.
     question_type: voice_pairs
     examples:
       - "EXAMPLE ONLY: Say what happened and what to do next | Blame the user for an error; Use the
         learner’s words | Use internal jargon"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بگویید چه اتفاقی افتاد و قدم بعدی چیست | کاربر را مقصر خطا بدانید; از
+          واژه‌های خود یادگیرنده استفاده کنید | از اصطلاحات داخلی استفاده کنید"
+      tr:
+        - "EXAMPLE ONLY: Ne olduğunu ve sırada ne yapılacağını söyleyin | Hata için kullanıcıyı
+          suçlayın; Öğrencinin kendi kelimelerini kullanın | Şirket içi jargon kullanın"
     required_when: always
     depends_on:
       - brand.personality.traits
@@ -537,9 +681,17 @@ questions:
       fa: انتظار دارید به کدام نسخه‌های لوگو نیاز داشته باشید؟ «هنوز هیچ» یک پاسخ کامل است.
       tr: Hangi logo çeşitlerine ihtiyacınız olacağını düşünüyorsunuz? “Henüz yok” tam bir yanıttır.
     why_it_matters: A variant list scopes the designer. It does not invent artwork.
+    why_it_matters_i18n:
+      fa: فهرست نسخه‌ها دامنهٔ کار طراح را مشخص می‌کند؛ اثر هنری از خودش نمی‌سازد.
+      tr: Varyant listesi tasarımcının kapsamını belirler. Kendi başına çizim üretmez.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None yet. A wordmark may be needed later."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز هیچ. شاید بعداً یک لوگوتایپ لازم شود."
+      tr:
+        - "EXAMPLE ONLY: Henüz yok. İleride bir yazı logo gerekebilir."
     required_when: always
     depends_on: []
     priority: high
@@ -568,9 +720,17 @@ questions:
       fa: وقتی فایل اصلی وجود داشت، قاعدهٔ فضای خالی چیست؟ تا آن وقت TBD.
       tr: Ana dosya olunca boşluk kuralı ne olsun? O zamana kadar TBD.
     why_it_matters: A numeric clear space without a master is fake precision.
+    why_it_matters_i18n:
+      fa: تعیین عددی حریم لوگو بدون فایل مستر، دقتی ساختگی است.
+      tr: Ana dosya olmadan sayısal bir boşluk alanı vermek sahte bir kesinliktir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده"
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek"
     required_when: always
     depends_on: []
     priority: high
@@ -605,9 +765,19 @@ questions:
         olana kadar unknown.
     why_it_matters: Favicon and print failures come from unstated minimums. The values become draft logo
       tokens after approval, but only once a master exists.
+    why_it_matters_i18n:
+      fa: مشکلات فاویکن و چاپ از حداقل‌هایی می‌آیند که بیان نشده‌اند. این مقادیر پس از تأیید به توکن‌های
+        پیش‌نویس لوگو تبدیل می‌شوند، اما فقط وقتی فایل مستر وجود داشته باشد.
+      tr: Favicon ve baskı sorunları belirtilmemiş alt sınırlardan kaynaklanır. Değerler onaydan sonra
+        taslak logo token'larına dönüşür, ancak yalnızca bir ana dosya varsa.
     question_type: logo_spec
     examples:
       - "EXAMPLE ONLY: min-size: 24px; clear-space: 0.5x; min-print: 10mm"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: min-size: 24px; clear-space: 0.5x; min-print: 10mm"
+      tr:
+        - "EXAMPLE ONLY: min-size: 24px; clear-space: 0.5x; min-print: 10mm"
     required_when: always
     depends_on: []
     priority: high
@@ -636,9 +806,17 @@ questions:
       fa: حتی قبل از نشانهٔ نهایی، کدام سوءاستفاده‌ها از لوگو ممنوع است؟
       tr: Son işaretten önce bile hangi logo kötü kullanımları yasak?
     why_it_matters: Some bans (stretched type, unapproved color, fake registration) do not require final art.
+    why_it_matters_i18n:
+      fa: برخی ممنوعیت‌ها (کشیدن حروف، رنگ تأییدنشده، نشان ثبت جعلی) به طرح نهایی نیازی ندارند.
+      tr: Bazı yasaklar (gerilmiş yazı, onaysız renk, sahte tescil işareti) nihai çizim gerektirmez.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Do not stretch, recolor, or add a registration symbol."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: لوگو را نکشید، رنگش را عوض نکنید و نشان ثبت به آن اضافه نکنید."
+      tr:
+        - "EXAMPLE ONLY: Logoyu germeyin, rengini değiştirmeyin ve tescil işareti eklemeyin."
     required_when: always
     depends_on: []
     priority: high
@@ -663,13 +841,27 @@ questions:
     field_path: brand.logo.masters
     label: Master location
     prompt:
-      en: Where will approved masters live (path, Figma, or not yet)?
-      fa: فایل‌های اصلی تأییدشده کجا می‌مانند (مسیر، فیگما، یا هنوز نه)؟
-      tr: Onaylı ana dosyalar nerede duracak (yol, Figma veya henüz değil)?
-    why_it_matters: Exports without a source of truth cannot be validated.
+      en: Which approved logo file is the master? Name its asset id (for example asset.logo.wordmark-dark)
+        or its full manifest path; list a light/dark pair and the icon too. Or say not yet.
+      fa: کدام فایل لوگوی تأییدشده فایل اصلی است؟ شناسهٔ دارایی آن (مثلاً asset.logo.wordmark-dark) یا
+        مسیر کامل آن در مانیفست را بنویسید؛ جفت روشن/تیره و آیکون را هم نام ببرید. یا بگویید هنوز
+        نه.
+      tr: Hangi onaylı logo dosyası ana dosya? Varlık kimliğini (örneğin asset.logo.wordmark-dark) veya
+        manifestteki tam yolunu yazın; açık/koyu çifti ve simgeyi de belirtin. Ya da henüz değil
+        deyin.
+    why_it_matters: The brand book and exports find the master logo only by its exact asset id or manifest path.
+    why_it_matters_i18n:
+      fa: کتاب برند و خروجی‌ها لوگوی اصلی را فقط با شناسهٔ دقیق دارایی یا مسیر آن در مانیفست پیدا می‌کنند.
+      tr: Marka kitabı ve dışa aktarımlar ana logoyu yalnızca tam varlık kimliği ya da manifestteki yolu
+        ile bulur.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Not yet. Only the EXAMPLE placeholder is in the repo."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز نه. فقط جای‌نگهدار EXAMPLE در مخزن هست."
+      tr:
+        - "EXAMPLE ONLY: Henüz değil. Depoda yalnızca EXAMPLE yer tutucusu var."
     required_when: always
     depends_on: []
     priority: high
@@ -704,9 +896,19 @@ questions:
         Renkler seçilmediyse unknown."
     why_it_matters: Roles survive a hue change. An approved role and hex becomes a draft token; it still
       needs a token approval and a contrast check before anyone ships it.
+    why_it_matters_i18n:
+      fa: نقش‌ها با تغییر فام رنگ باقی می‌مانند. نقش و کد hex تأییدشده به یک توکن پیش‌نویس تبدیل می‌شود؛
+        پیش از انتشار هنوز به تأیید توکن و بررسی کنتراست نیاز دارد.
+      tr: Roller bir renk tonu değişikliğinden sonra da geçerli kalır. Onaylı bir rol ve hex değeri taslak
+        bir token'a dönüşür; yayımlanmadan önce yine token onayı ve kontrast denetimi gerekir.
     question_type: color
     examples:
       - "EXAMPLE ONLY: primary #123A73; onPrimary #FFFFFF; surface #F7F5F2"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: primary #123A73; onPrimary #FFFFFF; surface #F7F5F2"
+      tr:
+        - "EXAMPLE ONLY: primary #123A73; onPrimary #FFFFFF; surface #F7F5F2"
     required_when: always
     depends_on: []
     priority: high
@@ -736,9 +938,17 @@ questions:
       fa: سامانه باید کدام پوسته‌ها را پشتیبانی کند؟
       tr: Sistem hangi temaları desteklemeli?
     why_it_matters: Token files group light and dark because the product decision says so.
+    why_it_matters_i18n:
+      fa: فایل‌های توکن، روشن و تیره را گروه‌بندی می‌کنند، چون تصمیم محصول این را می‌گوید.
+      tr: Token dosyaları açık ve koyu temayı ürün kararı öyle dediği için gruplar.
     question_type: single_choice
     examples:
       - "EXAMPLE ONLY: both"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: both"
+      tr:
+        - "EXAMPLE ONLY: both"
     options:
       - light-only
       - dark-only
@@ -772,9 +982,19 @@ questions:
       fa: موفقیت، هشدار، خطر و اطلاع در محصول شما باید چه چیزی را برسانند؟
       tr: Başarı, uyarı, tehlike ve bilgi ürününüzde ne iletmeli?
     why_it_matters: Semantic color is a meaning contract, not a decoration.
+    why_it_matters_i18n:
+      fa: رنگ معنایی یک قرارداد معنایی است، نه تزئین.
+      tr: Anlamsal renk bir süsleme değil, bir anlam sözleşmesidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Danger is destructive or blocking. Warning is reversible. Exact hues TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: رنگ خطر یعنی عمل مخرب یا مسدودکننده. هشدار یعنی قابل بازگشت. فام‌های دقیق
+          هنوز مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Tehlike, yıkıcı ya da engelleyici demektir. Uyarı, geri alınabilir
+          demektir. Kesin tonlar belirlenecek."
     required_when: always
     depends_on: []
     priority: high
@@ -804,9 +1024,19 @@ questions:
       tr: Metin ve temel arayüz hangi kontrast çıtasını karşılamalı?
     why_it_matters: The token tests check pairs against the bar you choose. The template default in
       tokens is AA for body text.
+    why_it_matters_i18n:
+      fa: آزمون‌های توکن، جفت‌رنگ‌ها را با معیاری که انتخاب می‌کنید می‌سنجند. پیش‌فرض قالب در توکن‌ها برای
+        متن بدنه AA است.
+      tr: Token testleri renk çiftlerini seçtiğiniz eşiğe göre denetler. Token'lardaki şablon varsayılanı
+        gövde metni için AA'dır.
     question_type: single_choice
     examples:
       - "EXAMPLE ONLY: WCAG 2.2 AA for text. Large display text may use the large-text threshold."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: WCAG 2.2 AA for text. Large display text may use the large-text threshold."
+      tr:
+        - "EXAMPLE ONLY: WCAG 2.2 AA for text. Large display text may use the large-text threshold."
     options:
       - undecided
       - aa
@@ -840,9 +1070,17 @@ questions:
       fa: وقتی چاپ وجود دارد رنگ چاپ چگونه مشخص شود؟ اگر چاپ ندارید، نامرتبط.
       tr: Baskı varsa baskı rengi nasıl belirtilsin? Baskı yoksa ilgili değil.
     why_it_matters: Screen hex is not a print specification.
+    why_it_matters_i18n:
+      fa: کد hex صفحه‌نمایش، مشخصات چاپ نیست.
+      tr: Ekran hex değeri bir baskı spesifikasyonu değildir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: not applicable yet"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فعلاً موضوعیت ندارد"
+      tr:
+        - "EXAMPLE ONLY: şimdilik geçerli değil"
     required_when: always
     depends_on: []
     priority: high
@@ -862,6 +1100,68 @@ questions:
     weight: 1
     sector_hints: []
     status: unanswered
+  - id: brand.color.semantic_map
+    module: color-system
+    field_path: brand.color.semantic_map
+    label: Semantic color mapping
+    prompt:
+      en: "Which of your color roles plays each template slot? Write slot = role, separated by ; (slots:
+        primary, onPrimary, secondary, onSecondary, accent, canvas, text, muted, link, dark-canvas,
+        dark-text, dark-muted, dark-link, success, onSuccess, warning, danger, onDanger, info). Use
+        none to keep a slot on the template example. brand:tokens:generate prints a suggestion; it
+        applies nothing until you approve this answer."
+      fa: "کدام نقش رنگ شما هر جایگاه قالب را پر می‌کند؟ بنویسید slot = role و با ; جدا کنید (جایگاه‌ها:
+        primary، onPrimary، secondary، onSecondary، accent، canvas، text، muted، link، dark-canvas،
+        dark-text، dark-muted، dark-link، success، onSuccess، warning، danger، onDanger، info). برای
+        جایگاهی که باید نمونهٔ قالب بماند none بنویسید. brand:tokens:generate پیشنهادی چاپ می‌کند؛
+        تا این پاسخ را تأیید نکنید هیچ چیز اعمال نمی‌شود."
+      tr: "Şablondaki her yuvayı hangi renk rolünüz üstleniyor? slot = rol biçiminde, ; ile ayırarak yazın
+        (yuvalar: primary, onPrimary, secondary, onSecondary, accent, canvas, text, muted, link,
+        dark-canvas, dark-text, dark-muted, dark-link, success, onSuccess, warning, danger,
+        onDanger, info). Şablon örneğinde kalacak yuva için none yazın. brand:tokens:generate bir
+        öneri yazdırır; bu yanıtı onaylayana kadar hiçbir şey uygulanmaz."
+    why_it_matters: "Your role names are your own. Each approved role becomes a draft token under
+      color.brand-role; this answer says which of them the template slots (primary, canvas, text …)
+      use. It is never guessed: a suggested mapping stays a suggestion until you approve it."
+    why_it_matters_i18n:
+      fa: "نام نقش‌های رنگی مال خودتان است. هر نقش تأییدشده یک توکن پیش‌نویس زیر color.brand-role می‌شود؛
+        این جواب می‌گوید جایگاه‌های تمپلیت (primary، canvas، text …) از کدام نقش استفاده کنند.
+        هیچ‌وقت حدس زده نمی‌شود: نگاشت پیشنهادی تا تأیید شما فقط پیشنهاد می‌ماند."
+      tr: "Rol adları size aittir. Onaylanan her rol color.brand-role altında taslak bir token olur; bu
+        yanıt şablon yuvalarının (primary, canvas, text …) hangi rolü kullanacağını söyler. Asla
+        tahmin edilmez: önerilen eşleme siz onaylayana kadar yalnızca öneridir."
+    question_type: long_text
+    examples:
+      - "EXAMPLE ONLY: primary = brand-blue; onPrimary = white; canvas = paper; text = ink"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: primary = brand-blue; onPrimary = white; canvas = paper; text = ink"
+      tr:
+        - "EXAMPLE ONLY: primary = brand-blue; onPrimary = white; canvas = paper; text = ink"
+    required_when: always
+    depends_on:
+      - brand.color.roles
+    priority: medium
+    order: 105
+    sensitivity: internal
+    language:
+      - en
+      - fa
+      - tr
+    source_types:
+      - owner
+      - approved_import
+      - external_cited
+      - agent_suggestion
+    related_outputs:
+      - brand/generated/drafts/color-system.md
+    related_ids: []
+    completion_rule: non_empty
+    allows_unknown: true
+    required: false
+    weight: 1
+    sector_hints: []
+    status: unanswered
   - id: brand.type.intent
     module: typography
     field_path: brand.type.intent
@@ -871,9 +1171,19 @@ questions:
       fa: تایپوگرافی، به‌جای خرید فونت، در نقش‌ها چه حسی داشته باشد؟
       tr: Tipografi, font alışverişi yerine rollerle nasıl hissettirmeli?
     why_it_matters: A feeling briefs a designer. A pirated file does not.
+    why_it_matters_i18n:
+      fa: یک حس می‌تواند به طراح خط بدهد. فایل فونت غیرقانونی نمی‌تواند.
+      tr: Bir his, tasarımcıya yön verir. Korsan bir dosya vermez.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Quiet editorial headlines and highly readable body. Families TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تیترهای آرام و ادیتوریال و متن بدنهٔ بسیار خوانا. خانواده‌های فونت هنوز
+          مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Sakin, editoryal başlıklar ve çok okunaklı gövde metni. Yazı aileleri
+          belirlenecek."
     required_when: always
     depends_on: []
     priority: high
@@ -902,9 +1212,17 @@ questions:
       fa: وضعیت پروانهٔ هر فونتی که می‌خواهید استفاده کنید چیست؟
       tr: Kullanmak istediğiniz yazı tiplerinin lisans durumu nedir?
     why_it_matters: Unlicensed files cannot be approved assets.
+    why_it_matters_i18n:
+      fa: فایل‌های بدون مجوز نمی‌توانند دارایی تأییدشده باشند.
+      tr: Lisanssız dosyalar onaylı varlık olamaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No family chosen. System fallbacks only."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ خانواده‌ای انتخاب نشده. فقط فونت‌های جایگزین سیستمی."
+      tr:
+        - "EXAMPLE ONLY: Seçilmiş bir yazı ailesi yok. Yalnızca sistem yedek fontları."
     required_when: always
     depends_on: []
     priority: high
@@ -938,10 +1256,22 @@ questions:
         @ 16px/1.5. Her satıra bir rol veya ; ile ayırarak."
     why_it_matters: The token scale should match real roles. An approved family, fallback and size
       become draft typography tokens.
+    why_it_matters_i18n:
+      fa: مقیاس توکن باید با نقش‌های واقعی هماهنگ باشد. خانواده، جایگزین و اندازهٔ تأییدشده به توکن‌های
+        پیش‌نویس تایپوگرافی تبدیل می‌شوند.
+      tr: Token ölçeği gerçek rollerle örtüşmelidir. Onaylı bir aile, yedek font ve boyut taslak tipografi
+        token'larına dönüşür.
     question_type: font
     examples:
       - "EXAMPLE ONLY: body: Inter, system-ui, sans-serif @ 16px/1.5; display: Georgia, serif @
         40px/1.2"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: body: Inter, system-ui, sans-serif @ 16px/1.5; display: Georgia, serif @
+          40px/1.2"
+      tr:
+        - "EXAMPLE ONLY: body: Inter, system-ui, sans-serif @ 16px/1.5; display: Georgia, serif @
+          40px/1.2"
     required_when: always
     depends_on: []
     priority: high
@@ -970,9 +1300,17 @@ questions:
       fa: تایپ تولید باید کدام نظام‌های نوشتاری را پشتیبانی کند؟
       tr: Üretim yazısı hangi yazı sistemlerini desteklemeli?
     why_it_matters: Persian RTL and Turkish Latin have different font and punctuation needs.
+    why_it_matters_i18n:
+      fa: فارسیِ راست‌به‌چپ و ترکیِ لاتین نیازهای متفاوتی در فونت و نشانه‌گذاری دارند.
+      tr: Sağdan sola yazılan Farsça ile Latin alfabeli Türkçenin font ve noktalama ihtiyaçları farklıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Latin first. Arabic script and Turkish are not official brand languages yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: اول لاتین. خط عربی‌فارسی و ترکی هنوز زبان رسمی برند نیستند."
+      tr:
+        - "EXAMPLE ONLY: Önce Latin. Arap alfabesi ve Türkçe henüz resmî marka dilleri değil."
     required_when: always
     depends_on:
       - brand.verbal.localization
@@ -1002,9 +1340,18 @@ questions:
       fa: اگر خانوادهٔ انتخاب‌شده موجود نباشد، چه چیزی پذیرفتنی است؟
       tr: Seçilen aile yoksa ne kabul edilebilir?
     why_it_matters: Products ship on machines that do not have the brand font.
+    why_it_matters_i18n:
+      fa: محصولات روی دستگاه‌هایی اجرا می‌شوند که فونت برند را ندارند.
+      tr: Ürünler, marka fontu yüklü olmayan cihazlarda da çalışır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: System UI sans for body. Georgia for headlines until a license exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فونت سنس سیستمی برای بدنه. Georgia برای تیترها تا وقتی مجوز تهیه شود."
+      tr:
+        - "EXAMPLE ONLY: Gövde için sistem arayüzü sans fontu. Lisans alınana kadar başlıklarda
+          Georgia."
     required_when: always
     depends_on: []
     priority: high
@@ -1033,9 +1380,17 @@ questions:
       fa: تصویرسازی از چه زبان شکل و ضخامت خطی استفاده کند؟
       tr: İllüstrasyonlar hangi şekil dili ve kontur kalınlığını kullanmalı?
     why_it_matters: Without this, every vendor invents a style.
+    why_it_matters_i18n:
+      fa: بدون این، هر تأمین‌کننده سبک خودش را می‌سازد.
+      tr: Bu olmadan her tedarikçi kendi stilini icat eder.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD. No approved style."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده. هیچ سبکی تأیید نشده است."
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek. Onaylı bir stil yok."
     required_when: always
     depends_on: []
     priority: high
@@ -1064,9 +1419,17 @@ questions:
       fa: نور، جنس و پرسپکتیو چگونه رفتار کنند؟
       tr: Işık, malzeme ve perspektif nasıl davransın?
     why_it_matters: Lighting mismatches make a set look like several brands.
+    why_it_matters_i18n:
+      fa: ناهماهنگی نور باعث می‌شود یک مجموعه شبیه چند برند متفاوت به نظر برسد.
+      tr: Işık uyumsuzlukları bir seriyi birkaç farklı marka gibi gösterir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek."
     required_when: always
     depends_on: []
     priority: high
@@ -1095,9 +1458,17 @@ questions:
       fa: یک صحنه چقدر شلوغ باشد و قواعد برش چیست؟
       tr: Bir sahne ne kadar yoğun olabilir ve kırpma kuralları nedir?
     why_it_matters: Small UI spots cannot reuse a poster composition.
+    why_it_matters_i18n:
+      fa: جاهای کوچک در رابط کاربری نمی‌توانند ترکیب‌بندی یک پوستر را دوباره به کار ببرند.
+      tr: Küçük arayüz alanları bir posterin kompozisyonunu yeniden kullanamaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Unknown. Decide per template later."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: ناشناخته. بعداً برای هر قالب تصمیم گرفته می‌شود."
+      tr:
+        - "EXAMPLE ONLY: Bilinmiyor. Daha sonra her şablon için ayrı karar verilecek."
     required_when: always
     depends_on: []
     priority: high
@@ -1126,9 +1497,17 @@ questions:
       fa: آیا تصویرسازی می‌تواند مسکات یا شخصیت‌های دیگر را داشته باشد؟
       tr: İllüstrasyonlar maskotu veya başka karakterleri içerebilir mi?
     why_it_matters: This gate keeps character-free brands character-free.
+    why_it_matters_i18n:
+      fa: این دروازه کمک می‌کند برندهای بدون کاراکتر، بدون کاراکتر بمانند.
+      tr: Bu kapı, karaktersiz markaların karaktersiz kalmasını sağlar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Only if the mascot module is enabled and the state id exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط اگر ماژول ماسکات فعال باشد و شناسهٔ آن وضعیت وجود داشته باشد."
+      tr:
+        - "EXAMPLE ONLY: Yalnızca maskot modülü etkinse ve durum kimliği mevcutsa."
     required_when: always
     depends_on: []
     priority: high
@@ -1157,9 +1536,19 @@ questions:
       fa: کدام پرداخت‌های تصویرسازی پذیرفتنی نیستند؟
       tr: Hangi illüstrasyon uygulamaları kabul edilemez?
     why_it_matters: A don’t list is part of art direction.
+    why_it_matters_i18n:
+      fa: فهرست «نکن‌ها» بخشی از هدایت هنری است.
+      tr: Yapılmayacaklar listesi sanat yönetiminin bir parçasıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No unlicensed stock, no gore, no fake UI of unshipped features."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: نه تصویر استوک بدون مجوز، نه صحنهٔ خشن، نه رابط ساختگی از قابلیت‌هایی که
+          هنوز عرضه نشده‌اند."
+      tr:
+        - "EXAMPLE ONLY: Lisanssız stok görsel yok, kanlı sahne yok, henüz yayımlanmamış
+          özelliklerin sahte arayüzü yok."
     required_when: always
     depends_on: []
     priority: high
@@ -1188,9 +1577,18 @@ questions:
       fa: آیکون‌های رابط از چه شبکه و خط راهنما استفاده کنند؟
       tr: Arayüz ikonları hangi ızgara ve kılavuzu kullanmalı?
     why_it_matters: A grid is the difference between a set and a folder of SVGs.
+    why_it_matters_i18n:
+      fa: گرید همان چیزی است که یک مجموعهٔ آیکون را از پوشه‌ای پر از SVG جدا می‌کند.
+      tr: Bir set ile bir klasör dolusu SVG arasındaki fark ızgaradır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD. Do not pretend a 24px grid until you choose one."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده. تا وقتی گریدی انتخاب نکرده‌اید، وانمود نکنید گرید 24px
+          دارید."
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek. Bir ızgara seçene kadar 24px ızgara varmış gibi davranmayın."
     required_when: always
     depends_on: []
     priority: high
@@ -1219,9 +1617,17 @@ questions:
       fa: آیکون‌ها خطی، پر یا ترکیبی باشند و گوشه‌ها چگونه به توکن شعاع مربوط شوند؟
       tr: İkonlar konturlu, dolu veya karışık mı olsun ve köşeler yarıçap belirteçlerine nasıl bağlansın?
     why_it_matters: Stroke weight drifts faster than color.
+    why_it_matters_i18n:
+      fa: ضخامت خط سریع‌تر از رنگ از مسیر خارج می‌شود.
+      tr: Çizgi kalınlığı renkten daha hızlı kayar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Undecided."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تصمیم گرفته نشده."
+      tr:
+        - "EXAMPLE ONLY: Karar verilmedi."
     required_when: always
     depends_on: []
     priority: high
@@ -1250,9 +1656,17 @@ questions:
       fa: استعاره‌ها از کجا بیایند و چه چیزی خارج از محدوده است؟
       tr: Metaforlar nereden gelsin ve ne yasak?
     why_it_matters: Cultural and mascot metaphors need an explicit source.
+    why_it_matters_i18n:
+      fa: استعاره‌های فرهنگی و مرتبط با ماسکات به یک منبع صریح نیاز دارند.
+      tr: Kültürel ve maskot metaforları açık bir kaynağa ihtiyaç duyar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Ordinary objects only until a metaphor list is approved."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط اشیای معمولی، تا وقتی فهرست استعاره‌ها تأیید شود."
+      tr:
+        - "EXAMPLE ONLY: Bir metafor listesi onaylanana kadar yalnızca sıradan nesneler."
     required_when: always
     depends_on: []
     priority: high
@@ -1281,9 +1695,18 @@ questions:
       fa: نشان‌ها، مدال‌ها یا برچسب‌ها چگونه با آیکون رابط فرق داشته باشند؟
       tr: Rozet, madalya veya çıkartmalar arayüz ikonundan nasıl ayrılsın?
     why_it_matters: Gamification art must not leak into functional icons.
+    why_it_matters_i18n:
+      fa: طرح‌های گیمیفیکیشن نباید به آیکون‌های کاربردی نشت کنند.
+      tr: Oyunlaştırma görselleri işlevsel ikonlara sızmamalıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Badges are optional and empty until gamification rules exist."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: نشان‌ها اختیاری‌اند و تا وقتی قواعد گیمیفیکیشن وجود نداشته باشد، خالی
+          می‌مانند."
+      tr:
+        - "EXAMPLE ONLY: Rozetler isteğe bağlıdır ve oyunlaştırma kuralları oluşana kadar boş kalır."
     required_when: always
     depends_on: []
     priority: high
@@ -1313,9 +1736,17 @@ questions:
       fa: آیکون‌ها از چه قاعدهٔ نام و خروجی پیروی کنند؟
       tr: İkonlar hangi adlandırma ve dışa aktarma kuralına uysun?
     why_it_matters: The asset manifest keys off stable ids.
+    why_it_matters_i18n:
+      fa: مانیفست دارایی‌ها بر پایهٔ شناسه‌های پایدار کار می‌کند.
+      tr: Varlık manifestosu kararlı kimliklere dayanır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: icon.<group>.<name>, SVG source, no PNG until requested."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: icon.<group>.<name>، منبع SVG، تا درخواست نشده PNG نه."
+      tr:
+        - "EXAMPLE ONLY: icon.<group>.<name>, SVG kaynak, istenmedikçe PNG yok."
     required_when: always
     depends_on: []
     priority: high
@@ -1344,9 +1775,17 @@ questions:
       fa: کدام شبکه‌ها اول مهم‌اند (محصول، سایت بازاریابی، اجتماعی، چاپ)؟
       tr: Önce hangi ızgaralar önemli (ürün, pazarlama sitesi, sosyal, baskı)?
     why_it_matters: One grid rarely serves a story, a UI, and a poster.
+    why_it_matters_i18n:
+      fa: یک گرید به‌ندرت هم برای استوری، هم رابط کاربری و هم پوستر جواب می‌دهد.
+      tr: Tek bir ızgara nadiren hem bir hikâyeye, hem bir arayüze hem de bir postere uyar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Product grid TBD. No print grid."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: گرید محصول هنوز مشخص نشده. گرید چاپی نداریم."
+      tr:
+        - "EXAMPLE ONLY: Ürün ızgarası belirlenecek. Baskı ızgarası yok."
     required_when: always
     depends_on: []
     priority: high
@@ -1375,9 +1814,17 @@ questions:
       fa: صفحه‌های محصول چقدر متراکم باشند؟
       tr: Ürün ekranları ne kadar yoğun olsun?
     why_it_matters: Density changes type size, mascot use, and empty states.
+    why_it_matters_i18n:
+      fa: تراکم روی اندازهٔ حروف، استفاده از ماسکات و وضعیت‌های خالی اثر می‌گذارد.
+      tr: Yoğunluk yazı boyutunu, maskot kullanımını ve boş durumları değiştirir.
     question_type: single_choice
     examples:
       - "EXAMPLE ONLY: Comfortable. Exact density TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: Comfortable. Exact density TBD."
+      tr:
+        - "EXAMPLE ONLY: Comfortable. Exact density TBD."
     options:
       - undecided
       - comfortable
@@ -1411,9 +1858,17 @@ questions:
       fa: کدام نقاط شکست یا دستگاه‌ها در محدوده‌اند؟
       tr: Hangi kırılım noktaları veya cihazlar kapsamda?
     why_it_matters: Responsive rules without a device list are slogans.
+    why_it_matters_i18n:
+      fa: قواعد واکنش‌گرا بدون فهرست دستگاه‌ها فقط شعارند.
+      tr: Cihaz listesi olmayan duyarlı tasarım kuralları sadece slogandır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Phone and desktop web. Others unknown."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: موبایل و وب دسکتاپ. بقیه ناشناخته."
+      tr:
+        - "EXAMPLE ONLY: Telefon ve masaüstü web. Diğerleri bilinmiyor."
     required_when: always
     depends_on: []
     priority: high
@@ -1442,9 +1897,17 @@ questions:
       fa: قاعدهٔ سلسله‌مراتب برای یک صفحه یا یک پست چیست؟
       tr: Bir ekran veya gönderi için hiyerarşi kuralı nedir?
     why_it_matters: Campaign templates and UI share this rule.
+    why_it_matters_i18n:
+      fa: قالب‌های کمپین و رابط کاربری این قاعده را مشترک دارند.
+      tr: Kampanya şablonları ve arayüz bu kuralı paylaşır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: One primary message, one primary action, everything else quieter."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: یک پیام اصلی، یک اقدام اصلی، و بقیه کم‌رنگ‌تر."
+      tr:
+        - "EXAMPLE ONLY: Tek ana mesaj, tek ana eylem, geri kalan her şey daha geri planda."
     required_when: always
     depends_on: []
     priority: high
@@ -1473,9 +1936,17 @@ questions:
       fa: اگر شخصیت استفاده شود، کجا بنشیند و چه اندازه‌ای آن را خوانا نگه می‌دارد؟
       tr: Karakter kullanılırsa nerede dursun ve hangi boyut onu okunur tutar?
     why_it_matters: Layout is where mascots usually collide with text.
+    why_it_matters_i18n:
+      fa: صفحه‌آرایی معمولاً جایی است که ماسکات با متن برخورد می‌کند.
+      tr: Maskotlar en çok yerleşimde metinle çakışır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Not applicable if the mascot is disabled. Otherwise TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: اگر ماسکات غیرفعال باشد موضوعیت ندارد. در غیر این صورت هنوز مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Maskot devre dışıysa geçerli değil. Aksi hâlde belirlenecek."
     required_when: always
     skip_when: config.modules.mascot == false
     depends_on: []
@@ -1505,9 +1976,17 @@ questions:
       fa: کدام سطح‌های محصول اول به این دیزاین سیستم نیاز دارند؟
       tr: Hangi ürün yüzeyleri önce bu tasarım sistemine ihtiyaç duyar?
     why_it_matters: A web kit and a native kit should not be implied together.
+    why_it_matters_i18n:
+      fa: نباید به‌طور ضمنی هم کیت وب و هم کیت نیتیو را با هم وعده داد.
+      tr: Bir web kiti ile bir yerel (native) kit aynı anda ima edilmemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Undecided. Docs site only uses the EXAMPLE tokens."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تصمیم گرفته نشده. سایت مستندات فقط از توکن‌های EXAMPLE استفاده می‌کند."
+      tr:
+        - "EXAMPLE ONLY: Karar verilmedi. Doküman sitesi yalnızca EXAMPLE token'larını kullanıyor."
     required_when: always
     depends_on: []
     priority: high
@@ -1536,9 +2015,17 @@ questions:
       fa: کدام اجزا در مجموعهٔ اول هستند؟
       tr: İlk sette hangi bileşenler var?
     why_it_matters: The component index should match a real priority, not every possible widget.
+    why_it_matters_i18n:
+      fa: فهرست کامپوننت‌ها باید با اولویت واقعی هماهنگ باشد، نه با هر ویجت ممکن.
+      tr: Bileşen dizini her olası widget'ı değil, gerçek bir önceliği yansıtmalıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Button, text field, dialog. Others later."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: دکمه، فیلد متنی، پنجرهٔ گفتگو. بقیه بعداً."
+      tr:
+        - "EXAMPLE ONLY: Düğme, metin alanı, iletişim kutusu. Diğerleri sonra."
     required_when: always
     depends_on: []
     priority: high
@@ -1567,9 +2054,18 @@ questions:
       fa: برای اجزای تعاملی کدام وضعیت‌ها اجباری‌اند؟
       tr: Etkileşimli bileşenler için hangi durumlar zorunlu?
     why_it_matters: Missing focus or loading states fail accessibility and brand QA.
+    why_it_matters_i18n:
+      fa: نبودِ وضعیت فوکوس یا بارگذاری، هم در دسترس‌پذیری و هم در کنترل کیفیت برند رد می‌شود.
+      tr: Eksik odak veya yükleme durumları hem erişilebilirlikte hem de marka kalite kontrolünde
+        başarısız olur.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Default, hover, focus-visible, active, disabled, loading, error."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: پیش‌فرض، hover، focus-visible، فعال، غیرفعال، در حال بارگذاری، خطا."
+      tr:
+        - "EXAMPLE ONLY: Varsayılan, hover, focus-visible, etkin, devre dışı, yükleniyor, hata."
     required_when: always
     depends_on: []
     priority: high
@@ -1598,9 +2094,17 @@ questions:
       fa: اگر هست، کدام الگوی ورود در محدوده است؟
       tr: Varsa hangi karşılama örüntüsü kapsamda?
     why_it_matters: Mascot and motion requests should attach to a real pattern.
+    why_it_matters_i18n:
+      fa: درخواست‌های ماسکات و حرکت باید به یک الگوی واقعی وصل باشند.
+      tr: Maskot ve hareket talepleri gerçek bir kalıba bağlanmalıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None designed. Empty state copy is TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ الگویی طراحی نشده. متن وضعیت خالی هنوز مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Tasarlanmış bir kalıp yok. Boş durum metni belirlenecek."
     required_when: always
     depends_on: []
     priority: high
@@ -1630,10 +2134,20 @@ questions:
       fa: کدام رفتارهای صفحه‌کلید، فوکوس و بومی‌سازی غیرقابل مذاکره‌اند؟
       tr: Hangi klavye, odak ve yerelleştirme davranışları pazarlık konusu değil?
     why_it_matters: The product accessibility intent becomes concrete here.
+    why_it_matters_i18n:
+      fa: هدف دسترس‌پذیری محصول اینجا عینی و مشخص می‌شود.
+      tr: Ürünün erişilebilirlik niyeti burada somutlaşır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Visible focus, 24px minimum target goal, no information by color alone. Not
         yet audited."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فوکوس قابل‌مشاهده، هدف حداقل 24px برای ناحیهٔ لمس، هیچ اطلاعاتی فقط با رنگ
+          منتقل نشود. هنوز ممیزی نشده."
+      tr:
+        - "EXAMPLE ONLY: Görünür odak, en az 24px dokunma hedefi, hiçbir bilgi yalnızca renkle
+          verilmez. Henüz denetlenmedi."
     required_when: always
     depends_on:
       - business.product.accessibility
@@ -1663,10 +2177,20 @@ questions:
       fa: طراحی و کد چگونه یک جزء را هم‌نام کنند؟
       tr: Tasarım ve kod aynı bileşeni nasıl adlandırsın?
     why_it_matters: Figma-to-code mapping fails when names diverge.
+    why_it_matters_i18n:
+      fa: وقتی نام‌ها از هم فاصله بگیرند، نگاشت فیگما به کد شکست می‌خورد.
+      tr: Adlar birbirinden saptığında Figma'dan koda eşleme başarısız olur.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Use the ids in brand/content/12-product-ui-system/components.yaml. Figma file
         is unset."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: از شناسه‌های brand/content/12-product-ui-system/components.yaml استفاده
+          کنید. فایل فیگما تنظیم نشده است."
+      tr:
+        - "EXAMPLE ONLY: brand/content/12-product-ui-system/components.yaml içindeki kimlikleri
+          kullanın. Figma dosyası ayarlanmadı."
     required_when: always
     depends_on: []
     priority: high
@@ -1695,9 +2219,18 @@ questions:
       fa: حرکت چه حسی داشته باشد و هرگز چه نکند؟
       tr: Hareket nasıl hissettirmeli ve asla ne yapmamalı?
     why_it_matters: Easing curves without principles get copied into the wrong moment.
+    why_it_matters_i18n:
+      fa: منحنی‌های easing بدون اصول، در لحظهٔ نادرست کپی می‌شوند.
+      tr: İlkeleri olmayan easing eğrileri yanlış anlara kopyalanır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Quick and quiet. Never shame a user with a shake. Illustration only."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: سریع و بی‌سروصدا. هرگز کاربر را با لرزاندن شرمنده نکنید. فقط یک نمونه است."
+      tr:
+        - "EXAMPLE ONLY: Hızlı ve sessiz. Kullanıcıyı asla bir sallama efektiyle utandırmayın.
+          Yalnızca örnektir."
     required_when: always
     depends_on: []
     priority: high
@@ -1726,9 +2259,17 @@ questions:
       fa: حرکت محصول سریع، متعادل یا بیانگر باشد؟ میلی‌ثانیه‌های دقیق در توکن‌ها می‌مانند.
       tr: Ürün hareketi hızlı, ölçülü veya anlatımlı mı olsun? Kesin milisaniyeler belirteçlerde kalsın.
     why_it_matters: The interview captures intent. The token file keeps the numbers.
+    why_it_matters_i18n:
+      fa: مصاحبه نیت را ثبت می‌کند. اعداد در فایل توکن نگه داشته می‌شوند.
+      tr: Görüşme niyeti kaydeder. Sayılar token dosyasında tutulur.
     question_type: single_choice
     examples:
       - "EXAMPLE ONLY: Quick. Token values remain EXAMPLE until approved."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: Quick. Token values remain EXAMPLE until approved."
+      tr:
+        - "EXAMPLE ONLY: Quick. Token values remain EXAMPLE until approved."
     options:
       - undecided
       - quick
@@ -1762,9 +2303,17 @@ questions:
       fa: جایگزین حرکتِ کم برای بازخورد ضروری چیست؟
       tr: Temel geri bildirim için azaltılmış hareket alternatifi nedir?
     why_it_matters: Accessibility is part of the motion system, not a footnote.
+    why_it_matters_i18n:
+      fa: دسترس‌پذیری بخشی از سیستم حرکت است، نه یک پانویس.
+      tr: Erişilebilirlik bir dipnot değil, hareket sisteminin bir parçasıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Crossfade or instant state change. No parallax."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: محو تدریجی یا تغییر فوری وضعیت. بدون پارالاکس."
+      tr:
+        - "EXAMPLE ONLY: Çapraz geçiş veya anında durum değişikliği. Paralaks yok."
     required_when: always
     depends_on: []
     priority: high
@@ -1793,9 +2342,17 @@ questions:
       fa: انیمیشن لوگوی تأییدشده هست؟ اگر نه، none.
       tr: Onaylı bir logo animasyonu var mı? Yoksa none.
     why_it_matters: A motion identity can exist without a logo sting.
+    why_it_matters_i18n:
+      fa: هویت حرکتی می‌تواند بدون انیمیشن کوتاه لوگو هم وجود داشته باشد.
+      tr: Bir hareket kimliği, logo animasyonu olmadan da var olabilir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: none"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: none"
+      tr:
+        - "EXAMPLE ONLY: none"
     required_when: always
     depends_on: []
     priority: high
@@ -1824,9 +2381,17 @@ questions:
       fa: کدام قالب‌های حرکت مجازند تحویل شوند؟
       tr: Hangi hareket formatlarının teslimi serbest?
     why_it_matters: Lottie, Rive, CSS, SVG, and video have different review paths.
+    why_it_matters_i18n:
+      fa: Lottie، Rive، CSS، SVG و ویدئو مسیرهای بازبینی متفاوتی دارند.
+      tr: Lottie, Rive, CSS, SVG ve video farklı inceleme süreçlerinden geçer.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: CSS and SVG only until a character exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط CSS و SVG تا وقتی کاراکتری وجود داشته باشد."
+      tr:
+        - "EXAMPLE ONLY: Bir karakter oluşana kadar yalnızca CSS ve SVG."
     required_when: always
     depends_on: []
     priority: high
@@ -1855,9 +2420,17 @@ questions:
       fa: آیا این برند از لوگوی صوتی، صدای رابط یا موسیقی استفاده می‌کند؟
       tr: Bu marka bir ses logosu, arayüz sesi veya müzik kullanacak mı?
     why_it_matters: No is a complete sonic identity.
+    why_it_matters_i18n:
+      fa: «نه» هم یک هویت صوتی کامل است.
+      tr: «Hayır» da eksiksiz bir ses kimliğidir.
     question_type: boolean
     examples:
       - "EXAMPLE ONLY: no"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: no"
+      tr:
+        - "EXAMPLE ONLY: no"
     required_when: always
     depends_on: []
     priority: high
@@ -1886,9 +2459,17 @@ questions:
       fa: لوگوی صوتی را فقط اگر تأیید شده توصیف کنید. وگرنه none.
       tr: Ses logosunu yalnızca onaylıysa tarif edin. Yoksa none.
     why_it_matters: A description is not a master recording.
+    why_it_matters_i18n:
+      fa: توصیف یک صدا، ضبط مستر آن نیست.
+      tr: Bir tanım, ana kayıt yerine geçmez.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: none"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: none"
+      tr:
+        - "EXAMPLE ONLY: none"
     required_when: always
     skip_when: answers[brand.sonic.needed] == no
     depends_on:
@@ -1919,9 +2500,17 @@ questions:
       fa: کدام رویدادهای رابط می‌توانند صدا داشته باشند و کدام باید ساکت بمانند؟
       tr: Hangi arayüz olaylarının sesi olabilir ve hangileri sessiz kalmalı?
     why_it_matters: Success sounds on every click become a brand problem.
+    why_it_matters_i18n:
+      fa: صدای موفقیت برای هر کلیک، خودش به مشکل برند تبدیل می‌شود.
+      tr: Her tıklamada çalan başarı sesleri bir marka sorununa dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Silent by default."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: به‌طور پیش‌فرض بی‌صدا."
+      tr:
+        - "EXAMPLE ONLY: Varsayılan olarak sessiz."
     required_when: always
     skip_when: answers[brand.sonic.needed] == no
     depends_on:
@@ -1952,10 +2541,20 @@ questions:
       fa: قبل از انتشار صدا چه حقوق استفاده‌ای لازم است؟
       tr: Ses yayınlanmadan önce hangi kullanım hakları gerekir?
     why_it_matters: Sonic branding is a licensing problem as much as a creative one.
+    why_it_matters_i18n:
+      fa: برندینگ صوتی به همان اندازه که مسئلهٔ خلاقیت است، مسئلهٔ مجوز هم هست.
+      tr: Ses markalaması yaratıcı olduğu kadar bir lisans meselesidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No audio ships without a written license or an original recording the owner
         owns."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ صدایی بدون مجوز کتبی یا ضبط اصلی‌ای که مالکیتش با مالک برند است منتشر
+          نمی‌شود."
+      tr:
+        - "EXAMPLE ONLY: Yazılı bir lisans ya da sahibine ait özgün bir kayıt olmadan hiçbir ses
+          yayımlanmaz."
     required_when: always
     depends_on: []
     priority: high
@@ -1985,9 +2584,18 @@ questions:
       fa: هر لحظهٔ صوتی با صدای خاموش چگونه کار می‌کند؟
       tr: Her sesli an, ses kapalıyken nasıl çalışır?
     why_it_matters: Accessibility and autoplay policy both require a silent path.
+    why_it_matters_i18n:
+      fa: هم دسترس‌پذیری و هم سیاست پخش خودکار، مسیری بی‌صدا را لازم می‌کنند.
+      tr: Hem erişilebilirlik hem de otomatik oynatma politikaları sessiz bir yol gerektirir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Captions or visual state only. No information that exists only in audio."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط زیرنویس یا وضعیت دیداری. هیچ اطلاعاتی نباید فقط در صدا وجود داشته باشد."
+      tr:
+        - "EXAMPLE ONLY: Yalnızca altyazı veya görsel durum. Yalnızca seste bulunan bir bilgi
+          olmamalı."
     required_when: always
     depends_on: []
     priority: high
@@ -2016,9 +2624,17 @@ questions:
       fa: اگر عکس یا ویدیو استفاده می‌کنید، چه حسی باید داشته باشد؟
       tr: Fotoğraf veya video kullanacaksanız nasıl hissettirmeli?
     why_it_matters: A mood without a rule becomes a random stock folder.
+    why_it_matters_i18n:
+      fa: حال‌وهوایی که قاعده نداشته باشد، به پوشه‌ای تصادفی از عکس‌های استوک تبدیل می‌شود.
+      tr: Kuralı olmayan bir atmosfer rastgele bir stok fotoğraf klasörüne dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Undecided. No shoot planned."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تصمیم گرفته نشده. عکاسی‌ای برنامه‌ریزی نشده است."
+      tr:
+        - "EXAMPLE ONLY: Karar verilmedi. Planlanmış bir çekim yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2047,9 +2663,17 @@ questions:
       fa: محدودیت نور یا لنز هست، یا TBD است؟
       tr: Işık veya lens kısıtı var mı, yoksa TBD mi?
     why_it_matters: Constraints prevent a style that the team cannot repeat.
+    why_it_matters_i18n:
+      fa: محدودیت‌ها جلوی سبکی را می‌گیرند که تیم نمی‌تواند تکرارش کند.
+      tr: Kısıtlar, ekibin tekrarlayamayacağı bir stili önler.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده"
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek"
     required_when: always
     depends_on: []
     priority: high
@@ -2078,9 +2702,19 @@ questions:
       fa: درجه‌بندی رنگ چگونه به نقش‌های رنگ مربوط شود؟
       tr: Renk derecelendirme renk rollerine nasıl bağlansın?
     why_it_matters: A grade that fights the UI palette breaks the system.
+    why_it_matters_i18n:
+      fa: اصلاح رنگی که با پالت رابط کاربری درگیر شود، سیستم را می‌شکند.
+      tr: Arayüz paletiyle çatışan bir renk düzenlemesi sistemi bozar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No grade approved. Do not apply the EXAMPLE UI blue as a LUT."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ اصلاح رنگی تأیید نشده. آبیِ EXAMPLE رابط کاربری را به‌عنوان LUT به کار
+          نبرید."
+      tr:
+        - "EXAMPLE ONLY: Onaylı bir renk düzenlemesi yok. EXAMPLE arayüz mavisini LUT olarak
+          uygulamayın."
     required_when: always
     depends_on: []
     priority: high
@@ -2109,9 +2743,17 @@ questions:
       fa: آیا تصویر زنده می‌تواند با تصویرسازی یا شخصیت ترکیب شود؟
       tr: Canlı görüntü illüstrasyon veya karakterle birleşebilir mi?
     why_it_matters: Compositing is a rights and continuity problem.
+    why_it_matters_i18n:
+      fa: ترکیب تصویر (کامپوزیت) مسئلهٔ حقوق و پیوستگی است.
+      tr: Kompozit, bir haklar ve süreklilik meselesidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No, until both the footage and the character are approved."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: نه، تا وقتی هم فوتیج و هم کاراکتر تأیید شوند."
+      tr:
+        - "EXAMPLE ONLY: Hayır, hem görüntü hem de karakter onaylanana kadar."
     required_when: always
     depends_on: []
     priority: high
@@ -2140,9 +2782,17 @@ questions:
       fa: کدام قواعد زیرنویس، نام پایین تصویر و نسبت تصویر مهم‌اند؟
       tr: Hangi altyazı, alt üçte bir ve en-boy kuralları önemli?
     why_it_matters: Social and product video share these presets.
+    why_it_matters_i18n:
+      fa: ویدئوی شبکه‌های اجتماعی و ویدئوی محصول این پیش‌تنظیم‌ها را مشترک دارند.
+      tr: Sosyal medya ve ürün videoları bu ön ayarları paylaşır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Subtitles required for spoken words. Safe areas TBD."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: برای گفتار، زیرنویس الزامی است. نواحی امن هنوز مشخص نشده."
+      tr:
+        - "EXAMPLE ONLY: Konuşmalar için altyazı zorunlu. Güvenli alanlar belirlenecek."
     required_when: always
     depends_on: []
     priority: high
@@ -2172,9 +2822,17 @@ questions:
       fa: کدام کانال‌های اجتماعی قالب خواهند داشت؟ با برنامهٔ کانال بازاریابی هم‌راستا کنید.
       tr: Hangi sosyal kanalların şablonu olacak? Pazarlama kanal planıyla hizalayın.
     why_it_matters: Template production follows the plan, not a platform checklist.
+    why_it_matters_i18n:
+      fa: تولید قالب از برنامه پیروی می‌کند، نه از چک‌لیست پلتفرم‌ها.
+      tr: Şablon üretimi bir platform kontrol listesini değil, planı izler.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز هیچ."
+      tr:
+        - "EXAMPLE ONLY: Henüz yok."
     required_when: always
     depends_on:
       - business.marketing.channels
@@ -2205,9 +2863,17 @@ questions:
       fa: کدام قواعد منطقهٔ امن معلوم است؟ اگر مجهول، برای هر کانال TBD.
       tr: Hangi güvenli alan kuralları biliniyor? Bilinmiyorsa kanal başına TBD.
     why_it_matters: UI chrome on social platforms crops careless templates.
+    why_it_matters_i18n:
+      fa: عناصر رابط پلتفرم‌های اجتماعی، قالب‌های بی‌دقت را برش می‌دهند.
+      tr: Sosyal platformlardaki arayüz öğeleri özensiz şablonları kırpar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده"
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek"
     required_when: always
     depends_on: []
     priority: high
@@ -2236,9 +2902,17 @@ questions:
       fa: با توجه به لحن و قاعدهٔ در دسترس بودن، دعوت به اقدام چگونه صدا بدهد؟
       tr: Ses ve bulunurluk kuralına göre eylem çağrısı nasıl duyulsun?
     why_it_matters: CTAs are where unshipped features and fake urgency appear.
+    why_it_matters_i18n:
+      fa: دعوت به اقدام جایی است که قابلیت‌های عرضه‌نشده و فوریت ساختگی سر بر می‌آورند.
+      tr: Eylem çağrıları, yayımlanmamış özelliklerin ve sahte aciliyetin ortaya çıktığı yerdir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No urgency and no “available now” until claims allow it."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بدون فوریت و بدون «اکنون در دسترس» تا وقتی ادعاها اجازه دهند."
+      tr:
+        - "EXAMPLE ONLY: İddialar izin verene kadar aciliyet yok ve “şimdi kullanılabilir” yok."
     required_when: always
     depends_on:
       - brand.verbal.voice
@@ -2269,9 +2943,17 @@ questions:
       fa: کدام نوع پست اول ارزش قالب دارد (تکی، چندتصویری، استوری، ویدیوی کوتاه، بندانگشتی)؟
       tr: Hangi gönderi türleri önce bir şablona değer (tek, karusel, hikâye, kısa video, küçük resim)?
     why_it_matters: The template folder should not contain 30 empty files presented as a system.
+    why_it_matters_i18n:
+      fa: پوشهٔ قالب‌ها نباید 30 فایل خالی داشته باشد که به‌عنوان یک سیستم معرفی شوند.
+      tr: Şablon klasörü, bir sistem gibi sunulan 30 boş dosya içermemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None until a channel is chosen."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ، تا وقتی کانالی انتخاب شود."
+      tr:
+        - "EXAMPLE ONLY: Bir kanal seçilene kadar yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2300,9 +2982,17 @@ questions:
       fa: پست‌ها چگونه بومی می‌شوند بدون ترجمهٔ خودکار خط‌های تأییدشده؟
       tr: Onaylı satırlar otomatik çevrilmeden gönderiler nasıl yerelleştirilir?
     why_it_matters: Social is the fastest way to publish an unapproved translation.
+    why_it_matters_i18n:
+      fa: شبکه‌های اجتماعی سریع‌ترین راه برای انتشار یک ترجمهٔ تأییدنشده‌اند.
+      tr: Sosyal medya, onaylanmamış bir çeviriyi yayımlamanın en hızlı yoludur.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: One approved language only."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: فقط یک زبان تأییدشده."
+      tr:
+        - "EXAMPLE ONLY: Yalnızca onaylı tek bir dil."
     required_when: always
     depends_on:
       - brand.verbal.localization
@@ -2332,9 +3022,17 @@ questions:
       fa: کدام پیش‌تنظیم‌های خروجی تأیید شده‌اند؟ اندازه‌ها را فقط وقتی بنویسید که بررسی کرده‌اید.
       tr: Hangi dışa aktarma hazırları onaylı? Boyutları yalnızca kontrol ettiyseniz yazın.
     why_it_matters: Copied platform sizes go stale. Record the date you checked.
+    why_it_matters_i18n:
+      fa: ابعادِ کپی‌شدهٔ پلتفرم‌ها کهنه می‌شوند. تاریخ بررسی را ثبت کنید.
+      tr: Kopyalanan platform boyutları eskir. Kontrol ettiğiniz tarihi kaydedin.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None checked."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ‌کدام بررسی نشده."
+      tr:
+        - "EXAMPLE ONLY: Hiçbiri kontrol edilmedi."
     required_when: always
     depends_on: []
     priority: high
@@ -2363,9 +3061,17 @@ questions:
       fa: قبل از شروع کار خلاقه، مالک بریف کمپین کیست؟
       tr: Yaratıcı iş başlamadan önce kampanya briefinin sahibi kim?
     why_it_matters: Unowned briefs become accidental approvals.
+    why_it_matters_i18n:
+      fa: بریف‌های بدون مالک به تأییدهای ناخواسته تبدیل می‌شوند.
+      tr: Sahibi olmayan brifler kazara verilmiş onaylara dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: The founder, until a marketing owner exists."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بنیان‌گذار، تا وقتی یک مسئول بازاریابی وجود داشته باشد."
+      tr:
+        - "EXAMPLE ONLY: Bir pazarlama sorumlusu olana kadar kurucu."
     required_when: always
     depends_on: []
     priority: high
@@ -2394,9 +3100,17 @@ questions:
       fa: کمپین‌ها چگونه نام‌گذاری شوند؟
       tr: Kampanyalar nasıl adlandırılsın?
     why_it_matters: Analytics and asset folders share this name.
+    why_it_matters_i18n:
+      fa: تحلیل‌ها و پوشه‌های دارایی از همین نام استفاده می‌کنند.
+      tr: Analitik ve varlık klasörleri bu adı paylaşır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD. Do not use final_v7."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده. از final_v7 استفاده نکنید."
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek. final_v7 kullanmayın."
     required_when: always
     depends_on: []
     priority: high
@@ -2425,9 +3139,18 @@ questions:
       fa: کمپین برای قیمت و در دسترس بودن باید کدام رکورد را نقل کند؟
       tr: Bir kampanya fiyat ve bulunurluk için hangi kaydı alıntılamalı?
     why_it_matters: This is the impact link from sales and product into creative.
+    why_it_matters_i18n:
+      fa: این همان پیوندی است که فروش و محصول را به کار خلاقانه وصل می‌کند.
+      tr: Bu, satış ve üründen yaratıcı işe uzanan etki bağlantısıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: business.sales.pricing and business.product.public_status. Never a slide."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: business.sales.pricing و business.product.public_status. هرگز یک اسلاید."
+      tr:
+        - "EXAMPLE ONLY: business.sales.pricing ve business.product.public_status. Asla bir slayt
+          değil."
     required_when: always
     depends_on: []
     priority: high
@@ -2458,9 +3181,17 @@ questions:
       fa: قبل از اینکه لوگوی شریک کنار لوگوی شما بیاید چه چیزی لازم است؟
       tr: Bir ortak logosu sizinkinin yanına gelmeden önce ne gerekir?
     why_it_matters: Co-branding is a rights and reputation decision.
+    why_it_matters_i18n:
+      fa: برند مشترک یک تصمیم حقوقی و اعتباری است.
+      tr: Ortak markalama bir haklar ve itibar kararıdır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: A named partner record and written permission. None exist yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: یک رکورد شریک با نام مشخص و مجوز کتبی. هنوز هیچ‌کدام وجود ندارد."
+      tr:
+        - "EXAMPLE ONLY: Adı belirtilmiş bir ortak kaydı ve yazılı izin. Henüz hiçbiri yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2490,9 +3221,17 @@ questions:
       fa: مناسبت‌های فصلی یا فرهنگی در محدوده‌اند؟ اگر بله، چه کسی درستی را بررسی می‌کند؟
       tr: Mevsimsel veya kültürel anlar kapsamda mı? Evetse doğruluğu kim kontrol eder?
     why_it_matters: Mascot seasonal variants should not invent holidays.
+    why_it_matters_i18n:
+      fa: نسخه‌های فصلی ماسکات نباید مناسبت ساختگی بسازند.
+      tr: Maskotun mevsimsel varyantları bayram icat etmemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Out of scope until a market is chosen."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تا وقتی بازاری انتخاب نشده، خارج از دامنه است."
+      tr:
+        - "EXAMPLE ONLY: Bir pazar seçilene kadar kapsam dışı."
     required_when: always
     depends_on: []
     priority: high
@@ -2521,9 +3260,17 @@ questions:
       fa: کدام کاربردهای فیزیکی، اگر هست، در محدوده‌اند؟
       tr: Varsa hangi fiziksel uygulamalar kapsamda?
     why_it_matters: Empty print rules should not look like a production manual.
+    why_it_matters_i18n:
+      fa: قواعد چاپی خالی نباید شبیه دفترچهٔ تولید به نظر برسند.
+      tr: Boş baskı kuralları bir üretim kılavuzu gibi görünmemelidir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ."
+      tr:
+        - "EXAMPLE ONLY: Yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2552,9 +3299,17 @@ questions:
       fa: وقتی تولید شروع شود رنگ چاپ چگونه مشخص می‌شود؟
       tr: Üretim başlayınca baskı rengi nasıl belirtilecek?
     why_it_matters: This consumes the color module’s print strategy.
+    why_it_matters_i18n:
+      fa: این بخش از راهبرد چاپی ماژول رنگ استفاده می‌کند.
+      tr: Bu bölüm, renk modülünün baskı stratejisini kullanır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Not applicable. No Pantone values invented."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: موضوعیت ندارد. هیچ مقدار Pantone ساختگی‌ای ساخته نشده است."
+      tr:
+        - "EXAMPLE ONLY: Geçerli değil. Uydurma Pantone değeri yok."
     required_when: always
     depends_on:
       - brand.color.print
@@ -2584,9 +3339,17 @@ questions:
       fa: مقادیر برش و منطقهٔ امن از چاپخانه معلوم است یا TBD؟
       tr: Taşma ve güvenli alan değerleri bir matbaadan biliniyor mu, yoksa TBD mi?
     why_it_matters: Generic millimeters become defects.
+    why_it_matters_i18n:
+      fa: میلی‌مترهای کلی و عمومی به نقص چاپ تبدیل می‌شوند.
+      tr: Genel geçer milimetre değerleri baskı hatasına dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: TBD"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز مشخص نشده"
+      tr:
+        - "EXAMPLE ONLY: Belirlenecek"
     required_when: always
     depends_on: []
     priority: high
@@ -2615,9 +3378,17 @@ questions:
       fa: کدام قواعد کالا، از جمله استفاده از شخصیت، مهم‌اند؟
       tr: Karakter kullanımı dahil hangi ticari ürün kuralları önemli?
     why_it_matters: Physical goods outlive a campaign and need a license path.
+    why_it_matters_i18n:
+      fa: کالاهای فیزیکی از عمر یک کمپین بیشتر دوام می‌آورند و به مسیر مجوز نیاز دارند.
+      tr: Fiziksel ürünler bir kampanyadan daha uzun yaşar ve bir lisans yoluna ihtiyaç duyar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No merchandise."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بدون کالای تبلیغاتی."
+      tr:
+        - "EXAMPLE ONLY: Promosyon ürünü yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2646,9 +3417,17 @@ questions:
       fa: بدون شرایط تجاری خصوصی، به تأمین‌کننده چه گفته شود؟
       tr: Özel ticari koşullar olmadan bir tedarikçiye ne söylenmeli?
     why_it_matters: Production notes are useful. Prices and accounts are restricted elsewhere.
+    why_it_matters_i18n:
+      fa: یادداشت‌های تولید مفیدند. قیمت‌ها و حساب‌ها جای دیگری با دسترسی محدود نگه داشته می‌شوند.
+      tr: Üretim notları faydalıdır. Fiyatlar ve hesaplar başka bir yerde kısıtlı tutulur.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Nothing yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هنوز چیزی نیست."
+      tr:
+        - "EXAMPLE ONLY: Henüz bir şey yok."
     required_when: always
     depends_on: []
     priority: high
@@ -2677,9 +3456,17 @@ questions:
       fa: اولین کاربردهای واقعی باید کدام سطح‌ها را پوشش دهند؟
       tr: İlk gerçek uygulamalar hangi yüzeyleri kapsasın?
     why_it_matters: A gallery of every channel is not a reference implementation.
+    why_it_matters_i18n:
+      fa: گالری‌ای از همهٔ کانال‌ها، پیاده‌سازی مرجع نیست.
+      tr: Her kanalın yer aldığı bir galeri, bir referans uygulama değildir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: None. The portal itself is only a template shell."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هیچ. خود پورتال فقط پوستهٔ یک قالب است."
+      tr:
+        - "EXAMPLE ONLY: Yok. Portalın kendisi yalnızca bir şablon kabuğudur."
     required_when: always
     depends_on: []
     priority: high
@@ -2708,9 +3495,17 @@ questions:
       fa: آیا عرضهٔ واقعی برای مستندسازی هست؟ اگر نه، no.
       tr: Belgelenecek gerçek bir lansman var mı? Yoksa no.
     why_it_matters: The spec asks for a cross-channel exemplar only when source assets exist.
+    why_it_matters_i18n:
+      fa: مشخصات، نمونهٔ چندکاناله را فقط وقتی می‌خواهد که دارایی‌های منبع وجود داشته باشند.
+      tr: Spesifikasyon, kanallar arası bir örneği yalnızca kaynak varlıklar mevcutsa ister.
     question_type: boolean
     examples:
       - "EXAMPLE ONLY: no"
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: no"
+      tr:
+        - "EXAMPLE ONLY: no"
     required_when: always
     depends_on: []
     priority: high
@@ -2739,46 +3534,22 @@ questions:
       fa: بازبینی همیشه باید کدام ناسازگاری را بگیرد؟
       tr: İnceleme her zaman hangi tutarsızlığı yakalamalı?
     why_it_matters: Applications are where contradictions become public.
+    why_it_matters_i18n:
+      fa: کاربردها جایی‌اند که تناقض‌ها علنی می‌شوند.
+      tr: Uygulamalar, çelişkilerin kamuya açık hâle geldiği yerdir.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: A price, a feature status, or a name that does not match the canonical
         record."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: قیمت، وضعیت یک قابلیت یا نامی که با رکورد مرجع یکی نیست."
+      tr:
+        - "EXAMPLE ONLY: Kanonik kayıtla uyuşmayan bir fiyat, özellik durumu veya ad."
     required_when: always
     depends_on: []
     priority: high
     order: 662
-    sensitivity: internal
-    language:
-      - en
-      - fa
-      - tr
-    source_types: *a1
-    related_outputs:
-      - brand/generated/drafts/applications.md
-    related_ids: []
-    completion_rule: non_empty
-    allows_unknown: true
-    required: true
-    weight: 2
-    sector_hints: []
-    status: unanswered
-  - id: brand.applications.reviewer
-    module: applications
-    field_path: brand.applications.reviewer
-    label: Application reviewer
-    prompt:
-      en: Who checks a finished application against the canonical records before it is shown outside the
-        team?
-      fa: چه کسی یک کاربرد تمام‌شده را، پیش از نمایش بیرون تیم، با رکوردهای canonical چک می‌کند؟
-      tr: Bitmiş bir uygulamayı ekip dışına göstermeden önce kanonik kayıtlarla kim kontrol eder?
-    why_it_matters: Examples are where an unapproved price or feature most easily leaks.
-    question_type: long_text
-    examples:
-      - "EXAMPLE ONLY: The brand approver. No external example is approved yet."
-    required_when: always
-    depends_on: []
-    priority: high
-    order: 664
     sensitivity: internal
     language:
       - en
@@ -2804,13 +3575,61 @@ questions:
         دادهٔ خالی)؟
       tr: Örnekler hangi uç durumları içermeli (RTL, logosuz, maskotsuz, azaltılmış hareket, boş veri)?
     why_it_matters: Happy-path mockups hide the rules people need.
+    why_it_matters_i18n:
+      fa: ماکاپ‌های مسیر ایده‌آل، قواعدی را که مردم به آن نیاز دارند پنهان می‌کنند.
+      tr: Yalnızca ideal senaryoyu gösteren maketler insanların ihtiyaç duyduğu kuralları gizler.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: No logo, no mascot, and reduced motion."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بدون لوگو، بدون ماسکات، و با حرکت کاهش‌یافته."
+      tr:
+        - "EXAMPLE ONLY: Logo yok, maskot yok ve azaltılmış hareket."
     required_when: always
     depends_on: []
     priority: high
     order: 663
+    sensitivity: internal
+    language:
+      - en
+      - fa
+      - tr
+    source_types: *a1
+    related_outputs:
+      - brand/generated/drafts/applications.md
+    related_ids: []
+    completion_rule: non_empty
+    allows_unknown: true
+    required: true
+    weight: 2
+    sector_hints: []
+    status: unanswered
+  - id: brand.applications.reviewer
+    module: applications
+    field_path: brand.applications.reviewer
+    label: Application reviewer
+    prompt:
+      en: Who checks a finished application against the canonical records before it is shown outside the
+        team?
+      fa: چه کسی یک کاربرد تمام‌شده را، پیش از نمایش بیرون تیم، با رکوردهای canonical چک می‌کند؟
+      tr: Bitmiş bir uygulamayı ekip dışına göstermeden önce kanonik kayıtlarla kim kontrol eder?
+    why_it_matters: Examples are where an unapproved price or feature most easily leaks.
+    why_it_matters_i18n:
+      fa: نمونه‌ها جایی‌اند که قیمت یا قابلیت تأییدنشده راحت‌تر از همه بیرون می‌زند.
+      tr: Onaylanmamış bir fiyat ya da özellik en kolay örneklerden sızar.
+    question_type: long_text
+    examples:
+      - "EXAMPLE ONLY: The brand approver. No external example is approved yet."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تأییدکنندهٔ برند. هنوز هیچ نمونهٔ بیرونی‌ای تأیید نشده است."
+      tr:
+        - "EXAMPLE ONLY: Marka onaylayıcısı. Henüz onaylanmış harici bir örnek yok."
+    required_when: always
+    depends_on: []
+    priority: high
+    order: 664
     sensitivity: internal
     language:
       - en
@@ -2835,9 +3654,17 @@ questions:
       fa: چه کسی مجاز است قواعد برند و متن عمومی را تأیید کند؟
       tr: Marka kurallarını ve kamuya açık metni kim onaylayabilir?
     why_it_matters: The approval command records this actor. It does not assume a department.
+    why_it_matters_i18n:
+      fa: فرمان تأیید، همین فرد را ثبت می‌کند. وجود یک دپارتمان را فرض نمی‌گیرد.
+      tr: Onay komutu bu kişiyi kaydeder. Bir departman varsaymaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: The founder, recorded as owner."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: بنیان‌گذار، که به‌عنوان مالک ثبت شده است."
+      tr:
+        - "EXAMPLE ONLY: Sahip olarak kaydedilen kurucu."
     required_when: always
     depends_on:
       - business.ops.decisions
@@ -2868,10 +3695,20 @@ questions:
       fa: نسخه‌های تأییدشدهٔ برند چگونه شماره و اعلام شوند؟
       tr: Onaylı marka sürümleri nasıl numaralansın ve duyurulsun?
     why_it_matters: Assets and docs need a shared version story.
+    why_it_matters_i18n:
+      fa: دارایی‌ها و مستندات به روایت نسخه‌گذاری مشترکی نیاز دارند.
+      tr: Varlıklar ve belgeler ortak bir sürüm hikâyesine ihtiyaç duyar.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Semver for the system. 0.1.0 is this template. Brand approvals start at 0.1.0
         draft."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: Semver برای سیستم. 0.1.0 همین قالب است. تأییدهای برند از 0.1.0 پیش‌نویس
+          شروع می‌شوند."
+      tr:
+        - "EXAMPLE ONLY: Sistem için Semver. 0.1.0 bu şablondur. Marka onayları 0.1.0 taslak ile
+          başlar."
     required_when: always
     depends_on: []
     priority: high
@@ -2900,9 +3737,18 @@ questions:
       fa: یک قاعدهٔ تأییدشده چگونه بدون حذف تاریخ بازنشسته شود؟
       tr: Onaylı bir kural, geçmişi silinmeden nasıl emekliye ayrılır?
     why_it_matters: The ledger is append-only. Deprecation is a new record.
+    why_it_matters_i18n:
+      fa: دفتر ثبت فقط افزودنی است. منسوخ‌کردن یک رکورد جدید است.
+      tr: Kayıt defteri yalnızca eklemeye açıktır. Kullanımdan kaldırma yeni bir kayıttır.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Mark deprecated, point to the replacement id, keep the file."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: آن را منسوخ علامت بزنید، به شناسهٔ جایگزین ارجاع دهید و فایل را نگه دارید."
+      tr:
+        - "EXAMPLE ONLY: Kullanımdan kaldırıldı olarak işaretleyin, yerine geçen kimliği gösterin,
+          dosyayı saklayın."
     required_when: always
     depends_on: []
     priority: high
@@ -2931,10 +3777,20 @@ questions:
       fa: کدام پروانه یا قاعدهٔ مالکیت دارایی‌های برندی را که برای شما ساخته می‌شود پوشش می‌دهد؟
       tr: Sizin için üretilen marka varlıklarını hangi lisans veya sahiplik kuralı kapsar?
     why_it_matters: The template code is MIT. Your brand content is not automatically MIT.
+    why_it_matters_i18n:
+      fa: کد قالب MIT است. محتوای برند شما به‌طور خودکار MIT نیست.
+      tr: Şablon kodu MIT lisanslıdır. Marka içeriğiniz kendiliğinden MIT olmaz.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: Undecided. Treat all brand files as all-rights-held by the owner until a
         license is chosen."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: تصمیم گرفته نشده. تا وقتی مجوزی انتخاب شود، همهٔ فایل‌های برند را با همهٔ
+          حقوق محفوظ برای مالک در نظر بگیرید."
+      tr:
+        - "EXAMPLE ONLY: Karar verilmedi. Bir lisans seçilene kadar tüm marka dosyalarını, tüm
+          hakları sahibine ait olarak kabul edin."
     required_when: always
     depends_on: []
     priority: high
@@ -2964,9 +3820,19 @@ questions:
       fa: متن یا طرح پیشنهادی هوش مصنوعی، قبل از تأیید انسان، چگونه برچسب بخورد؟
       tr: İnsan onayından önce yapay zekâ önerisi metin veya görsel nasıl etiketlensin?
     why_it_matters: Provenance stops a suggestion from being mistaken for an owner fact.
+    why_it_matters_i18n:
+      fa: ثبت منشأ نمی‌گذارد یک پیشنهاد با واقعیتی که مالک اعلام کرده اشتباه گرفته شود.
+      tr: Köken bilgisi, bir önerinin sahibin beyan ettiği bir olguyla karıştırılmasını önler.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: source_type agent_suggestion, status draft, never approved automatically."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: source_type agent_suggestion، status draft، هرگز به‌طور خودکار تأیید
+          نمی‌شود."
+      tr:
+        - "EXAMPLE ONLY: source_type agent_suggestion, status draft, asla otomatik olarak
+          onaylanmaz."
     required_when: always
     depends_on: []
     priority: high
@@ -2995,9 +3861,17 @@ questions:
       fa: قواعد تأییدشده هر چند وقت مرور شوند؟
       tr: Onaylı kurallar ne sıklıkla gözden geçirilsin?
     why_it_matters: A library without a review date becomes an archive of stale approvals.
+    why_it_matters_i18n:
+      fa: کتابخانه‌ای که تاریخ بازبینی ندارد، به بایگانی تأییدهای کهنه تبدیل می‌شود.
+      tr: İnceleme tarihi olmayan bir kütüphane, eskimiş onayların arşivine dönüşür.
     question_type: long_text
     examples:
       - "EXAMPLE ONLY: When the offer changes, and at least yearly once something is approved."
+    examples_i18n:
+      fa:
+        - "EXAMPLE ONLY: هر وقت پیشنهاد تغییر کند، و پس از اولین تأیید دست‌کم سالی یک بار."
+      tr:
+        - "EXAMPLE ONLY: Teklif değiştiğinde ve bir şey onaylandıktan sonra en az yılda bir kez."
     required_when: always
     depends_on: []
     priority: high

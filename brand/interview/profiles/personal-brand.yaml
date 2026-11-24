@@ -54,6 +54,10 @@ question_ids:
   - personal.contact.public_channels
   - personal.governance.reviewer
   - personal.privacy.availability
+  - brand.strategy.purpose
+  - brand.strategy.vision
+  - brand.strategy.values
+  - brand.strategy.promise
   - brand.personality.traits
   - brand.verbal.voice
   - brand.verbal.voice_pairs
@@ -61,6 +65,7 @@ question_ids:
   - brand.verbal.localization
   - brand.photo.direction
   - brand.color.roles
+  - brand.color.semantic_map
   - brand.type.intent
   - personal.founder.ventures
   - personal.founder.narrative

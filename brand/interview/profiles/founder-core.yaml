@@ -52,6 +52,7 @@ question_ids:
   - brand.logo.misuse
   - brand.logo.min_size
   - brand.color.roles
+  - brand.color.semantic_map
   - brand.color.themes
   - brand.type.intent
   - brand.type.scale
