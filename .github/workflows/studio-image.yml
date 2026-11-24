@@ -1,0 +1,119 @@
+name: studio-image
+
+# Builds the production Studio image and runs it with the unmodified infra/production/docker-compose.yml,
+# then runs the anonymous smoke test and a backup/restore drill. No secrets are used: the owner
+# sign-in is generated for this run only and GitHub access stays unconfigured (nothing is created).
+on:
+  pull_request:
+    paths:
+      - apps/studio/**
+      - packages/**
+      - infra/production/**
+      - scripts/build-studio.ts
+      - package.json
+      - package-lock.json
+      - .dockerignore
+      - .github/workflows/studio-image.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: studio-image-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  image:
+    # The Studio image is built from the template only; brand repositories never build or test Studio.
+    if: github.repository == 'omidlog/brand-os-template'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lay out /opt/brand-os-studio as on the VPS
+        run: |
+          DEPLOY="$RUNNER_TEMP/brand-os-studio"
+          echo "DEPLOY=$DEPLOY" >> "$GITHUB_ENV"
+          mkdir -p "$DEPLOY/secrets" "$DEPLOY/backups"
+          ln -s "$GITHUB_WORKSPACE" "$DEPLOY/src"
+          cp infra/production/docker-compose.yml "$DEPLOY/docker-compose.yml"
+          cp infra/production/.env.example "$DEPLOY/.env"
+          sed -i "s/^STUDIO_IMAGE_TAG=.*/STUDIO_IMAGE_TAG=${GITHUB_SHA::12}/; s/^STUDIO_BUILD_REVISION=.*/STUDIO_BUILD_REVISION=${GITHUB_SHA}/" "$DEPLOY/.env"
+          sudo install -d -m 0700 -o 1000 -g 1000 "$DEPLOY/data"
+          # The VPS publishes on the shared proxy gateway 172.18.0.1; recreate that address here.
+          docker network create --subnet 172.18.0.0/16 --gateway 172.18.0.1 ci_proxy_gateway
+
+      - name: Validate Compose
+        working-directory: ${{ env.DEPLOY }}
+        run: |
+          touch secrets/owner.env
+          docker compose config --quiet
+          rm secrets/owner.env
+
+      - name: Build the image
+        working-directory: ${{ env.DEPLOY }}
+        run: docker compose build
+
+      - name: Image runs as a non-root user and carries the revision label
+        run: |
+          test "$(docker image inspect -f '{{.Config.User}}' "brand-os-studio:${GITHUB_SHA::12}")" = node
+          test "$(docker image inspect -f '{{ index .Config.Labels "org.opencontainers.image.revision" }}' "brand-os-studio:${GITHUB_SHA::12}")" = "$GITHUB_SHA"
+
+      - name: Owner bootstrap in an isolated container (no network)
+        working-directory: ${{ env.DEPLOY }}
+        run: |
+          umask 077
+          openssl rand -base64 24 | docker run --rm -i --network none "brand-os-studio:${GITHUB_SHA::12}" \
+            node dist/cli.mjs bootstrap-owner --login ci-owner > secrets/owner.env 2>/dev/null
+          grep -q "^STUDIO_OWNER_TOTP_SECRET='" secrets/owner.env
+
+      - name: Start and wait for healthy
+        working-directory: ${{ env.DEPLOY }}
+        run: |
+          docker compose up -d
+          for i in $(seq 1 30); do
+            state="$(docker inspect -f '{{.State.Health.Status}}' brand-os-studio-studio-1)"
+            [ "$state" = healthy ] && break
+            sleep 2
+          done
+          docker compose ps
+          test "$(docker inspect -f '{{.State.Health.Status}}' brand-os-studio-studio-1)" = healthy
+          test "$(docker compose exec -T studio id -u)" = 1000
+
+      - name: Published only on 172.18.0.1:8083
+        run: |
+          ss -ltnH | awk '{print $4}' | grep -x '172.18.0.1:8083'
+          ! ss -ltnH | awk '{print $4}' | grep -E '^(0\.0\.0\.0|\*|\[::\]):8083$'
+
+      - name: Smoke test (upstream, as Caddy calls it)
+        run: infra/production/smoke-test.sh --base http://172.18.0.1:8083 --host studio.omidataei.com --expect-https
+
+      - name: Read-only root filesystem and restart keep state
+        working-directory: ${{ env.DEPLOY }}
+        run: |
+          ! docker compose exec -T studio sh -c 'echo x > /app/x' 2>/dev/null
+          docker compose restart studio
+          sleep 5
+          infra_smoke="$GITHUB_WORKSPACE/infra/production/smoke-test.sh"
+          "$infra_smoke" --base http://172.18.0.1:8083 --host studio.omidataei.com --expect-https > /dev/null
+
+      - name: Backup and isolated restore drill
+        working-directory: ${{ env.DEPLOY }}
+        run: |
+          sudo "$GITHUB_WORKSPACE/infra/production/backup.sh" --data data --dest backups
+          archive="$(sudo ls -1t backups/*.tar.gz | head -n1)"
+          sudo "$GITHUB_WORKSPACE/infra/production/restore.sh" "$archive" "$RUNNER_TEMP/restore-drill"
+          sudo chown -R 1000:1000 "$RUNNER_TEMP/restore-drill"
+          docker run --rm --network none -v "$RUNNER_TEMP/restore-drill:/data" "brand-os-studio:${GITHUB_SHA::12}" node dist/cli.mjs brands
+
+      - name: Logs
+        if: always()
+        working-directory: ${{ env.DEPLOY }}
+        run: docker compose logs --no-color | grep -v -E 'STUDIO_(OWNER|SESSION)' || true
+
+      - name: Stop
+        if: always()
+        working-directory: ${{ env.DEPLOY }}
+        run: docker compose down

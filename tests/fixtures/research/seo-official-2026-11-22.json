@@ -1,0 +1,308 @@
+{
+  "schema": "brand-os.research-bundle/1",
+  "recorded_with": "brand:seo research capture (live)",
+  "recorded_at": "2026-11-22T10:57:54.935Z",
+  "note": "Recorded 2026-11-22 by brand:seo research capture with the live HTTPS adapter (accept-language en). Every quote was checked on the fetched page; content_sha256 is the hash of the fetched bytes. Tests replay it offline. Re-capture before relying on it after the staleness limits.",
+  "sources": [
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "final_url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+      "publisher": "Google Search Central",
+      "title": "SEO Starter Guide: The Basics | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "search_platform_guidance",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:49.686Z",
+      "page_last_updated": "Last updated 2025-12-10 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "1f2b69fcf316fef5bb1eef640b54fca6144bf2e4b19b3547130fc5da565d358b",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.seo.no_guaranteed_ranking",
+          "claim": "Google states there is no secret that automatically ranks a site first.",
+          "stance": "supports",
+          "quote": "There are no secrets here that'll automatically rank your site first in Google (sorry!)."
+        },
+        {
+          "claim_key": "google.seo.changes_take_time",
+          "claim": "Changes take from hours to months to be reflected.",
+          "stance": "supports",
+          "quote": "Every change you make will take some time to be reflected on Google's end. Some changes might take effect in a few hours, others could take several months."
+        },
+        {
+          "claim_key": "google.seo.index_not_guaranteed",
+          "claim": "Indexing is not guaranteed; following Search Essentials makes appearing more likely.",
+          "stance": "supports",
+          "quote": "While there's no guarantee that any particular site will be added to Google's index, sites that follow the Search Essentials are more likely to show up in Google's search results."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/essentials",
+      "final_url": "https://developers.google.com/search/docs/essentials",
+      "publisher": "Google Search Central",
+      "title": "Google Search Essentials (formerly Webmaster Guidelines) | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_policy",
+      "tier": "primary",
+      "topic": "search_platform_guidance",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:50.101Z",
+      "page_last_updated": "Last updated 2025-12-10 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "ceb6d22b23119c207a0fb3c6d11bfc9b9e25c8d605da455fa5da0a7cb58f3736",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.essentials.technical_minimum",
+          "claim": "Technical requirements are the minimum a page needs to be shown.",
+          "stance": "supports",
+          "quote": "The technical requirements cover the bare minimum that Google Search needs from a web page in order to show it in search results."
+        },
+        {
+          "claim_key": "google.essentials.no_crawl_guarantee",
+          "claim": "Meeting requirements does not guarantee crawling, indexing or serving.",
+          "stance": "supports",
+          "quote": "It's important to note that just because a page meets all of these requirements and best practices, doesn't mean that Google will crawl, index, or serve its content."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "final_url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "publisher": "Google Search Central",
+      "title": "Spam Policies for Google Web Search | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_policy",
+      "tier": "primary",
+      "topic": "search_platform_guidance",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:50.415Z",
+      "page_last_updated": "Last updated 2026-08-28 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "420d0a3a859463e566cb8403a12dee12150de63cc624703190efad916c483578",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.spam.scaled_content_abuse",
+          "claim": "Mass-generated pages made to manipulate rankings are scaled content abuse.",
+          "stance": "supports",
+          "quote": "Scaled content abuse is when many pages are generated for the primary purpose of manipulating search rankings and not helping users."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "final_url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "publisher": "Google Search Central",
+      "title": "AI Features and Your Website | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "ai_search_features",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:50.803Z",
+      "page_last_updated": "Last updated 2025-12-10 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "bdb2c4da004e656bacbcdf262be4ee7ac25d2d6c250b4123168d4516aa250f50",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.ai_features.no_special_optimization",
+          "claim": "No additional requirements or special optimization for AI Overviews / AI Mode.",
+          "stance": "supports",
+          "quote": "There are no additional requirements to appear in AI Overviews or AI Mode, nor other special optimizations necessary."
+        },
+        {
+          "claim_key": "google.ai_features.supporting_link_eligibility",
+          "claim": "A supporting link must be indexed and snippet-eligible.",
+          "stance": "supports",
+          "quote": "To be eligible to be shown as a supporting link in AI Overviews or AI Mode, a page must be indexed and eligible to be shown in Google Search with a snippet, fulfilling the Search technical requirements."
+        },
+        {
+          "claim_key": "google.ai_features.no_special_files",
+          "claim": "No AI text files, special markup or special schema needed.",
+          "stance": "supports",
+          "quote": "You don't need to create new machine readable files, AI text files, or markup to appear in these features."
+        },
+        {
+          "claim_key": "google.ai_features.reported_in_search_console",
+          "claim": "AI feature appearances count in overall Search Console traffic.",
+          "stance": "supports",
+          "quote": "Just like the rest of the search results page, sites appearing in AI features (such as AI Overviews and AI Mode) are included in the overall search traffic in Search Console."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "final_url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "publisher": "Google Search Central",
+      "title": "Localized Versions of your Pages | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "international_search",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:51.041Z",
+      "page_last_updated": "Last updated 2026-09-21 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "13d17d4a65173aa3f25059348ad0f0f8f5f64c4bb3cf0b8d3ac1d4bfd865cb83",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.international.hreflang_variations",
+          "claim": "hreflang tells Google pages are localized variations of the same content.",
+          "stance": "supports",
+          "quote": "Use hreflang to tell Google about the variations of your content, so that we can understand that these pages are localized variations of the same content."
+        },
+        {
+          "claim_key": "google.international.language_detection",
+          "claim": "Google detects page language algorithmically, not from hreflang/lang.",
+          "stance": "supports",
+          "quote": "Google doesn't use hreflang or the HTML lang attribute to detect the language of a page; instead, we use algorithms to determine the language."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "final_url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "publisher": "Google Search Central",
+      "title": "Robots.txt Introduction and Guide | Google Search Central | Documentation | Google for Developers",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "crawler_controls",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:51.669Z",
+      "page_last_updated": "Last updated 2025-12-10 UTC",
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "68987481275d3c05dfc92b984b6d27ccd6e396437837e9baad81aaa5097bc381",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "google.robots.not_for_deindexing",
+          "claim": "robots.txt manages crawl load; it does not keep a page out of Google.",
+          "stance": "supports",
+          "quote": "This is used mainly to avoid overloading your site with requests; it is not a mechanism for keeping a web page out of Google."
+        },
+        {
+          "claim_key": "google.robots.noindex_to_exclude",
+          "claim": "Use noindex or password protection to keep a page out.",
+          "stance": "supports",
+          "quote": "To keep a web page out of Google, block indexing with noindex or password-protect the page."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developers.openai.com/api/docs/bots",
+      "final_url": "https://developers.openai.com/api/docs/bots",
+      "publisher": "OpenAI",
+      "title": "Overview of OpenAI Crawlers",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "crawler_controls",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:51.869Z",
+      "page_last_updated": null,
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "a0d0120a33127266278aff753c7b76593309d809d62b3749623e1ee142c22f6d",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "openai.crawlers.independent_settings",
+          "claim": "OAI-SearchBot and GPTBot are controlled independently.",
+          "stance": "supports",
+          "quote": "Each setting is independent of the others – for example, a webmaster can allow OAI-SearchBot in order to appear in search results while disallowing GPTBot to indicate that crawled content should not be used for training OpenAI’s generative AI foundation models."
+        },
+        {
+          "claim_key": "openai.crawlers.searchbot_purpose",
+          "claim": "OAI-SearchBot surfaces sites in ChatGPT search features.",
+          "stance": "supports",
+          "quote": "OAI-SearchBot is used to surface websites in search results in ChatGPT’s search features."
+        },
+        {
+          "claim_key": "openai.crawlers.searchbot_opt_out",
+          "claim": "Opting out of OAI-SearchBot removes a site from ChatGPT search answers.",
+          "stance": "supports",
+          "quote": "Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links."
+        },
+        {
+          "claim_key": "openai.crawlers.gptbot_training",
+          "claim": "Disallowing GPTBot signals content should not train models.",
+          "stance": "supports",
+          "quote": "Disallowing GPTBot indicates a site’s content should not be used in training generative AI foundation models."
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "url": "https://developer.apple.com/app-store/product-page/",
+      "final_url": "https://developer.apple.com/app-store/product-page/",
+      "publisher": "Apple Developer",
+      "title": "Creating Your Product Page - App Store - Apple Developer",
+      "source_type": "official_product_docs",
+      "tier": "primary",
+      "topic": "app_store_guidance",
+      "language": "en",
+      "retrieved_at": "2026-11-22T10:57:53.134Z",
+      "page_last_updated": null,
+      "published_at": null,
+      "tool": "brand-os live https fetch",
+      "adapter": "live",
+      "query": null,
+      "content_sha256": "13460030499be6abe73c3585f566e4a28f9d37e31a1802c970ec03a9659ada47",
+      "quotes_verified": true,
+      "excerpts": [
+        {
+          "claim_key": "apple.app_store.name_limit",
+          "claim": "App name limit is 30 characters.",
+          "stance": "supports",
+          "quote": "An app name can be up to 30 characters long."
+        },
+        {
+          "claim_key": "apple.app_store.subtitle_limit",
+          "claim": "Subtitle limit is 30 characters.",
+          "stance": "supports",
+          "quote": "A subtitle can be up to 30 characters long and appears below your app’s name throughout the App Store."
+        },
+        {
+          "claim_key": "apple.app_store.keywords_limit",
+          "claim": "Keyword field limit is 100 characters.",
+          "stance": "supports",
+          "quote": "Keywords are limited to 100 characters total, with terms separated by commas and no spaces."
+        },
+        {
+          "claim_key": "apple.app_store.promo_text_not_ranking",
+          "claim": "Promotional text does not affect App Store search ranking.",
+          "stance": "supports",
+          "quote": "In addition, keep in mind that promotional text doesn’t affect your app’s search ranking so it should not be used to display keywords."
+        }
+      ]
+    }
+  ]
+}

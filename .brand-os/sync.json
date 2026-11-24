@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "template": {
+    "repository": "omidlog/brand-os-template"
+  },
+  "record": "brand/template-version.json",
+  "note": "Ordered rules; the first matching rule decides. core = owned by the template and replaced by an update. brand = owned by the brand and never touched. merge = merged line by line; a conflict is reported, never forced. A path no rule matches is treated as brand.",
+  "rules": [
+    { "kind": "brand", "paths": ["brand/**"] },
+    {
+      "kind": "brand",
+      "paths": [
+        "apps/docs/src/data/*.json",
+        "apps/docs/src/css/tokens.css",
+        "apps/docs/generated/**",
+        "apps/docs/static/llms.txt",
+        "apps/docs/static/llms-full.txt",
+        "apps/docs/static/release-manifest.json",
+        "llms.txt",
+        "llms-full.txt"
+      ]
+    },
+    {
+      "kind": "merge",
+      "paths": ["package.json", "package-lock.json", ".gitignore", "README.md", "AGENTS.md", "CLAUDE.md", "CHANGELOG.md"]
+    },
+    {
+      "kind": "core",
+      "paths": [
+        ".brand-os/**",
+        ".github/**",
+        "agent-skills/**",
+        "apps/**",
+        "docs/**",
+        "docs-internal/**",
+        "examples/**",
+        "infra/**",
+        "packages/**",
+        "schemas/**",
+        "scripts/**",
+        "tests/**",
+        ".dockerignore",
+        ".env.example",
+        ".gitattributes",
+        "LICENSE",
+        "eslint.config.js",
+        "tsconfig.json"
+      ]
+    }
+  ]
+}

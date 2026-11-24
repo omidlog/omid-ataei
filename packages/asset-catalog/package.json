@@ -1,0 +1,10 @@
+{
+  "name": "@brand-os/asset-catalog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./normalize": "./src/normalize.ts"
+  }
+}

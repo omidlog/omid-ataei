@@ -1,0 +1,44 @@
+# Brand OS Studio site block for the shared edge Caddy (container financebot-caddy-1,
+# config /root/financebot/Caddyfile). APPEND this block to that file after taking a backup; do not
+# replace or reorder the other site blocks. Then validate and reload gracefully:
+#
+#   docker exec financebot-caddy-1 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+#   docker exec financebot-caddy-1 caddy reload   --config /etc/caddy/Caddyfile --adapter caddyfile
+#
+# Caddy obtains and renews the Let's Encrypt certificate automatically (the A record for
+# studio.omidataei.com points at this VPS, DNS-only). HTTP is redirected to HTTPS automatically.
+#
+# Studio sets its own strict Content-Security-Policy (and a different, sandboxing one on asset
+# previews), so the proxy must NOT set or replace Content-Security-Policy. The headers below repeat
+# the app's own values as defense in depth and remove the Server banner.
+studio.omidataei.com {
+	# Compress static files only. HTML pages carry CSRF tokens, so they are not compressed (BREACH).
+	@studio_static path /static/*
+	encode @studio_static zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "same-origin"
+		X-Robots-Tag "noindex, nofollow"
+		-Server
+		-X-Powered-By
+	}
+
+	# Studio accepts at most 32 KiB form posts and 1 MiB webhook deliveries.
+	request_body {
+		max_size 1MB
+	}
+
+	# Caddy passes the original Host (Studio answers only for studio.omidataei.com) and sets
+	# X-Forwarded-For; Studio uses its rightmost entry for rate limits. Keepalive stays below the
+	# app's 65s keep-alive so Caddy never reuses a connection Node has closed.
+	reverse_proxy 172.18.0.1:8083 {
+		transport http {
+			dial_timeout 5s
+			response_header_timeout 90s
+			keepalive 30s
+		}
+	}
+}

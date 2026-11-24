@@ -1,0 +1,17 @@
+# Allowlist for the Studio image (infra/production/Dockerfile). Everything is excluded unless named
+# here, so brand content, brand/.private, .env files, the docs app and .git never reach a build.
+*
+!package.json
+!package-lock.json
+!tsconfig.json
+!packages/
+!apps/studio/
+!scripts/build-studio.ts
+
+# Never, even inside the allowlisted folders.
+**/node_modules
+**/dist
+**/.env
+**/.env.*
+**/.studio-data
+**/*.log

@@ -1,0 +1,7 @@
+{
+  "$comment": "Visual release gate policy (V5.1). public_min_score: lowest 0–5 rubric score a public module may have (docs-internal/VISUAL.md). standards_block: 'release' = an unverified cited standard stops `npm run visual:gate -- --release` and is listed as a release blocker on every other run; 'always' = it fails every run, CI included. overrides: owner-only waivers, each with target (module:<id> or standard:<framework_id>), reason, approved_by (a name, never pending), approved_on and expires_on. Agents never add an override.",
+  "schema_version": 1,
+  "public_min_score": 4,
+  "standards_block": "release",
+  "overrides": []
+}
