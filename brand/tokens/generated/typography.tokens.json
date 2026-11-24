@@ -1,0 +1,196 @@
+{
+  "$description": "DRAFT tokens generated from approved brand.type.scale. Not approved tokens until brand/tokens/approvals.yaml holds a matching hash.",
+  "type": {
+    "fontFamily": {
+      "display-fa": {
+        "$type": "fontFamily",
+        "$value": [
+          "Shams",
+          "Yekan",
+          "Tahoma",
+          "sans-serif"
+        ],
+        "$description": "Draft from approved brand.type.scale (display-fa).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-fa": {
+        "$type": "fontFamily",
+        "$value": [
+          "Yekan",
+          "Tahoma",
+          "sans-serif"
+        ],
+        "$description": "Draft from approved brand.type.scale (body-fa).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "display-en": {
+        "$type": "fontFamily",
+        "$value": [
+          "Rajdhani",
+          "Arial Narrow",
+          "sans-serif"
+        ],
+        "$description": "Draft from approved brand.type.scale (display-en).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-en": {
+        "$type": "fontFamily",
+        "$value": [
+          "Inter",
+          "system-ui",
+          "sans-serif"
+        ],
+        "$description": "Draft from approved brand.type.scale (body-en).",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      }
+    },
+    "fontSize": {
+      "display-fa": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        },
+        "$description": "Draft size from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-fa": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        },
+        "$description": "Draft size from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "display-en": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        },
+        "$description": "Draft size from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-en": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        },
+        "$description": "Draft size from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      }
+    },
+    "lineHeight": {
+      "display-fa": {
+        "$type": "number",
+        "$value": 1.3,
+        "$description": "Draft line height from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-fa": {
+        "$type": "number",
+        "$value": 1.9,
+        "$description": "Draft line height from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "display-en": {
+        "$type": "number",
+        "$value": 1.1,
+        "$description": "Draft line height from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      },
+      "body-en": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "Draft line height from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1
+          }
+        }
+      }
+    }
+  }
+}
