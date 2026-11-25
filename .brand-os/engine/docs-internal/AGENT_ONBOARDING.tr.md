@@ -143,3 +143,7 @@ Bir belirteç sızmış olabilirse (bir yere yapıştırdıysanız) hemen iptal 
 | `… was revoked. Refusing to start.` veya `… does not match an issued token` | Belirteç iptal edildi veya yanlış kopyalandı. | Yeni belirteç oluşturun (Adım 2) ve yeniden bağlayın (Adım 3). |
 | Her yanıtta `denied` | Sunucu belirteç olmadan başladı. | Adım 3'ü tekrarlayın, sonra Claude Code'u yeniden başlatın. |
 | `refuses to run while BRAND_OS_AGENT_TOKEN is set` | Sahip komutunu asistan belirteci olan bir kabukta çalıştırdınız. | Yeni bir terminal açın ve tekrar çalıştırın. |
+| `has more than one hard link` veya `appears to be synced by Google Drive` | Marka klasörü bulutla eşitlenen bir klasörde; onay sırrınız buluta yükleniyor. | Klasörü taşıyın (örneğin `~/Code`), `npm run brand:doctor -- --fix-links`, ardından `npm run brand:doctor -- --rotate-approval-secret` çalıştırın. |
+
+Onaylanacak çok şey mi var? `npm run brand:pending -- --lang tr` hepsini sade bir dille listeler ve tek bir kanıtla hepsini
+onaylayan tek komutu yazar. Asistan bunu asla sizin yerinize çalıştırmaz.

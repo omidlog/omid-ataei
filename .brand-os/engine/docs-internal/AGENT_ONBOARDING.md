@@ -143,3 +143,7 @@ If a token may have leaked (you pasted it somewhere), revoke it right away and i
 | `… was revoked. Refusing to start.` or `… does not match an issued token` | The token was revoked or mistyped. | Issue a new token (Step 2) and connect again (Step 3). |
 | `denied` in every answer | The server started without a token. | Repeat Step 3, then restart Claude Code. |
 | `refuses to run while BRAND_OS_AGENT_TOKEN is set` | You ran an owner command in a shell that holds an agent token. | Open a new terminal and run it again. |
+| `has more than one hard link` or `appears to be synced by Google Drive` | The brand folder is inside a cloud-synced folder, which uploads your approval secret. | Move the folder (for example to `~/Code`), run `npm run brand:doctor -- --fix-links`, then `npm run brand:doctor -- --rotate-approval-secret`. |
+
+Many things to approve? `npm run brand:pending` lists them in plain words and prints the one command that approves them
+all with one proof. An agent never runs it for you.

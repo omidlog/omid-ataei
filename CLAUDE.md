@@ -1,4 +1,4 @@
-<!-- Written by the Brand OS engine 0.2.0-4eee001; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
+<!-- Written by the Brand OS engine 0.2.0-68cd820; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
 # Claude Code
 
 Follow `AGENTS.md`. This file does not restate those rules.

@@ -56,7 +56,7 @@ The content strategy (`npm run brand:content`, a `content` strategy record in `b
 
 All of these produce drafts only. Restricted questions are refused: the owner answers them in the interactive interview. `brand.profile: founder-core` in `brand/brand.config.yaml` narrows the interview to about 40 questions. `brand.profile: personal-brand` interviews a person (see below).
 
-Approval is a human step: `npm run brand:review -- --module <id>`, then `npm run brand:approve -- --module <id>` (or `-- --ids <id,chg-…>`, or `-- --all-pending` for every pending fact, change, evidence item and draft asset). The proof comes from `BRAND_OS_APPROVAL_PROOF`, piped stdin, the owner's macOS Keychain entry, or a hidden prompt; the Keychain is never read while `BRAND_OS_AGENT_TOKEN` is set; `--proof` on the command line is refused, and both commands refuse to run while `BRAND_OS_AGENT_TOKEN` is set. `--actor owner` alone is rejected. The proof file is `brand/.private/approval-secret` and is not committed. Finance and restricted fields need the finance or owner role plus that proof. Publication is a separate command, `npm run brand:publish -- --ids <id>`, and accepts only approved public facts. An agent never approves or publishes; it stops and hands the ids to a human.
+Approval is a human step: `npm run brand:review -- --module <id>`, then `npm run brand:approve -- --module <id>` (or `-- --ids <id,chg-…>`, or `-- --all-pending` for every pending fact, change, evidence item, draft asset, strategy and calendar-week draft, social style and creative draft, each at the digest its own review shows; `brand:pending` lists them). The proof comes from `BRAND_OS_APPROVAL_PROOF`, piped stdin, the owner's macOS Keychain entry, or a hidden prompt; the Keychain is never read while `BRAND_OS_AGENT_TOKEN` is set; `--proof` on the command line is refused, and both commands refuse to run while `BRAND_OS_AGENT_TOKEN` is set. `--actor owner` alone is rejected. The proof file is `brand/.private/approval-secret` and is not committed. Finance and restricted fields need the finance or owner role plus that proof. Publication is a separate command, `npm run brand:publish -- --ids <id>`, and accepts only approved public facts. An agent never approves, publishes, runs `brand:pending`, `brand:doctor --fix-links` or `--rotate-approval-secret`; it stops and hands the ids to a human. If a read fails with `has more than one hard link`, tell the owner the brand folder is likely inside a cloud-synced folder (the message names the fix); do not copy or relink files yourself.
 
 Assets follow the same rule. An agent may run `npm run brand:assets -- check`, `npm run brand:assets -- normalize <id>`, `npm run brand:assets -- add <file> --id <asset.id> --name "…"` (never edit `asset-manifest.yaml` by hand; `add` writes a `draft` record with checksum and media type and prints the publication verdict) and `npm run brand:assets -- prune-examples [--dry-run]`; it never runs `npm run brand:assets -- approve`. If normalizing resets an approval, hand the asset id to the owner.
 
@@ -128,7 +128,9 @@ stacks with zones, token ids and text limits (guide: `docs-internal/SOCIAL_STYLE
 MCP `social_style_kit` or `npm run brand:query -- --tool social_style_kit [--surface …]` (design, creative-read,
 content-read, internal-read or marketing token). Use only listed styles, one per deliverable; never invent or mix a
 style, and never edit the kit or run `brand:social` (owner only, refused under an agent token). Propose a missing style
-to the owner as a draft. Approval of a style is design guidance only and authorizes no post.
+to the owner as a draft. Approval of a style is design guidance only and authorizes no post. Each layer's
+`font_resolved` names the token for your language and a `family` only when that token is approved; `family: null`
+with state `draft` or `example` means there is no approved brand font yet, so never use an EXAMPLE family as the brand's.
 
 ## Task context
 

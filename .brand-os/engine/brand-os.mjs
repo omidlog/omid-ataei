@@ -1,7 +1,7 @@
 import { createRequire as __engineRequire } from 'node:module'; const require = __engineRequire(import.meta.url);
 import {
   ENGINE_COMMANDS
-} from "./chunks/chunk-HPW4GNLU.mjs";
+} from "./chunks/chunk-YKITUD2J.mjs";
 import "./chunks/chunk-QDMMEM6P.mjs";
 
 // scripts/engine/entry.ts
@@ -14,31 +14,31 @@ if (fs.existsSync(assets)) process.env.BRAND_OS_ENGINE_ASSETS ??= assets;
 var versionFile = path.join(here, "VERSION");
 if (fs.existsSync(versionFile)) process.env.BRAND_OS_ENGINE_VERSION ??= fs.readFileSync(versionFile, "utf8").trim();
 var loaders = {
-  brand: () => import("./chunks/brand-PAGWFYAI.mjs"),
-  coach: () => import("./chunks/coach-244SQJ5D.mjs"),
-  knowledge: () => import("./chunks/knowledge-ZR2VNOE7.mjs"),
-  creative: () => import("./chunks/creative-HZ7JYV46.mjs"),
-  seo: () => import("./chunks/seo-I2QIAKB4.mjs"),
-  strategy: () => import("./chunks/strategy-WN7NFYYA.mjs"),
-  competitive: () => import("./chunks/competitive-XQZSEVEI.mjs"),
-  identity: () => import("./chunks/identity-IPM5XZWP.mjs"),
-  "visual-dna": () => import("./chunks/visual-dna-545NCJQZ.mjs"),
-  content: () => import("./chunks/content-SXXCEQ6H.mjs"),
-  social: () => import("./chunks/social-W56TU2XJ.mjs"),
-  runtime: () => import("./chunks/runtime-UZ66OSZP.mjs"),
-  pack: () => import("./chunks/pack-M7CU6JQM.mjs"),
-  acceptance: () => import("./chunks/acceptance-DV4H4ZTD.mjs"),
-  assurance: () => import("./chunks/assurance-GYUV2Z2S.mjs"),
-  "assurance-review": () => import("./chunks/assurance-review-QHOIIVHT.mjs"),
-  "assurance-link": () => import("./chunks/assurance-link-57QOFHQE.mjs"),
-  "export-visual": () => import("./chunks/export-visual-3J3WDDNX.mjs"),
-  mcp: () => import("./chunks/mcp-ETR445TP.mjs"),
-  validate: () => import("./chunks/validate-LX6RQQK7.mjs"),
+  brand: () => import("./chunks/brand-HS25QTX2.mjs"),
+  coach: () => import("./chunks/coach-OGF3B6XX.mjs"),
+  knowledge: () => import("./chunks/knowledge-3EGTFQ3O.mjs"),
+  creative: () => import("./chunks/creative-3BMY55S4.mjs"),
+  seo: () => import("./chunks/seo-VQUSFJAZ.mjs"),
+  strategy: () => import("./chunks/strategy-DHA4XU57.mjs"),
+  competitive: () => import("./chunks/competitive-3ZOMVCV4.mjs"),
+  identity: () => import("./chunks/identity-K7G2CIJ5.mjs"),
+  "visual-dna": () => import("./chunks/visual-dna-BFYEQIUD.mjs"),
+  content: () => import("./chunks/content-R3GY4VAU.mjs"),
+  social: () => import("./chunks/social-DEWYSFUP.mjs"),
+  runtime: () => import("./chunks/runtime-LW5TCD2W.mjs"),
+  pack: () => import("./chunks/pack-54MSJ7GM.mjs"),
+  acceptance: () => import("./chunks/acceptance-3YDDQYAE.mjs"),
+  assurance: () => import("./chunks/assurance-6AJXJPL2.mjs"),
+  "assurance-review": () => import("./chunks/assurance-review-IWC4OJLE.mjs"),
+  "assurance-link": () => import("./chunks/assurance-link-JX3OVVDO.mjs"),
+  "export-visual": () => import("./chunks/export-visual-WFKMZL4I.mjs"),
+  mcp: () => import("./chunks/mcp-I4Q5EKC4.mjs"),
+  validate: () => import("./chunks/validate-HL2ETXFA.mjs"),
   "tokens-build": () => import("./chunks/cli-QWEDZ2KU.mjs"),
-  "prepare-docs": () => import("./chunks/prepare-docs-3277PW2G.mjs"),
-  check: () => import("./chunks/check-M5O2HIIW.mjs"),
-  scaffold: () => import("./chunks/scaffold-cli-XONXIKGO.mjs"),
-  convert: () => import("./chunks/convert-cli-XGGFVRIQ.mjs")
+  "prepare-docs": () => import("./chunks/prepare-docs-34CPA3VL.mjs"),
+  check: () => import("./chunks/check-3HPAEMRY.mjs"),
+  scaffold: () => import("./chunks/scaffold-cli-K7ITXUVE.mjs"),
+  convert: () => import("./chunks/convert-cli-Z2V7HPPT.mjs")
 };
 var [command, ...args] = process.argv.slice(2);
 if (command === void 0 || command === "help" || command === "--help") {
