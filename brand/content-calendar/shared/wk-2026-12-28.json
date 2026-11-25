@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "content_week",
+  "week_id": "wk-2026-12-28",
+  "brand_slug": "omid-ataei",
+  "revision": 1,
+  "content_sha256": "d0c4b13b03c36ccc5fc18253bf81cda150ac101224c7742b856135b9dc94817b",
+  "approved_at": "2026-11-25T11:07:49.846Z",
+  "week_start": "2026-12-28",
+  "week_end": "2027-01-03",
+  "strategy": {
+    "strategy_id": "content-main",
+    "revision": 1
+  },
+  "languages": [
+    "fa"
+  ],
+  "slots": [
+    {
+      "id": "s01",
+      "date": "2026-12-28",
+      "channel": "instagram",
+      "format": "post",
+      "pillar": "p4",
+      "pillar_name": "هوش مصنوعی در کسب‌وکارهای واقعی",
+      "language": "fa",
+      "key_message": "brand.strategy.promise",
+      "offer": null,
+      "cta": "personal.consulting.cta",
+      "hook": null,
+      "angle": null,
+      "research": null,
+      "status": "approved"
+    }
+  ],
+  "gaps": [],
+  "shared_at": "2026-11-25T11:51:03.394Z"
+}
