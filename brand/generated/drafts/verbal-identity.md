@@ -181,3 +181,30 @@ do: من پیشنهاد می‌کنم که… | don't: قول بهت می‌دم
 
 Approved by: owner
 <!-- field:brand.verbal.voice_pairs end -->
+
+<!-- field:brand.verbal.stories start -->
+### Signature stories
+
+- Question: `brand.verbal.stories`
+- Field: `brand.verbal.stories`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:45.866Z
+- Answer id: ans-0201
+
+Value:
+
+از طراحی تا کسب‌وکار | چرا از طراحی گرافیک به استراتژی رسیدم
+شش سال طراحان آزاد | اداره‌کردن تیم چطور کسب‌وکار را یادم داد
+مارکتینگ در بازارهای مالی | درس‌های مدیریت مارکتینگ در یک بازار سخت
+Fiko از دل یک درد | هر استارتاپم از مشکلی شروع شد که خودم داشتم
+ساختن دادوین | چرا سراغ فناوری حقوقی رفتم
+ساختن Brand OS با هوش مصنوعی | ساختن ابزار داخلی با ایجنت‌ها
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:brand.verbal.stories end -->

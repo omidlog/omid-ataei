@@ -149,3 +149,25 @@ Value:
 
 Approved by: owner
 <!-- field:personal.positioning.boundaries end -->
+
+<!-- field:personal.services.ladder start -->
+### Offer ladder
+
+- Question: `personal.services.ladder`
+- Field: `personal.services.ladder`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:43.787Z
+- Answer id: ans-0190
+
+Value:
+
+محتوای رایگان در اینستاگرام، یوتیوب و لینکدین ← سایت omidataei.com ← جلسهٔ 1:1 Strategy Session ← Strategic Review (پروژهٔ استراتژی کسب‌وکار، برند یا مارکتینگ) ← Ongoing Advisory.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:personal.services.ladder end -->

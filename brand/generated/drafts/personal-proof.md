@@ -169,3 +169,25 @@ Value:
 
 Approved by: owner
 <!-- field:personal.governance.public_claim_policy end -->
+
+<!-- field:personal.portfolio.case_studies start -->
+### Client case studies
+
+- Question: `personal.portfolio.case_studies`
+- Field: `personal.portfolio.case_studies`
+- Status: approved
+- Visibility: public
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:45.507Z
+- Answer id: ans-0199
+
+Value:
+
+هنوز داستان مشتری با منبع و اجازهٔ انتشار ثبت نشده. اسم مشتری‌ها منتشر نمی‌شود؛ اولین داستان بی‌نام با اجازهٔ کتبی مشتری اینجا اضافه می‌شود.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:personal.portfolio.case_studies end -->

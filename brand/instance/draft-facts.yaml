@@ -2031,3 +2031,325 @@ facts:
     uncertainty: null
     answer_id: ans-0169
     updated: 2026-11-24T18:25:28.794Z
+  business.plan.risks:
+    value: "۱) وقت: اداره‌کردن هم‌زمان Fiko، دادوین، منتورینگ و تولید محتوا؛ ریسک افت کیفیت یا قطع شدن
+      تناوب محتوا. ۲) وابستگی به خودم: برند شخصی و هر دو ونچر به حضور شخص من وابسته‌اند. ۳) وابستگی
+      به الگوریتم اینستاگرام برای رسیدن به مخاطب. ۴) محدودیت پرداخت بین‌المللی و اینترنت برای
+      مشتری‌های داخل ایران. ۵) ادعای بدون منبع: هر عدد یا نتیجهٔ بی‌منبع به اعتبار آسیب می‌زند."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0191
+    updated: 2026-11-25T10:58:43.983Z
+  business.marketing.journey:
+    value: "فرضیه، اندازه‌گیری‌نشده. آگاهی: ریلز و پست اینستاگرام، یوتیوب و لینکدین. بررسی: سایت
+      omidataei.com، پروفایل لینکدین، و پشت صحنهٔ ساختن Fiko و دادوین. تبدیل: رزرو 1:1 Strategy
+      Session از سایت، یا فرم تماس برای پروژه. نگهداشت: Strategic Review یا Ongoing Advisory بعد از
+      جلسهٔ اول. توصیه: هنوز برنامه‌ای ندارد."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0202
+    updated: 2026-11-25T10:58:46.062Z
+  business.cx.onboarding:
+    value: بعد از اولین جلسهٔ 1:1، فرد مشکل اصلی‌اش را روشن‌تر می‌بیند، فرض‌هایش به چالش کشیده شده، یک
+      یا دو اولویت مشخص دارد و قدم عملی بعدی را می‌داند (Understand، Challenge assumptions،
+      Prioritize، Act). بدون وعدهٔ نتیجه.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0204
+    updated: 2026-11-25T10:58:46.454Z
+  business.cx.channels:
+    value: ایمیل (hello@omidataei.com)، فرم تماس سایت و رزرو جلسه از سایت. دایرکت شبکه‌های اجتماعی کانال
+      پشتیبانی رسمی نیست. تلفن ارائه نمی‌شود.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0205
+    updated: 2026-11-25T10:58:46.648Z
+  business.partners.channels:
+    value: "امروز شریک توزیع رسمی ندارم. کانال‌های خودم: سایت شخصی، اینستاگرام، لینکدین، یوتیوب، تلگرام،
+      X و تیک‌تاک."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0206
+    updated: 2026-11-25T10:58:46.830Z
+  personal.services.ladder:
+    value: محتوای رایگان در اینستاگرام، یوتیوب و لینکدین ← سایت omidataei.com ← جلسهٔ 1:1 Strategy
+      Session ← Strategic Review (پروژهٔ استراتژی کسب‌وکار، برند یا مارکتینگ) ← Ongoing Advisory.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0190
+    updated: 2026-11-25T10:58:43.787Z
+  business.model.key_resources:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.model.key_resources","next":7,"items":[{"id":"res-1","name":"زمان
+      و تجربهٔ خودم","detail":"منتورینگ، استراتژی و محتوا به حضور خودم وابسته
+      است","category":"human"},{"id":"res-2","name":"روش منتورینگ","detail":"Understand، Challenge
+      assumptions، Prioritize، Act","category":"intellectual"},{"id":"res-3","name":"Brand OS و
+      ایجنت‌های هوش مصنوعی","detail":"برنامه‌ریزی و تولید محتوا و
+      استراتژی","category":"intellectual"},{"id":"res-4","name":"مخاطبان شبکه‌های
+      اجتماعی","detail":"اینستاگرام و کانال‌های
+      دیگر","category":"intellectual"},{"id":"res-5","name":"سایت و سامانهٔ
+      رزرو","detail":"omidataei.com","category":"intellectual"},{"id":"res-6","name":"تجهیزات تولید
+      محتوا","detail":"دوربین، نور و میکروفون","category":"physical"}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0192
+    updated: 2026-11-25T10:58:44.175Z
+  business.swot.strengths:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.swot.strengths","next":7,"items":[{"id":"str-1","name":"تجربهٔ
+      هر دو طرف میز","detail":"ساختن کسب‌وکار خودم و کمک به تیم‌های
+      دیگر","confidence":"evidenced","sources":["personal.story.motivation","personal.founder.ventures"]},{"id":"str-2","name":"پیشینهٔ
+      ترکیبی طراحی، مارکتینگ و
+      استراتژی","detail":"evidenced","sources":["personal.story.origin","personal.experience.roles"]},{"id":"str-3","name":"مخاطب
+      موجود در اینستاگرام","detail":"حدود ۷۳ هزار دنبال‌کننده، به گفتهٔ
+      مالک","confidence":"owner_view","sources":["personal.goals.kpis"]},{"id":"str-4","name":"کار
+      عملی با هوش مصنوعی و ایجنت‌ها","detail":"Fiko، دادوین و Brand
+      OS","confidence":"evidenced","sources":["personal.portfolio.projects"]},{"id":"str-5","name":"سه
+      زبان","detail":"فارسی، انگلیسی و
+      ترکی","confidence":"evidenced","sources":["brand.verbal.localization"]},{"id":"str-6","name":"سوابق
+      قابل‌ارجاع","detail":"ثبت شرکت، سایت‌ها و
+      مصاحبه","confidence":"evidenced","sources":["personal.credibility.evidence"]}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0194
+    updated: 2026-11-25T10:58:44.528Z
+  business.swot.weaknesses:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.swot.weaknesses","next":5,"items":[{"id":"wk-1","name":"وقت
+      محدود بین چند ونچر","detail":"hypothesis"},{"id":"wk-2","name":"داستان مشتری عمومی
+      ندارم","detail":"اسم مشتری‌ها منتشر
+      نمی‌شود","confidence":"owner_view","sources":["personal.consulting.confidentiality"]},{"id":"wk-3","name":"هدف
+      و تناوب کانال‌ها هنوز مشخص
+      نیست","detail":"evidenced","sources":["personal.content.channels"]},{"id":"wk-4","name":"منتورینگ
+      هنوز از صفر شروع می‌شود","detail":"مبنای ۰ ساعت در
+      ماه","confidence":"owner_view","sources":["personal.goals.kpis"]}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0195
+    updated: 2026-11-25T10:58:44.712Z
+  business.swot.opportunities:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.swot.opportunities","next":5,"items":[{"id":"opp-1","name":"تقاضای
+      کارآفرینان فارسی‌زبان برای استفادهٔ عملی از هوش
+      مصنوعی","detail":"hypothesis"},{"id":"opp-2","name":"کمبود محتوای کسب‌وکاری باکیفیت و بدون
+      هایپ به فارسی","detail":"hypothesis"},{"id":"opp-3","name":"بنیان‌گذاران فارسی‌زبان در ترکیه و
+      امارات","detail":"hypothesis","sources":["personal.identity.service_scope"]},{"id":"opp-4","name":"لینکدین
+      برای رسیدن به مدیران بازاریابی و پروژه‌های استراتژی","detail":"hypothesis"}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0196
+    updated: 2026-11-25T10:58:44.894Z
+  business.swot.threats:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.swot.threats","next":5,"items":[{"id":"thr-1","name":"تغییر
+      الگوریتم شبکه‌های اجتماعی","detail":"hypothesis"},{"id":"thr-2","name":"محدودیت پرداخت
+      بین‌المللی برای مشتری‌های داخل ایران","detail":"hypothesis"},{"id":"thr-3","name":"مشاوره‌های
+      «یک‌شبه پولدار شو» که اعتماد بازار را پایین
+      می‌آورند","detail":"hypothesis"},{"id":"thr-4","name":"محدودیت و فیلترینگ اینترنت در
+      ایران","detail":"hypothesis"}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0197
+    updated: 2026-11-25T10:58:45.107Z
+  personal.portfolio.case_studies:
+    value: هنوز داستان مشتری با منبع و اجازهٔ انتشار ثبت نشده. اسم مشتری‌ها منتشر نمی‌شود؛ اولین داستان
+      بی‌نام با اجازهٔ کتبی مشتری اینجا اضافه می‌شود.
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: public
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0199
+    updated: 2026-11-25T10:58:45.507Z
+  personal.collaboration.policy:
+    value: "می‌پذیرم: همکاری با ابزارها و برندهای کسب‌وکار، استارتاپ، مارکتینگ و هوش مصنوعی که خودم
+      می‌شناسم و به آن‌ها اعتماد دارم؛ رویداد و لایو مشترک با بنیان‌گذاران. رد می‌کنم: هر برندی که
+      بوی کلاهبرداری بدهد، «یک‌شبه پولدار شو»، تضمین درآمد، و پیشنهادهای حقوقی، مالیاتی یا
+      سرمایه‌گذاری. اعلام: هر محتوای پولی یا اسپانسری با برچسب واضح «تبلیغ» یا «همکاری پولی»؛ وقتی
+      از Fiko یا دادوین حرف می‌زنم اعلام می‌کنم بنیان‌گذارشان هستم."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0200
+    updated: 2026-11-25T10:58:45.685Z
+  brand.verbal.stories:
+    value: |-
+      از طراحی تا کسب‌وکار | چرا از طراحی گرافیک به استراتژی رسیدم
+      شش سال طراحان آزاد | اداره‌کردن تیم چطور کسب‌وکار را یادم داد
+      مارکتینگ در بازارهای مالی | درس‌های مدیریت مارکتینگ در یک بازار سخت
+      Fiko از دل یک درد | هر استارتاپم از مشکلی شروع شد که خودم داشتم
+      ساختن دادوین | چرا سراغ فناوری حقوقی رفتم
+      ساختن Brand OS با هوش مصنوعی | ساختن ابزار داخلی با ایجنت‌ها
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0201
+    updated: 2026-11-25T10:58:45.866Z
+  brand.social.cadence:
+    value: "الان: تناوب ثابتی ثبت نشده. هدف پیشنهادی (راهنمای عمومی، برای تصمیم خودم): اینستاگرام
+      هفته‌ای ۳ ریلز، ۲ کاروسل و استوری تقریباً روزانه | لینکدین هفته‌ای ۳ پست | یوتیوب ماهی ۲ ویدیو
+      و شورتس از ریلزها | تلگرام هفته‌ای ۳ پیام | X روزانه یک پست | تیک‌تاک همان ریلزها."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0207
+    updated: 2026-11-25T10:58:47.019Z
+  brand.presence.audit:
+    value: "دیده می‌شود: omidataei.com، لینکدین (omid-ataei)، اینستاگرام (ataei.ca)، X و یوتیوب و تلگرام
+      (ataei_ca)، تیک‌تاک (omid.ca)، مصاحبهٔ N24 و ثبت شرکت در Companies House. ناهماهنگ: نام
+      کاربری‌ها یکی نیستند (ataei.ca، ataei_ca، omid.ca، omid-ataei)؛ نام فارسی به دو شکل عطائی و
+      عطایی نوشته می‌شود؛ تیتر و بیو و عکس پروفایل‌ها باید با headline تأییدشده یکی شوند."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0209
+    updated: 2026-11-25T10:58:47.406Z
+  brand.community.strategy:
+    value: "هنوز نه. بعداً: کانال تلگرام ataei_ca به‌عنوان خانهٔ کامیونیتی بنیان‌گذاران فارسی‌زبان؛ اعضا
+      خلاصهٔ هفتگی، ابزارها و یک پرسش‌وپاسخ ماهانه می‌گیرند."
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0208
+    updated: 2026-11-25T10:58:47.212Z
+  business.model.cost_items:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.model.cost_items","next":7,"items":[{"id":"cost-1","name":"زمان
+      خودم","detail":"بزرگ‌ترین هزینه","behaviour":"mixed"},{"id":"cost-2","name":"ابزارها و
+      اشتراک‌های نرم‌افزاری و هوش
+      مصنوعی","detail":"ماهانه","behaviour":"fixed"},{"id":"cost-3","name":"سایت، دامنه و
+      میزبانی","detail":"سالانه و ماهانه","behaviour":"fixed"},{"id":"cost-4","name":"تولید
+      محتوا","detail":"تجهیزات و تدوین"},{"id":"cost-5","name":"با حجم محتوا بالا
+      می‌رود","detail":"variable"},{"id":"cost-6","name":"تبلیغات
+      پولی","detail":"اختیاری","behaviour":"variable"}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0193
+    updated: 2026-11-25T10:58:44.353Z
+  business.swot.tows:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.swot.tows","next":6,"items":[{"id":"tows-1","name":"محتوای
+      «ساختن در عمل»","detail":"پشت صحنهٔ Fiko، دادوین و Brand OS برای جذب
+      بنیان‌گذاران","type":"so","links":["str-1","str-4","opp-1","opp-2"]},{"id":"tows-2","name":"از
+      محتوا به جلسهٔ 1:1","detail":"تبدیل مخاطب اینستاگرام به جلسهٔ
+      استراتژی","type":"so","links":["str-3","opp-2"]},{"id":"tows-3","name":"داستان‌های بی‌نام با
+      اجازهٔ کتبی","detail":"جبران نبودن نمونهٔ
+      عمومی","type":"wo","links":["wk-2","opp-4"]},{"id":"tows-4","name":"چند کانال
+      هم‌زمان","detail":"کم کردن وابستگی به یک الگوریتم با لینکدین، یوتیوب و
+      تلگرام","type":"st","links":["str-5","thr-1"]},{"id":"tows-5","name":"تولید دسته‌ای و
+      برنامه‌ریزی‌شدهٔ محتوا","detail":"کم کردن فشار وقت و وابستگی به یک
+      الگوریتم","type":"wt","links":["wk-1","thr-1"]}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0198
+    updated: 2026-11-25T10:58:45.310Z
+  business.marketing.journey_stages:
+    value: '{"schema":"brand-os.entity-list/1","question":"business.marketing.journey_stages","next":6,"items":[{"id":"stage-1","name":"آگاهی","goal":"فهمیدن
+      اینکه مشکلش استراتژیک است","touchpoints":"ریلز و پست اینستاگرام، یوتیوب،
+      لینکدین","actions":"محتوا را می‌بیند و ذخیره می‌کند","emotion":"neutral","pains":"محتوای
+      پرهایپ و وعده‌های توخالی","opportunities":"محتوای رک و با پشتوانه","evidence":"فرضیه،
+      اندازه‌گیری‌نشده"},{"id":"stage-2","name":"بررسی","goal":"اطمینان از اینکه آدم درستی
+      است","touchpoints":"سایت omidataei.com، لینکدین، پشت صحنهٔ Fiko و دادوین","actions":"سوابق و
+      محتوای بیشتر را می‌خواند","emotion":"positive","pains":"نبودن نمونهٔ مشتری
+      عمومی","opportunities":"داستان‌های بی‌نام با اجازه","evidence":"فرضیه،
+      اندازه‌گیری‌نشده"},{"id":"stage-3","name":"تبدیل","goal":"گرفتن کمک برای یک چالش
+      مشخص","touchpoints":"رزرو جلسه و فرم تماس سایت","actions":"1:1 Strategy Session رزرو
+      می‌کند","emotion":"positive","pains":"تردید دربارهٔ ارزش یک جلسه","opportunities":"توضیح روشن
+      خروجی جلسه","evidence":"فرضیه،
+      اندازه‌گیری‌نشده"},{"id":"stage-4","name":"نگهداشت","goal":"ادامهٔ کار روی
+      اولویت‌ها","touchpoints":"ایمیل و جلسه‌های بعدی","actions":"Strategic Review یا Ongoing
+      Advisory می‌گیرد","emotion":"positive","pains":"وقت محدود","opportunities":"برنامهٔ روشن
+      قدم‌های بعدی","evidence":"فرضیه،
+      اندازه‌گیری‌نشده"},{"id":"stage-5","name":"توصیه","goal":"معرفی به
+      دیگران","touchpoints":"ارجاع شخصی و لینکدین","actions":"توصیه‌نامه می‌نویسد یا معرفی
+      می‌کند","emotion":"very_positive","pains":"برنامه‌ای برای ارجاع نیست","opportunities":"درخواست
+      توصیه‌نامه بعد از پروژه","evidence":"فرضیه، اندازه‌گیری‌نشده"}]}'
+    stored_in: brand/instance/draft-facts.yaml
+    private_ref: null
+    status: approved
+    visibility: internal
+    authority: confirmed_by_owner
+    source_type: agent_suggestion
+    uncertainty: null
+    answer_id: ans-0203
+    updated: 2026-11-25T10:58:46.256Z

@@ -153,3 +153,47 @@ Value:
 
 TBD
 <!-- field:brand.social.exports end -->
+
+<!-- field:brand.social.cadence start -->
+### Formats and cadence
+
+- Question: `brand.social.cadence`
+- Field: `brand.social.cadence`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:47.019Z
+- Answer id: ans-0207
+
+Value:
+
+الان: تناوب ثابتی ثبت نشده. هدف پیشنهادی (راهنمای عمومی، برای تصمیم خودم): اینستاگرام هفته‌ای ۳ ریلز، ۲ کاروسل و استوری تقریباً روزانه | لینکدین هفته‌ای ۳ پست | یوتیوب ماهی ۲ ویدیو و شورتس از ریلزها | تلگرام هفته‌ای ۳ پیام | X روزانه یک پست | تیک‌تاک همان ریلزها.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:brand.social.cadence end -->
+
+<!-- field:brand.community.strategy start -->
+### Community
+
+- Question: `brand.community.strategy`
+- Field: `brand.community.strategy`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:47.212Z
+- Answer id: ans-0208
+
+Value:
+
+هنوز نه. بعداً: کانال تلگرام ataei_ca به‌عنوان خانهٔ کامیونیتی بنیان‌گذاران فارسی‌زبان؛ اعضا خلاصهٔ هفتگی، ابزارها و یک پرسش‌وپاسخ ماهانه می‌گیرند.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:brand.community.strategy end -->

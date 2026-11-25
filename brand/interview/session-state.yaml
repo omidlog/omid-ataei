@@ -171,10 +171,50 @@ history:
   - brand.color.semantic_map
   - brand.logo.masters
   - brand.color.semantic_map
+  - business.plan.risks
+  - business.marketing.journey
+  - business.cx.onboarding
+  - business.cx.channels
+  - business.partners.channels
+  - personal.services.ladder
+  - business.model.key_resources
+  - business.swot.strengths
+  - business.swot.weaknesses
+  - business.swot.opportunities
+  - business.swot.threats
+  - personal.portfolio.case_studies
+  - personal.collaboration.policy
+  - brand.verbal.stories
+  - brand.social.cadence
+  - brand.presence.audit
+  - brand.community.strategy
+  - business.model.cost_items
+  - business.swot.tows
+  - business.marketing.journey_stages
+  - personal.services.ladder
+  - business.plan.risks
+  - business.model.key_resources
+  - business.model.cost_items
+  - business.swot.strengths
+  - business.swot.weaknesses
+  - business.swot.opportunities
+  - business.swot.threats
+  - business.swot.tows
+  - personal.portfolio.case_studies
+  - personal.collaboration.policy
+  - brand.verbal.stories
+  - business.marketing.journey
+  - business.marketing.journey_stages
+  - business.cx.onboarding
+  - business.cx.channels
+  - business.partners.channels
+  - brand.social.cadence
+  - brand.community.strategy
+  - brand.presence.audit
 deferred: []
 pending_suggestions: []
 cursor_question_id: null
 pending_proposals: []
 started_at: 2026-11-24T09:05:17.282Z
-updated_at: 2026-11-24T18:25:28.815Z
-last_answer_id: ans-0169
+updated_at: 2026-11-25T10:58:47.425Z
+last_answer_id: ans-0209

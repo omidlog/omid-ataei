@@ -1,0 +1,2204 @@
+# Social style kit (docs-internal/SOCIAL_STYLE_KIT.md). Design guidance, committed: never put a restricted value here.
+# Colours and fonts are design-token ids, zones are % of the canvas, layers are listed back to front.
+# Agents read only approved styles. Approve with npm run brand:social -- kit review / kit approve (owner proof).
+# Editing an approved style or the family makes the approval invalid until the owner approves again.
+schema_version: 1
+kind: social_style_kit
+brand_slug: omid-ataei
+family:
+  type:
+    headline: type.fontFamily.display
+    body: type.fontFamily.body
+    accent: null
+  palette:
+    background: color.light.canvas
+    text: color.light.text
+    muted: color.light.muted
+    primary: color.brand.primary
+    on_primary: color.brand.onPrimary
+    secondary: color.brand.secondary
+    on_secondary: color.brand.onSecondary
+    accent: color.brand.accent
+    dark_canvas: color.dark.canvas
+    dark_text: color.dark.text
+  logo:
+    placement: bottom_right
+    size_pct: 12
+    asset: missing
+    rule_refs:
+      - brand.logo.clear_space
+      - brand.logo.min_size
+      - brand.logo.misuse
+  photo_direction:
+    fact_refs:
+      - brand.photo.direction
+      - brand.photo.lighting
+      - brand.photo.grade
+      - personal.media.photo_guidelines
+  corner_radius: radius.lg
+  grid:
+    margin_pct: 6
+    columns: 6
+    gutter_pct: 2
+styles:
+  - id: post.bold-statement
+    surface: post
+    archetype: bold-statement
+    name:
+      en: Bold statement
+      fa: جملهٔ پررنگ
+      tr: Güçlü cümle
+    intent:
+      use_when:
+        en: One strong opinion or takeaway, no photo needed.
+        fa: یک دیدگاه یا نکتهٔ کلیدی و محکم، بدون نیاز به عکس.
+        tr: Tek bir güçlü görüş ya da çıkarım; fotoğraf gerekmez.
+      content_types:
+        - inspire
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: shape
+        zone:
+          x: 6
+          y: 14
+          w: 12
+          h: 1.2
+        color: color.brand.accent
+      - role: headline
+        zone:
+          x: 6
+          y: 20
+          w: 88
+          h: 46
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 10
+        max_lines: 4
+        rules:
+          - one_message
+      - role: subhead
+        zone:
+          x: 6
+          y: 70
+          w: 70
+          h: 10
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 14
+        max_lines: 2
+      - role: handle
+        zone:
+          x: 6
+          y: 90
+          w: 50
+          h: 4
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+      - role: brand_mark
+        zone:
+          x: 76
+          y: 88
+          w: 18
+          h: 6
+        rules:
+          - brand_mark_small
+    variation:
+      en: "Type-led: a full-bleed brand colour and one large headline."
+      fa: "متن‌محور: پس‌زمینهٔ تمام‌رنگِ برند و یک تیتر بزرگ."
+      tr: "Yazı odaklı: tam kaplayan marka rengi ve tek büyük başlık."
+    do:
+      - one_message
+      - high_contrast
+      - readable_at_thumb_size
+    dont:
+      - no_dense_paragraphs
+      - no_more_than_three_colors
+    reference_assets: missing
+    status: draft
+  - id: post.photo-headline
+    surface: post
+    archetype: photo-headline
+    name:
+      en: Photo + headline
+      fa: عکس با تیتر
+      tr: Fotoğraf + başlık
+    intent:
+      use_when:
+        en: A real moment or product shot that needs one line of context.
+        fa: یک لحظهٔ واقعی یا عکس محصول که فقط یک خط توضیح می‌خواهد.
+        tr: Tek satırlık bağlam isteyen gerçek bir an ya da ürün fotoğrafı.
+      content_types:
+        - behind_the_scenes
+        - promote
+        - community
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+        rules:
+          - real_people_only_with_rights
+      - role: overlay
+        zone:
+          x: 0
+          y: 45
+          w: 100
+          h: 55
+        color: color.dark.canvas
+      - role: headline
+        zone:
+          x: 6
+          y: 62
+          w: 88
+          h: 20
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: body
+        zone:
+          x: 6
+          y: 83
+          w: 70
+          h: 7
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 16
+        max_lines: 2
+      - role: brand_mark
+        zone:
+          x: 80
+          y: 5
+          w: 14
+          h: 5
+    variation:
+      en: "Image-led: full-bleed photo, a darkened lower half carries the text."
+      fa: "تصویرمحور: عکس تمام‌صفحه و متن روی نیمهٔ پایینیِ تیره‌شده."
+      tr: "Görsel odaklı: tam kaplayan fotoğraf, metin koyulaştırılmış alt yarıda."
+    do:
+      - real_people_only_with_rights
+      - keep_in_safe_zone
+    dont:
+      - no_stock_cliche
+      - no_text_over_face
+    reference_assets: missing
+    status: draft
+  - id: post.insight-data
+    surface: post
+    archetype: insight-data
+    name:
+      en: Insight / data card
+      fa: کارت داده و بینش
+      tr: İçgörü / veri kartı
+    intent:
+      use_when:
+        en: One approved number or finding with its source.
+        fa: یک عدد یا یافتهٔ تأییدشده همراه با منبعش.
+        tr: Kaynağıyla birlikte onaylı tek bir sayı ya da bulgu.
+      content_types:
+        - educate
+        - proof
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: data
+        zone:
+          x: 6
+          y: 16
+          w: 60
+          h: 28
+        color: color.brand.primary
+        font: type.fontFamily.display
+        max_words: 3
+        max_lines: 1
+        rules:
+          - approved_numbers_only
+      - role: shape
+        zone:
+          x: 6
+          y: 46
+          w: 88
+          h: 0.6
+        color: color.brand.accent
+      - role: subhead
+        zone:
+          x: 6
+          y: 49
+          w: 80
+          h: 10
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 12
+        max_lines: 2
+      - role: body
+        zone:
+          x: 6
+          y: 61
+          w: 80
+          h: 18
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 30
+        max_lines: 4
+      - role: body
+        zone:
+          x: 6
+          y: 81
+          w: 60
+          h: 4
+        color: color.light.muted
+        font: type.fontFamily.body
+        max_words: 12
+        max_lines: 1
+        rules:
+          - cite_data_source
+      - role: brand_mark
+        zone:
+          x: 6
+          y: 89
+          w: 16
+          h: 5
+    variation:
+      en: "Number-led: a large figure on a light canvas, source line below."
+      fa: "عددمحور: یک عدد بزرگ روی زمینهٔ روشن و خط منبع در پایین."
+      tr: "Sayı odaklı: açık zeminde büyük bir rakam, altında kaynak satırı."
+    do:
+      - approved_numbers_only
+      - cite_data_source
+    dont:
+      - no_clickbait
+      - no_fake_ui
+    reference_assets: missing
+    status: draft
+  - id: post.quote-testimonial
+    surface: post
+    archetype: quote-testimonial
+    name:
+      en: Quote / testimonial
+      fa: نقل‌قول و رضایت مشتری
+      tr: Alıntı / referans
+    intent:
+      use_when:
+        en: A customer’s or the founder’s exact words, with permission.
+        fa: عینِ جملهٔ مشتری یا بنیان‌گذار، با اجازهٔ خودش.
+        tr: Bir müşterinin ya da kurucunun izinli, birebir sözleri.
+      content_types:
+        - proof
+        - community
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.secondary
+      - role: shape
+        zone:
+          x: 6
+          y: 10
+          w: 16
+          h: 12
+        color: color.brand.accent
+      - role: quote
+        zone:
+          x: 10
+          y: 24
+          w: 80
+          h: 40
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 30
+        max_lines: 6
+        rules:
+          - quote_verbatim_with_permission
+      - role: media
+        zone:
+          x: 10
+          y: 70
+          w: 14
+          h: 11
+        rules:
+          - real_people_only_with_rights
+        optional: true
+      - role: subhead
+        zone:
+          x: 28
+          y: 72
+          w: 60
+          h: 8
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 8
+        max_lines: 2
+      - role: brand_mark
+        zone:
+          x: 76
+          y: 88
+          w: 18
+          h: 6
+    variation:
+      en: "Quote-led: a large quote mark, words on the secondary colour, small portrait."
+      fa: "نقل‌قول‌محور: علامت نقل‌قول بزرگ، متن روی رنگ دوم برند و تصویر کوچک گوینده."
+      tr: "Alıntı odaklı: büyük tırnak işareti, ikincil renk üzerinde sözler, küçük portre."
+    do:
+      - quote_verbatim_with_permission
+      - real_people_only_with_rights
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: carousel.step-by-step
+    surface: carousel
+    archetype: step-by-step
+    name:
+      en: Step by step
+      fa: گام‌به‌گام
+      tr: Adım adım
+    intent:
+      use_when:
+        en: Teach a process in numbered steps, one per slide.
+        fa: آموزش یک فرایند در چند گام شماره‌دار؛ هر اسلاید یک گام.
+        tr: Bir süreci numaralı adımlarla öğretin; her slaytta bir adım.
+      content_types:
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: progress
+        zone:
+          x: 6
+          y: 4
+          w: 88
+          h: 1.5
+        color: color.brand.accent
+        rules:
+          - progress_visible
+      - role: data
+        zone:
+          x: 6
+          y: 10
+          w: 24
+          h: 18
+        color: color.brand.primary
+        font: type.fontFamily.display
+        max_words: 1
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 6
+          y: 32
+          w: 88
+          h: 20
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 9
+        max_lines: 3
+      - role: body
+        zone:
+          x: 6
+          y: 55
+          w: 88
+          h: 28
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 35
+        max_lines: 5
+      - role: handle
+        zone:
+          x: 6
+          y: 90
+          w: 50
+          h: 4
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+    variation:
+      en: A big step number in the top corner, a progress bar on top, light canvas.
+      fa: شمارهٔ گام بزرگ در گوشهٔ بالا، نوار پیشرفت در بالا و زمینهٔ روشن.
+      tr: Üst köşede büyük adım numarası, üstte ilerleme çubuğu, açık zemin.
+    do:
+      - hook_on_first_slide
+      - consistent_slide_numbering
+      - cta_on_last_slide
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: carousel.myth-vs-fact
+    surface: carousel
+    archetype: myth-vs-fact
+    name:
+      en: Myth vs fact
+      fa: باور غلط در برابر واقعیت
+      tr: Efsane ve gerçek
+    intent:
+      use_when:
+        en: Correct a common misconception in your field.
+        fa: اصلاح یک باور غلطِ رایج در حوزهٔ کاری‌تان.
+        tr: Alanınızdaki yaygın bir yanlış inancı düzeltin.
+      content_types:
+        - educate
+        - proof
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: shape
+        zone:
+          x: 0
+          y: 0
+          w: 100
+          h: 48
+        color: color.brand.secondary
+      - role: headline
+        zone:
+          x: 6
+          y: 12
+          w: 88
+          h: 28
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 12
+        max_lines: 3
+      - role: shape
+        zone:
+          x: 0
+          y: 52
+          w: 100
+          h: 48
+        color: color.brand.primary
+      - role: subhead
+        zone:
+          x: 6
+          y: 60
+          w: 88
+          h: 26
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 20
+        max_lines: 4
+        rules:
+          - approved_numbers_only
+      - role: brand_mark
+        zone:
+          x: 80
+          y: 91
+          w: 14
+          h: 4
+    variation:
+      en: "Split panels: the myth on the top panel, the fact on the brand colour below."
+      fa: "دو پنل: باور غلط در پنل بالا و واقعیت روی رنگ برند در پایین."
+      tr: "İki panel: üstte efsane, altta marka renginde gerçek."
+    do:
+      - one_message
+      - approved_numbers_only
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: carousel.story-arc
+    surface: carousel
+    archetype: story-arc
+    name:
+      en: Story arc
+      fa: روایت داستانی
+      tr: Hikâye akışı
+    intent:
+      use_when:
+        en: A short before–during–after story told in photos.
+        fa: یک داستان کوتاه از قبل، حین و بعد، با عکس.
+        tr: Fotoğraflarla anlatılan kısa bir önce–sırasında–sonra hikâyesi.
+      content_types:
+        - behind_the_scenes
+        - personal
+        - proof
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+        rules:
+          - real_people_only_with_rights
+      - role: overlay
+        zone:
+          x: 0
+          y: 70
+          w: 100
+          h: 30
+        color: color.dark.canvas
+      - role: handle
+        zone:
+          x: 6
+          y: 5
+          w: 50
+          h: 4
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+      - role: body
+        zone:
+          x: 6
+          y: 74
+          w: 88
+          h: 16
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 25
+        max_lines: 3
+      - role: progress
+        zone:
+          x: 6
+          y: 94
+          w: 88
+          h: 1
+        color: color.brand.accent
+    variation:
+      en: Photo-led slides with a low caption band and a thin progress line.
+      fa: اسلایدهای عکس‌محور با نوار متن پایین و خط پیشرفت باریک.
+      tr: Alçak bir altyazı bandı ve ince ilerleme çizgisiyle fotoğraf odaklı slaytlar.
+    do:
+      - hook_on_first_slide
+      - real_people_only_with_rights
+    dont:
+      - no_stock_cliche
+      - no_text_over_face
+    reference_assets: missing
+    status: draft
+  - id: carousel.checklist
+    surface: carousel
+    archetype: checklist
+    name:
+      en: Checklist
+      fa: چک‌لیست
+      tr: Kontrol listesi
+    intent:
+      use_when:
+        en: A save-worthy list the audience can tick off.
+        fa: فهرستی ارزشِ ذخیره‌کردن که مخاطب بتواند تیک بزند.
+        tr: Kitlenin kaydedip işaretleyebileceği bir liste.
+      content_types:
+        - educate
+        - community
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: headline
+        zone:
+          x: 6
+          y: 8
+          w: 88
+          h: 14
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: shape
+        zone:
+          x: 6
+          y: 26
+          w: 8
+          h: 60
+        color: color.brand.accent
+      - role: body
+        zone:
+          x: 18
+          y: 26
+          w: 76
+          h: 60
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 40
+        max_lines: 6
+      - role: cta
+        zone:
+          x: 6
+          y: 89
+          w: 50
+          h: 6
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 5
+        max_lines: 1
+        rules:
+          - one_cta
+    variation:
+      en: Brand-colour slides, a checkbox column beside short items, a CTA at the end.
+      fa: اسلایدهای رنگ برند، ستون تیک کنار موارد کوتاه و دعوت به اقدام در پایان.
+      tr: Marka renginde slaytlar, kısa maddelerin yanında onay kutusu sütunu, sonda CTA.
+    do:
+      - cta_on_last_slide
+      - one_cta
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: story.question-poll
+    surface: story
+    archetype: question-poll
+    name:
+      en: Question / poll
+      fa: سؤال و نظرسنجی
+      tr: Soru / anket
+    intent:
+      use_when:
+        en: Ask the audience something and leave room for the poll sticker.
+        fa: از مخاطب چیزی بپرسید و برای استیکر نظرسنجی جا بگذارید.
+        tr: Kitleye bir şey sorun ve anket çıkartmasına yer bırakın.
+      content_types:
+        - community
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.secondary
+      - role: headline
+        zone:
+          x: 8
+          y: 18
+          w: 84
+          h: 20
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 12
+        max_lines: 3
+        rules:
+          - question_open_ended
+      - role: shape
+        zone:
+          x: 12
+          y: 44
+          w: 76
+          h: 18
+        color: color.light.canvas
+        rules:
+          - link_sticker_space
+      - role: body
+        zone:
+          x: 8
+          y: 66
+          w: 84
+          h: 8
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 14
+        max_lines: 2
+      - role: handle
+        zone:
+          x: 8
+          y: 76
+          w: 50
+          h: 3
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+    variation:
+      en: The question on top, an empty sticker zone in the middle, secondary colour.
+      fa: سؤال در بالا، جای خالی استیکر در وسط، رنگ دوم برند.
+      tr: Üstte soru, ortada boş çıkartma alanı, ikincil renk.
+    do:
+      - question_open_ended
+      - keep_in_safe_zone
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: story.behind-the-scenes
+    surface: story
+    archetype: behind-the-scenes
+    name:
+      en: Behind the scenes
+      fa: پشت صحنه
+      tr: Kamera arkası
+    intent:
+      use_when:
+        en: A casual, real moment from work, lightly branded.
+        fa: یک لحظهٔ واقعی و خودمانی از کار، با کمترین نشانهٔ برند.
+        tr: İşten samimi, gerçek bir an; hafif markalı.
+      content_types:
+        - behind_the_scenes
+        - personal
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+        rules:
+          - real_people_only_with_rights
+      - role: overlay
+        zone:
+          x: 0
+          y: 13
+          w: 100
+          h: 14
+        color: color.dark.canvas
+      - role: subhead
+        zone:
+          x: 6
+          y: 15
+          w: 88
+          h: 9
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 8
+        max_lines: 2
+      - role: brand_mark
+        zone:
+          x: 6
+          y: 76
+          w: 14
+          h: 4
+        rules:
+          - brand_mark_small
+    variation:
+      en: Full-bleed photo or video, one short line in a top band.
+      fa: عکس یا ویدیوی تمام‌صفحه و یک جملهٔ کوتاه در نوار بالا.
+      tr: Tam ekran fotoğraf ya da video, üst bantta tek kısa satır.
+    do:
+      - keep_in_safe_zone
+      - brand_mark_small
+    dont:
+      - no_stock_cliche
+    reference_assets: missing
+    status: draft
+  - id: story.quick-tip
+    surface: story
+    archetype: quick-tip
+    name:
+      en: Quick tip
+      fa: نکتهٔ سریع
+      tr: Hızlı ipucu
+    intent:
+      use_when:
+        en: One practical tip people can use today.
+        fa: یک نکتهٔ کاربردی که همین امروز بشود به کار برد.
+        tr: Bugün uygulanabilecek tek bir pratik ipucu.
+      content_types:
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: data
+        zone:
+          x: 8
+          y: 16
+          w: 30
+          h: 10
+        color: color.brand.primary
+        font: type.fontFamily.display
+        max_words: 2
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 8
+          y: 28
+          w: 84
+          h: 18
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 9
+        max_lines: 3
+      - role: body
+        zone:
+          x: 8
+          y: 48
+          w: 84
+          h: 16
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 25
+        max_lines: 4
+      - role: mascot
+        zone:
+          x: 60
+          y: 64
+          w: 32
+          h: 14
+        rules:
+          - mascot_approved_pose_only
+        optional: true
+      - role: brand_mark
+        zone:
+          x: 8
+          y: 76
+          w: 14
+          h: 4
+    variation:
+      en: Light canvas, a tip number, headline and short body; room for the mascot.
+      fa: زمینهٔ روشن، شمارهٔ نکته، تیتر و متن کوتاه؛ با جا برای کاراکتر برند.
+      tr: Açık zemin, ipucu numarası, başlık ve kısa metin; maskot için yer.
+    do:
+      - one_message
+      - mascot_approved_pose_only
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: story.link-cta
+    surface: story
+    archetype: link-cta
+    name:
+      en: Link / call to action
+      fa: لینک و دعوت به اقدام
+      tr: Bağlantı / harekete geçirici
+    intent:
+      use_when:
+        en: Send people to one approved link.
+        fa: فرستادن مخاطب به یک لینکِ تأییدشده.
+        tr: Kitleyi onaylı tek bir bağlantıya yönlendirin.
+      content_types:
+        - promote
+        - announce
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: media
+        zone:
+          x: 10
+          y: 16
+          w: 80
+          h: 34
+        optional: true
+      - role: headline
+        zone:
+          x: 8
+          y: 52
+          w: 84
+          h: 12
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: cta
+        zone:
+          x: 20
+          y: 66
+          w: 60
+          h: 8
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+        rules:
+          - one_cta
+          - link_sticker_space
+      - role: handle
+        zone:
+          x: 8
+          y: 77
+          w: 50
+          h: 3
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+    variation:
+      en: Brand colour, a preview image on top, space for the link sticker below the headline.
+      fa: رنگ برند، تصویر پیش‌نمایش در بالا و جای استیکر لینک زیر تیتر.
+      tr: Marka rengi, üstte önizleme görseli, başlığın altında bağlantı çıkartması için yer.
+    do:
+      - one_cta
+      - link_sticker_space
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: reel.talking-head-captions
+    surface: reel
+    archetype: talking-head-captions
+    name:
+      en: Talking head + captions
+      fa: صحبت رو به دوربین با زیرنویس
+      tr: Konuşan kişi + altyazı
+    intent:
+      use_when:
+        en: You speak to camera; captions carry the message with the sound off.
+        fa: رو به دوربین صحبت می‌کنید و زیرنویس پیام را حتی بی‌صدا می‌رساند.
+        tr: Kameraya konuşursunuz; altyazı mesajı ses kapalıyken de taşır.
+      content_types:
+        - educate
+        - personal
+        - inspire
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+        rules:
+          - real_people_only_with_rights
+      - role: headline
+        zone:
+          x: 6
+          y: 15
+          w: 80
+          h: 10
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 7
+        max_lines: 2
+      - role: caption_bar
+        zone:
+          x: 6
+          y: 62
+          w: 80
+          h: 12
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 2
+        rules:
+          - captions_always_on
+      - role: brand_mark
+        zone:
+          x: 6
+          y: 76
+          w: 12
+          h: 3
+        rules:
+          - brand_mark_small
+    variation:
+      en: Face full frame, a hook line on top for two seconds, captions in the lower third.
+      fa: چهره در کل کادر، جملهٔ قلاب در بالا برای دو ثانیه، زیرنویس در یک‌سوم پایین.
+      tr: Yüz tam kadraj, ilk iki saniye üstte kanca cümlesi, alt üçte birde altyazı.
+    do:
+      - captions_always_on
+      - keep_in_safe_zone
+    dont:
+      - no_text_over_face
+    reference_assets: missing
+    status: draft
+    caption_style:
+      font: type.fontFamily.body
+      color: color.dark.text
+      background: color.dark.canvas
+      max_words_per_line: 5
+      position: lower_third
+  - id: reel.broll-voiceover
+    surface: reel
+    archetype: broll-voiceover
+    name:
+      en: B-roll + voiceover
+      fa: تصاویر مکمل با صدای روی تصویر
+      tr: B-roll + dış ses
+    intent:
+      use_when:
+        en: Show the work or product while a voice explains.
+        fa: نمایش کار یا محصول در حالی که صدایی توضیح می‌دهد.
+        tr: Bir ses anlatırken işi ya da ürünü gösterin.
+      content_types:
+        - behind_the_scenes
+        - promote
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+      - role: overlay
+        zone:
+          x: 0
+          y: 40
+          w: 100
+          h: 20
+        color: color.dark.canvas
+      - role: headline
+        zone:
+          x: 6
+          y: 42
+          w: 80
+          h: 16
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: caption_bar
+        zone:
+          x: 6
+          y: 70
+          w: 80
+          h: 8
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 2
+        rules:
+          - captions_always_on
+    variation:
+      en: Footage full frame, a mid-screen band with the key line, small captions.
+      fa: فیلم در کل کادر، نواری در میانهٔ صفحه با جملهٔ اصلی و زیرنویس کوچک.
+      tr: Tam kadraj görüntü, ortada ana cümleyi taşıyan bir bant, küçük altyazı.
+    do:
+      - captions_always_on
+      - one_message
+    dont:
+      - no_stock_cliche
+    reference_assets: missing
+    status: draft
+    caption_style:
+      font: type.fontFamily.body
+      color: color.dark.text
+      background: color.dark.canvas
+      max_words_per_line: 5
+      position: lower_third
+  - id: reel.list-on-screen
+    surface: reel
+    archetype: list-on-screen
+    name:
+      en: List on screen
+      fa: فهرست روی صفحه
+      tr: Ekranda liste
+    intent:
+      use_when:
+        en: Numbered points that appear one by one.
+        fa: نکته‌های شماره‌دار که یکی‌یکی ظاهر می‌شوند.
+        tr: Tek tek beliren numaralı maddeler.
+      content_types:
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.dark.canvas
+      - role: data
+        zone:
+          x: 6
+          y: 14
+          w: 20
+          h: 8
+        color: color.brand.accent
+        font: type.fontFamily.display
+        max_words: 1
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 6
+          y: 24
+          w: 80
+          h: 14
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: body
+        zone:
+          x: 6
+          y: 40
+          w: 80
+          h: 32
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 30
+        max_lines: 5
+      - role: progress
+        zone:
+          x: 6
+          y: 78
+          w: 80
+          h: 1
+        color: color.brand.accent
+        rules:
+          - progress_visible
+    variation:
+      en: Dark canvas, a counter on top, the list builds in the middle, a progress line.
+      fa: زمینهٔ تیره، شمارنده در بالا، فهرستی که در وسط کامل می‌شود و خط پیشرفت.
+      tr: Koyu zemin, üstte sayaç, ortada büyüyen liste, ilerleme çizgisi.
+    do:
+      - progress_visible
+      - keep_in_safe_zone
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+    caption_style:
+      font: type.fontFamily.body
+      color: color.dark.text
+      background: color.dark.canvas
+      max_words_per_line: 5
+      position: lower_third
+  - id: reel.before-after
+    surface: reel
+    archetype: before-after
+    name:
+      en: Before / after
+      fa: قبل و بعد
+      tr: Önce / sonra
+    intent:
+      use_when:
+        en: Show a change with the same framing twice.
+        fa: نشان‌دادن یک تغییر با دو کادرِ یکسان.
+        tr: Bir değişimi aynı kadrajla iki kez gösterin.
+      content_types:
+        - proof
+        - educate
+      pillar: null
+    layers:
+      - role: media
+        zone:
+          x: 0
+          y: 0
+          w: 100
+          h: 50
+        rules:
+          - before_after_same_framing
+      - role: media
+        zone:
+          x: 0
+          y: 50
+          w: 100
+          h: 50
+      - role: shape
+        zone:
+          x: 0
+          y: 49.5
+          w: 100
+          h: 1
+        color: color.brand.accent
+      - role: subhead
+        zone:
+          x: 6
+          y: 15
+          w: 40
+          h: 5
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 2
+        max_lines: 1
+      - role: subhead
+        zone:
+          x: 6
+          y: 53
+          w: 40
+          h: 5
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 2
+        max_lines: 1
+      - role: caption_bar
+        zone:
+          x: 6
+          y: 72
+          w: 80
+          h: 7
+        color: color.dark.text
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 2
+        rules:
+          - captions_always_on
+    variation:
+      en: The screen split top and bottom with labels, one caption line.
+      fa: صفحهٔ دوبخشی بالا و پایین با برچسب و یک خط زیرنویس.
+      tr: Etiketli üst ve alt bölünmüş ekran, tek altyazı satırı.
+    do:
+      - before_after_same_framing
+      - approved_numbers_only
+    dont:
+      - no_clickbait
+      - no_fake_ui
+    reference_assets: missing
+    status: draft
+    caption_style:
+      font: type.fontFamily.body
+      color: color.dark.text
+      background: color.dark.canvas
+      max_words_per_line: 5
+      position: lower_third
+  - id: reel_cover.big-title
+    surface: reel_cover
+    archetype: big-title
+    name:
+      en: Big title
+      fa: تیتر درشت
+      tr: Büyük başlık
+    intent:
+      use_when:
+        en: A clean cover that reads in the profile grid.
+        fa: کاوری ساده که در شبکهٔ پروفایل خوانا بماند.
+        tr: Profil ızgarasında okunan sade bir kapak.
+      content_types:
+        - educate
+        - inspire
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: headline
+        zone:
+          x: 8
+          y: 30
+          w: 84
+          h: 30
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 5
+        max_lines: 3
+        rules:
+          - readable_at_thumb_size
+      - role: shape
+        zone:
+          x: 8
+          y: 62
+          w: 20
+          h: 1
+        color: color.brand.accent
+      - role: brand_mark
+        zone:
+          x: 8
+          y: 68
+          w: 14
+          h: 4
+    variation:
+      en: Brand colour, up to five words inside the 1:1 crop.
+      fa: رنگ برند و حداکثر پنج کلمه داخل برش ۱:۱.
+      tr: Marka rengi, 1:1 kırpmanın içinde en fazla beş kelime.
+    do:
+      - readable_at_thumb_size
+      - keep_in_safe_zone
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: reel_cover.face-title
+    surface: reel_cover
+    archetype: face-title
+    name:
+      en: Face + title
+      fa: چهره با تیتر
+      tr: Yüz + başlık
+    intent:
+      use_when:
+        en: Covers for talking-head reels.
+        fa: کاور ریلزهایی که در آن رو به دوربین صحبت می‌کنید.
+        tr: Kameraya konuşulan reels videoları için kapak.
+      content_types:
+        - personal
+        - educate
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+        rules:
+          - real_people_only_with_rights
+      - role: overlay
+        zone:
+          x: 0
+          y: 50
+          w: 100
+          h: 28
+        color: color.dark.canvas
+      - role: headline
+        zone:
+          x: 8
+          y: 54
+          w: 84
+          h: 20
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 5
+        max_lines: 2
+    variation:
+      en: A frame from the video, the title on a darkened band inside the crop.
+      fa: فریمی از خود ویدیو و تیتر روی نواری تیره داخل برش.
+      tr: Videodan bir kare, kırpmanın içinde koyulaştırılmış bantta başlık.
+    do:
+      - readable_at_thumb_size
+      - real_people_only_with_rights
+    dont:
+      - no_text_over_face
+    reference_assets: missing
+    status: draft
+  - id: reel_cover.series-number
+    surface: reel_cover
+    archetype: series-number
+    name:
+      en: Series number
+      fa: شمارهٔ قسمت
+      tr: Seri numarası
+    intent:
+      use_when:
+        en: Recurring series whose episodes should line up in the grid.
+        fa: مجموعه‌های تکرارشونده که قسمت‌هایشان باید در شبکه کنار هم بنشینند.
+        tr: Bölümleri ızgarada sıralanması gereken düzenli seriler.
+      content_types:
+        - educate
+        - community
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: data
+        zone:
+          x: 8
+          y: 25
+          w: 40
+          h: 22
+        color: color.brand.primary
+        font: type.fontFamily.display
+        max_words: 1
+        max_lines: 1
+      - role: subhead
+        zone:
+          x: 8
+          y: 48
+          w: 84
+          h: 6
+        color: color.light.muted
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 8
+          y: 56
+          w: 84
+          h: 16
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 6
+        max_lines: 2
+    variation:
+      en: Light canvas, a large episode number, the series name and the title.
+      fa: زمینهٔ روشن، شمارهٔ قسمت بزرگ، نام مجموعه و تیتر.
+      tr: Açık zemin, büyük bölüm numarası, seri adı ve başlık.
+    do:
+      - consistent_slide_numbering
+      - readable_at_thumb_size
+    dont:
+      - no_more_than_three_colors
+    reference_assets: missing
+    status: draft
+  - id: reel_cover.mascot-hook
+    surface: reel_cover
+    archetype: mascot-hook
+    name:
+      en: Mascot hook
+      fa: کاراکتر برند و قلاب
+      tr: Maskot kancası
+    intent:
+      use_when:
+        en: Covers where an approved mascot pose fits the topic.
+        fa: کاورهایی که یک ژستِ تأییدشدهٔ کاراکتر با موضوع جور است.
+        tr: Onaylı bir maskot pozunun konuya uyduğu kapaklar.
+      content_types:
+        - entertain
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.secondary
+      - role: mascot
+        zone:
+          x: 45
+          y: 28
+          w: 47
+          h: 44
+        rules:
+          - mascot_approved_pose_only
+      - role: headline
+        zone:
+          x: 8
+          y: 30
+          w: 40
+          h: 36
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 5
+        max_lines: 4
+      - role: brand_mark
+        zone:
+          x: 8
+          y: 70
+          w: 14
+          h: 4
+    variation:
+      en: Secondary colour, the mascot on one side, the title on the other.
+      fa: رنگ دوم برند، کاراکتر در یک سو و تیتر در سوی دیگر.
+      tr: İkincil renk, bir yanda maskot, diğer yanda başlık.
+    do:
+      - mascot_approved_pose_only
+      - readable_at_thumb_size
+    dont:
+      - no_more_than_three_colors
+    reference_assets: missing
+    status: draft
+  - id: thumbnail.face-text
+    surface: thumbnail
+    archetype: face-text
+    name:
+      en: Face + text
+      fa: چهره و متن
+      tr: Yüz + metin
+    intent:
+      use_when:
+        en: Videos led by a person.
+        fa: ویدیوهایی که محورشان یک آدم است.
+        tr: Bir kişinin öne çıktığı videolar.
+      content_types:
+        - personal
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: media
+        zone:
+          x: 45
+          y: 0
+          w: 55
+          h: 100
+        rules:
+          - real_people_only_with_rights
+      - role: headline
+        zone:
+          x: 5
+          y: 15
+          w: 42
+          h: 55
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 4
+        max_lines: 3
+        rules:
+          - readable_at_thumb_size
+      - role: shape
+        zone:
+          x: 5
+          y: 74
+          w: 20
+          h: 3
+        color: color.brand.accent
+    variation:
+      en: Brand colour, the face on one half, up to four words on the other.
+      fa: رنگ برند، چهره در یک نیمه و حداکثر چهار کلمه در نیمهٔ دیگر.
+      tr: Marka rengi, bir yarıda yüz, diğer yarıda en fazla dört kelime.
+    do:
+      - face_left_text_right
+      - readable_at_thumb_size
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: thumbnail.big-number
+    surface: thumbnail
+    archetype: big-number
+    name:
+      en: Big number
+      fa: عدد بزرگ
+      tr: Büyük sayı
+    intent:
+      use_when:
+        en: Videos built around one approved figure or a count.
+        fa: ویدیوهایی که حول یک عدد تأییدشده یا یک شمارش ساخته شده‌اند.
+        tr: Onaylı tek bir rakam ya da sayım etrafında kurulan videolar.
+      content_types:
+        - educate
+        - proof
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: data
+        zone:
+          x: 5
+          y: 12
+          w: 45
+          h: 60
+        color: color.brand.primary
+        font: type.fontFamily.display
+        max_words: 1
+        max_lines: 1
+        rules:
+          - approved_numbers_only
+      - role: subhead
+        zone:
+          x: 52
+          y: 30
+          w: 42
+          h: 30
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 5
+        max_lines: 3
+      - role: brand_mark
+        zone:
+          x: 5
+          y: 80
+          w: 12
+          h: 10
+    variation:
+      en: Light canvas, a huge number on one side, a short line beside it.
+      fa: زمینهٔ روشن، عددی خیلی بزرگ در یک سو و جمله‌ای کوتاه کنارش.
+      tr: Açık zemin, bir yanda çok büyük bir sayı, yanında kısa satır.
+    do:
+      - approved_numbers_only
+      - readable_at_thumb_size
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: thumbnail.split-compare
+    surface: thumbnail
+    archetype: split-compare
+    name:
+      en: Split compare
+      fa: مقایسهٔ دوتایی
+      tr: İkili karşılaştırma
+    intent:
+      use_when:
+        en: Comparisons, versus and before/after videos.
+        fa: ویدیوهای مقایسه، این یا آن، و قبل و بعد.
+        tr: Karşılaştırma, kıyas ve önce/sonra videoları.
+      content_types:
+        - educate
+        - proof
+      pillar: null
+    layers:
+      - role: media
+        zone:
+          x: 0
+          y: 0
+          w: 50
+          h: 100
+      - role: media
+        zone:
+          x: 50
+          y: 0
+          w: 50
+          h: 100
+      - role: shape
+        zone:
+          x: 49
+          y: 0
+          w: 2
+          h: 100
+        color: color.brand.accent
+      - role: headline
+        zone:
+          x: 20
+          y: 70
+          w: 60
+          h: 22
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 4
+        max_lines: 1
+    variation:
+      en: Two images side by side, a divider, a title band at the bottom.
+      fa: دو تصویر کنار هم، یک خط جداکننده و نوار تیتر در پایین.
+      tr: Yan yana iki görsel, bir ayırıcı, altta başlık bandı.
+    do:
+      - before_after_same_framing
+      - readable_at_thumb_size
+    dont:
+      - no_fake_ui
+    reference_assets: missing
+    status: draft
+  - id: thumbnail.object-closeup
+    surface: thumbnail
+    archetype: object-closeup
+    name:
+      en: Object close-up
+      fa: نمای نزدیک از شیء
+      tr: Nesne yakın çekim
+    intent:
+      use_when:
+        en: Product, tool or process videos without a face.
+        fa: ویدیوهای محصول، ابزار یا فرایند بدون چهره.
+        tr: Yüz olmadan ürün, araç ya da süreç videoları.
+      content_types:
+        - promote
+        - behind_the_scenes
+      pillar: null
+    layers:
+      - role: media
+        zone: full
+      - role: overlay
+        zone:
+          x: 0
+          y: 0
+          w: 55
+          h: 100
+        color: color.dark.canvas
+      - role: headline
+        zone:
+          x: 5
+          y: 20
+          w: 45
+          h: 45
+        color: color.dark.text
+        font: type.fontFamily.display
+        max_words: 4
+        max_lines: 3
+      - role: brand_mark
+        zone:
+          x: 5
+          y: 78
+          w: 12
+          h: 12
+    variation:
+      en: A full-bleed close-up; a dark overlay on one side holds the title.
+      fa: نمای نزدیکِ تمام‌صفحه و پوشش تیره در یک سو که تیتر را نگه می‌دارد.
+      tr: Tam kaplayan yakın çekim; bir yandaki koyu katman başlığı taşır.
+    do:
+      - readable_at_thumb_size
+      - high_contrast
+    dont:
+      - no_stock_cliche
+    reference_assets: missing
+    status: draft
+  - id: linkedin_post.insight-card
+    surface: linkedin_post
+    archetype: insight-card
+    name:
+      en: Insight card
+      fa: کارت بینش
+      tr: İçgörü kartı
+    intent:
+      use_when:
+        en: A professional lesson or point of view in a few lines.
+        fa: یک درس یا دیدگاه حرفه‌ای در چند خط.
+        tr: Birkaç satırda profesyonel bir ders ya da bakış açısı.
+      content_types:
+        - educate
+        - inspire
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: shape
+        zone:
+          x: 3
+          y: 12
+          w: 1
+          h: 64
+        color: color.brand.accent
+      - role: headline
+        zone:
+          x: 7
+          y: 12
+          w: 86
+          h: 30
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 14
+        max_lines: 4
+      - role: body
+        zone:
+          x: 7
+          y: 46
+          w: 86
+          h: 30
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 45
+        max_lines: 6
+      - role: handle
+        zone:
+          x: 7
+          y: 84
+          w: 60
+          h: 6
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 8
+        max_lines: 2
+      - role: brand_mark
+        zone:
+          x: 80
+          y: 86
+          w: 13
+          h: 5
+    variation:
+      en: Light canvas, a vertical rule, headline and body, a name line at the bottom.
+      fa: زمینهٔ روشن، خط عمودی، تیتر و متن و خط نام در پایین.
+      tr: Açık zemin, dikey çizgi, başlık ve metin, altta isim satırı.
+    do:
+      - one_message
+      - left_align_ltr_right_align_rtl
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: linkedin_post.framework-diagram
+    surface: linkedin_post
+    archetype: framework-diagram
+    name:
+      en: Framework diagram
+      fa: نمودار چارچوب
+      tr: Çerçeve diyagramı
+    intent:
+      use_when:
+        en: Explain a model, matrix or process visually.
+        fa: توضیح یک مدل، ماتریس یا فرایند به‌صورت تصویری.
+        tr: Bir modeli, matrisi ya da süreci görsel olarak anlatın.
+      content_types:
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: headline
+        zone:
+          x: 7
+          y: 6
+          w: 86
+          h: 12
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: shape
+        zone:
+          x: 7
+          y: 22
+          w: 86
+          h: 56
+        color: color.light.muted
+      - role: body
+        zone:
+          x: 7
+          y: 80
+          w: 86
+          h: 8
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 16
+        max_lines: 2
+      - role: brand_mark
+        zone:
+          x: 80
+          y: 91
+          w: 13
+          h: 5
+    variation:
+      en: A short title, a large diagram area, labels below.
+      fa: تیتر کوتاه، فضای بزرگ برای نمودار و برچسب‌ها در پایین.
+      tr: Kısa başlık, geniş diyagram alanı, altta etiketler.
+    do:
+      - max_two_type_sizes
+      - no_more_than_three_colors
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: linkedin_post.portrait-quote
+    surface: linkedin_post
+    archetype: portrait-quote
+    name:
+      en: Portrait + quote
+      fa: پرتره و نقل‌قول
+      tr: Portre + alıntı
+    intent:
+      use_when:
+        en: A person’s own words, with an approved portrait.
+        fa: جملهٔ خودِ یک نفر، همراه با پرترهٔ تأییدشده.
+        tr: Onaylı bir portreyle, kişinin kendi sözleri.
+      content_types:
+        - personal
+        - proof
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: media
+        zone:
+          x: 7
+          y: 8
+          w: 30
+          h: 30
+        rules:
+          - real_people_only_with_rights
+      - role: quote
+        zone:
+          x: 7
+          y: 42
+          w: 86
+          h: 36
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 35
+        max_lines: 6
+        rules:
+          - quote_verbatim_with_permission
+      - role: subhead
+        zone:
+          x: 7
+          y: 82
+          w: 60
+          h: 6
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 8
+        max_lines: 2
+    variation:
+      en: Brand colour, a small portrait on top, a large quote, the name below.
+      fa: رنگ برند، پرترهٔ کوچک در بالا، نقل‌قول بزرگ و نام در پایین.
+      tr: Marka rengi, üstte küçük portre, büyük alıntı, altta isim.
+    do:
+      - quote_verbatim_with_permission
+      - real_people_only_with_rights
+    dont:
+      - no_text_over_face
+    reference_assets: missing
+    status: draft
+  - id: linkedin_post.announcement
+    surface: linkedin_post
+    archetype: announcement
+    name:
+      en: Announcement
+      fa: اطلاعیه
+      tr: Duyuru
+    intent:
+      use_when:
+        en: "News: an approved launch, event, hire or milestone."
+        fa: "خبر: یک عرضه، رویداد، جذب نیرو یا دستاوردِ تأییدشده."
+        tr: "Haber: onaylı bir lansman, etkinlik, işe alım ya da kilometre taşı."
+      content_types:
+        - announce
+        - promote
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.secondary
+      - role: data
+        zone:
+          x: 7
+          y: 10
+          w: 50
+          h: 8
+        color: color.brand.accent
+        font: type.fontFamily.display
+        max_words: 4
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 7
+          y: 22
+          w: 86
+          h: 34
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 12
+        max_lines: 4
+      - role: media
+        zone:
+          x: 7
+          y: 60
+          w: 86
+          h: 24
+        optional: true
+      - role: cta
+        zone:
+          x: 7
+          y: 88
+          w: 40
+          h: 6
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 4
+        max_lines: 1
+        rules:
+          - one_cta
+    variation:
+      en: Secondary colour, a date label, a big headline, an optional image, one CTA.
+      fa: رنگ دوم برند، برچسب تاریخ، تیتر بزرگ، تصویر اختیاری و یک دعوت به اقدام.
+      tr: İkincil renk, tarih etiketi, büyük başlık, isteğe bağlı görsel, tek CTA.
+    do:
+      - one_cta
+      - one_message
+    dont:
+      - no_clickbait
+    reference_assets: missing
+    status: draft
+  - id: linkedin_document.cover-chapter
+    surface: linkedin_document
+    archetype: cover-chapter
+    name:
+      en: Cover / chapter
+      fa: جلد و فصل
+      tr: Kapak / bölüm
+    intent:
+      use_when:
+        en: The first slide and the chapter breaks of a document.
+        fa: اسلاید اول و جداکنندهٔ فصل‌های یک سند.
+        tr: Bir belgenin ilk slaytı ve bölüm araları.
+      content_types:
+        - educate
+        - announce
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.primary
+      - role: headline
+        zone:
+          x: 7
+          y: 30
+          w: 86
+          h: 30
+        color: color.brand.onPrimary
+        font: type.fontFamily.display
+        max_words: 10
+        max_lines: 3
+      - role: subhead
+        zone:
+          x: 7
+          y: 62
+          w: 70
+          h: 8
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 12
+        max_lines: 2
+      - role: handle
+        zone:
+          x: 7
+          y: 86
+          w: 60
+          h: 5
+        color: color.brand.onPrimary
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 1
+    variation:
+      en: Brand colour, a large title in the middle, a subtitle and the name.
+      fa: رنگ برند، عنوان بزرگ در میانه، زیرعنوان و نام.
+      tr: Marka rengi, ortada büyük başlık, alt başlık ve isim.
+    do:
+      - hook_on_first_slide
+      - one_message
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: linkedin_document.one-idea-per-slide
+    surface: linkedin_document
+    archetype: one-idea-per-slide
+    name:
+      en: One idea per slide
+      fa: هر اسلاید یک ایده
+      tr: Her slaytta bir fikir
+    intent:
+      use_when:
+        en: The body of an explainer document.
+        fa: بدنهٔ اصلی یک سند آموزشی.
+        tr: Açıklayıcı bir belgenin gövdesi.
+      content_types:
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: data
+        zone:
+          x: 7
+          y: 6
+          w: 12
+          h: 5
+        color: color.light.muted
+        font: type.fontFamily.display
+        max_words: 1
+        max_lines: 1
+      - role: headline
+        zone:
+          x: 7
+          y: 16
+          w: 86
+          h: 22
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 10
+        max_lines: 3
+      - role: body
+        zone:
+          x: 7
+          y: 42
+          w: 86
+          h: 36
+        color: color.light.text
+        font: type.fontFamily.body
+        max_words: 45
+        max_lines: 6
+      - role: progress
+        zone:
+          x: 7
+          y: 90
+          w: 86
+          h: 1
+        color: color.brand.accent
+        rules:
+          - progress_visible
+    variation:
+      en: Light canvas, a slide number, headline, short body, a progress line.
+      fa: زمینهٔ روشن، شمارهٔ اسلاید، تیتر، متن کوتاه و خط پیشرفت.
+      tr: Açık zemin, slayt numarası, başlık, kısa metin, ilerleme çizgisi.
+    do:
+      - consistent_slide_numbering
+      - one_message
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft
+  - id: linkedin_document.chart-slide
+    surface: linkedin_document
+    archetype: chart-slide
+    name:
+      en: Chart slide
+      fa: اسلاید نمودار
+      tr: Grafik slaytı
+    intent:
+      use_when:
+        en: Approved data shown as a chart, with the source.
+        fa: داده‌های تأییدشده به شکل نمودار، همراه با منبع.
+        tr: Kaynağıyla birlikte grafik olarak gösterilen onaylı veriler.
+      content_types:
+        - proof
+        - educate
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.light.canvas
+      - role: headline
+        zone:
+          x: 7
+          y: 6
+          w: 86
+          h: 12
+        color: color.light.text
+        font: type.fontFamily.display
+        max_words: 9
+        max_lines: 2
+      - role: data
+        zone:
+          x: 7
+          y: 22
+          w: 86
+          h: 52
+        color: color.brand.primary
+        font: type.fontFamily.display
+        rules:
+          - approved_numbers_only
+      - role: body
+        zone:
+          x: 7
+          y: 78
+          w: 86
+          h: 6
+        color: color.light.muted
+        font: type.fontFamily.body
+        max_words: 14
+        max_lines: 1
+        rules:
+          - cite_data_source
+      - role: brand_mark
+        zone:
+          x: 80
+          y: 90
+          w: 13
+          h: 5
+    variation:
+      en: A short title, a large chart area, a source line.
+      fa: تیتر کوتاه، فضای بزرگ نمودار و خط منبع.
+      tr: Kısa başlık, geniş grafik alanı, kaynak satırı.
+    do:
+      - approved_numbers_only
+      - cite_data_source
+    dont:
+      - no_fake_ui
+    reference_assets: missing
+    status: draft
+  - id: linkedin_document.summary-cta
+    surface: linkedin_document
+    archetype: summary-cta
+    name:
+      en: Summary + CTA
+      fa: جمع‌بندی و دعوت به اقدام
+      tr: Özet + CTA
+    intent:
+      use_when:
+        en: "The last slide: key points and one next step."
+        fa: "اسلاید آخر: نکته‌های اصلی و یک قدم بعدی."
+        tr: "Son slayt: ana noktalar ve tek bir sonraki adım."
+      content_types:
+        - educate
+        - promote
+      pillar: null
+    layers:
+      - role: background
+        zone: full
+        color: color.brand.secondary
+      - role: headline
+        zone:
+          x: 7
+          y: 12
+          w: 86
+          h: 16
+        color: color.brand.onSecondary
+        font: type.fontFamily.display
+        max_words: 8
+        max_lines: 2
+      - role: body
+        zone:
+          x: 7
+          y: 32
+          w: 86
+          h: 36
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 35
+        max_lines: 5
+      - role: cta
+        zone:
+          x: 7
+          y: 74
+          w: 60
+          h: 8
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 1
+        rules:
+          - one_cta
+      - role: handle
+        zone:
+          x: 7
+          y: 88
+          w: 60
+          h: 5
+        color: color.brand.onSecondary
+        font: type.fontFamily.body
+        max_words: 6
+        max_lines: 1
+    variation:
+      en: Secondary colour, a short checklist, one CTA, a name line.
+      fa: رنگ دوم برند، چک‌لیست کوتاه، یک دعوت به اقدام و خط نام.
+      tr: İkincil renk, kısa kontrol listesi, tek CTA, isim satırı.
+    do:
+      - cta_on_last_slide
+      - one_cta
+    dont:
+      - no_dense_paragraphs
+    reference_assets: missing
+    status: draft

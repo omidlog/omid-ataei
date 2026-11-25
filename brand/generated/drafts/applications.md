@@ -99,3 +99,25 @@ Value:
 
 TBD
 <!-- field:brand.applications.reviewer end -->
+
+<!-- field:brand.presence.audit start -->
+### Online presence audit
+
+- Question: `brand.presence.audit`
+- Field: `brand.presence.audit`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:47.406Z
+- Answer id: ans-0209
+
+Value:
+
+دیده می‌شود: omidataei.com، لینکدین (omid-ataei)، اینستاگرام (ataei.ca)، X و یوتیوب و تلگرام (ataei_ca)، تیک‌تاک (omid.ca)، مصاحبهٔ N24 و ثبت شرکت در Companies House. ناهماهنگ: نام کاربری‌ها یکی نیستند (ataei.ca، ataei_ca، omid.ca، omid-ataei)؛ نام فارسی به دو شکل عطائی و عطایی نوشته می‌شود؛ تیتر و بیو و عکس پروفایل‌ها باید با headline تأییدشده یکی شوند.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:brand.presence.audit end -->

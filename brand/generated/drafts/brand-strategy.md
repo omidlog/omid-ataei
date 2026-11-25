@@ -125,17 +125,21 @@ TBD
 
 - Question: `business.swot.strengths`
 - Field: `business.swot.strengths`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:44.528Z
+- Answer id: ans-0194
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.swot.strengths","next":7,"items":[{"id":"str-1","name":"تجربهٔ هر دو طرف میز","detail":"ساختن کسب‌وکار خودم و کمک به تیم‌های دیگر","confidence":"evidenced","sources":["personal.story.motivation","personal.founder.ventures"]},{"id":"str-2","name":"پیشینهٔ ترکیبی طراحی، مارکتینگ و استراتژی","detail":"evidenced","sources":["personal.story.origin","personal.experience.roles"]},{"id":"str-3","name":"مخاطب موجود در اینستاگرام","detail":"حدود ۷۳ هزار دنبال‌کننده، به گفتهٔ مالک","confidence":"owner_view","sources":["personal.goals.kpis"]},{"id":"str-4","name":"کار عملی با هوش مصنوعی و ایجنت‌ها","detail":"Fiko، دادوین و Brand OS","confidence":"evidenced","sources":["personal.portfolio.projects"]},{"id":"str-5","name":"سه زبان","detail":"فارسی، انگلیسی و ترکی","confidence":"evidenced","sources":["brand.verbal.localization"]},{"id":"str-6","name":"سوابق قابل‌ارجاع","detail":"ثبت شرکت، سایت‌ها و مصاحبه","confidence":"evidenced","sources":["personal.credibility.evidence"]}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.swot.strengths end -->
 
 <!-- field:brand.strategy.purpose start -->
@@ -165,17 +169,21 @@ Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the ow
 
 - Question: `business.swot.weaknesses`
 - Field: `business.swot.weaknesses`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:44.712Z
+- Answer id: ans-0195
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.swot.weaknesses","next":5,"items":[{"id":"wk-1","name":"وقت محدود بین چند ونچر","detail":"hypothesis"},{"id":"wk-2","name":"داستان مشتری عمومی ندارم","detail":"اسم مشتری‌ها منتشر نمی‌شود","confidence":"owner_view","sources":["personal.consulting.confidentiality"]},{"id":"wk-3","name":"هدف و تناوب کانال‌ها هنوز مشخص نیست","detail":"evidenced","sources":["personal.content.channels"]},{"id":"wk-4","name":"منتورینگ هنوز از صفر شروع می‌شود","detail":"مبنای ۰ ساعت در ماه","confidence":"owner_view","sources":["personal.goals.kpis"]}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.swot.weaknesses end -->
 
 <!-- field:brand.strategy.vision start -->
@@ -205,17 +213,21 @@ Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the ow
 
 - Question: `business.swot.opportunities`
 - Field: `business.swot.opportunities`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:44.894Z
+- Answer id: ans-0196
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.swot.opportunities","next":5,"items":[{"id":"opp-1","name":"تقاضای کارآفرینان فارسی‌زبان برای استفادهٔ عملی از هوش مصنوعی","detail":"hypothesis"},{"id":"opp-2","name":"کمبود محتوای کسب‌وکاری باکیفیت و بدون هایپ به فارسی","detail":"hypothesis"},{"id":"opp-3","name":"بنیان‌گذاران فارسی‌زبان در ترکیه و امارات","detail":"hypothesis","sources":["personal.identity.service_scope"]},{"id":"opp-4","name":"لینکدین برای رسیدن به مدیران بازاریابی و پروژه‌های استراتژی","detail":"hypothesis"}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.swot.opportunities end -->
 
 <!-- field:brand.strategy.values start -->
@@ -245,17 +257,21 @@ Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the ow
 
 - Question: `business.swot.threats`
 - Field: `business.swot.threats`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:45.107Z
+- Answer id: ans-0197
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.swot.threats","next":5,"items":[{"id":"thr-1","name":"تغییر الگوریتم شبکه‌های اجتماعی","detail":"hypothesis"},{"id":"thr-2","name":"محدودیت پرداخت بین‌المللی برای مشتری‌های داخل ایران","detail":"hypothesis"},{"id":"thr-3","name":"مشاوره‌های «یک‌شبه پولدار شو» که اعتماد بازار را پایین می‌آورند","detail":"hypothesis"},{"id":"thr-4","name":"محدودیت و فیلترینگ اینترنت در ایران","detail":"hypothesis"}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.swot.threats end -->
 
 <!-- field:brand.strategy.differentiation start -->
@@ -281,17 +297,21 @@ TBD
 
 - Question: `business.swot.tows`
 - Field: `business.swot.tows`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:45.310Z
+- Answer id: ans-0198
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.swot.tows","next":6,"items":[{"id":"tows-1","name":"محتوای «ساختن در عمل»","detail":"پشت صحنهٔ Fiko، دادوین و Brand OS برای جذب بنیان‌گذاران","type":"so","links":["str-1","str-4","opp-1","opp-2"]},{"id":"tows-2","name":"از محتوا به جلسهٔ 1:1","detail":"تبدیل مخاطب اینستاگرام به جلسهٔ استراتژی","type":"so","links":["str-3","opp-2"]},{"id":"tows-3","name":"داستان‌های بی‌نام با اجازهٔ کتبی","detail":"جبران نبودن نمونهٔ عمومی","type":"wo","links":["wk-2","opp-4"]},{"id":"tows-4","name":"چند کانال هم‌زمان","detail":"کم کردن وابستگی به یک الگوریتم با لینکدین، یوتیوب و تلگرام","type":"st","links":["str-5","thr-1"]},{"id":"tows-5","name":"تولید دسته‌ای و برنامه‌ریزی‌شدهٔ محتوا","detail":"کم کردن فشار وقت و وابستگی به یک الگوریتم","type":"wt","links":["wk-1","thr-1"]}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.swot.tows end -->
 
 <!-- field:brand.strategy.promise start -->

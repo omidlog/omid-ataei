@@ -53,17 +53,21 @@ Approved by: owner
 
 - Question: `business.cx.onboarding`
 - Field: `business.cx.onboarding`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.454Z
+- Answer id: ans-0204
 
 Value:
 
-TBD
+بعد از اولین جلسهٔ 1:1، فرد مشکل اصلی‌اش را روشن‌تر می‌بیند، فرض‌هایش به چالش کشیده شده، یک یا دو اولویت مشخص دارد و قدم عملی بعدی را می‌داند (Understand، Challenge assumptions، Prioritize، Act). بدون وعدهٔ نتیجه.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.cx.onboarding end -->
 
 <!-- field:business.cx.channels start -->
@@ -71,17 +75,21 @@ TBD
 
 - Question: `business.cx.channels`
 - Field: `business.cx.channels`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.648Z
+- Answer id: ans-0205
 
 Value:
 
-TBD
+ایمیل (hello@omidataei.com)، فرم تماس سایت و رزرو جلسه از سایت. دایرکت شبکه‌های اجتماعی کانال پشتیبانی رسمی نیست. تلفن ارائه نمی‌شود.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.cx.channels end -->
 
 <!-- field:business.cx.sla start -->

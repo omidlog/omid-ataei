@@ -129,17 +129,21 @@ TBD
 
 - Question: `business.cx.onboarding`
 - Field: `business.cx.onboarding`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.454Z
+- Answer id: ans-0204
 
 Value:
 
-TBD
+بعد از اولین جلسهٔ 1:1، فرد مشکل اصلی‌اش را روشن‌تر می‌بیند، فرض‌هایش به چالش کشیده شده، یک یا دو اولویت مشخص دارد و قدم عملی بعدی را می‌داند (Understand، Challenge assumptions، Prioritize، Act). بدون وعدهٔ نتیجه.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.cx.onboarding end -->
 
 <!-- field:brand.mascot.situation_map start -->

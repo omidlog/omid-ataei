@@ -129,3 +129,25 @@ Value:
 
 Approved by: owner
 <!-- field:personal.goals.kpis end -->
+
+<!-- field:personal.collaboration.policy start -->
+### Collaboration policy
+
+- Question: `personal.collaboration.policy`
+- Field: `personal.collaboration.policy`
+- Status: approved
+- Visibility: internal
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
+- Uncertainty: none
+- Updated: 2026-11-25T10:58:45.685Z
+- Answer id: ans-0200
+
+Value:
+
+می‌پذیرم: همکاری با ابزارها و برندهای کسب‌وکار، استارتاپ، مارکتینگ و هوش مصنوعی که خودم می‌شناسم و به آن‌ها اعتماد دارم؛ رویداد و لایو مشترک با بنیان‌گذاران. رد می‌کنم: هر برندی که بوی کلاهبرداری بدهد، «یک‌شبه پولدار شو»، تضمین درآمد، و پیشنهادهای حقوقی، مالیاتی یا سرمایه‌گذاری. اعلام: هر محتوای پولی یا اسپانسری با برچسب واضح «تبلیغ» یا «همکاری پولی»؛ وقتی از Fiko یا دادوین حرف می‌زنم اعلام می‌کنم بنیان‌گذارشان هستم.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
+<!-- field:personal.collaboration.policy end -->

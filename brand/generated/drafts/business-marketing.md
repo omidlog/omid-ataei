@@ -87,17 +87,21 @@ TBD
 
 - Question: `business.marketing.journey`
 - Field: `business.marketing.journey`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.062Z
+- Answer id: ans-0202
 
 Value:
 
-TBD
+فرضیه، اندازه‌گیری‌نشده. آگاهی: ریلز و پست اینستاگرام، یوتیوب و لینکدین. بررسی: سایت omidataei.com، پروفایل لینکدین، و پشت صحنهٔ ساختن Fiko و دادوین. تبدیل: رزرو 1:1 Strategy Session از سایت، یا فرم تماس برای پروژه. نگهداشت: Strategic Review یا Ongoing Advisory بعد از جلسهٔ اول. توصیه: هنوز برنامه‌ای ندارد.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.marketing.journey end -->
 
 <!-- field:business.marketing.pillars start -->
@@ -195,17 +199,21 @@ TBD
 
 - Question: `business.marketing.journey_stages`
 - Field: `business.marketing.journey_stages`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.256Z
+- Answer id: ans-0203
 
 Value:
 
-TBD
+{"schema":"brand-os.entity-list/1","question":"business.marketing.journey_stages","next":6,"items":[{"id":"stage-1","name":"آگاهی","goal":"فهمیدن اینکه مشکلش استراتژیک است","touchpoints":"ریلز و پست اینستاگرام، یوتیوب، لینکدین","actions":"محتوا را می‌بیند و ذخیره می‌کند","emotion":"neutral","pains":"محتوای پرهایپ و وعده‌های توخالی","opportunities":"محتوای رک و با پشتوانه","evidence":"فرضیه، اندازه‌گیری‌نشده"},{"id":"stage-2","name":"بررسی","goal":"اطمینان از اینکه آدم درستی است","touchpoints":"سایت omidataei.com، لینکدین، پشت صحنهٔ Fiko و دادوین","actions":"سوابق و محتوای بیشتر را می‌خواند","emotion":"positive","pains":"نبودن نمونهٔ مشتری عمومی","opportunities":"داستان‌های بی‌نام با اجازه","evidence":"فرضیه، اندازه‌گیری‌نشده"},{"id":"stage-3","name":"تبدیل","goal":"گرفتن کمک برای یک چالش مشخص","touchpoints":"رزرو جلسه و فرم تماس سایت","actions":"1:1 Strategy Session رزرو می‌کند","emotion":"positive","pains":"تردید دربارهٔ ارزش یک جلسه","opportunities":"توضیح روشن خروجی جلسه","evidence":"فرضیه، اندازه‌گیری‌نشده"},{"id":"stage-4","name":"نگهداشت","goal":"ادامهٔ کار روی اولویت‌ها","touchpoints":"ایمیل و جلسه‌های بعدی","actions":"Strategic Review یا Ongoing Advisory می‌گیرد","emotion":"positive","pains":"وقت محدود","opportunities":"برنامهٔ روشن قدم‌های بعدی","evidence":"فرضیه، اندازه‌گیری‌نشده"},{"id":"stage-5","name":"توصیه","goal":"معرفی به دیگران","touchpoints":"ارجاع شخصی و لینکدین","actions":"توصیه‌نامه می‌نویسد یا معرفی می‌کند","emotion":"very_positive","pains":"برنامه‌ای برای ارجاع نیست","opportunities":"درخواست توصیه‌نامه بعد از پروژه","evidence":"فرضیه، اندازه‌گیری‌نشده"}]}
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.marketing.journey_stages end -->
 
 <!-- field:business.product.public_status start -->

@@ -15,17 +15,21 @@ generated: true
 
 - Question: `business.plan.risks`
 - Field: `business.plan.risks`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:43.983Z
+- Answer id: ans-0191
 
 Value:
 
-TBD
+۱) وقت: اداره‌کردن هم‌زمان Fiko، دادوین، منتورینگ و تولید محتوا؛ ریسک افت کیفیت یا قطع شدن تناوب محتوا. ۲) وابستگی به خودم: برند شخصی و هر دو ونچر به حضور شخص من وابسته‌اند. ۳) وابستگی به الگوریتم اینستاگرام برای رسیدن به مخاطب. ۴) محدودیت پرداخت بین‌المللی و اینترنت برای مشتری‌های داخل ایران. ۵) ادعای بدون منبع: هر عدد یا نتیجهٔ بی‌منبع به اعتبار آسیب می‌زند.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.plan.risks end -->
 
 <!-- field:business.partners.channels start -->
@@ -33,17 +37,21 @@ TBD
 
 - Question: `business.partners.channels`
 - Field: `business.partners.channels`
-- Status: unanswered
+- Status: approved
 - Visibility: internal
-- Authority: unverified
-- Source: none
+- Authority: confirmed_by_owner
+- Source: agent_suggestion (Agent-suggested, owner-confirmed)
 - Uncertainty: none
-- Updated: n/a
-- Answer id: n/a
+- Updated: 2026-11-25T10:58:46.830Z
+- Answer id: ans-0206
 
 Value:
 
-TBD
+امروز شریک توزیع رسمی ندارم. کانال‌های خودم: سایت شخصی، اینستاگرام، لینکدین، یوتیوب، تلگرام، X و تیک‌تاک.
+
+Approved by: owner
+
+Origin: agent-suggested, owner-confirmed. An agent proposed this wording; the owner confirmed it. It is not owner-authored.
 <!-- field:business.partners.channels end -->
 
 <!-- field:business.partners.risk_process start -->
