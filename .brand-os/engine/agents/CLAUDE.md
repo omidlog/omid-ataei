@@ -18,7 +18,7 @@ Skills for specific work:
 - `agent-skills/mascot-creator/SKILL.md`
 - `agent-skills/ui-designer/SKILL.md`
 - `agent-skills/motion-designer/SKILL.md`
-- `agent-skills/social-designer/SKILL.md`
+- `agent-skills/social-designer/SKILL.md` (pick one approved style per deliverable from the social style kit; `docs-internal/SOCIAL_STYLE_KIT.md` before touching `brand:social`, `social_style_kit` or `packages/brand-core/src/social-kit`)
 - `agent-skills/knowledge-inbox/SKILL.md` (notes are unapproved ideas; `docs-internal/KNOWLEDGE.md`)
 - `agent-skills/creative-memory/SKILL.md` (design feedback and scoped preferences; `docs-internal/CREATIVE_LEARNING.md`)
 - `agent-skills/seo-strategist/SKILL.md` (draft SEO/GEO strategy with cited, dated sources; `docs-internal/SEO_STRATEGIST.md`)

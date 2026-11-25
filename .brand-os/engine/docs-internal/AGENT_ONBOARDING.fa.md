@@ -149,6 +149,25 @@ claude mcp remove brand-os --scope local
 
 اگر ممکن است توکن جایی لو رفته باشد (مثلاً جایی چسبانده‌اید)، همان لحظه باطلش کنید و توکن تازه بسازید.
 
+## برنامه‌های دیگر: Claude Desktop، Cowork، ChatGPT، Grok، Claude Projects
+
+- **Claude Desktop یا Cowork** می‌توانند همین سرور محلی را روشن کنند. یک ورودی `brand-os` با توکن در `env` آن اضافه کنید
+  (نمونه در [AI_CONNECTORS.md](AI_CONNECTORS.md#claude-desktop--cowork-via-local-mcp)): در مخزن برند
+  `node /path/to/brand/.brand-os/engine/brand-os.mjs mcp` و در قالب `npm run -s mcp:serve`.
+- **ChatGPT، Grok یا Claude.ai Projects** نمی‌توانند آن را روشن کنند. یک بستهٔ فقط‌خواندنی صادر کنید و فایل‌هایش را به‌عنوان
+  دانش پروژه بارگذاری کنید:
+
+<div dir="ltr">
+
+```sh
+npm run brand:pack -- --profile content-read --lang fa
+```
+
+</div>
+
+این بسته فقط زمینهٔ تأییدشده دارد؛ بارگذاری آن، آن را با آن محصول به اشتراک می‌گذارد؛ و کهنه می‌شود: بعد از هر تأیید
+دوباره صادر کنید.
+
 ## عادت‌های خوب
 
 - برای هر دستیار و هر کار یک توکن جدا. دستیار دوم توکن دوم می‌گیرد؛ دسترسی یک توکن را بزرگ نکنید.

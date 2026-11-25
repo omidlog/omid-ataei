@@ -10,7 +10,60 @@ Open the cloned repository in a session that is allowed to read it. Point the ag
 
 ## ChatGPT or other hosted chats
 
-They do not see this repo unless you connect an app or paste a file. Pasting restricted drafts publishes them to that product. Do not paste `brand/restricted/`.
+They do not see this repo unless you connect an app or paste a file. Pasting restricted drafts publishes them to that product. Do not paste `brand/restricted/`. For a safe export, use the pack below.
+
+## Chat products without MCP (ChatGPT, Grok, Claude Projects)
+
+A hosted chat product cannot start the local MCP server. The owner exports a small, read-only pack instead and uploads
+it as project knowledge:
+
+```sh
+npm run brand:pack -- --profile content-read            # or marketing, design, internal-read
+npm run brand:pack -- --profile content-read --lang fa --out ~/Desktop/brand-pack --json
+```
+
+- It writes `00-README.md`, `01-instructions.md` (paste it into the project instructions), `02-brand.md` (approved
+  facts by section: identity, voice, audience, positioning, offers, with fact ids), `03-content-strategy.md`,
+  `04-calendar.md` (approved current weeks and one brief per slot) `05-creative-preferences.md` and `06-social-style-kit.md` (approved styles only). Strategy,
+  calendar and preferences are filled for `content-read` only; other profiles get facts.
+- It is built from the readers a token of that profile uses (`brand_retrieve`, the served content strategy view,
+  `content_calendar`, pinned `content_brief`), with an in-process context of that profile logged as
+  `owner-export:pack`. Drafts, restricted values and Knowledge note text are excluded by construction, and a final scan
+  refuses to write if a restricted fact id or value, the approval secret (or a string of its shape) or an agent token
+  appears.
+- Default `--out` is `brand/.private/exports/pack-<profile>-<date>/` (git-ignored). An `--out` inside the repository
+  that git does not ignore is refused. Files are `0600`. Refused while `BRAND_OS_AGENT_TOKEN` is set.
+- **Uploading shares it.** The product and everyone with access to that project get a copy. The pack is a snapshot:
+  export again after every approval and replace the files. It authorizes nothing.
+- `01-instructions.md` tells the assistant to use only these facts, cite fact ids, never invent claims, prices or
+  metrics, respect banned claims and voice don'ts, use fixed structures for a reel script, carousel, post, story and
+  LinkedIn post, never claim permission to publish, and end each deliverable with a feedback block the owner can paste
+  into `npm run brand:content -- feedback`.
+
+## Claude Desktop / Cowork via local MCP
+
+Claude Desktop (and Cowork) can start the local stdio server, so it reads live, approved context instead of a pack.
+Issue a token (below), then add a server entry to the app's MCP configuration (`claude_desktop_config.json`). In a
+data-only brand repository the engine is committed at `.brand-os/engine/brand-os.mjs`; its MCP command is `mcp`:
+
+```json
+{
+  "mcpServers": {
+    "brand-os": {
+      "command": "node",
+      "args": ["/path/to/brand/.brand-os/engine/brand-os.mjs", "mcp"],
+      "cwd": "/path/to/brand",
+      "env": { "BRAND_OS_AGENT_TOKEN": "<paste token>" }
+    }
+  }
+}
+```
+
+The server serves the brand in its working directory. If the app does not honour `cwd`, use
+`"command": "sh", "args": ["-c", "cd /path/to/brand && exec node .brand-os/engine/brand-os.mjs mcp"]`. In this template
+monorepo the same server is `npm run -s mcp:serve`:
+`{ "command": "npm", "args": ["--prefix", "/path/to/brand-os-template", "run", "-s", "mcp:serve"], "env": { "BRAND_OS_AGENT_TOKEN": "<paste token>" } }`.
+Keep the token in this config only, never in a prompt or a committed file.
 
 ## Local tools
 
@@ -57,7 +110,13 @@ All profiles are read-only and never get restricted values.
 | `knowledge-read` | approved facts in every module, plus the read-only `knowledge_*` tools over shared notes (`brand/knowledge/shared`), labelled unapproved ideas. Never local or restricted notes. Issue with `brand:agent-token issue --profile knowledge-read`. |
 | `creative-read` | approved facts as `design`, plus the read-only `creative_context` tool: owner-approved scoped creative preferences and the owner's cited reasons for selected, rejected and partly kept variants (`docs-internal/CREATIVE_LEARNING.md`). Drafts and superseded preferences are only counted. Verbatim feedback is quoted only from shared notes; local note text is withheld. Issue with `brand:agent-token issue --profile creative-read`. |
 | `strategy-seo-read` / `strategy-ads-read` | approved facts as `marketing`, plus the read-only `strategy_list` and `strategy_get` tools: the owner-approved, currently valid revision of SEO (or paid-media) strategies, with content, approval and source digests. Drafts are only counted; the restricted budget and notes are withheld; a stale pin is refused. Reading grants no permission to run ads, spend or publish (`docs-internal/STRATEGY_FEED.md`). |
-| `content-read` | approved facts as `marketing`, plus approved `content` strategies through `strategy_list` / `strategy_get`, and the `content_calendar` and `content_brief` tools: owner-approved calendar weeks that are current now and one brief per slot (voice, claims, audience, resolved message, channel plan, cited competitive angle, creative preference ids). Drafts and weeks that need review are only counted; restricted facts are withheld; a stale pin is refused. Its one write is `content_report`: a produced / published observation with an https URL, which changes no week, strategy or fact and grants no permission to publish (`docs-internal/CONTENT_BRIDGE.md`; connecting a bot: `docs-internal/CONTENT_AGENT_INTEGRATION.md`). |
+| `content-read` | approved facts as `marketing`, plus approved `content` strategies through `strategy_list` / `strategy_get`, and the `content_calendar` and `content_brief` tools: owner-approved calendar weeks that are current now and one brief per slot (voice, claims, audience, resolved message, channel plan, cited competitive angle, owner-approved creative preference statements with their scope, and `learnings`: ids and owner-reported metrics of recent slots of the same channel and format). Never Knowledge note text and never draft preferences. Drafts and weeks that need review are only counted; restricted facts are withheld; a stale pin is refused. Its one write is `content_report`: a produced / published observation with an https URL, which changes no week, strategy or fact and grants no permission to publish (`docs-internal/CONTENT_BRIDGE.md`; connecting a bot: `docs-internal/CONTENT_AGENT_INTEGRATION.md`). |
+
+**Widening of `content-read` (content feedback loop):** a brief now carries the owner-approved statement (at most 200
+characters) and scope of each applicable creative preference, not only its id, and owner-reported metrics (numbers,
+labelled `owner_reported` / `not_verified`) in `learnings` and in calendar `reports[]`. It still never carries note
+text, drafts, superseded preferences or the reasons behind a preference; those stay with `creative_context`
+(`creative-read`).
 
 Restricted fields (finance figures, budgets, partner shares, board details) come back as `value: null, withheld: true` for every profile. Agents can never approve or publish. The only write any agent has is a `content-read` report, stored as an observation.
 

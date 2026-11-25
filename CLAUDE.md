@@ -1,4 +1,4 @@
-<!-- Written by the Brand OS engine 0.2.0-184d45a; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
+<!-- Written by the Brand OS engine 0.2.0-4eee001; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
 # Claude Code
 
 Follow `AGENTS.md`. This file does not restate those rules.
@@ -19,7 +19,7 @@ Skills for specific work:
 - `.brand-os/engine/agent-skills/mascot-creator/SKILL.md`
 - `.brand-os/engine/agent-skills/ui-designer/SKILL.md`
 - `.brand-os/engine/agent-skills/motion-designer/SKILL.md`
-- `.brand-os/engine/agent-skills/social-designer/SKILL.md`
+- `.brand-os/engine/agent-skills/social-designer/SKILL.md` (pick one approved style per deliverable from the social style kit; `.brand-os/engine/docs-internal/SOCIAL_STYLE_KIT.md` before touching `brand:social`, `social_style_kit` or `packages/brand-core/src/social-kit`)
 - `.brand-os/engine/agent-skills/knowledge-inbox/SKILL.md` (notes are unapproved ideas; `.brand-os/engine/docs-internal/KNOWLEDGE.md`)
 - `.brand-os/engine/agent-skills/creative-memory/SKILL.md` (design feedback and scoped preferences; `.brand-os/engine/docs-internal/CREATIVE_LEARNING.md`)
 - `.brand-os/engine/agent-skills/seo-strategist/SKILL.md` (draft SEO/GEO strategy with cited, dated sources; `.brand-os/engine/docs-internal/SEO_STRATEGIST.md`)

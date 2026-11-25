@@ -57,7 +57,7 @@ A content strategy is a `StrategyRevision` with `type: "content"` and a `content
 | --- | --- |
 | `languages` | Content languages (locale codes). Default: the brand default locale. |
 | `pillars[]` | `{id, name, fact_refs}`. Each pillar must cite at least one approved fact. |
-| `channels[]` | `{channel, role, formats, cadence, languages, pillars, fact_refs}`. `role` and `cadence` are `null` until the owner decides; `formats` from `reel, carousel, post, thread, story, article, email, short_video, video, live`. |
+| `channels[]` | `{channel, role, formats, cadence, languages, pillars, fact_refs}`. `role` and `cadence` are `null` until the owner decides; `formats` from `reel, carousel, post, thread, story, article, email, short_video, video, live`. Optional, absent when not set: `objective`, `audience`, `mix`, `kpis`, `posting_windows`, `rules` (see "Channel playbook, batch and deliverables"). |
 | `sources` | Approved fact ids per role: `voice, claims, audience, messaging, pillars, channels, offers, cta, languages, objective`. Values are never copied. |
 | `voice_rules`, `vocabulary`, `banned_claims`, `cta_rules` | Owner-written additions. The proposer leaves them empty. |
 | `strategy_refs[]` | Pinned approved SEO / paid-media revisions `{strategy_id, revision, content_sha256}`. |
@@ -339,3 +339,117 @@ Slice D adds no runtime code path. It documents the existing one and tests that 
 
 One text fix: the `brand:strategy review` note for a `content` strategy said no agent reads content strategies. Since
 Slice C, `content-read` agents do (through `strategy_list` / `strategy_get`); the note now says so.
+
+## Channel playbook, batch and deliverables
+
+Three additions for "make 10 reels, 10 Instagram posts, stories, LinkedIn posts and camera scripts I read myself".
+None adds a store, an approval path, a token profile or a tool: they reuse Slices A–C.
+
+| Existing module | Reused for | New small type | Why it is not a second truth |
+| --- | --- | --- | --- |
+| `strategy/model.ts` `parseContentStrategy` | Optional channel fields, parsed strictly like the rest of the block. | `ChannelMixShare`, `ChannelKpi` | They live in the approved content strategy revision. Unset fields are absent, not `null` or `[]`, so old revisions hash the same. |
+| `content-bridge/propose.ts` `buildContentStrategy` | `--playbook` copies playbook suggestions into the proposal. | none | Still a proposal; the owner reviews and approves it with `brand:strategy`. |
+| `content-bridge/planner.ts` `planWeek` | `batch` runs the planner on the served strategy narrowed to the requested channels and formats. | `BatchItem` | Same slot shape, rotation, pins and checks (`proposeWeek` / `weekProblems`); weeks are approved one by one as before. |
+| `content-bridge/agent.ts` `buildBrief` | `deliverable` per slot; `channel_plan` carries the optional fields when set. | `DeliverableSpec` | A deterministic function of format, channel and language. It writes no copy; `brief_sha256` covers it. |
+
+### Optional channel fields
+
+| Field | Values |
+| --- | --- |
+| `objective` | `awareness, engagement, community, leads, sales, authority, retention` |
+| `audience` | Short owner text (≤ 200). Who this channel reaches; the audience facts stay the truth. |
+| `mix` | `[{type, share}]`, `type` from `educate, inspire, connect, promote, entertain`, whole percentages summing to 100. |
+| `kpis` | Up to 6 `{metric, target, per}`: `metric` from `reach, saves, shares, comments, follows, profile_visits, link_clicks, leads, watch_time, completion_rate, replies, subscribers`; `target` a number or `null`; `per` `post`, `week` or `month`. A target is the owner's target, never a measured result. |
+| `posting_windows` | Up to 7 short texts such as `tue 19:00-21:00`. |
+| `rules` | Up to 10 owner-written rules (≤ 200 characters each). |
+
+Text fields pass the same safety check as every strategy text (no money amounts, credentials, personal data or
+placeholders).
+
+### Channel playbook
+
+`packages/brand-core/src/content-bridge/channel-playbook.ts` holds general practice for Instagram, LinkedIn, X, TikTok,
+YouTube, Threads, Telegram, Facebook, Pinterest, newsletter and blog, in en/fa/tr: a suggested role, formats, a cadence
+range with a starting point, an objective, a mix, KPIs to watch (no targets), a posting-window note and 3–6 craft notes.
+Every entry is `basis: general_practice` and the document says it is not measured for this brand. It cites no fact and
+holds no voice, claim, audience or number about the brand. Website, podcast and other have no entry.
+
+- `brand:content playbook [--channel x] [--lang fa|tr] [--json]` prints it (`brand-os/content-playbook/v1`,
+  `authorizes: []`).
+- `brand:content strategy --playbook` fills role, formats, starting cadence, objective, mix and KPI names for channels
+  with an entry. `--formats` and `--cadence` win. Those fields are no longer `owner_decision` gaps; instead a note per
+  channel names the values that came from the playbook, and one `assumptions` line in the proposal says the channel plans
+  start from general practice. A channel without an entry keeps its gaps.
+
+### Batch (`brand:content batch`)
+
+`--channel instagram --format reel --count 10`, or several `--item channel:format:count`, `--from YYYY-MM-DD` (default:
+the next Monday), `--pillar <id>`, `--research`, `--out`, `--store`, `--lang`.
+
+- Slots are dated by the channel's approved cadence from `--from`, grouped into Monday–Sunday weeks, and built by
+  `planWeek`, so they have the same rotation, pins and checks as `plan`. Several items on one channel share its cadence:
+  their formats take turns (reel, post, reel, …), never stacked on one day.
+- Refused: a channel the served strategy lacks, a channel without cadence, a format the channel does not use, a pillar
+  the strategy (or the channel) does not carry, more than 50 per item or 10 items. A batch never widens the strategy.
+- When the cadence cannot fit the count in 26 weeks, the result says how many were planned.
+- `--store` stores each week as a draft through `proposeWeek`. If any target week already has a draft or approved
+  revision, nothing is stored and the message names the weeks; edit them with `week propose` or reject the draft.
+  Approval stays `week approve`, one week at a time.
+
+### Deliverable specs (`deliverable` in a brief)
+
+`packages/brand-core/src/content-bridge/deliverables.ts`, chosen by the slot format:
+
+| Format | Spec |
+| --- | --- |
+| `reel`, `short_video`, `video`, `live` | `script`: production options `talking_head`, `voiceover`, `text_on_screen`; parts hook (0–3 s), setup, 3–5 beats (line, on-screen text, b-roll), payoff, CTA, caption; captions on; duration range per format and channel; a read-aloud word budget from about 2.5 (en), 2.2 (fa) and 1.9 (tr) words per second in the slot language; delivery notes (pace, eye-line, one sentence per line). |
+| `carousel` | Slide count (5–10, LinkedIn 6–12), roles hook, value, recap, CTA; words per slide; caption first line and hashtag range. |
+| `post` | Visual headline (≤ 8 words), caption structure (first line, body, CTA, hashtags), per-channel hashtag range. |
+| `story` | 3–7 frames: opening, context, exactly one interaction (poll, question, quiz or link), closing. |
+| `thread`, `article`, `email` | Structure and length (posts or words). |
+
+Every spec is `general_practice`, carries rules (fill from this brief only, missing stays missing, write in the slot
+language) and a `template` whose values are all `null`. Labels and guidance follow the brief `lang`.
+
+### Tests
+
+| Behaviour | Test |
+| --- | --- |
+| Old revision hashes unchanged (fixture digest from main); unset fields absent | `content-playbook` "an approved revision written before…" |
+| Strict parse of the optional fields | `content-playbook` "the optional channel fields parse strictly" |
+| Playbook en/fa/tr, general practice, no targets | `content-playbook` "the playbook is general practice…" |
+| `--playbook` fills, explicit values win, notes and assumption | `content-playbook` "strategy --playbook fills…" |
+| Batch dating, interleaving, refusals, store refused into stored weeks | `content-playbook` "batch: …" |
+| Deliverable specs and the brief | `content-playbook` "briefs carry a deliverable spec…" |
+| CLI journey | `content-playbook` "CLI: …" |
+## Content feedback loop
+
+The owner says what worked and what did not on a produced slot, and later briefs follow it once the owner approves a
+rule. Nothing new decides anything: feedback reuses Creative Learning, metrics reuse the observation file.
+
+| Existing module | Reused for | Why it is not a second truth |
+| --- | --- | --- |
+| Knowledge `captureNote` | The feedback words: one `owner_note` note, tags `content-feedback`, `slot-<week>-<slot>`, `proj-<project>`, `source.ref = content:<week>/<slot>`. | The words live only in the note. |
+| Creative Learning (`createProject`, `addVariant`, `recordFeedback`, `suggestPreference`, `approvePreference`) | One project per slot, `content-<week>-<slot>`: surface from the slot format (`reel`, `carousel`, `post`, `story`, `thread`; `email`/`article` → `article`; `short_video` → `reel`; `video`/`live` → `script`), series = the slot's style id when it has one, else its channel (`channel-x` for X). Variant `A`, asset `missing`. | The project stores the note id + revision, verdict and closed-vocabulary aspects. A rule exists only after `brand:creative suggest` and the owner's `approve` (proof). |
+| `observations.ts` | Owner-reported metrics in the same per-week file, a separate `metrics` list. | Labelled `owner_reported` / `not_verified`; pinned to the approved week revision; changes no week, strategy or fact. |
+| `content_brief` (`agent.ts`) | `creative.preferences[]` with statements; `learnings[]`. | Only approved, currently valid preferences; numbers and ids only. |
+
+```bash
+npm run brand:content -- feedback --week wk-2026-11-23 --slot s01 --text "Caption too long, hook weak" --verdict change_request --keep tone --avoid length,hook
+# prints: npm run brand:creative -- suggest --project content-wk-2026-11-23-s01 --statement '…' --source kn_…
+npm run brand:creative -- suggest --project content-wk-2026-11-23-s01 --statement "Keep reel captions under 120 characters" --source kn_…
+BRAND_OS_APPROVAL_PROOF=… npm run brand:creative -- approve --id cp_… --scope series
+npm run brand:content -- metrics --week wk-2026-11-23 --slot s01 --views 1200 --likes 80 --completion-rate 42 [--measured-at 2026-11-25] [--source manual|platform_export]
+npm run brand:content -- reports
+```
+
+- Feedback and metrics need an approved week revision and a slot in it; a skipped slot has no metrics. Both refuse while
+  `BRAND_OS_AGENT_TOKEN` is set.
+- Copy aspects were appended to the closed vocabulary (`length`, `humour`, `clarity`, `jargon`, `structure`,
+  `hashtags`, `caption`, `script_delivery`; `hook`, `tone`, `cta`, `pacing` already existed) with fa/en/tr lexicon
+  entries, and surfaces `caption`, `script`, `thread`, `article`. Existing ids and their meaning are unchanged.
+- Metrics: counts are whole numbers, `watch_time_s` seconds, `completion_rate` a percent (0–100); `measured_at` not in
+  the future. They are never fetched from a platform.
+- A brief's `learnings[]`: up to 5 other slots of the same channel and format, latest metrics each, newest first. A
+  content agent uses them to choose an approach, never as a claim.
+- Tests: `tests/content-feedback.test.ts`.

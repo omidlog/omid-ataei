@@ -132,6 +132,16 @@ Creative decisions page; cache rebuild), and
 `tests/creative-agent.test.ts` (`creative_context`: profile and brand refusals, drafts/superseded withheld, local
 note text withheld, shared quote served, secret-looking text withheld, access log, stdio MCP).
 
+## Content feedback (copy)
+
+`npm run brand:content -- feedback --week … --slot … --text "…"` records feedback on a produced calendar slot through
+this same path: an `owner_note` note (tags `content-feedback`, `slot-<week>-<slot>`), one project per slot
+(`content-<week>-<slot>`, variant `A`, asset `missing`) and the existing `suggest` / `approve`. The closed vocabulary
+has copy aspects (`length`, `humour`, `clarity`, `jargon`, `structure`, `hashtags`, `caption`, `script_delivery`) and
+copy surfaces (`caption`, `script`, `thread`, `article`), appended so earlier records and digests are unchanged. A
+content brief (`content-read`) carries the approved statement and scope of applicable preferences, never note text or
+drafts (`docs-internal/CONTENT_BRIDGE.md`, Content feedback loop).
+
 ## Known limitations
 
 - Aspects are a closed English vocabulary. `aspects suggest` uses a small keyword lexicon: it misses paraphrases,

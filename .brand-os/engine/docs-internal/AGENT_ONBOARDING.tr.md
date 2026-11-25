@@ -119,6 +119,15 @@ zayıf bir misafir moduna düşmez, sunucu hiç başlamaz.
 
 Bir belirteç sızmış olabilirse (bir yere yapıştırdıysanız) hemen iptal edin ve yenisini oluşturun.
 
+## Diğer uygulamalar: Claude Desktop, Cowork, ChatGPT, Grok, Claude Projects
+
+- **Claude Desktop veya Cowork** aynı yerel sunucuyu başlatabilir. Belirteci `env` içinde olan bir `brand-os` girdisi
+  ekleyin (örnek: [AI_CONNECTORS.md](AI_CONNECTORS.md#claude-desktop--cowork-via-local-mcp)): marka deposunda
+  `node /path/to/brand/.brand-os/engine/brand-os.mjs mcp`, şablonda `npm run -s mcp:serve`.
+- **ChatGPT, Grok veya Claude.ai Projects** onu başlatamaz. Salt okunur bir paket dışa aktarın ve dosyalarını proje
+  bilgisi olarak yükleyin: `npm run brand:pack -- --profile content-read --lang tr`. Paket yalnızca onaylı bağlamı
+  içerir, yüklemek onu o ürünle paylaşır ve eskir: bir şeyi onayladıktan sonra yeniden dışa aktarın.
+
 ## İyi alışkanlıklar
 
 - Her asistan ve her iş için bir belirteç. İkinci asistan ikinci belirteci alır; bir belirteci genişletmeyin.
