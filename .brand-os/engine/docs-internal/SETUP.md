@@ -42,3 +42,17 @@ npm run brand:doctor                              # human-readable, exit 1 on a 
 npm run brand:doctor -- --json                    # machine-readable
 npm run brand:doctor -- --create-approval-secret  # create brand/.private/approval-secret (0600) if absent
 ```
+
+**Do not keep the repository in a cloud-synced folder** (Google Drive, iCloud Drive "Desktop & Documents", Dropbox,
+OneDrive). The sync uploads `brand/.private`, including the approval secret, and Google Drive for Desktop hard-links
+files while it uploads, which Brand OS refuses to read (`has more than one hard link`). Clone into a local folder such as
+`~/Code`. `brand:doctor` reports a `cloud_sync` failure when it detects a synced folder. To recover:
+
+```bash
+mv ~/Documents/acme ~/Code/acme && cd ~/Code/acme
+npm run brand:doctor -- --fix-links               # replace hard-linked files with independent copies
+npm run brand:doctor -- --rotate-approval-secret  # the old secret was uploaded: make a new one (needs the current proof)
+```
+
+To see and approve everything pending at once: `npm run brand:pending`, then the one command it prints
+(`npm run brand:approve -- --all-pending`). See `docs-internal/GOVERNANCE.md`.

@@ -199,6 +199,21 @@ values, notes or quotes). The owner commits and merges it. Studio's read-only "C
 files from the merged commit (`buildStudioCalendar`); malformed, other-brand, misnamed, symlinked or secret-looking
 files are withheld with a reason. No approve button, no write route.
 
+`npm run brand:share` (`brand:content -- share --all`) shares everything approved in one step: each served content strategy, each current week and the style kit summary (`brand/social/shared/approvals.json`). Commit and push what it writes.
+
+`brand:content share-strategy [--id content-main] [--dry-run]` does the same for the content strategy: it writes the
+approved revision the Strategy Feed serves now (`current` or `review_due`) to
+`brand/content-strategy/shared/<id>.json` (`shareStrategy`, `content-bridge/strategy-share.ts`). The file holds the
+revision number, its `content_sha256` (which revision this is), `approved_at`, the status at share time, validity,
+languages, pillars (id, name, cited fact ids), every channel's role, objective, audience, formats, cadence, languages,
+pillars, cited fact ids, mix, KPI targets, posting windows and rules, and the open gaps. Never a draft revision, the
+restricted block, a resolved fact value (voice, offers, claims), research or notes; text that looks like a credential
+is refused. Owner only (refused under an agent token). Studio's read-only "Content strategy" page
+(`/brands/<slug>/market/content-strategy`) shows only those files from the merged commit (`buildStudioStrategy`):
+per-channel cards, the mix as one bar, KPI targets labelled as the owner's targets. Unexpected fields, another brand's
+slug, a misnamed file, a symlink or secret-looking text withhold the whole file with a reason. The page is listed only
+when there is a file; the current status stays `brand:content show`.
+
 ### Owner workflow
 
 ```bash
@@ -210,6 +225,7 @@ npm run brand:content -- week review  --week wk-2026-11-23 --revision 1
 BRAND_OS_APPROVAL_PROOF=… npm run brand:content -- week approve --week wk-2026-11-23 --revision 1 --expect-sha <sha256>
 npm run brand:content -- calendar [--channel instagram] [--lang fa|tr]
 npm run brand:content -- share --week wk-2026-11-23 --dry-run
+npm run brand:content -- share-strategy --id content-main --dry-run      # then without --dry-run, commit, merge
 ```
 
 ### Tests
@@ -225,6 +241,7 @@ npm run brand:content -- share --week wk-2026-11-23 --dry-run
 | Owner-only | `content-calendar` "the calendar is owner-only" |
 | CLI journey: plan, store, proof-gated approve, calendar, banned hook refused, share | `content-calendar-cli` |
 | Studio path filter, projection withholding, read-only page in en/fa/tr, old-cache rebuild | `studio-calendar` |
+| `share-strategy`: approved revision only, no drafts / restricted / fact values, owner only; Studio filter, withholding, page in en/fa | `studio-content-strategy`, `content-calendar-cli` |
 
 ### Limits (Slice B)
 

@@ -53,6 +53,8 @@
     "mcp:serve": "node .brand-os/engine/brand-os.mjs mcp",
     "validate": "node .brand-os/engine/brand-os.mjs validate",
     "brand:pack": "node .brand-os/engine/brand-os.mjs pack",
-    "brand:social": "node .brand-os/engine/brand-os.mjs social"
+    "brand:social": "node .brand-os/engine/brand-os.mjs social",
+    "brand:pending": "node .brand-os/engine/brand-os.mjs pending",
+    "brand:share": "node .brand-os/engine/brand-os.mjs share"
   }
 }

@@ -851,3 +851,27 @@ a.cc-tile:hover { background: var(--studio-color-bg-hover); }
 .personal-draft-text { font-size: 16px; line-height: 1.8; max-width: 72ch; unicode-bidi: plaintext; }
 .personal-draft-notes, .personal-draft-untranslated ul { display: grid; gap: var(--studio-space-1); padding-inline-start: var(--studio-space-4); }
 .personal-sources-title { font: 600 16px/1.3 var(--studio-font-display); color: var(--studio-color-text-secondary); }
+
+/* Content strategy (read-only shared revision): the content mix as one stacked bar */
+.mix { display: grid; gap: var(--studio-space-2); }
+.mix-bar { width: 100%; height: 12px; border-radius: 6px; overflow: hidden; }
+[dir="rtl"] .mix-bar { transform: scaleX(-1); }
+.mix-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--studio-space-2) var(--studio-space-3); font-size: 13px; }
+.mix-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.mix-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.mix-seg.mix-educate { fill: var(--studio-color-status-in_review); }
+.mix-seg.mix-inspire { fill: var(--studio-color-status-published); }
+.mix-seg.mix-connect { fill: var(--studio-color-status-approved); }
+.mix-seg.mix-promote { fill: var(--studio-color-status-draft); }
+.mix-seg.mix-entertain { fill: var(--studio-color-text-secondary); }
+.mix-dot.mix-educate { background: var(--studio-color-status-in_review); }
+.mix-dot.mix-inspire { background: var(--studio-color-status-published); }
+.mix-dot.mix-connect { background: var(--studio-color-status-approved); }
+.mix-dot.mix-promote { background: var(--studio-color-status-draft); }
+.mix-dot.mix-entertain { background: var(--studio-color-text-secondary); }
+
+/* Social style kit (read-only): sibling wireframes per surface, drawn by the core preview (styleSvg) */
+.kit-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+.kit-svg { background: #fff; border: 1px solid var(--studio-color-border-subtle); border-radius: var(--studio-radius-md, 8px); padding: 4px; }
+.kit-svg svg { display: block; width: 100%; height: auto; }
+.kit-style details summary { cursor: pointer; }

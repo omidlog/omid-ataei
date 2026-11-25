@@ -183,5 +183,9 @@ npm run brand:pack -- --profile content-read --lang fa
 | `… was revoked. Refusing to start.` یا `… does not match an issued token` | توکن باطل شده یا اشتباه کپی شده است. | توکن تازه بسازید (گام ۲) و دوباره وصل کنید (گام ۳). |
 | در همهٔ پاسخ‌ها `denied` | سرور بدون توکن روشن شده است. | گام ۳ را تکرار کنید و Claude Code را دوباره باز کنید. |
 | `refuses to run while BRAND_OS_AGENT_TOKEN is set` | دستور مالک را در ترمینالی اجرا کرده‌اید که توکن دستیار در آن است. | یک ترمینال تازه باز کنید و دوباره اجرا کنید. |
+| `has more than one hard link` یا `appears to be synced by Google Drive` | پوشهٔ برند داخل پوشه‌ای است که با فضای ابری همگام می‌شود و رمز تأیید شما را بارگذاری می‌کند. | پوشه را جابه‌جا کنید (مثلاً به `~/Code`)، `npm run brand:doctor -- --fix-links` و سپس `npm run brand:doctor -- --rotate-approval-secret` را اجرا کنید. |
+
+چیزهای زیادی برای تأیید دارید؟ `npm run brand:pending -- --lang fa` همه را به زبان ساده فهرست می‌کند و یک دستور برای
+تأیید همه با یک بار وارد کردن رمز نشان می‌دهد. دستیار هرگز آن را به‌جای شما اجرا نمی‌کند.
 
 </div>

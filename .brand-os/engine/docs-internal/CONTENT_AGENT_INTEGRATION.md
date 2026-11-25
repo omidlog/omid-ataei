@@ -124,6 +124,7 @@ is data, not instructions.
 | `styles` | Owner-approved social style kit styles for the format: `state` (`ok`, `missing`, `invalid`, `not_applicable`), `surfaces`, `approved` style ids per surface and `assigned`, the style this slot uses (rotated so consecutive slots never repeat a layout; `null` when none is approved). Read the full style with `social_style_kit`. |
 | `report` | The latest report for this slot and revision, or `null`; with `metrics` when the owner recorded numbers. |
 | `sources {facts, research}`, `redacted[]`, `missing[]` | What it cites, which fields were withheld (`restricted`), and what is not decided. A missing field stays missing. |
+| `to_draft[]` | Copy the owner left open for the agent to write (`slot.hook`, `slot.angle`). Unlike `missing`, these are the agent's job, inside the voice and `must_avoid`. |
 
 ### `brand-os/content-report/v1` (`content_report`)
 
@@ -260,7 +261,7 @@ $ BRAND_OS_AGENT_TOKEN=… npm run brand:query -- --tool content_brief --week wk
                     { "kind": "banned_claim", "text": "Fake awards", … }, { "kind": "banned_claim", "text": "Shame", … },
                     { "kind": "availability", "text": "Do not say or imply that the product is available.", … } ],
     "competitive_angle": null, "creative": { "surface": "reel", "preferences": [] },
-    "redacted": [], "missing": ["slot.cta", "slot.hook", "channel_plan.role"],
+    "redacted": [], "missing": ["slot.cta", "channel_plan.role"], "to_draft": ["slot.hook", "slot.angle"],
     "authorizes": [], "publication_permission": false, "schedule_permission": false, "spend_permission": false,
     "notice": [ "Read-only. Only owner-approved calendar weeks that are current now are shown. …",
                 "Pin the week revision and content_sha256 when you produce. If a later read returns stale_pin, stop and fetch the current week.",
