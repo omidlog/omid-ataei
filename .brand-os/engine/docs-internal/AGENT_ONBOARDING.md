@@ -119,6 +119,15 @@ back to a weaker guest mode, it simply refuses to start.
 
 If a token may have leaked (you pasted it somewhere), revoke it right away and issue a new one.
 
+## Other apps: Claude Desktop, Cowork, ChatGPT, Grok, Claude Projects
+
+- **Claude Desktop or Cowork** can start the same local server. Add a `brand-os` entry with the token in its `env`
+  (example in [AI_CONNECTORS.md](AI_CONNECTORS.md#claude-desktop--cowork-via-local-mcp)): in a brand repository
+  `node /path/to/brand/.brand-os/engine/brand-os.mjs mcp`, in the template `npm run -s mcp:serve`.
+- **ChatGPT, Grok or Claude.ai Projects** cannot start it. Export a read-only pack and upload its files as project
+  knowledge: `npm run brand:pack -- --profile content-read`. It holds approved context only, uploading shares it with
+  that product, and it goes stale: export again after you approve anything.
+
 ## Good habits
 
 - One token per agent and per job. A second agent gets a second token; do not widen one.

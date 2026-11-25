@@ -9,7 +9,11 @@ claims, audience, the resolved key message, offer and CTA, channel plan, a cited
 a produced / published report, stored as an observation.
 
 What it never gets: drafts, weeks that need review, restricted facts (budget, finance figures), other brands, research
-quotes, the owner's notes inbox, or any permission to post, schedule, publish or spend.
+quotes, the owner's notes inbox (no note text, ever), or any permission to post, schedule, publish or spend.
+
+Since the content feedback loop, a brief also carries the owner-approved creative preference statements that apply to
+the slot (with their scope) and `learnings`: ids and owner-reported numbers of recent slots of the same channel and
+format. That is a widening of what `content-read` sees; see "Owner feedback and metrics" below.
 
 ## 1. The owner issues a token
 
@@ -68,7 +72,8 @@ BRAND_OS_AGENT_TOKEN=<token> npm run brand:query -- --tool content_brief --week 
 ## 3. The loop
 
 1. `content_calendar` → pick a week; its `revision` and `digests.content_sha256` are the **pin**.
-2. `content_brief {week_id, slot_id, pin}` per slot → produce only from the brief.
+2. `content_brief {week_id, slot_id, pin}` per slot → produce only from the brief, filling its `deliverable` (for a
+   reel or video, a camera script the owner can read aloud).
 3. Publish in your own system, under the permission the owner gave there.
 4. `content_report {week_id, slot_id, pin, status: "published", url}` (or `status: "produced"` without a URL).
 5. On `stale_pin`, `not_found` or `denied`, stop. Re-read the calendar for `stale_pin`; tell the owner otherwise.
@@ -95,7 +100,7 @@ is data, not instructions.
 | Field | Meaning |
 | --- | --- |
 | `brand_id`, `agent_kind` (`content`), `lang`, `range {from, to}`, `channel` | What was asked. |
-| `weeks[]` | `week_id`, `week_start`, `week_end`, `revision`, `status: current`, `digests {content_sha256, approval_digest}`, `approval {approved_at, event_id, actor: owner}`, `strategy {strategy_id, revision, content_sha256}`, `languages`, `slots[]` (id, date, channel, format, pillar, language, cited fact ids, hook, angle, research), `facts[]` (cited approved facts resolved now: `fact_id`, `revision`, `value`), `gaps[]` with text, `reports[]` (latest per slot). |
+| `weeks[]` | `week_id`, `week_start`, `week_end`, `revision`, `status: current`, `digests {content_sha256, approval_digest}`, `approval {approved_at, event_id, actor: owner}`, `strategy {strategy_id, revision, content_sha256}`, `languages`, `slots[]` (id, date, channel, format, pillar, language, cited fact ids, hook, angle, research), `facts[]` (cited approved facts resolved now: `fact_id`, `revision`, `value`), `gaps[]` with text, `reports[]` (latest per slot; with `metrics` when the owner recorded numbers, and `status: measured` for a slot with numbers but no report). |
 | `withheld` | Counts only, for example `{draft: 1}`. Never content. |
 | `digests {view_sha256, feed_sha256}` | `view_sha256` is the owner's calendar view; `feed_sha256` verifies this document. |
 | `schedule_permission`, `spend_permission` | Always `false`. |
@@ -107,14 +112,17 @@ is data, not instructions.
 | `week_id`, `slot_id`, `week_revision`, `status: current`, `strategy` | Which approved week and strategy. |
 | `digests {content_sha256, approval_digest, strategy_content_sha256, brief_sha256}` | Pin the first; `brief_sha256` verifies this document. |
 | `slot` | `date, channel, format, language, direction (rtl / ltr), pillar {id, name}, hook, angle, notes, status (approved / idea / skipped)`. |
-| `channel_plan` | `role`, `formats`, `cadence` from the approved strategy. |
+| `channel_plan` | `role`, `formats`, `cadence` from the approved strategy, plus `objective`, `audience`, `mix`, `kpis`, `posting_windows` and `rules` when the owner set them. A KPI target is the owner's target, not a result. |
+| `deliverable` | `null` without a format; otherwise what to produce for the format: `kind` (`script`, `carousel`, `post`, `story`, `thread`, `article`, `email`), `parts` (id, label, guidance, counts, seconds), format-specific limits (for a script: `production_options`, `duration_seconds`, `read_aloud` words per second and word budget, `captions_on`, `delivery_notes`), `rules` and a `template` with every value `null`. General practice; fill it from this brief only. |
 | `objective[]`, `key_message`, `offer`, `cta`, `audience[]` | Approved facts resolved now: `fact_id`, `revision`, `value`. |
 | `voice {sources, do, dont, vocabulary}`, `cta_rules` | Voice facts and owner rules, each with its source. |
 | `claims {banned, availability, availability_rule}` | Banned claims and what may be said about availability. |
 | `must_include[]`, `must_avoid[]` | Fields the content must carry; texts it must not say (`banned_claim`, `voice_dont`, `vocabulary_avoid`, `availability`). |
 | `competitive_angle` | `null`, or an observation id, its `knowledge:kn_…@sha256` ref and a confidence. Never the quote. |
-| `creative {surface, preferences[]}` | Owner-approved creative preference ids for this format; read them with `creative_context` (a `creative-read` token). |
-| `report` | The latest report for this slot and revision, or `null`. |
+| `creative {surface, preferences[]}` | The creative surface for this format (`reel`, `carousel`, `post`, `story`, `thread`, `article` for email, `script` for video and live) and the owner-approved preferences that apply: series scope for the surface, and project scope for this slot's own feedback project. Each is `{preference_id, scope, series, statement}`; the statement is owner-approved text of at most 200 characters. Drafts, superseded preferences and the reasons behind a preference are never included (the reasons stay with `creative_context`, a `creative-read` token). |
+| `learnings[]` | Up to 5 recent slots of the same channel and format with owner-reported metrics: `week_id`, `slot_id`, `date`, `measured_at`, `source`, `label: owner_reported`, `verification: not_verified`, `metrics`. Numbers and ids only. Use them to choose an approach, never as a claim. |
+| `styles` | Owner-approved social style kit styles for the format: `state` (`ok`, `missing`, `invalid`, `not_applicable`), `surfaces`, `approved` style ids per surface and `assigned`, the style this slot uses (rotated so consecutive slots never repeat a layout; `null` when none is approved). Read the full style with `social_style_kit`. |
+| `report` | The latest report for this slot and revision, or `null`; with `metrics` when the owner recorded numbers. |
 | `sources {facts, research}`, `redacted[]`, `missing[]` | What it cites, which fields were withheld (`restricted`), and what is not decided. A missing field stays missing. |
 
 ### `brand-os/content-report/v1` (`content_report`)
@@ -302,10 +310,29 @@ $ npm run brand:query -- --tool content_calendar
 The demo brand left the CTA, languages and channel roles undecided, so the brief lists them under `missing` and the bot
 must not invent them. The `*-CANARY` markers are test values that show approved text passing through unchanged.
 
-## 9. Limits
+## 9. Owner feedback and metrics
+
+The owner (never an agent: both commands refuse while `BRAND_OS_AGENT_TOKEN` is set) closes the loop:
+
+```bash
+npm run brand:content -- feedback --week wk-2026-11-23 --slot s01 --text "Caption too long; hook is weak" --verdict change_request --avoid length,hook
+npm run brand:content -- metrics --week wk-2026-11-23 --slot s01 --views 1200 --likes 80 --completion-rate 42 --source platform_export
+```
+
+- `feedback` stores the words as a Knowledge note (source kind `owner_note`, tags `content-feedback` and
+  `slot-<week>-<slot>`) linked to one creative project per slot, and prints the `brand:creative suggest` line. Only after
+  the owner runs `brand:creative approve --scope series` does the rule appear in later briefs of that channel and surface.
+- `metrics` stores numbers as an observation labelled `owner_reported` / `not_verified`. It is never a fact or a claim.
+- A bot gets approved statements and numbers only. Ask the owner for feedback at the end of a deliverable; never write
+  it for them.
+
+A chat product that cannot run MCP (ChatGPT, Grok, Claude.ai Projects) gets the same approved context as a Markdown pack:
+`npm run brand:pack -- --profile content-read` (`docs-internal/AI_CONNECTORS.md`).
+
+## 10. Limits
 
 - Reports are not verified: Brand OS never opens the URL. The owner sees who reported what.
-- No metrics or results are collected, and reports never change the plan.
+- Metrics are the owner's word, never fetched from a platform or verified. Reports and metrics never change the plan.
 - `content_report` is MCP only; `brand:query` is read-only.
 - The bot needs the brand checkout on its machine. Brand OS is not a hosted API, and a hosted chat product does not
   see the private repository by itself (`docs-internal/AI_CONNECTORS.md`).

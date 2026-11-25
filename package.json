@@ -51,6 +51,8 @@
     "brand:visual-dna": "node .brand-os/engine/brand-os.mjs visual-dna",
     "check": "node .brand-os/engine/brand-os.mjs check",
     "mcp:serve": "node .brand-os/engine/brand-os.mjs mcp",
-    "validate": "node .brand-os/engine/brand-os.mjs validate"
+    "validate": "node .brand-os/engine/brand-os.mjs validate",
+    "brand:pack": "node .brand-os/engine/brand-os.mjs pack",
+    "brand:social": "node .brand-os/engine/brand-os.mjs social"
   }
 }
