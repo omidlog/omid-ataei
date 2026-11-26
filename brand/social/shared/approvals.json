@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "kind": "social_style_approvals_summary",
+  "brand_slug": "omid-ataei",
+  "styles": [
+    {
+      "style_id": "carousel.checklist",
+      "digest": "f0f49a8093496decf0352edbe5a07a020ceebfed2a52f53ed253e58f68e3269b",
+      "approved_at": "2026-11-26T09:06:29.433Z"
+    },
+    {
+      "style_id": "carousel.myth-vs-fact",
+      "digest": "e4168ba8820b739e9dfcf9f1e285025a29595b32eebf5c8715565962ab6b19eb",
+      "approved_at": "2026-11-26T09:06:29.433Z"
+    },
+    {
+      "style_id": "carousel.step-by-step",
+      "digest": "856e29378353c158073570fef4c069370fce88b75770d52acd40d1abc4c36199",
+      "approved_at": "2026-11-26T09:06:29.433Z"
+    },
+    {
+      "style_id": "carousel.story-arc",
+      "digest": "8fd4bee1b08eb95a3bfca417b315e9e7fb716b0f158dae82efbbb7abe25b26d9",
+      "approved_at": "2026-11-26T09:06:29.433Z"
+    },
+    {
+      "style_id": "linkedin_document.chart-slide",
+      "digest": "8cccf7e8e746544f07a45e158d0cd9d353a28ace42c687b2bfd09eb9d305a18d",
+      "approved_at": "2026-11-26T09:06:30.844Z"
+    },
+    {
+      "style_id": "linkedin_document.cover-chapter",
+      "digest": "ee44d86db899da8df610d28a1c0b704952d5312b97df36be44904d5d802fa89a",
+      "approved_at": "2026-11-26T09:06:30.844Z"
+    },
+    {
+      "style_id": "linkedin_document.one-idea-per-slide",
+      "digest": "fab91957e7d40872f173538f1f341de2b2fe43ff2afdc499e83d518ed4a9c76a",
+      "approved_at": "2026-11-26T09:06:30.844Z"
+    },
+    {
+      "style_id": "linkedin_document.summary-cta",
+      "digest": "9feecd636093c842aa7c3be8425fa3ce382753d1beaf2ca433d1be1ccbc5a674",
+      "approved_at": "2026-11-26T09:06:30.844Z"
+    },
+    {
+      "style_id": "linkedin_post.announcement",
+      "digest": "f03426d0d4cdbacbab013e3617417890d65f5ae65b979d58dcb73b7afb6a119f",
+      "approved_at": "2026-11-26T09:06:30.609Z"
+    },
+    {
+      "style_id": "linkedin_post.framework-diagram",
+      "digest": "31759688d39853248be2dffe41ee351c8f74b5e3d2086dd8330c63ecf786b74a",
+      "approved_at": "2026-11-26T09:06:30.609Z"
+    },
+    {
+      "style_id": "linkedin_post.insight-card",
+      "digest": "5b11fb5c26782d98deb5cccb5762fc3ae84b906436f9e10b7a179519df926132",
+      "approved_at": "2026-11-26T09:06:30.609Z"
+    },
+    {
+      "style_id": "linkedin_post.portrait-quote",
+      "digest": "53d7d6ee60842d263c068a63dd80a5e15a5ee72240a47e8cd877ff8cee78a8f3",
+      "approved_at": "2026-11-26T09:06:30.609Z"
+    },
+    {
+      "style_id": "post.bold-statement",
+      "digest": "93b27d83608ef17623134b56e1240e7d58cfd15bd038086aa193bccdf17b01cb",
+      "approved_at": "2026-11-26T09:06:29.195Z"
+    },
+    {
+      "style_id": "post.insight-data",
+      "digest": "41fa29442ae8062c59b3a58bc17c9490d713ffb6346f19b9313e1bb1adebdc67",
+      "approved_at": "2026-11-26T09:06:29.195Z"
+    },
+    {
+      "style_id": "post.photo-headline",
+      "digest": "c524c0211d71d5e0ff71bd8653f703f690eda96b11cc7caf0d41e9d1fc079206",
+      "approved_at": "2026-11-26T09:06:29.195Z"
+    },
+    {
+      "style_id": "post.quote-testimonial",
+      "digest": "b4a31128ac3330f276d23647b0f90769775ddc1548dea3e82646ff45a73f04ae",
+      "approved_at": "2026-11-26T09:06:29.195Z"
+    },
+    {
+      "style_id": "reel.before-after",
+      "digest": "cf4159f40f63d73a1ce0a2dbdbb4edb00210c49b00a172e5b10975a55fd28fd2",
+      "approved_at": "2026-11-26T09:06:29.899Z"
+    },
+    {
+      "style_id": "reel.broll-voiceover",
+      "digest": "051d2aaf95bf0aa703deaaa11e401f7406fdab635cdb2bb3e51be8a432b546f1",
+      "approved_at": "2026-11-26T09:06:29.899Z"
+    },
+    {
+      "style_id": "reel.list-on-screen",
+      "digest": "9f807ff9aefc0b1e3eff421273970fe1f77cd1fbcad43c79f9104cdada6bdec6",
+      "approved_at": "2026-11-26T09:06:29.899Z"
+    },
+    {
+      "style_id": "reel.talking-head-captions",
+      "digest": "a7d317c0970afa66949734d83b339c567b878d5511dc24d11c56afc77aa04ec9",
+      "approved_at": "2026-11-26T09:06:29.899Z"
+    },
+    {
+      "style_id": "reel_cover.big-title",
+      "digest": "5c9eb52ae29ae7f6285c48d35348fc47323a834f19c1087787b8a21f0932cced",
+      "approved_at": "2026-11-26T09:06:30.132Z"
+    },
+    {
+      "style_id": "reel_cover.face-title",
+      "digest": "5c4d95ac9899859795afe8f762d089f8eac23beb85faedc4fa7e906bcf704d9d",
+      "approved_at": "2026-11-26T09:06:30.132Z"
+    },
+    {
+      "style_id": "reel_cover.question",
+      "digest": "125a2659790a71ba973352302464eee262a95e224cc5e6c4e080da523cd09a59",
+      "approved_at": "2026-11-26T09:06:30.132Z"
+    },
+    {
+      "style_id": "reel_cover.series-number",
+      "digest": "7da5fff9b47f5a78096a23f6c1074bb6c1f54c257773d2a0cf8f71e2fc01afdc",
+      "approved_at": "2026-11-26T09:06:30.132Z"
+    },
+    {
+      "style_id": "story.behind-the-scenes",
+      "digest": "a23c52c852765711d7a557f0fbcc820dfcc20b00aa050e260deb7d23805f56f3",
+      "approved_at": "2026-11-26T09:06:29.669Z"
+    },
+    {
+      "style_id": "story.link-cta",
+      "digest": "fac17c6722d7446a4a04210ef6bbb6fd839870895a5171f2455fc03ebe1754e6",
+      "approved_at": "2026-11-26T09:06:29.669Z"
+    },
+    {
+      "style_id": "story.question-poll",
+      "digest": "f218fb0ced19bfffe9d72f953dc880a0b40c59b591aa63a35fe475a7225a7a88",
+      "approved_at": "2026-11-26T09:06:29.669Z"
+    },
+    {
+      "style_id": "story.quick-tip",
+      "digest": "f7783c288c98054bb22ae244ac327126a7ec862b51626c8db8828955023edb46",
+      "approved_at": "2026-11-26T09:06:29.669Z"
+    },
+    {
+      "style_id": "thumbnail.big-number",
+      "digest": "a787b1948bdfac553b6918c2ec55a1d564bc436e242e0de1946ef365e75e8a95",
+      "approved_at": "2026-11-26T09:06:30.372Z"
+    },
+    {
+      "style_id": "thumbnail.face-text",
+      "digest": "a487023c88603c0b41e83827bfd1fc31cbf3533d939cd85c334c58b198b7e618",
+      "approved_at": "2026-11-26T09:06:30.372Z"
+    },
+    {
+      "style_id": "thumbnail.object-closeup",
+      "digest": "e7d9bef403a5492b94a7a6ea5c7cb07ac0306707852fd44e56d211811de68a1b",
+      "approved_at": "2026-11-26T09:06:30.372Z"
+    },
+    {
+      "style_id": "thumbnail.split-compare",
+      "digest": "2f4c0b83f5b69c8ed22475c50d94ec8e1d4110cf944ea0ea3877bcdf3f8356d2",
+      "approved_at": "2026-11-26T09:06:30.372Z"
+    }
+  ],
+  "shared_at": "2026-11-26T09:06:36.932Z"
+}

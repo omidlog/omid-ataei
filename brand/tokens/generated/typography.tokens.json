@@ -70,6 +70,43 @@
             "source_version": 1
           }
         }
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Shams",
+          "Yekan",
+          "Tahoma",
+          "sans-serif"
+        ],
+        "$description": "Draft alias of type.fontFamily.display-fa (the default locale fa) from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1,
+            "alias_of": "type.fontFamily.display-fa"
+          }
+        }
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": [
+          "Yekan",
+          "Tahoma",
+          "sans-serif"
+        ],
+        "$description": "Draft alias of type.fontFamily.body-fa (the default locale fa) from approved brand.type.scale.",
+        "$extensions": {
+          "brand.os": {
+            "status": "draft",
+            "generated": true,
+            "source_fact": "brand.type.scale",
+            "source_version": 1,
+            "alias_of": "type.fontFamily.body-fa"
+          }
+        }
       }
     },
     "fontSize": {

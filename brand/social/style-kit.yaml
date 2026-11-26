@@ -120,7 +120,11 @@ styles:
       - no_dense_paragraphs
       - no_more_than_three_colors
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_341d731b-ea02-4fbc-ba96-05e327133f66
+      approved_at: 2026-11-26T09:06:29.195Z
+      digest: 93b27d83608ef17623134b56e1240e7d58cfd15bd038086aa193bccdf17b01cb
   - id: post.photo-headline
     surface: post
     archetype: photo-headline
@@ -187,7 +191,11 @@ styles:
       - no_stock_cliche
       - no_text_over_face
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_ead2c914-7dde-4917-9864-ad8896c4c1ab
+      approved_at: 2026-11-26T09:06:29.195Z
+      digest: c524c0211d71d5e0ff71bd8653f703f690eda96b11cc7caf0d41e9d1fc079206
   - id: post.insight-data
     surface: post
     archetype: insight-data
@@ -276,7 +284,11 @@ styles:
       - no_clickbait
       - no_fake_ui
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0cf49732-32eb-4b4b-9cab-e0c01d123c78
+      approved_at: 2026-11-26T09:06:29.195Z
+      digest: 41fa29442ae8062c59b3a58bc17c9490d713ffb6346f19b9313e1bb1adebdc67
   - id: post.quote-testimonial
     surface: post
     archetype: quote-testimonial
@@ -351,7 +363,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_c18f75ca-c0f8-4b03-b324-2dfb26ce10dd
+      approved_at: 2026-11-26T09:06:29.195Z
+      digest: b4a31128ac3330f276d23647b0f90769775ddc1548dea3e82646ff45a73f04ae
   - id: carousel.step-by-step
     surface: carousel
     archetype: step-by-step
@@ -431,7 +447,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_870b8092-7df0-4efa-acb5-f8d0edc1db28
+      approved_at: 2026-11-26T09:06:29.433Z
+      digest: 856e29378353c158073570fef4c069370fce88b75770d52acd40d1abc4c36199
   - id: carousel.myth-vs-fact
     surface: carousel
     archetype: myth-vs-fact
@@ -504,7 +524,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_d5620dae-5a7d-4b9c-b93a-dea75d3500c5
+      approved_at: 2026-11-26T09:06:29.433Z
+      digest: e4168ba8820b739e9dfcf9f1e285025a29595b32eebf5c8715565962ab6b19eb
   - id: carousel.story-arc
     surface: carousel
     archetype: story-arc
@@ -572,7 +596,11 @@ styles:
       - no_stock_cliche
       - no_text_over_face
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_622f38b4-2ea0-4236-9169-a14ef9bd3f67
+      approved_at: 2026-11-26T09:06:29.433Z
+      digest: 8fd4bee1b08eb95a3bfca417b315e9e7fb716b0f158dae82efbbb7abe25b26d9
   - id: carousel.checklist
     surface: carousel
     archetype: checklist
@@ -642,7 +670,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_532f8f14-a790-40d8-8297-de8aaf22e61f
+      approved_at: 2026-11-26T09:06:29.433Z
+      digest: f0f49a8093496decf0352edbe5a07a020ceebfed2a52f53ed253e58f68e3269b
   - id: story.question-poll
     surface: story
     archetype: question-poll
@@ -713,7 +745,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0bd6e932-aceb-42d8-9074-9483aa3b9052
+      approved_at: 2026-11-26T09:06:29.669Z
+      digest: f218fb0ced19bfffe9d72f953dc880a0b40c59b591aa63a35fe475a7225a7a88
   - id: story.behind-the-scenes
     surface: story
     archetype: behind-the-scenes
@@ -770,7 +806,11 @@ styles:
     dont:
       - no_stock_cliche
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_a74173a0-c4f8-439e-9425-efffe09c41ed
+      approved_at: 2026-11-26T09:06:29.669Z
+      digest: a23c52c852765711d7a557f0fbcc820dfcc20b00aa050e260deb7d23805f56f3
   - id: story.quick-tip
     surface: story
     archetype: quick-tip
@@ -820,15 +860,6 @@ styles:
         font: type.fontFamily.body
         max_words: 25
         max_lines: 4
-      - role: mascot
-        zone:
-          x: 60
-          y: 64
-          w: 32
-          h: 14
-        rules:
-          - mascot_approved_pose_only
-        optional: true
       - role: brand_mark
         zone:
           x: 8
@@ -836,16 +867,19 @@ styles:
           w: 14
           h: 4
     variation:
-      en: Light canvas, a tip number, headline and short body; room for the mascot.
-      fa: زمینهٔ روشن، شمارهٔ نکته، تیتر و متن کوتاه؛ با جا برای کاراکتر برند.
-      tr: Açık zemin, ipucu numarası, başlık ve kısa metin; maskot için yer.
+      en: Light canvas, a tip number, headline and short body; room for the mascot when the brand has one.
+      fa: زمینهٔ روشن، شمارهٔ نکته، تیتر و متن کوتاه؛ اگر برند کاراکتر دارد، با جا برای آن.
+      tr: Açık zemin, ipucu numarası, başlık ve kısa metin; markanın maskotu varsa onun için yer.
     do:
       - one_message
-      - mascot_approved_pose_only
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_3b42eeda-6ac2-4c0d-acc7-a1e7bb587cbb
+      approved_at: 2026-11-26T09:06:29.669Z
+      digest: f7783c288c98054bb22ae244ac327126a7ec862b51626c8db8828955023edb46
   - id: story.link-cta
     surface: story
     archetype: link-cta
@@ -916,7 +950,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_8d9b6950-027f-44d6-8768-dd800e044673
+      approved_at: 2026-11-26T09:06:29.669Z
+      digest: fac17c6722d7446a4a04210ef6bbb6fd839870895a5171f2455fc03ebe1754e6
   - id: reel.talking-head-captions
     surface: reel
     archetype: talking-head-captions
@@ -979,13 +1017,17 @@ styles:
     dont:
       - no_text_over_face
     reference_assets: missing
-    status: draft
+    status: approved
     caption_style:
       font: type.fontFamily.body
       color: color.dark.text
       background: color.dark.canvas
       max_words_per_line: 5
       position: lower_third
+    approval:
+      event_id: apv_98432963-15a7-4385-b26d-4c89499b4321
+      approved_at: 2026-11-26T09:06:29.899Z
+      digest: a7d317c0970afa66949734d83b339c567b878d5511dc24d11c56afc77aa04ec9
   - id: reel.broll-voiceover
     surface: reel
     archetype: broll-voiceover
@@ -1044,13 +1086,17 @@ styles:
     dont:
       - no_stock_cliche
     reference_assets: missing
-    status: draft
+    status: approved
     caption_style:
       font: type.fontFamily.body
       color: color.dark.text
       background: color.dark.canvas
       max_words_per_line: 5
       position: lower_third
+    approval:
+      event_id: apv_2899aff9-132a-4096-8bad-c7a1925c250e
+      approved_at: 2026-11-26T09:06:29.899Z
+      digest: 051d2aaf95bf0aa703deaaa11e401f7406fdab635cdb2bb3e51be8a432b546f1
   - id: reel.list-on-screen
     surface: reel
     archetype: list-on-screen
@@ -1119,13 +1165,17 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
     caption_style:
       font: type.fontFamily.body
       color: color.dark.text
       background: color.dark.canvas
       max_words_per_line: 5
       position: lower_third
+    approval:
+      event_id: apv_36d89863-9e89-4fc8-9a3e-10bf836f6fe1
+      approved_at: 2026-11-26T09:06:29.899Z
+      digest: 9f807ff9aefc0b1e3eff421273970fe1f77cd1fbcad43c79f9104cdada6bdec6
   - id: reel.before-after
     surface: reel
     archetype: before-after
@@ -1207,13 +1257,17 @@ styles:
       - no_clickbait
       - no_fake_ui
     reference_assets: missing
-    status: draft
+    status: approved
     caption_style:
       font: type.fontFamily.body
       color: color.dark.text
       background: color.dark.canvas
       max_words_per_line: 5
       position: lower_third
+    approval:
+      event_id: apv_1560689c-b6f2-4e36-b1af-095874ff430b
+      approved_at: 2026-11-26T09:06:29.899Z
+      digest: cf4159f40f63d73a1ce0a2dbdbb4edb00210c49b00a172e5b10975a55fd28fd2
   - id: reel_cover.big-title
     surface: reel_cover
     archetype: big-title
@@ -1269,7 +1323,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0181ef6a-4ffd-4690-8643-e95edd8564d5
+      approved_at: 2026-11-26T09:06:30.132Z
+      digest: 5c9eb52ae29ae7f6285c48d35348fc47323a834f19c1087787b8a21f0932cced
   - id: reel_cover.face-title
     surface: reel_cover
     archetype: face-title
@@ -1318,7 +1376,11 @@ styles:
     dont:
       - no_text_over_face
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0625d260-25d2-438a-9f0d-df50e13711e7
+      approved_at: 2026-11-26T09:06:30.132Z
+      digest: 5c4d95ac9899859795afe8f762d089f8eac23beb85faedc4fa7e906bcf704d9d
   - id: reel_cover.series-number
     surface: reel_cover
     archetype: series-number
@@ -1379,62 +1441,72 @@ styles:
     dont:
       - no_more_than_three_colors
     reference_assets: missing
-    status: draft
-  - id: reel_cover.mascot-hook
+    status: approved
+    approval:
+      event_id: apv_6563f0c5-45ff-4416-a762-4a9f455d8f71
+      approved_at: 2026-11-26T09:06:30.132Z
+      digest: 7da5fff9b47f5a78096a23f6c1074bb6c1f54c257773d2a0cf8f71e2fc01afdc
+  - id: reel_cover.question
     surface: reel_cover
-    archetype: mascot-hook
+    archetype: question
     name:
-      en: Mascot hook
-      fa: کاراکتر برند و قلاب
-      tr: Maskot kancası
+      en: Question cover
+      fa: کاور سؤالی
+      tr: Soru kapağı
     intent:
       use_when:
-        en: Covers where an approved mascot pose fits the topic.
-        fa: کاورهایی که یک ژستِ تأییدشدهٔ کاراکتر با موضوع جور است.
-        tr: Onaylı bir maskot pozunun konuya uyduğu kapaklar.
+        en: Reels that answer one question the audience asks.
+        fa: ریلزهایی که به یک سؤالِ مخاطب جواب می‌دهند.
+        tr: Kitlenin sorduğu tek bir soruyu yanıtlayan reels.
       content_types:
-        - entertain
         - educate
+        - community
       pillar: null
     layers:
       - role: background
         zone: full
-        color: color.brand.secondary
-      - role: mascot
-        zone:
-          x: 45
-          y: 28
-          w: 47
-          h: 44
-        rules:
-          - mascot_approved_pose_only
+        color: color.dark.canvas
       - role: headline
         zone:
           x: 8
           y: 30
-          w: 40
-          h: 36
-        color: color.brand.onSecondary
+          w: 84
+          h: 28
+        color: color.dark.text
         font: type.fontFamily.display
+        max_words: 8
+        max_lines: 3
+      - role: subhead
+        zone:
+          x: 8
+          y: 60
+          w: 84
+          h: 8
+        color: color.brand.primary
+        font: type.fontFamily.body
         max_words: 5
-        max_lines: 4
+        max_lines: 1
       - role: brand_mark
         zone:
           x: 8
-          y: 70
+          y: 72
           w: 14
           h: 4
     variation:
-      en: Secondary colour, the mascot on one side, the title on the other.
-      fa: رنگ دوم برند، کاراکتر در یک سو و تیتر در سوی دیگر.
-      tr: İkincil renk, bir yanda maskot, diğer yanda başlık.
+      en: Dark canvas, the question as the headline and a short answer teaser.
+      fa: زمینهٔ تیره، خودِ سؤال به‌عنوان تیتر و یک اشارهٔ کوتاه به جواب.
+      tr: Koyu zemin, başlık olarak soru ve kısa bir cevap ipucu.
     do:
-      - mascot_approved_pose_only
+      - one_message
       - readable_at_thumb_size
     dont:
       - no_more_than_three_colors
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_2acb836e-9d13-4c28-ad36-e22e7b4773bd
+      approved_at: 2026-11-26T09:06:30.132Z
+      digest: 125a2659790a71ba973352302464eee262a95e224cc5e6c4e080da523cd09a59
   - id: thumbnail.face-text
     surface: thumbnail
     archetype: face-text
@@ -1492,7 +1564,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_24eff1a2-8053-43b6-bfb2-5886d0f950d4
+      approved_at: 2026-11-26T09:06:30.372Z
+      digest: a487023c88603c0b41e83827bfd1fc31cbf3533d939cd85c334c58b198b7e618
   - id: thumbnail.big-number
     surface: thumbnail
     archetype: big-number
@@ -1551,7 +1627,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_4d40ae7d-cb21-4b32-aab0-5979edf6a2ad
+      approved_at: 2026-11-26T09:06:30.372Z
+      digest: a787b1948bdfac553b6918c2ec55a1d564bc436e242e0de1946ef365e75e8a95
   - id: thumbnail.split-compare
     surface: thumbnail
     archetype: split-compare
@@ -1608,7 +1688,11 @@ styles:
     dont:
       - no_fake_ui
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_376fdb87-e410-483d-a512-d0396308182f
+      approved_at: 2026-11-26T09:06:30.372Z
+      digest: 2f4c0b83f5b69c8ed22475c50d94ec8e1d4110cf944ea0ea3877bcdf3f8356d2
   - id: thumbnail.object-closeup
     surface: thumbnail
     archetype: object-closeup
@@ -1661,7 +1745,11 @@ styles:
     dont:
       - no_stock_cliche
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0ecbb417-d1e4-4945-98f4-f2c11f54596d
+      approved_at: 2026-11-26T09:06:30.372Z
+      digest: e7d9bef403a5492b94a7a6ea5c7cb07ac0306707852fd44e56d211811de68a1b
   - id: linkedin_post.insight-card
     surface: linkedin_post
     archetype: insight-card
@@ -1735,7 +1823,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_99916e2e-752f-4f39-a6f5-a291bbf571f8
+      approved_at: 2026-11-26T09:06:30.609Z
+      digest: 5b11fb5c26782d98deb5cccb5762fc3ae84b906436f9e10b7a179519df926132
   - id: linkedin_post.framework-diagram
     surface: linkedin_post
     archetype: framework-diagram
@@ -1798,7 +1890,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_0fffc2c3-870e-4c48-a3fe-a1a375832a4a
+      approved_at: 2026-11-26T09:06:30.609Z
+      digest: 31759688d39853248be2dffe41ee351c8f74b5e3d2086dd8330c63ecf786b74a
   - id: linkedin_post.portrait-quote
     surface: linkedin_post
     archetype: portrait-quote
@@ -1859,7 +1955,11 @@ styles:
     dont:
       - no_text_over_face
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_7207bf32-3667-46e4-a223-10397f27f0eb
+      approved_at: 2026-11-26T09:06:30.609Z
+      digest: 53d7d6ee60842d263c068a63dd80a5e15a5ee72240a47e8cd877ff8cee78a8f3
   - id: linkedin_post.announcement
     surface: linkedin_post
     archetype: announcement
@@ -1929,7 +2029,11 @@ styles:
     dont:
       - no_clickbait
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_52706d9a-66aa-4f4e-92f6-6e1812925193
+      approved_at: 2026-11-26T09:06:30.609Z
+      digest: f03426d0d4cdbacbab013e3617417890d65f5ae65b979d58dcb73b7afb6a119f
   - id: linkedin_document.cover-chapter
     surface: linkedin_document
     archetype: cover-chapter
@@ -1990,7 +2094,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_4580cdbc-9c65-483e-87be-a380920d4ca4
+      approved_at: 2026-11-26T09:06:30.844Z
+      digest: ee44d86db899da8df610d28a1c0b704952d5312b97df36be44904d5d802fa89a
   - id: linkedin_document.one-idea-per-slide
     surface: linkedin_document
     archetype: one-idea-per-slide
@@ -2059,7 +2167,11 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_b41a23c0-938a-4a38-885f-7cb700550e05
+      approved_at: 2026-11-26T09:06:30.844Z
+      digest: fab91957e7d40872f173538f1f341de2b2fe43ff2afdc499e83d518ed4a9c76a
   - id: linkedin_document.chart-slide
     surface: linkedin_document
     archetype: chart-slide
@@ -2128,7 +2240,11 @@ styles:
     dont:
       - no_fake_ui
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_4e70146d-1823-4e6c-992c-85ebfe8580a3
+      approved_at: 2026-11-26T09:06:30.844Z
+      digest: 8cccf7e8e746544f07a45e158d0cd9d353a28ace42c687b2bfd09eb9d305a18d
   - id: linkedin_document.summary-cta
     surface: linkedin_document
     archetype: summary-cta
@@ -2201,4 +2317,8 @@ styles:
     dont:
       - no_dense_paragraphs
     reference_assets: missing
-    status: draft
+    status: approved
+    approval:
+      event_id: apv_ad686d1a-38cc-4a3e-8951-2c32cd8e683b
+      approved_at: 2026-11-26T09:06:30.844Z
+      digest: 9feecd636093c842aa7c3be8425fa3ce382753d1beaf2ca433d1be1ccbc5a674

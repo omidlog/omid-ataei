@@ -1,0 +1,237 @@
+schema_version: 1
+approved:
+  color.brand-role.border:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.439Z
+    value_sha256: 00030a3b18a5694fd3aec39769885bcae1f1ea24e9356bf96be782b7fd95803b
+    source: brand.color.roles
+  color.brand-role.border-hover:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.454Z
+    value_sha256: 657147dc7004e04af26fe3293fc5960bdd10810ee46b9066a4c5e0426573c231
+    source: brand.color.roles
+  color.brand-role.dark-10:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.465Z
+    value_sha256: abc862b0166119180ba3b851d4c611ae64fdb268c93d010007b1f803f5476c67
+    source: brand.color.roles
+  color.brand-role.dark-100:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.476Z
+    value_sha256: 79bef13ba25f0aa74065cb6cabc0ef9507b87986ab063e688810b45bab9dbb7d
+    source: brand.color.roles
+  color.brand-role.dark-20:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.486Z
+    value_sha256: 7496911fc68eefc22bae4bcb9dda734e719bb27c514964a0905bdafb0e57c23f
+    source: brand.color.roles
+  color.brand-role.dark-30:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.495Z
+    value_sha256: 03cf194f6bac5eda2a60dcd5426d443addc8fa26487f30c2177c4f1365343de8
+    source: brand.color.roles
+  color.brand-role.dark-40:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.505Z
+    value_sha256: 8d7721722dcbb2f2c27bf9bc6f02cccd2e5c27f6e6fe60537cd9c0e01044c148
+    source: brand.color.roles
+  color.brand-role.dark-50:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.515Z
+    value_sha256: 7341b43fba8f85f2437bf10e41a1a6216753942bfa527a894e734a84448fbc24
+    source: brand.color.roles
+  color.brand-role.dark-600:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.525Z
+    value_sha256: fef85bb332cc5459cdd82cd6e22f1f8939e3ed7c49a5990c09f3c6bfb44277a9
+    source: brand.color.roles
+  color.brand-role.dark-800:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.535Z
+    value_sha256: af7cd9f2913f3f7bb60dd9395af6c5a757e69612e3b7cb09d2034878101d4589
+    source: brand.color.roles
+  color.brand-role.dark-900:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.545Z
+    value_sha256: a082ae38274c70fbe0d4b8361d54889303a2dabb6301b4642e76b8b8fb8f033a
+    source: brand.color.roles
+  color.brand-role.dark-950:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.556Z
+    value_sha256: 21dcede6e69a9179baf4f068aa143596c90d183d54dc17764131e198dd3dbe71
+    source: brand.color.roles
+  color.brand-role.lime:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.566Z
+    value_sha256: 435ac57acf3fe885e47fcfa8cf170f7673bd397846f11d03060fce5d41dbe9c3
+    source: brand.color.roles
+  color.brand-role.orange:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.577Z
+    value_sha256: 5494894fb9529697d5994572ab46f964502de7392ffd82ee080af83b7115f0ad
+    source: brand.color.roles
+  color.brand-role.surface:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.590Z
+    value_sha256: 1a3527e736945fc9dcb6a2e21f619cac7a5a320b9bd43c391c5a4714ecce8c1c
+    source: brand.color.roles
+  color.brand-role.surface-bg-1:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.600Z
+    value_sha256: 93d7ef466c3651c8f937bc7573bcfcb50a672a2dde96ff8e04f9959679d5f7ca
+    source: brand.color.roles
+  color.brand-role.surface-bg-2:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.613Z
+    value_sha256: c97258532cb8e5be6704a382b32e4d153e30527bc922abb14d56ba0f0b52ebf9
+    source: brand.color.roles
+  color.brand-role.text-subtitle:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.624Z
+    value_sha256: fb9a06db526efdecae9ba460a2e7cf3b228254212ec01880d0e4638b81002b83
+    source: brand.color.roles
+  color.brand-role.text-title:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.635Z
+    value_sha256: 390ff14bc0d04380228fa3a5ee4dae1700862687c805f2341270c8e26c441984
+    source: brand.color.roles
+  color.brand-role.violet:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.647Z
+    value_sha256: da7b22689e1cc27e20eb7372afeddb46cbb2529cdc17504489119a906c940f8f
+    source: brand.color.roles
+  color.brand.accent:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.657Z
+    value_sha256: da7b22689e1cc27e20eb7372afeddb46cbb2529cdc17504489119a906c940f8f
+    source: brand.color.semantic_map
+  color.brand.onPrimary:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.670Z
+    value_sha256: 21dcede6e69a9179baf4f068aa143596c90d183d54dc17764131e198dd3dbe71
+    source: brand.color.semantic_map
+  color.brand.onSecondary:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.683Z
+    value_sha256: 21dcede6e69a9179baf4f068aa143596c90d183d54dc17764131e198dd3dbe71
+    source: brand.color.semantic_map
+  color.brand.primary:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.698Z
+    value_sha256: 435ac57acf3fe885e47fcfa8cf170f7673bd397846f11d03060fce5d41dbe9c3
+    source: brand.color.semantic_map
+  color.brand.secondary:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.708Z
+    value_sha256: 5494894fb9529697d5994572ab46f964502de7392ffd82ee080af83b7115f0ad
+    source: brand.color.semantic_map
+  color.dark.canvas:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.718Z
+    value_sha256: 21dcede6e69a9179baf4f068aa143596c90d183d54dc17764131e198dd3dbe71
+    source: brand.color.semantic_map
+  color.dark.text:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.730Z
+    value_sha256: 93d7ef466c3651c8f937bc7573bcfcb50a672a2dde96ff8e04f9959679d5f7ca
+    source: brand.color.semantic_map
+  color.light.canvas:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.741Z
+    value_sha256: 93d7ef466c3651c8f937bc7573bcfcb50a672a2dde96ff8e04f9959679d5f7ca
+    source: brand.color.semantic_map
+  color.light.muted:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.752Z
+    value_sha256: fb9a06db526efdecae9ba460a2e7cf3b228254212ec01880d0e4638b81002b83
+    source: brand.color.semantic_map
+  color.light.text:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.764Z
+    value_sha256: 390ff14bc0d04380228fa3a5ee4dae1700862687c805f2341270c8e26c441984
+    source: brand.color.semantic_map
+  logo.clearSpace:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.778Z
+    value_sha256: 6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+    source: brand.logo.min_size
+  logo.minPrintSize:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.788Z
+    value_sha256: 85ba7d5997ee431a5c5302436fe77247616b2295cacbf70f18f671d653ead88b
+    source: brand.logo.min_size
+  logo.minSize:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.800Z
+    value_sha256: a004ee5f4213ff37161462c95819aa85e36f6286a3dbdb8e28734567e9a59a86
+    source: brand.logo.min_size
+  type.fontFamily.body:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.813Z
+    value_sha256: 24c66895909952086265e8fcb7e141c458575bb6d6d603ea1389c88fdcf06310
+    source: brand.type.scale
+  type.fontFamily.body-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.826Z
+    value_sha256: 40a31d8e0790e076e8e0c84e4ea00677ad866e3b0d376ea5d9341915217926ec
+    source: brand.type.scale
+  type.fontFamily.body-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.841Z
+    value_sha256: 24c66895909952086265e8fcb7e141c458575bb6d6d603ea1389c88fdcf06310
+    source: brand.type.scale
+  type.fontFamily.display:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.854Z
+    value_sha256: 6d395cc324d2a4e45608b621ea3f64c1e6aca32eb048020923c98fbe2c8f8c5a
+    source: brand.type.scale
+  type.fontFamily.display-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.866Z
+    value_sha256: be8d9f56d7c61552ae29923776e80d93b59a20744d9b7b6a614b56054df0c9b7
+    source: brand.type.scale
+  type.fontFamily.display-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.878Z
+    value_sha256: 6d395cc324d2a4e45608b621ea3f64c1e6aca32eb048020923c98fbe2c8f8c5a
+    source: brand.type.scale
+  type.fontSize.body-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.890Z
+    value_sha256: 49811d23df1cb5d56947b168cb3426cbd0ccfd8d43fc9066ad7ceefd7e812a3f
+    source: brand.type.scale
+  type.fontSize.body-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.902Z
+    value_sha256: 49811d23df1cb5d56947b168cb3426cbd0ccfd8d43fc9066ad7ceefd7e812a3f
+    source: brand.type.scale
+  type.fontSize.display-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.915Z
+    value_sha256: 4dc9ca9651c554bfc305b80810055f60758d0b508dde48726ca6a29df83e0786
+    source: brand.type.scale
+  type.fontSize.display-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.928Z
+    value_sha256: 4dc9ca9651c554bfc305b80810055f60758d0b508dde48726ca6a29df83e0786
+    source: brand.type.scale
+  type.lineHeight.body-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.941Z
+    value_sha256: 9f29a130438b81170b92a42650f9a94291ecad60bd47af2a3886e75f7f728725
+    source: brand.type.scale
+  type.lineHeight.body-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.953Z
+    value_sha256: eca06fdd26e513a7b8510c86602285041a916de5491de13373d94fe0d7e04737
+    source: brand.type.scale
+  type.lineHeight.display-en:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.965Z
+    value_sha256: b05e244762b1e472be89a93800cc3ee326743cecb55984bf12813addb8de66d0
+    source: brand.type.scale
+  type.lineHeight.display-fa:
+    approved_by: owner
+    approved_at: 2026-11-26T09:06:28.977Z
+    value_sha256: 9c193c604ad7de942961af97b39ff541f2e611fdf0b93a3044e16dfbd808f41b
+    source: brand.type.scale

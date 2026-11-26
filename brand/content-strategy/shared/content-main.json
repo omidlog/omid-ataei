@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "kind": "content_strategy",
+  "brand_slug": "omid-ataei",
+  "strategy_id": "content-main",
+  "revision": 1,
+  "content_sha256": "030ae6b9c964035363872cf62d6b7db1db43fcb75612b4e423a0933ae70ba557",
+  "approved_at": "2026-11-25T11:05:57.857Z",
+  "status": "current",
+  "validity": {
+    "valid_from": "2026-11-25T00:00:00.000Z",
+    "valid_until": "2027-05-24T00:00:00.000Z",
+    "review_due_at": "2027-02-23T00:00:00.000Z"
+  },
+  "languages": [
+    "fa"
+  ],
+  "pillars": [
+    {
+      "id": "p1",
+      "name": "ساختن Fiko",
+      "fact_refs": [
+        "personal.content.pillars"
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "ساختن دادوین",
+      "fact_refs": [
+        "personal.content.pillars"
+      ]
+    },
+    {
+      "id": "p3",
+      "name": "منتورینگ بنیان‌گذاران",
+      "fact_refs": [
+        "personal.content.pillars"
+      ]
+    },
+    {
+      "id": "p4",
+      "name": "هوش مصنوعی در کسب‌وکارهای واقعی",
+      "fact_refs": [
+        "personal.content.pillars"
+      ]
+    },
+    {
+      "id": "p5",
+      "name": "پشت صحنهٔ ساختن سیستم برند شخصی (Brand OS) با هوش مصنوعی",
+      "fact_refs": [
+        "personal.content.pillars"
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "channel": "instagram",
+      "role": "دیده‌شدن و اعتمادسازی: ویدیوهای کوتاه برای رسیدن به آدم‌های تازه، کروسل و استوری برای نزدیک نگه داشتن دنبال‌کننده‌ها.",
+      "formats": [
+        "reel",
+        "carousel",
+        "post",
+        "story"
+      ],
+      "cadence": {
+        "per": "week",
+        "target": 6
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "awareness",
+      "audience": "بنیان‌گذاران استارتاپ‌های مرحلهٔ اول و صاحبان کسب‌وکار فارسی‌زبان",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 40
+        },
+        {
+          "type": "inspire",
+          "share": 20
+        },
+        {
+          "type": "connect",
+          "share": 20
+        },
+        {
+          "type": "promote",
+          "share": 10
+        },
+        {
+          "type": "entertain",
+          "share": 10
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "reach",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "saves",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "shares",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "follows",
+          "target": null,
+          "per": "week"
+        },
+        {
+          "metric": "profile_visits",
+          "target": null,
+          "per": "week"
+        }
+      ]
+    },
+    {
+      "channel": "linkedin",
+      "role": "اعتبار حرفه‌ای: تخصص، درس‌آموخته‌ها و شواهد را با همکاران، شرکا و خریداران به اشتراک بگذارید.",
+      "formats": [
+        "post",
+        "carousel"
+      ],
+      "cadence": {
+        "per": "week",
+        "target": 3
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "leads",
+      "audience": "مدیران بازاریابی و صاحبان کسب‌وکار که دنبال استراتژی برند یا مارکتینگ هستند",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 45
+        },
+        {
+          "type": "inspire",
+          "share": 15
+        },
+        {
+          "type": "connect",
+          "share": 25
+        },
+        {
+          "type": "promote",
+          "share": 15
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "reach",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "comments",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "profile_visits",
+          "target": null,
+          "per": "week"
+        },
+        {
+          "metric": "follows",
+          "target": null,
+          "per": "week"
+        },
+        {
+          "metric": "leads",
+          "target": null,
+          "per": "month"
+        }
+      ]
+    },
+    {
+      "channel": "youtube",
+      "role": "عمق و جست‌وجو: ویدیوهای بلندتری که مردم وقتی دنبال جواب می‌گردند پیدا می‌کنند، به‌همراه Shorts برای دیده‌شدن.",
+      "formats": [
+        "video",
+        "short_video"
+      ],
+      "cadence": {
+        "per": "month",
+        "target": 2
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "authority",
+      "audience": "بنیان‌گذاران و کارآفرینانی که دنبال آموزش عمیق‌تر استارتاپ، برند و هوش مصنوعی هستند",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 55
+        },
+        {
+          "type": "inspire",
+          "share": 15
+        },
+        {
+          "type": "connect",
+          "share": 5
+        },
+        {
+          "type": "promote",
+          "share": 10
+        },
+        {
+          "type": "entertain",
+          "share": 15
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "watch_time",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "completion_rate",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "subscribers",
+          "target": null,
+          "per": "month"
+        },
+        {
+          "metric": "link_clicks",
+          "target": null,
+          "per": "month"
+        }
+      ]
+    },
+    {
+      "channel": "telegram",
+      "role": "خط مستقیم با جامعهٔ مخاطبان: به‌روزرسانی‌ها، پست‌های کاربردی و اطلاعیه‌هایی که مستقیم به صفحهٔ گفت‌وگوی مشترک‌ها می‌رسد.",
+      "formats": [
+        "post"
+      ],
+      "cadence": {
+        "per": "week",
+        "target": 3
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "retention",
+      "audience": "دنبال‌کننده‌های فعلی که می‌خواهند خلاصه و ابزارها را مستقیم بگیرند",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 40
+        },
+        {
+          "type": "inspire",
+          "share": 15
+        },
+        {
+          "type": "connect",
+          "share": 25
+        },
+        {
+          "type": "promote",
+          "share": 20
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "reach",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "shares",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "link_clicks",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "subscribers",
+          "target": null,
+          "per": "month"
+        }
+      ]
+    },
+    {
+      "channel": "x",
+      "role": "گفت‌وگو و واکنش به‌موقع: نکته‌های کوتاه، رشته‌پست و پاسخ‌گویی در حوزهٔ کاری‌تان.",
+      "formats": [
+        "post",
+        "thread"
+      ],
+      "cadence": {
+        "per": "week",
+        "target": 7
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "engagement",
+      "audience": "فعالان استارتاپ و تکنولوژی",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 35
+        },
+        {
+          "type": "connect",
+          "share": 35
+        },
+        {
+          "type": "promote",
+          "share": 15
+        },
+        {
+          "type": "entertain",
+          "share": 15
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "replies",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "reach",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "profile_visits",
+          "target": null,
+          "per": "week"
+        },
+        {
+          "metric": "follows",
+          "target": null,
+          "per": "week"
+        }
+      ]
+    },
+    {
+      "channel": "tiktok",
+      "role": "دیده‌شدن با سرگرمی و آموزش‌های سریع: ویدیوهای کوتاه، خودمانی و بی‌تکلف که حس کنند برای همین فید ساخته شده‌اند.",
+      "formats": [
+        "short_video"
+      ],
+      "cadence": {
+        "per": "week",
+        "target": 3
+      },
+      "languages": [],
+      "pillars": [],
+      "fact_refs": [
+        "personal.content.channels"
+      ],
+      "objective": "awareness",
+      "audience": "کارآفرینان جوان‌تر و تازه‌کار فارسی‌زبان",
+      "mix": [
+        {
+          "type": "educate",
+          "share": 35
+        },
+        {
+          "type": "inspire",
+          "share": 15
+        },
+        {
+          "type": "connect",
+          "share": 10
+        },
+        {
+          "type": "promote",
+          "share": 5
+        },
+        {
+          "type": "entertain",
+          "share": 35
+        }
+      ],
+      "kpis": [
+        {
+          "metric": "watch_time",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "completion_rate",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "shares",
+          "target": null,
+          "per": "post"
+        },
+        {
+          "metric": "follows",
+          "target": null,
+          "per": "week"
+        }
+      ]
+    }
+  ],
+  "gaps": [],
+  "shared_at": "2026-11-26T09:06:36.437Z"
+}
