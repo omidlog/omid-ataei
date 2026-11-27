@@ -21,6 +21,9 @@ An approved public logo asset with a matching checksum. Without it, the delivera
 3. State minimum size and clear space only when those facts exist.
 4. Do not trace or invent a mark. Do not approve the file.
 
+
+Learned rules: before you draft, read the owner's approved corrections for this surface and series (`creative_context` over MCP with a `creative-read` token, or `npm run brand:creative -- context --surface <s> --series <name>`) and follow `preferences`. If `withheld.preferences.draft` is above zero, tell the owner that rules are waiting for approval. When the owner corrects your output, record it with `creative_learn` / `brand:creative learn` in the same turn (`agent-skills/creative-memory/SKILL.md`, "Learning from corrections").
+
 ## Deliverable
 A one-page lockup spec with source ids, or an explicit empty state.
 

@@ -19,6 +19,9 @@ Approved token revision and an approved asset id. Missing files stay missing.
 3. Cite contrast pairs from the token compiler. Do not claim a pair passed if the compiler reported an error.
 4. Hand the proposal to a human. Do not write `approvals.yaml` and do not run `brand:tokens:approve` or `brand:tokens:publish`; those are human steps. You may run `npm run brand:tokens:generate -- --dry-run --json` to show which approved answers would become draft tokens.
 
+
+Learned rules: before you draft, read the owner's approved corrections for this surface and series (`creative_context` over MCP with a `creative-read` token, or `npm run brand:creative -- context --surface <s> --series <name>`) and follow `preferences`. If `withheld.preferences.draft` is above zero, tell the owner that rules are waiting for approval. When the owner corrects your output, record it with `creative_learn` / `brand:creative learn` in the same turn (`agent-skills/creative-memory/SKILL.md`, "Learning from corrections").
+
 ## Deliverable
 A usage note with token ids, hashes, asset ids, and a missing list.
 

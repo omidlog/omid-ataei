@@ -1,4 +1,4 @@
-<!-- Written by the Brand OS engine 0.2.0-68cd820; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
+<!-- Written by the Brand OS engine 0.2.0-29eadf2; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
 # Claude Code
 
 Follow `AGENTS.md`. This file does not restate those rules.
@@ -21,7 +21,7 @@ Skills for specific work:
 - `.brand-os/engine/agent-skills/motion-designer/SKILL.md`
 - `.brand-os/engine/agent-skills/social-designer/SKILL.md` (pick one approved style per deliverable from the social style kit; `.brand-os/engine/docs-internal/SOCIAL_STYLE_KIT.md` before touching `brand:social`, `social_style_kit` or `packages/brand-core/src/social-kit`)
 - `.brand-os/engine/agent-skills/knowledge-inbox/SKILL.md` (notes are unapproved ideas; `.brand-os/engine/docs-internal/KNOWLEDGE.md`)
-- `.brand-os/engine/agent-skills/creative-memory/SKILL.md` (design feedback and scoped preferences; `.brand-os/engine/docs-internal/CREATIVE_LEARNING.md`)
+- `.brand-os/engine/agent-skills/creative-memory/SKILL.md` (design feedback and scoped preferences; when the owner corrects your work, record it with `brand:creative learn` / `creative_learn` in the same turn; `.brand-os/engine/docs-internal/CREATIVE_LEARNING.md`)
 - `.brand-os/engine/agent-skills/seo-strategist/SKILL.md` (draft SEO/GEO strategy with cited, dated sources; `.brand-os/engine/docs-internal/SEO_STRATEGIST.md`)
 - `.brand-os/engine/docs-internal/STRATEGY_FEED.md` before touching `brand:strategy` or the `strategy_*` agent tools (owner-approved revisions; approval authorizes no execution)
 - `.brand-os/engine/docs-internal/COMPETITIVE.md` before touching `brand:competitive` (owner-only competitor index and its purpose drafts; quotes stay in Knowledge research notes; drafts never set prices or facts)

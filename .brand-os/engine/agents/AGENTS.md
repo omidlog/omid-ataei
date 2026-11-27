@@ -34,6 +34,10 @@ If a file disagrees with an approved fact, the approved fact wins until a person
 - Do not translate an approved brand sentence into another language unless that translation is itself approved.
 - Do not assume you can see this private repository, Figma, or a hosted MCP server. Access is described in `docs-internal/AI_CONNECTORS.md`.
 
+## Learning from the owner's corrections
+
+When the owner corrects or edits something you produced (copy, narration, voice, an image, a reel), record it in the same turn with `creative_learn` (MCP, `creative-read` token) or `npm run brand:creative -- learn` (checkout). It stores the owner's words locally and a draft rule for that surface and series; nothing is committed, so it works without git. The owner approves drafts with `brand:approve -- --all-pending`; from then on `creative_context` serves the rule to every later piece. Before producing creative work, read `creative_context` for the surface and series and follow its preferences. Never keep the lesson only in the conversation, and never write it to a separate repository or file instead. Skill: `agent-skills/creative-memory/SKILL.md`.
+
 ## Interview
 
 `npm run brand:interview` asks one question. `unknown`, `skip`, `not relevant`, and `decide later` are real answers and must not be filled in. `npm run brand:resume` continues from `brand/interview/session-state.yaml`.

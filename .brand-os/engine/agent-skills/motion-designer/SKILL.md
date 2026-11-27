@@ -18,6 +18,9 @@ Approved motion principles and duration feel (facts), and approved easing and du
 3. Do not add a new curve.
 4. Mark the note draft.
 
+
+Learned rules: before you draft, read the owner's approved corrections for this surface and series (`creative_context` over MCP with a `creative-read` token, or `npm run brand:creative -- context --surface <s> --series <name>`) and follow `preferences`. If `withheld.preferences.draft` is above zero, tell the owner that rules are waiting for approval. When the owner corrects your output, record it with `creative_learn` / `brand:creative learn` in the same turn (`agent-skills/creative-memory/SKILL.md`, "Learning from corrections").
+
 ## Deliverable
 A timing table with sources, or a missing list.
 

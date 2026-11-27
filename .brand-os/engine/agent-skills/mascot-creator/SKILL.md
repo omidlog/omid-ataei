@@ -21,6 +21,9 @@ Role, personality, and any approved stage. 90 slots may stay missing.
    For "the approved stage-3 mascot celebrating a correct answer", call `brand_retrieve` with `{ kind: "mascot", filters: { emotion: "celebrating", stage: "3", use_case: "correct-answer" } }`. If `status` is `missing`, report `data.explanation` to the human verbatim instead of picking a nearby state.
 4. Ask the human for missing anatomy instead of filling it.
 
+
+Learned rules: before you draft, read the owner's approved corrections for this surface and series (`creative_context` over MCP with a `creative-read` token, or `npm run brand:creative -- context --surface <s> --series <name>`) and follow `preferences`. If `withheld.preferences.draft` is above zero, tell the owner that rules are waiting for approval. When the owner corrects your output, record it with `creative_learn` / `brand:creative learn` in the same turn (`agent-skills/creative-memory/SKILL.md`, "Learning from corrections").
+
 ## Deliverable
 A character sheet of approved fields plus a missing checklist. No image bytes.
 

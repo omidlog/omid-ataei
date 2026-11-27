@@ -19,6 +19,9 @@ Component id and an approved color and type token. A missing id returns `found: 
 3. Record keyboard state and contrast only when the registry and compiler say so.
 4. Leave Figma node ids empty unless `importFigmaVariables` returned a proposal. Never overwrite approved tokens from Figma.
 
+
+Learned rules: before you draft, read the owner's approved corrections for this surface and series (`creative_context` over MCP with a `creative-read` token, or `npm run brand:creative -- context --surface <s> --series <name>`) and follow `preferences`. If `withheld.preferences.draft` is above zero, tell the owner that rules are waiting for approval. When the owner corrects your output, record it with `creative_learn` / `brand:creative learn` in the same turn (`agent-skills/creative-memory/SKILL.md`, "Learning from corrections").
+
 ## Deliverable
 A component note: id, status, token refs, missing props.
 
