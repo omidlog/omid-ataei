@@ -7,7 +7,7 @@ While the owner reviews reels, posts, mascot visuals or graphics with you, recor
 The current brand checkout, run as the owner (no `BRAND_OS_AGENT_TOKEN`; every command refuses under one). Feedback words live in the Knowledge Inbox; creative records only cite them. Guide: `docs-internal/CREATIVE_LEARNING.md`. Knowledge rules: `agent-skills/knowledge-inbox/SKILL.md`.
 
 ## Tools
-`npm run brand:creative -- <command> --json`: `project`, `variant`, `feedback`, `select`, `suggest`, `approve` (owner only), `preferences`, `show`, `list`, `context`, `aspects suggest|list|approve|reject` (approve owner only), `share`.
+`npm run brand:creative -- <command> --json`: `learn` (one-step correction), `project`, `variant`, `feedback`, `select`, `suggest`, `approve` (owner only), `preferences`, `show`, `list`, `context`, `aspects suggest|list|approve|reject` (approve owner only), `share`.
 
 As an MCP agent with a `creative-read` token (not in the checkout), call the read-only `creative_context` tool instead. It returns approved preferences and cited reasons only; local note text comes back as `quote_withheld: local_note`. Do not ask the owner for more access to work around that.
 
@@ -21,6 +21,16 @@ As an MCP agent with a `creative-read` token (not in the checkout), call the rea
 7. **Aspects from the words.** After recording feedback without aspects, you may run `aspects suggest --project <id>` and show the owner the pending suggestions. Only the owner runs `aspects approve` (with their proof) or `aspects reject`. Never present a pending suggestion as the owner's decision.
 8. **Sharing to Studio.** Only on the owner's request: `share --id cp_… --dry-run`, show the preview, then `share --id cp_…`. Never commit or push it yourself unless asked; the owner merges the pull request.
 9. **Stale sources.** If context shows `stale`, `archived`, `needs_review` or `invalid_approval`, say so and ask the owner. Don't rely on it silently.
+
+## Learning from corrections (one step)
+When the owner corrects or edits something you made — a narration script, a voice or delivery note, word choice, an image, a caption — record it in the same turn, before moving on. Don't wait for "save this".
+
+- **MCP agent (Cowork, Claude chat):** call `creative_learn` with `surface` (`narration`, `image`, `video`, `reel`, `caption`, …), `series` (a stable name such as `explainer-reels`), `feedback` (the owner's words, verbatim), `before` / `after` when there is text, a `rule` (≤200 chars, an instruction a later session can follow without the conversation) and `keep` / `avoid` aspects (`voice`, `diction`, `tone`, `pacing`, `composition`, `style`, …).
+- **In the checkout (Claude Code):** `npm run brand:creative -- learn --surface narration --series explainer-reels --text "<owner words>" [--before-file b.txt --after-file a.txt] --rule "<rule>" --avoid diction --json`.
+
+It writes local, gitignored files only (`brand/.private`). There is nothing to commit, so a missing git, a cloud-synced or read-only checkout never blocks it. Do not write your own guide file (for example `NARRATION.md`) in another repository instead.
+
+The rule is a **draft**. Tell the owner in one line: "Saved as a draft rule. Approve it with `npm run brand:approve -- --all-pending` and every later <surface>/<series> piece will follow it." Apply it yourself for the rest of this conversation. A later correction of the same point: pass `supersedes: cp_…`.
 
 ## Never
 Copy note text into statements or descriptions beyond a short label. Link restricted notes. Read another brand's records. Claim a variant performed best. Treat a selection or preference as permission to post, publish or buy ads.

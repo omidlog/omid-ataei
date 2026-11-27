@@ -1,4 +1,4 @@
-<!-- Written by the Brand OS engine 0.2.0-68cd820; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
+<!-- Written by the Brand OS engine 0.2.0-29eadf2; an engine update rewrites this file. Brand-specific notes go in brand/AGENTS.local.md. -->
 # Agent instructions
 
 This repository is a Brand OS template. It does not contain an approved brand. Treat every EXAMPLE, DRAFT, and TBD as unapproved.
@@ -34,6 +34,10 @@ If a file disagrees with an approved fact, the approved fact wins until a person
 - Do not rewrite an approved field in place. Run the interview change flow (`brand:interview --question <id> --change "…"`) so the owner sees the diff and the impacted ids.
 - Do not translate an approved brand sentence into another language unless that translation is itself approved.
 - Do not assume you can see this private repository, Figma, or a hosted MCP server. Access is described in `.brand-os/engine/docs-internal/AI_CONNECTORS.md`.
+
+## Learning from the owner's corrections
+
+When the owner corrects or edits something you produced (copy, narration, voice, an image, a reel), record it in the same turn with `creative_learn` (MCP, `creative-read` token) or `npm run brand:creative -- learn` (checkout). It stores the owner's words locally and a draft rule for that surface and series; nothing is committed, so it works without git. The owner approves drafts with `brand:approve -- --all-pending`; from then on `creative_context` serves the rule to every later piece. Before producing creative work, read `creative_context` for the surface and series and follow its preferences. Never keep the lesson only in the conversation, and never write it to a separate repository or file instead. Skill: `.brand-os/engine/agent-skills/creative-memory/SKILL.md`.
 
 ## Interview
 
